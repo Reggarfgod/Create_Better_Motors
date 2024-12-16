@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "create_better_motors:block/generation/alternator"
+    },
+    "facing=east": {
+      "model": "create_better_motors:block/generation/alternator",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "create_better_motors:block/generation/alternator",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "create_better_motors:block/generation/alternator",
+      "y": 270
+    },
+
+    "facing=up": {
+      "model": "create_better_motors:block/generation/alternator",
+      "x": 270
+    },
+    "facing=down": {
+      "model": "create_better_motors:block/generation/alternator",
+      "x": 90
+    }
+  }
+}

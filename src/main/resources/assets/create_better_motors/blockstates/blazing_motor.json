@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "create_better_motors:block/motors/blazing_motor",
+      "x": 90
+    },
+    "facing=east": {
+      "model": "create_better_motors:block/motors/blazing_motor_side",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "create_better_motors:block/motors/blazing_motor_side"
+    },
+    "facing=south": {
+      "model": "create_better_motors:block/motors/blazing_motor_side",
+      "y": 180
+    },
+    "facing=up": {
+      "model": "create_better_motors:block/motors/blazing_motor",
+      "x": 270
+    },
+    "facing=west": {
+      "model": "create_better_motors:block/motors/blazing_motor_side",
+      "y": 270
+    }
+  }
+}

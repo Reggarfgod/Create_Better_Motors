@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.reggarf.mods.create_better_motors.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "create_better_motors.refmap.json",
+  "mixins": [
+    "LevelMixin" ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "create_better_motors": "Create: Better Motors",
+
+  "create.tooltip.create_better_motors.energy_stored": "Energy Stored: ",
+  "create.tooltip.create_better_motors.energy_stats": "Energy Stats: ",
+  "create.tooltip.create_better_motors.energy_usage": "Energy Usage: ",
+  "create.tooltip.create_better_motors.energy_output": "Energy Output: ",
+  "create.tooltip.create_better_motors.energy": "%s ⚡",
+  "create.tooltip.create_better_motors.max_speed": "Maximum Speed: ",
+  "create.tooltip.create_better_motors.temperature": "%s ˚T",
+  "create.tooltip.create_better_motors.rpm": "%s RPM",
+  "create.tooltip.create_better_motors.temperature.ps": "%s ˚T/s",
+  "create.tooltip.create_better_motors.pump": "Pumping: ",
+  "create.tooltip.create_better_motors.energy_per_tick": "%s ⚡/t",
+  "create.tooltip.create_better_motors.per_rpm": "per %s RPM",
+  "create.tooltip.create_better_motors.energy_storage": "%s ⚡ / %s ⚡",
+  "create.tooltip.create_better_motors.releasing": "Releasing: ",
+  "create.tooltip.create_better_motors.generating": "Generating: ",
+  "create.tooltip.create_better_motors.using": "Using: ",
+  "create.tooltip.create_better_motors.extracting": "Extracting: ",
+  "create.tooltip.create_better_motors.generates":  "Generates: ",
+  "create.tooltip.create_better_motors.stores":  "Stores: ",
+  "create.tooltip.create_better_motors.speed":  "Speed: ",
+  "create.tooltip.create_better_motors.efficiency":  "Efficiency: ",
+  "create.tooltip.create_better_motors.transfers":  "Transfers: ",
+  "create.tooltip.create_better_motors.percent":  "%s%%",
+  "create.tooltip.create_better_motors.magnetic_force":  "Magnetic Force: ",
+  "create_better_motors.tooltip.energy.production": "Energy Generated:",
+  "create.tooltip.create_better_motors.connector_info": "Connector Info: ",
+  "create.tooltip.create_better_motors.mode": "Mode: ",
+  "create.tooltip.create_better_motors.connector_mode.inert": "Inert",
+  "create.tooltip.create_better_motors.connector_mode.pull": "Pull",
+
+
+  "item_group.create_better_motors.tab": "Create: Better Motors",
+  "block.create_better_motors.electrical_connector": "Electrical Connector",
+  "block.create_better_motors.alternator": "Alternator",
+  "block.create_better_motors.starter_motor": "Starter Motor",
+  "block.create_better_motors.basic_motor": "Basic Motor",
+  "block.create_better_motors.hardened_motor": "Hardened Motor",
+  "block.create_better_motors.blazing_motor": "Blazing Motor",
+  "block.create_better_motors.niotic_motor": "Niotic Motor",
+  "block.create_better_motors.spirited_motor": "Spirited Motor",
+  "block.create_better_motors.nitro_motor": "Nitro Motor",
+
+  "item.create_better_motors.incomplete_wire": "Incomplete Wire",
+  "item.create_better_motors.copper_wire": "Copper Wire",
+  "item.create_better_motors.overcharged_iron_wire": "Overcharged Iron Wire",
+  "item.create_better_motors.overcharged_golden_wire": "Overcharged Golden Wire",
+  "item.create_better_motors.overcharged_diamond_wire": "Overcharged Diamond Wire",
+
+  "item.create_better_motors.wire.message.self_connect": "You cannot connect a connector to itself",
+  "item.create_better_motors.wire.message.too_far": "Too far away! Maximum wire length is %d blocks",
+  "item.create_better_motors.wire.message.already_connected": "These connectors are already connected",
+  "item.create_better_motors.wire.message.unbound": "Unbound from connector",
+  "item.create_better_motors.wire.message.connected": "Connected connector",
+
+  "create_better_motors.ponder.wires.header": "Wiring",
+  "create_better_motors.ponder.wires.text_1": "Wires are used to transfer energy from one place to another",
+  "create_better_motors.ponder.wires.text_2": "This block automatically pushes its energy to neighboring blocks. But what if it didn't do that?",
+  "create_better_motors.ponder.wires.text_3": "Connector can pull energy from the block it stands on when 'Pull' mode is enabled. Modes are switched with a wrench",
+  "create_better_motors.ponder.wires.text_4": "Note that 'Pull' mode is only for compatibility with other mods and can't be used to extract energy from energizer/motor internal storage",
+
+
+  "create_better_motors.ponder.motor.header": "Motors!",
+  "create_better_motors.ponder.motor.text_1": "Motors allow you to generate rotation using electricity.",
+  "create_better_motors.ponder.motor.text_2": "You can configure its speed using a wrench, however the amount of SU it outputs will stay the same.",
+  "create_better_motors.ponder.motor.text_3": "By powering it with redstone you can disable it.",
+  "create_better_motors.ponder.motor.text_4": "You can also invert that mechanic by right-clicking on it.",
+
+  "create_better_motors.ponder.alternator.header": "Generating Electric energy using an Alternator",
+  "create_better_motors.ponder.alternator.text_1": "The Alternator requires at least 32 RPM to operate",
+  "create_better_motors.ponder.alternator.text_2": "It generates electric energy from rotational force",
+  "create_better_motors.ponder.alternator.text_3": "Its energy production is determined by the input RPM",
+
+  "create_better_motors.ponder.tag.electrical": "Electrical Components",
+  "create_better_motors.ponder.tag.electrical.description": "Blocks responsible for generating, transporting and using electricity.",
+
+  "create_better_motors.ponder.tag.wiring": "Wiring",
+  "create_better_motors.ponder.tag.wiring.description": "Items used for wiring.",
+
+  "create_better_motors.ponder.tag.magnets": "Magnets",
+  "create_better_motors.ponder.tag.magnets.description": "Magnets used for generating electricity.",
+
+  "create.tooltip.create_better_motors.attention": "Attention!",
+
+  "create.tooltip.create_better_motors.stress_limit_multiplier": "Stress Capacity Multiplier",
+  "create.tooltip.create_better_motors.additional_capacity": "Additional Capacity",
+  "create.new_age.motor.stress_multiplier": "Stress Capacity Multiplier"
+
+
+}
