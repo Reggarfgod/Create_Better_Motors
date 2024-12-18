@@ -7,6 +7,10 @@
     "create_better_motors:niotic_motor",
     "create_better_motors:blazing_motor",
     "create_better_motors:spirited_motor",
-    "create_better_motors:nitro_motor"
+    "create_better_motors:nitro_motor",
+    "create_better_motors:electrical_connector",
+    "create_better_motors:alternator",
+    "create_better_motors:reggarfoniteore",
+    "create_better_motors:reggarfoniteblock"
   ]
 }

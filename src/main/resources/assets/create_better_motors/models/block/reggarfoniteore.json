@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "create_better_motors:block/reggarfoniteore",
+    "particle": "create_better_motors:block/reggarfoniteore"
+  },
+  "render_type": "solid"
+}

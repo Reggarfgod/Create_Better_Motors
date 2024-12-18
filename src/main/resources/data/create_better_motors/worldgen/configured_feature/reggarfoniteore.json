@@ -1,0 +1,41 @@
+{
+  "type": "minecraft:ore",
+  "config": {
+    "size": 5,
+    "discard_chance_on_air_exposure": 0,
+    "targets": [
+      {
+        "target": {
+          "predicate_type": "blockstate_match",
+          "block_state": {
+            "Name": "minecraft:deepslate",
+            "Properties": {
+              "axis": "y"
+            }
+          }
+        },
+        "state": {
+          "Name": "create_better_motors:reggarfoniteore"
+        }
+      },
+      {
+        "target": {
+          "predicate_type": "tag_match",
+          "tag": "minecraft:mineable/pickaxe"
+        },
+        "state": {
+          "Name": "create_better_motors:reggarfoniteore"
+        }
+      },
+      {
+        "target": {
+          "predicate_type": "tag_match",
+          "tag": "forge:stone"
+        },
+        "state": {
+          "Name": "create_better_motors:reggarfoniteore"
+        }
+      }
+    ]
+  }
+}

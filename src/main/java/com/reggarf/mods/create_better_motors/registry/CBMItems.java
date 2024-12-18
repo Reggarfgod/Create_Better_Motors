@@ -1,9 +1,16 @@
 package com.reggarf.mods.create_better_motors.registry;
 
+import com.reggarf.mods.create_better_motors.Create_better_motors;
+
+
+
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.reggarf.mods.create_better_motors.content.electricity.wire.ElectricWireItem;
+import net.minecraft.world.item.Item;
+
 
 import static com.reggarf.mods.create_better_motors.Create_better_motors.REGISTRATE;
+
 
 
 public class CBMItems {
@@ -23,6 +30,14 @@ public class CBMItems {
     public static final ItemEntry<ElectricWireItem> DIAMOND_WIRE =
             REGISTRATE.item("overcharged_diamond_wire", ElectricWireItem::newDiamondWire)
                     .register();
+    public static final ItemEntry<Item> REGGARFONITE_SHEET =
+            REGISTRATE.item("reggarfonite_sheet", Item::new)
+                    .register();
+    public static final ItemEntry<Item> REGGARFONITE_GEM =
+            REGISTRATE.item("reggarfonite_gem", Item::new)
+                    .register();
 
-    public static void load() {  }
+    public static void load() {
+
+    }
 }

@@ -8,6 +8,10 @@ import com.simibubi.create.AllTags;
 import com.simibubi.create.content.kinetics.BlockStressDefaults;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.util.entry.BlockEntry;
+import com.tterrag.registrate.util.entry.ItemEntry;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
 import com.reggarf.mods.create_better_motors.content.alternator.AlternatorBlock;
@@ -95,7 +99,8 @@ public class CBMBlocks {
                     .simpleItem()
                     .register();
 
-    public static final BlockEntry<AlternatorBlock> ALTERNATOR = REGISTRATE.block("alternator", AlternatorBlock::new)
+    public static final BlockEntry<AlternatorBlock> ALTERNATOR =
+            REGISTRATE.block("alternator", AlternatorBlock::new)
             .initialProperties(SharedProperties::softMetal)
             .transform(BlockStressDefaults.setImpact(256f))
             .tag(AllTags.AllBlockTags.SAFE_NBT.tag) //Dono what this tag means (contraption safe?).
@@ -103,5 +108,20 @@ public class CBMBlocks {
             .transform(customItemModel())
             .register();
 
-    public static void load() {  }
+    public static final BlockEntry<Block> REGGARFONITEBLOCK =
+            REGISTRATE.block("reggarfoniteblock", Block::new)
+                    .initialProperties(SharedProperties::softMetal)
+                    .tag(AllTags.AllBlockTags.SAFE_NBT.tag) // Don't know what this tag means (contraption safe?).
+                    .item()
+                    .transform(customItemModel())
+                    .register();
+    public static final BlockEntry<Block> REGGARFONITEORE =
+            REGISTRATE.block("reggarfoniteore", Block::new)
+                    .initialProperties(SharedProperties::softMetal)
+                    .tag(AllTags.AllBlockTags.SAFE_NBT.tag) // Don't know what this tag means (contraption safe?).
+                    .item()
+                    .transform(customItemModel())
+                    .register();
+
+        public static void load() {  }
 }
