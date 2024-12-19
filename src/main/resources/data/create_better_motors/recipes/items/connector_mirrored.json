@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "c": {
+      "item": "create_better_motors:reggarfonite_gem"
+    },
+    "a": {
+      "item": "create:andesite_alloy"
+    }
+  },
+  "pattern": [
+    "ca",
+    "ac",
+    "ca"
+  ],
+  "result": {
+    "count": 2,
+    "item": "create_better_motors:electrical_connector"
+  },
+  "show_notification": true
+}

@@ -4,6 +4,8 @@ import com.reggarf.mods.create_better_motors.registry.CBMClientIniter;
 import com.reggarf.mods.create_better_motors.registry.CBMBlockEntityTypes;
 import com.reggarf.mods.create_better_motors.registry.CBMBlocks;
 import com.reggarf.mods.create_better_motors.registry.CBMItems;
+import com.simibubi.create.content.contraptions.ContraptionMovementSetting;
+import com.simibubi.create.content.fluids.tank.BoilerHeaters;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
 import net.minecraft.core.registries.Registries;
@@ -79,6 +81,8 @@ public class Create_better_motors {
 
 
     private void generalSetup(final FMLCommonSetupEvent event) {
-
+        event.enqueueWork(() -> {
+            ContraptionMovementSetting.register(CBMBlocks.ELECTRICAL_CONNECTOR.get(), () -> ContraptionMovementSetting.UNMOVABLE);
+        });
     }
 }

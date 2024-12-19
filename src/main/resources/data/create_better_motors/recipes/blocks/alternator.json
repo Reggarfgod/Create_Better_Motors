@@ -1,0 +1,33 @@
+{
+  "type": "create:mechanical_crafting",
+  "acceptMirrored": true,
+  "key": {
+    "d": {
+      "item": "create_better_motors:reggarfonite_sheet"
+    },
+    "R": {
+      "item": "powah:battery_starter"
+    },
+    "S": {
+      "item": "create:shaft"
+    },
+    "c": {
+      "item": "create_better_motors:starter_motor"
+    },
+    "I": {
+      "item": "create:golden_sheet"
+    },
+    "B": {
+      "item": "powah:capacitor_basic_large"
+    }
+  },
+  "pattern": [
+    "dRII",
+    "BcBS",
+    "dRII"
+  ],
+  "result": {
+    "count": 1,
+    "item": "create_better_motors:alternator"
+  }
+}

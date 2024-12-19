@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "item": "create_better_motors:empty_coil"
+    },
+    {
+      "item": "create_better_motors:copper_coil"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_better_motors:copper_wire"
+    }
+  ]
+}

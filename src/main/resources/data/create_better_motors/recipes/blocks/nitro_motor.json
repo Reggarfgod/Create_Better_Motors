@@ -1,0 +1,33 @@
+{
+  "type": "create:mechanical_crafting",
+  "acceptMirrored": true,
+  "key": {
+    "d": {
+      "item": "create_better_motors:reggarfonite_sheet"
+    },
+    "R": {
+      "item": "create_better_motors:spirited_motor"
+    },
+    "S": {
+      "item": "create:shaft"
+    },
+    "c": {
+      "item": "create:brass_casing"
+    },
+    "I": {
+      "item": "powah:crystal_nitro"
+    },
+    "B": {
+      "item": "powah:capacitor_nitro"
+    }
+  },
+  "pattern": [
+    "dRIId",
+    "BcBSS",
+    "dRIId"
+  ],
+  "result": {
+    "count": 1,
+    "item": "create_better_motors:nitro_motor"
+  }
+}

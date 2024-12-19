@@ -1,5 +1,7 @@
 package com.reggarf.mods.create_better_motors.content.motors;
 
+import com.reggarf.mods.create_better_motors.content.electricity.connector.ElectricalConnectorBlockEntity;
+import com.reggarf.mods.create_better_motors.content.electricity.wire.WireType;
 import com.simibubi.create.foundation.ponder.PonderPalette;
 import com.simibubi.create.foundation.ponder.SceneBuilder;
 import com.simibubi.create.foundation.ponder.SceneBuildingUtil;
@@ -9,8 +11,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import com.reggarf.mods.create_better_motors.content.electricity.connector.ElectricalConnectorBlockEntity;
-import com.reggarf.mods.create_better_motors.content.electricity.wire.WireType;
+
 
 public class MotorPonder {
     public static void motor(SceneBuilder scene, SceneBuildingUtil util) {
@@ -39,7 +40,7 @@ public class MotorPonder {
 
         scene.idle(20);
 
-        scene.world.modifyBlockEntity(util.grid.at(2, 3, 2), ElectricalConnectorBlockEntity.class, 
+        scene.world.modifyBlockEntity(util.grid.at(2, 3, 2), ElectricalConnectorBlockEntity.class,
                 (en) -> en.connect((ElectricalConnectorBlockEntity) en.getLevel().getBlockEntity(util.grid.at(4, 3, 2)), WireType.IRON));
 
         scene.idle(5);

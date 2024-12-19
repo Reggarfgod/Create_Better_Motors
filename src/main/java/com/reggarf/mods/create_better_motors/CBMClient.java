@@ -45,7 +45,7 @@ public class CBMClient {
                         CBMBlocks.SPIRITED_MOTOR,
                         CBMBlocks.NITRO_MOTOR)
                 .addStoryBoard("motor", MotorPonder::motor);
-        helper.forComponents(CBMBlocks.ALTERNATOR)
+                  helper.forComponents(CBMBlocks.ALTERNATOR)
                 .addStoryBoard("alternator", AlternatorPonder::alternator);
 
         // ToolTip

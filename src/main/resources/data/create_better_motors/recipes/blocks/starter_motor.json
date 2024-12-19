@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "i": {
+      "item": "create_better_motors:reggarfonite_sheet"
+    },
+    "g": {
+      "item": "create:iron_sheet"
+    },
+    "s": {
+      "item": "create:shaft"
+    },
+    "#": {
+      "item": "create:andesite_casing"
+    },
+    "m": {
+      "item": "minecraft:iron_block"
+    },
+    "c": {
+      "item": "create:andesite_alloy"
+    }
+  },
+  "pattern": [
+    "cgi",
+    "m#s",
+    "cgi"
+  ],
+  "result": {
+    "count": 1,
+    "item": "create_better_motors:starter_motor"
+  },
+  "show_notification": true
+}

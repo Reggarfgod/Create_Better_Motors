@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "g": {
+      "item": "create_better_motors:basic_motor"
+    },
+    "i": {
+      "item": "create:golden_sheet"
+    },
+    "s": {
+      "item": "create:shaft"
+    },
+    "#": {
+      "item": "create:copper_casing"
+    },
+    "m": {
+      "item": "powah:capacitor_basic"
+    },
+    "c": {"item": "create_better_motors:reggarfonite_sheet" }
+  },
+  "pattern": [
+    "cgi",
+    "m#s",
+    "cgi"
+  ],
+  "result": {
+    "count": 1,
+    "item": "create_better_motors:basic_motor"
+  },
+  "show_notification": true
+}

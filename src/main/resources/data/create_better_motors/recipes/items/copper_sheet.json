@@ -1,0 +1,15 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "create:copper_sheet"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_better_motors:copper_wire",
+      "count": 4
+    }
+  ],
+  "processingTime": 100
+}

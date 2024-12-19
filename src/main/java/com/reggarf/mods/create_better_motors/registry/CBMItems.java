@@ -3,7 +3,7 @@ package com.reggarf.mods.create_better_motors.registry;
 import com.reggarf.mods.create_better_motors.Create_better_motors;
 
 
-
+import com.simibubi.create.content.processing.sequenced.SequencedAssemblyItem;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.reggarf.mods.create_better_motors.content.electricity.wire.ElectricWireItem;
 import net.minecraft.world.item.Item;
@@ -20,21 +20,37 @@ public class CBMItems {
                     .register();
 
     public static final ItemEntry<ElectricWireItem> IRON_WIRE =
-            REGISTRATE.item("overcharged_iron_wire", ElectricWireItem::newIronWire)
+            REGISTRATE.item("iron_wire", ElectricWireItem::newIronWire)
                     .register();
 
     public static final ItemEntry<ElectricWireItem> GOLDEN_WIRE =
-            REGISTRATE.item("overcharged_golden_wire", ElectricWireItem::newGoldenWire)
+            REGISTRATE.item("golden_wire", ElectricWireItem::newGoldenWire)
                     .register();
 
     public static final ItemEntry<ElectricWireItem> DIAMOND_WIRE =
-            REGISTRATE.item("overcharged_diamond_wire", ElectricWireItem::newDiamondWire)
+            REGISTRATE.item("diamond_wire", ElectricWireItem::newDiamondWire)
                     .register();
     public static final ItemEntry<Item> REGGARFONITE_SHEET =
             REGISTRATE.item("reggarfonite_sheet", Item::new)
                     .register();
     public static final ItemEntry<Item> REGGARFONITE_GEM =
             REGISTRATE.item("reggarfonite_gem", Item::new)
+                    .register();
+    public static final ItemEntry<Item> EMPTY_COIL =
+            REGISTRATE.item("empty_coil", Item::new)
+                    .register();
+    public static final ItemEntry<Item> IRON_COIL =
+            REGISTRATE.item("iron_coil", Item::new)
+                    .register();
+    public static final ItemEntry<Item> GOLDEN_COIL =
+            REGISTRATE.item("golden_coil", Item::new)
+                    .register();
+    public static final ItemEntry<Item> COPPER_COIL =
+            REGISTRATE.item("copper_coil", Item::new)
+                    .register();
+
+    public static final ItemEntry<Item> REGGARFONITE_COIL =
+            REGISTRATE.item("reggarfonite_coil", Item::new)
                     .register();
 
     public static void load() {

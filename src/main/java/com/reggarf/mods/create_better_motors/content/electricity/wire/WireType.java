@@ -6,10 +6,10 @@ import net.minecraft.world.item.ItemStack;
 
 
 public enum WireType {
-    COPPER(1024, new int[] { 158, 88, 75, 255 }, new int[] { 173, 108, 92, 255 }, CBMItems.COPPER_WIRE::asStack),
-    IRON(2048, new int[] { 210, 213, 216, 255 }, new int[] { 253, 254, 254, 255 }, CBMItems.IRON_WIRE::asStack),
-    GOLD(4096, new int[] { 244, 184, 28, 255 }, new int[] { 254, 240, 90, 255 }, CBMItems.GOLDEN_WIRE::asStack),
-    DIAMOND(8192, new int[] { 45, 196, 178, 255 }, new int[] { 107, 243, 227, 255 }, CBMItems.DIAMOND_WIRE::asStack);
+    COPPER(2024, new int[] { 158, 88, 75, 255 }, new int[] { 173, 108, 92, 255 }, CBMItems.COPPER_WIRE::asStack),
+    IRON(4048, new int[] { 210, 213, 216, 255 }, new int[] { 253, 254, 254, 255 }, CBMItems.IRON_WIRE::asStack),
+    GOLD(8096, new int[] { 244, 184, 28, 255 }, new int[] { 254, 240, 90, 255 }, CBMItems.GOLDEN_WIRE::asStack),
+    DIAMOND(18192, new int[] { 45, 196, 178, 255 }, new int[] { 107, 243, 227, 255 }, CBMItems.DIAMOND_WIRE::asStack);
 
     private final long conductivity;
     private final int[] color1;

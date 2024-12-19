@@ -178,14 +178,22 @@ dependencies {
     compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
     runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
 
+    //mod dependency with REI
+   // implementation fg.deobf("curse.maven:roughly-enough-items-310111:5846923")
+
+    //mod dependency with emi
+    //implementation fg.deobf("curse.maven:emi-580555:5872526")
+
+
     //mod dependency with powah
      implementation fg.deobf("curse.maven:powah-rearchitected-633483:5604170")
      implementation fg.deobf("curse.maven:cloth-config-348521:5729105")
-    implementation fg.deobf("curse.maven:architectury-api-419699:5137938")
+     implementation fg.deobf("curse.maven:architectury-api-419699:5137938")
+
     //mod dependency with botarium
     implementation fg.deobf("curse.maven:botarium-704113:5486070")
 
-
+    //mixin
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
 }

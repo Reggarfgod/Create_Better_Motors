@@ -1,0 +1,33 @@
+{
+  "type": "create:mechanical_crafting",
+  "acceptMirrored": true,
+  "key": {
+    "d": {
+      "item": "create_better_motors:reggarfonite_sheet"
+    },
+    "R": {
+      "item": "create_better_motors:blazing_motor"
+    },
+    "S": {
+      "item": "create:shaft"
+    },
+    "c": {
+      "item": "create:brass_casing"
+    },
+    "I": {
+      "item": "powah:crystal_niotic"
+    },
+    "B": {
+      "item": "powah:capacitor_niotic"
+    }
+  },
+  "pattern": [
+    "dRIId",
+    "BcBSS",
+    "dRIId"
+  ],
+  "result": {
+    "count": 1,
+    "item": "create_better_motors:niotic_motor"
+  }
+}

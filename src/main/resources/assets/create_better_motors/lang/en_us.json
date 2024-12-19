@@ -43,11 +43,18 @@
   "block.create_better_motors.spirited_motor": "Spirited Motor",
   "block.create_better_motors.nitro_motor": "Nitro Motor",
 
+
   "item.create_better_motors.incomplete_wire": "Incomplete Wire",
+  "item.create_better_motors.empty_coil": "Empty Coil",
   "item.create_better_motors.copper_wire": "Copper Wire",
-  "item.create_better_motors.overcharged_iron_wire": "Iron Wire",
-  "item.create_better_motors.overcharged_golden_wire": "Golden Wire",
-  "item.create_better_motors.overcharged_diamond_wire": "Diamond Wire",
+  "item.create_better_motors.iron_wire": "Iron Wire",
+  "item.create_better_motors.golden_wire": "Golden Wire",
+  "item.create_better_motors.diamond_wire": "Diamond Wire",
+  "item.create_better_motors.copper_coil": "Copper Coil",
+  "item.create_better_motors.iron_coil": "Iron Coil",
+  "item.create_better_motors.golden_coil": "Golden Coil",
+  "item.create_better_motors.reggarfonite_coil": "Reggarfonite Coil",
+
   "item.create_better_motors.reggarfonite_sheet": "Reggarfonite Sheet",
   "item.create_better_motors.reggarfonite_gem": "Reggarfonite Gem",
   "block.create_better_motors.reggarfoniteblock": "Reggarfonite Block",
@@ -64,7 +71,7 @@
   "create_better_motors.ponder.wires.text_1": "Wires are used to transfer energy from one place to another",
   "create_better_motors.ponder.wires.text_2": "This block automatically pushes its energy to neighboring blocks. But what if it didn't do that?",
   "create_better_motors.ponder.wires.text_3": "Connector can pull energy from the block it stands on when 'Pull' mode is enabled. Modes are switched with a wrench",
-  "create_better_motors.ponder.wires.text_4": "Note that 'Pull' mode is only for compatibility with other mods and can't be used to extract energy from energizer/motor internal storage",
+  "create_better_motors.ponder.wires.text_4": "Note that 'Pull' mode is only for compatibility with other mods and can't be used to extract energy from motor internal storage",
 
 
   "create_better_motors.ponder.motor.header": "Motors!",
@@ -92,6 +99,4 @@
   "create.tooltip.create_better_motors.stress_limit_multiplier": "Stress Capacity Multiplier",
   "create.tooltip.create_better_motors.additional_capacity": "Additional Capacity",
   "create.new_age.motor.stress_multiplier": "Stress Capacity Multiplier"
-
-
 }
