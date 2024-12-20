@@ -1,0 +1,13 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    {
+      "item": "create_better_motors:reggarfonite_gem"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_better_motors:reggarfonite_sheet"
+    }
+  ]
+}

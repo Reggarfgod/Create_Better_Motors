@@ -1,16 +1,24 @@
 package com.reggarf.mods.create_better_motors.content.alternator;
 
 
+import com.reggarf.mods.create_better_motors.config.CBMConfig;
+import com.reggarf.mods.create_better_motors.config.CommonConfig;
 import com.reggarf.mods.create_better_motors.registry.CBMBlockEntityTypes;
 import com.reggarf.mods.create_better_motors.registry.CBMShapes;
+import com.reggarf.mods.create_better_motors.tools.StringFormattingTool;
 import com.simibubi.create.content.kinetics.base.DirectionalKineticBlock;
 import com.simibubi.create.content.kinetics.base.IRotate;
 import com.simibubi.create.foundation.block.IBE;
+import com.simibubi.create.foundation.utility.Lang;
 import com.simibubi.create.foundation.utility.VoxelShaper;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Direction.Axis;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -21,6 +29,9 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class AlternatorBlock extends DirectionalKineticBlock implements IBE<AlternatorBlockEntity>, IRotate {
 	
@@ -30,6 +41,17 @@ public class AlternatorBlock extends DirectionalKineticBlock implements IBE<Alte
 	public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
 		return ALTERNATOR_SHAPE.get(state.getValue(FACING));
 	}
+@Override
+public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> tooltip, TooltipFlag flag) {
+    tooltip.add(Lang.translate("tooltip.create_better_motors.generates").style(ChatFormatting.GRAY)
+            .component());
+    tooltip.add(Lang.text(" ").translate("tooltip.create_better_motors.energy_per_tick", getEnergyProductionRate()).style(ChatFormatting.AQUA).component());
+}
+
+private int getEnergyProductionRate() {
+    // Implement the logic to calculate and return the energy production rate
+    return 456; // Replace with the actual logic
+}
 	
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {

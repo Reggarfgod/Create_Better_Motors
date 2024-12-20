@@ -2,12 +2,12 @@
   "type": "create:cutting",
   "ingredients": [
     {
-      "item": "create:copper_sheet"
+      "item": "create_better_motors:reggarfonite_sheet"
     }
   ],
   "results": [
     {
-      "item": "create_better_motors:copper_wire",
+      "item": "create_better_motors:reggarfonite_coil",
       "count": 4
     }
   ],

@@ -12,12 +12,7 @@ import java.util.Locale;
 import static net.minecraft.core.Direction.Axis.*;
 import static net.minecraft.world.level.block.Rotation.*;
 
-/**
- * A hacky, messy, and probably not the best solution to a problem making my
- * head spin.
- *
- * Used to recalculate the relative positions of wires & nodes.
- */
+
 public enum NodeRotation implements StringRepresentable {
 
 	NONE(null, null),

@@ -31,7 +31,6 @@
   "create.tooltip.create_better_motors.connector_mode.inert": "Inert",
   "create.tooltip.create_better_motors.connector_mode.pull": "Pull",
 
-
   "item_group.create_better_motors.tab": "Create: Better Motors",
   "block.create_better_motors.electrical_connector": "Electrical Connector",
   "block.create_better_motors.alternator": "Alternator",

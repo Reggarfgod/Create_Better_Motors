@@ -1,0 +1,15 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "create:golden_sheet"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_better_motors:golden_coil",
+      "count": 4
+    }
+  ],
+  "processingTime": 100
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "c": {
+      "tag": "forge:stripped_logs"
+    },
+    "a": {
+      "item": "create:shaft"
+    }
+  },
+  "pattern": [
+    "cac"
+  ],
+  "result": {
+    "count": 4,
+    "item": "create_better_motors:empty_coil"
+  },
+  "show_notification": true
+}
