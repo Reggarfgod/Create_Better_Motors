@@ -15,7 +15,7 @@
       "item": "create:copper_casing"
     },
     "m": {
-      "item": "powah:capacitor_basic"
+      "item": "create:iron_sheet"
     },
     "c": {"item": "create_better_motors:reggarfonite_sheet" }
   },

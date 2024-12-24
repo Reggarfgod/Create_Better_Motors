@@ -1,0 +1,15 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "create_better_motors:reggarfonite_gem"
+    }
+  ],
+  "processingTime": 350,
+  "results": [
+    {
+    "chance": 0.2,
+    "item": "powah:uraninite"
+    }
+  ]
+}

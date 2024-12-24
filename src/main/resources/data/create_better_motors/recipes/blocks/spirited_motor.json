@@ -15,10 +15,10 @@
       "item": "create:brass_casing"
     },
     "I": {
-      "item": "powah:crystal_spirited"
+      "item": "minecraft:iron_block"
     },
     "B": {
-      "item": "powah:capacitor_spirited"
+      "item": "minecraft:diamond_block"
     }
   },
   "pattern": [

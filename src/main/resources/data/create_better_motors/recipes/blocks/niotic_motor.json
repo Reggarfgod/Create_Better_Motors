@@ -15,10 +15,10 @@
       "item": "create:brass_casing"
     },
     "I": {
-      "item": "powah:crystal_niotic"
+      "item": "minecraft:iron_block"
     },
     "B": {
-      "item": "powah:capacitor_niotic"
+      "item": "minecraft:gold_block"
     }
   },
   "pattern": [

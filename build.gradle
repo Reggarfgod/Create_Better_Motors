@@ -186,9 +186,9 @@ dependencies {
 
 
     //mod dependency with powah
-     implementation fg.deobf("curse.maven:powah-rearchitected-633483:5604170")
-     implementation fg.deobf("curse.maven:cloth-config-348521:5729105")
-     implementation fg.deobf("curse.maven:architectury-api-419699:5137938")
+     //implementation fg.deobf("curse.maven:powah-rearchitected-633483:5604170")
+     //implementation fg.deobf("curse.maven:cloth-config-348521:5729105")
+     //implementation fg.deobf("curse.maven:architectury-api-419699:5137938")
 
     //mod dependency with botarium
     implementation fg.deobf("curse.maven:botarium-704113:5486070")

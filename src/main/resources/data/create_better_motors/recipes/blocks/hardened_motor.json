@@ -15,10 +15,10 @@
       "item": "create:brass_casing"
     },
     "I": {
-      "item": "powah:steel_energized"
+      "item": "minecraft:gold_ingot"
     },
     "B": {
-      "item": "powah:capacitor_hardened"
+      "item": "minecraft:iron_block"
     }
   },
   "pattern": [

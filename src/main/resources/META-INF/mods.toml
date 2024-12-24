@@ -70,13 +70,6 @@ ordering="AFTER"
 side="BOTH"
 
 [[dependencies."${mod_id}"]]
-modId="powah"
-mandatory=true
-versionRange="[5.0.7,)"
-ordering="AFTER"
-side="BOTH"
-
-[[dependencies."${mod_id}"]]
 modId="botarium"
 mandatory=true
 versionRange="[2.3.4,)"
