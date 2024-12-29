@@ -52,6 +52,9 @@ public class CBMItems {
     public static final ItemEntry<Item> REGGARFONITE_COIL =
             REGISTRATE.item("reggarfonite_coil", Item::new)
                     .register();
+        public static final ItemEntry<Item> LINK_TUBE =
+            REGISTRATE.item("link_tube", Item::new)
+                    .register();
 
     public static void load() {
 

@@ -147,7 +147,7 @@ public class MotorBlockEntity extends GeneratingKineticBlockEntity implements Bo
     @Override
     public boolean addToGoggleTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
         Lang.translate("tooltip.create_better_motors.energy_stored")
-                .style(ChatFormatting.GRAY)
+                .style(ChatFormatting.WHITE)
                 .forGoggles(tooltip);
 
         Lang.translate("tooltip.create_better_motors.energy_storage", StringFormattingTool.formatLong(energy.getStoredEnergy()), StringFormattingTool.formatLong(energy.getMaxCapacity()))

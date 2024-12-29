@@ -1,10 +1,14 @@
 package com.reggarf.mods.create_better_motors;
 
 import com.reggarf.mods.create_better_motors.content.alternator.AlternatorPonder;
+import com.reggarf.mods.create_better_motors.content.battery.LinkAccumulator;
 import com.reggarf.mods.create_better_motors.content.electricity.ElectricityPonder;
 import com.reggarf.mods.create_better_motors.content.motors.MotorPonder;
+import com.reggarf.mods.create_better_motors.ponder.VoidScenes;
 import com.reggarf.mods.create_better_motors.registry.CBMBlocks;
 import com.reggarf.mods.create_better_motors.registry.CBMItems;
+import com.reggarf.mods.create_better_motors.tools.CBMPartialsModels;
+import com.reggarf.mods.create_better_motors.tools.VoidStorageClient;
 import com.simibubi.create.foundation.config.ui.BaseConfigScreen;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipModifier;
@@ -12,6 +16,7 @@ import com.simibubi.create.foundation.ponder.PonderRegistrationHelper;
 
 import com.tterrag.registrate.util.entry.BlockEntry;
 import net.minecraftforge.client.ConfigScreenHandler;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModContainer;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -21,6 +26,11 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 public class CBMClient {
 
+    public static final VoidStorageClient<LinkAccumulator> VOID_BATTERIES = new VoidStorageClient<>(
+            LinkAccumulator::new);
+    public static void onCtorClient(IEventBus modEventBus, IEventBus forgeEventBus) {
+        CBMPartialsModels.init();
+    }
 
     public static void onInitializeClient(final FMLClientSetupEvent event) {
 
@@ -36,6 +46,8 @@ public class CBMClient {
         helper.addStoryBoard(CBMItems.DIAMOND_WIRE, "wires", ElectricityPonder::ponder);
         helper.addStoryBoard(CBMItems.GOLDEN_WIRE, "wires", ElectricityPonder::ponder);
         helper.addStoryBoard(CBMItems.IRON_WIRE, "wires", ElectricityPonder::ponder);
+        helper.addStoryBoard(CBMBlocks.VOID_MOTOR, "void_motor", VoidScenes::voidMotor);
+        helper.addStoryBoard(CBMBlocks.VOID_BATTERY, "void_battery", VoidScenes::voidBattery);
 
         helper.forComponents(CBMBlocks.STARTER_MOTOR,
                         CBMBlocks.BASIC_MOTOR,
@@ -62,4 +74,5 @@ public class CBMClient {
     public static void addToolTipModifier(BlockEntry<?> entry) {
         TooltipModifier.REGISTRY.register(entry.asItem(), KineticStats.create(entry.asItem()));
     }
+
 }

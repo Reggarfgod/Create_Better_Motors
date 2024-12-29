@@ -4,23 +4,24 @@ package com.reggarf.mods.create_better_motors.registry;
 
 
 import com.reggarf.mods.create_better_motors.Create_better_motors;
+import com.reggarf.mods.create_better_motors.content.battery.LinkAccumulatorBlock;
+import com.reggarf.mods.create_better_motors.content.motor.LinkMotorBlock;
 import com.simibubi.create.AllTags;
 import com.simibubi.create.content.kinetics.BlockStressDefaults;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.util.entry.BlockEntry;
-import com.tterrag.registrate.util.entry.ItemEntry;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
 import com.reggarf.mods.create_better_motors.content.alternator.AlternatorBlock;
 import com.reggarf.mods.create_better_motors.content.electricity.connector.ElectricalConnectorBlock;
 import com.reggarf.mods.create_better_motors.content.motors.MotorBlock;
 import com.reggarf.mods.create_better_motors.content.motors.variants.*;
+import net.minecraft.world.level.material.MapColor;
 
 import static com.reggarf.mods.create_better_motors.Create_better_motors.REGISTRATE;
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
+import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
 
 
 public class CBMBlocks {
@@ -122,6 +123,26 @@ public class CBMBlocks {
                     .item()
                     .transform(customItemModel())
                     .register();
+    public static final BlockEntry<LinkMotorBlock> VOID_MOTOR = REGISTRATE.block("void_motor", LinkMotorBlock::new)
+            .initialProperties(SharedProperties::stone)
+            .properties(p -> p.mapColor(MapColor.COLOR_BLACK))
+            .properties(p -> p.strength(30F, 600.0F))
+            .transform(pickaxeOnly())
+            .transform(BlockStressDefaults.setNoImpact())
+            .item()
+            .transform(customItemModel())
+            .register();
+
+    public static final BlockEntry<LinkAccumulatorBlock> VOID_BATTERY = REGISTRATE.block("void_battery", LinkAccumulatorBlock::new)
+            .initialProperties(SharedProperties::stone)
+            .properties(BlockBehaviour.Properties::noOcclusion)
+            .properties(p -> p.mapColor(MapColor.COLOR_BLACK))
+            .properties(p -> p.strength(30F, 600.0F))
+            .transform(pickaxeOnly())
+            .item()
+            .transform(customItemModel())
+            .register();
+
 
         public static void load() {  }
 }

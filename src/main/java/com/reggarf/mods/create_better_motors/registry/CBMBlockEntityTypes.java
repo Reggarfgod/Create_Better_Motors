@@ -2,11 +2,14 @@ package com.reggarf.mods.create_better_motors.registry;
 
 
 
-import com.reggarf.mods.create_better_motors.Create_better_motors;
 import com.reggarf.mods.create_better_motors.content.alternator.AlternatorBlockEntity;
 import com.reggarf.mods.create_better_motors.content.alternator.AlternatorRenderer;
+import com.reggarf.mods.create_better_motors.content.battery.LinkAccumulatorRenderer;
+import com.reggarf.mods.create_better_motors.content.battery.LinkAccumulatorBlockEntity;
 import com.reggarf.mods.create_better_motors.content.electricity.connector.ElectricalConnectorBlockEntity;
 import com.reggarf.mods.create_better_motors.content.electricity.connector.ElectricalConnectorRenderer;
+import com.reggarf.mods.create_better_motors.content.motor.LinkMotorRenderer;
+import com.reggarf.mods.create_better_motors.content.motor.LinkMotorTileEntity;
 import com.reggarf.mods.create_better_motors.content.motors.MotorBlockEntity;
 import com.reggarf.mods.create_better_motors.content.motors.variants.*;
 import com.reggarf.mods.create_better_motors.tools.HalfShaftRendererThing;
@@ -85,6 +88,17 @@ public class CBMBlockEntityTypes {
             .renderer(() -> AlternatorRenderer::new)
             .register();
 
+    public static final BlockEntityEntry<LinkMotorTileEntity> VOID_MOTOR = REGISTRATE
+            .blockEntity("void_motor", LinkMotorTileEntity::new)
+            .instance(() -> HalfShaftInstance::new, true)
+            .validBlocks(CBMBlocks.VOID_MOTOR)
+            .renderer(() -> LinkMotorRenderer::new)
+            .register();
 
+    public static final BlockEntityEntry<LinkAccumulatorBlockEntity> VOID_BATTERY = REGISTRATE
+            .blockEntity("void_battery", LinkAccumulatorBlockEntity::new)
+            .validBlocks(CBMBlocks.VOID_BATTERY)
+            .renderer(() -> LinkAccumulatorRenderer::new)
+            .register();
     public static void load() {  }
 }

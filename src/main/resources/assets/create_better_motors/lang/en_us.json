@@ -41,7 +41,15 @@
   "block.create_better_motors.niotic_motor": "Niotic Motor",
   "block.create_better_motors.spirited_motor": "Spirited Motor",
   "block.create_better_motors.nitro_motor": "Nitro Motor",
+  "block.create_better_motors.void_motor": "Motor Link",
+  "block.create_better_motors.void_battery": "Accumulator Link",
 
+  "create_better_motors.logistics.owner": "Owner",
+  "create_better_motors.logistics.void.click_to_set_owner": "Click to own",
+  "create_better_motors.logistics.void.click_to_remove_owner": "Click to remove ownership",
+
+  "create_better_motors.tooltip.void_battery.header": "Energy Stored:",
+  "create_better_motors.tooltip.void_battery.energy": "Energy",
 
   "item.create_better_motors.incomplete_wire": "Incomplete Wire",
   "item.create_better_motors.empty_coil": "Empty Coil",
@@ -53,6 +61,7 @@
   "item.create_better_motors.iron_coil": "Iron Coil",
   "item.create_better_motors.golden_coil": "Golden Coil",
   "item.create_better_motors.reggarfonite_coil": "Reggarfonite Coil",
+  "item.create_better_motors.link_tube": "Link Tube",
 
   "item.create_better_motors.reggarfonite_sheet": "Reggarfonite Sheet",
   "item.create_better_motors.reggarfonite_gem": "Reggarfonite Gem",
@@ -92,6 +101,23 @@
 
   "create_better_motors.ponder.tag.magnets": "Magnets",
   "create_better_motors.ponder.tag.magnets.description": "Magnets used for generating electricity.",
+
+  "create_better_motors.ponder.void_motor.header": "Using Void Motors",
+  "create_better_motors.ponder.void_motor.text_1": "Void Motors can transmit Rotational Force across distances",
+  "create_better_motors.ponder.void_motor.text_2": "Placing items in the two upper slots can specify a Frequency",
+  "create_better_motors.ponder.void_motor.text_3": "Right-click the bottom slot to unclaim the Void Motor",
+  "create_better_motors.ponder.void_motor.text_4": "Right-click it again to re-claim it",
+  "create_better_motors.ponder.void_motor.text_5": "If a Void Motor is claimed, only it's owner is able to edit it's Frequency",
+  "create_better_motors.ponder.void_motor.text_6": "A Void Motor will only receive Rotational Force from Void Motors with the same Frequency and Owner",
+
+  "create_better_motors.ponder.void_battery.header": "Using Void Batteries",
+  "create_better_motors.ponder.void_battery.text_1": "Void Batteries can transmit Energy across distances",
+  "create_better_motors.ponder.void_battery.text_2": "Placing items in the two upper slots can specify a Frequency",
+  "create_better_motors.ponder.void_battery.text_3": "Right-click the bottom slot to unclaim the Void Battery",
+  "create_better_motors.ponder.void_battery.text_4": "Right-click it again to re-claim it",
+  "create_better_motors.ponder.void_battery.text_5": "If a Void Battery is claimed, only it's owner is able to edit it's Frequency",
+  "create_better_motors.ponder.void_battery.text_6": "A Void Battery will only receive Energy from Void Batteries with the same Frequency and Owner",
+
 
   "create.tooltip.create_better_motors.attention": "Attention!",
 

@@ -57,7 +57,7 @@ public class MotorBlock extends DirectionalKineticBlock implements IRotate, IBE<
         tooltip.add(Lang.translate("tooltip.create_better_motors.stores").style(ChatFormatting.GRAY)
                 .component());
         tooltip.add(Lang.text(" ").translate("tooltip.create_better_motors.energy",
-                                             StringFormattingTool.formatLong(variant.getMaxCapacity())).style(ChatFormatting.AQUA).component());
+                StringFormattingTool.formatLong(variant.getMaxCapacity())).style(ChatFormatting.AQUA).component());
 
         tooltip.add(Lang.translate("tooltip.create_better_motors.max_speed").style(ChatFormatting.GRAY)
                 .component());
