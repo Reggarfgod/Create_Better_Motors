@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "create_better_motors:link_tube"
+    },
+    "Y": {
+      "item": "create:brass_casing"
+    },
+    "Z": {
+      "item": "create_better_motors:polished_lava_quartz"
+    },
+    "W": {
+      "item": "minecraft:netherite_ingot"
+    }
+  },
+  "pattern": [
+    " X ",
+    "ZYZ",
+    " W "
+  ],
+  "result": {
+    "item": "create_better_motors:void_battery"
+  }
+}

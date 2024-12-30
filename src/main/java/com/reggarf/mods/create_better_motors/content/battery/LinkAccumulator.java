@@ -53,3 +53,4 @@ public class LinkAccumulator extends InternalEnergyStorage {
 	}
 
 }
+

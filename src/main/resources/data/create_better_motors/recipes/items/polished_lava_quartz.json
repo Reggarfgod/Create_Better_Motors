@@ -1,0 +1,13 @@
+{
+  "type": "create:sandpaper_polishing",
+  "ingredients": [
+    {
+      "item": "create_better_motors:lava_quartz"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_better_motors:polished_lava_quartz"
+    }
+  ]
+}

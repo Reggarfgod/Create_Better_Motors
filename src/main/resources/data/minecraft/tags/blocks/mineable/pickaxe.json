@@ -11,6 +11,9 @@
     "create_better_motors:electrical_connector",
     "create_better_motors:alternator",
     "create_better_motors:reggarfoniteore",
-    "create_better_motors:reggarfoniteblock"
+    "create_better_motors:reggarfoniteblock",
+    "create_better_motors:void_battery",
+    "create_better_motors:void_motor",
+    "create_better_motors:multimeter"
   ]
 }

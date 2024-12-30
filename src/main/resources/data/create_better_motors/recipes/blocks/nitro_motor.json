@@ -19,11 +19,14 @@
     },
     "B": {
       "item": "minecraft:diamond_block"
+    },
+    "M": {
+      "item": "minecraft:nether_star"
     }
   },
   "pattern": [
     "dRIId",
-    "BcBSS",
+    "McBSS",
     "dRIId"
   ],
   "result": {

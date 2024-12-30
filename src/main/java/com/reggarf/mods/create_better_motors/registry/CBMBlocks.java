@@ -6,10 +6,19 @@ package com.reggarf.mods.create_better_motors.registry;
 import com.reggarf.mods.create_better_motors.Create_better_motors;
 import com.reggarf.mods.create_better_motors.content.battery.LinkAccumulatorBlock;
 import com.reggarf.mods.create_better_motors.content.motor.LinkMotorBlock;
+import com.reggarf.mods.create_better_motors.content.multimeter.MultiMeterBlock;
+import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllTags;
 import com.simibubi.create.content.kinetics.BlockStressDefaults;
+import com.simibubi.create.content.kinetics.gauge.GaugeGenerator;
+import com.simibubi.create.content.redstone.displayLink.source.KineticSpeedDisplaySource;
+import com.simibubi.create.content.redstone.displayLink.source.KineticStressDisplaySource;
+import com.simibubi.create.foundation.data.ModelGen;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.util.entry.BlockEntry;
+import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
@@ -20,8 +29,11 @@ import com.reggarf.mods.create_better_motors.content.motors.variants.*;
 import net.minecraft.world.level.material.MapColor;
 
 import static com.reggarf.mods.create_better_motors.Create_better_motors.REGISTRATE;
+import static com.simibubi.create.content.redstone.displayLink.AllDisplayBehaviours.assignDataBehaviour;
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
+import static com.simibubi.create.foundation.data.TagGen.axeOrPickaxe;
 import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
+import static com.tterrag.registrate.providers.RegistrateRecipeProvider.has;
 
 
 public class CBMBlocks {
@@ -99,7 +111,41 @@ public class CBMBlocks {
                     .properties(properties -> properties.strength(3.0f))
                     .simpleItem()
                     .register();
+    public static final BlockEntry<LinkMotorBlock> VOID_MOTOR = REGISTRATE.block("void_motor", LinkMotorBlock::new)
+            .initialProperties(SharedProperties::stone)
+            .properties(p -> p.mapColor(MapColor.COLOR_BLACK))
+            .properties(p -> p.strength(3.0F, 600.0F))
+            .transform(pickaxeOnly())
+            .transform(BlockStressDefaults.setNoImpact())
+            .item()
+            .transform(customItemModel())
+            .register();
+    public static final BlockEntry<MultiMeterBlock> MULTIMETER = REGISTRATE.block("multimeter", MultiMeterBlock::new)
+            .initialProperties(SharedProperties::wooden)
+            .properties(p -> p.mapColor(MapColor.PODZOL))
+            .transform(axeOrPickaxe())
+            .transform(BlockStressDefaults.setNoImpact())
+            .blockstate(new GaugeGenerator()::generate)
+            .onRegister(assignDataBehaviour(new KineticSpeedDisplaySource(), "kinetic_speed"))
+            .onRegister(assignDataBehaviour(new KineticStressDisplaySource(), "kinetic_stress"))
+            .recipe((c, p) -> ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, c.get(), 2)
+                    .requires(AllBlocks.STRESSOMETER.get())
+                    .requires(AllBlocks.SPEEDOMETER.get())
+                    .unlockedBy("has_compass", has(Items.COMPASS))
+                    .save(p, Create_better_motors.asResource("crafting/multimeter")))
+            .item()
+            .transform(ModelGen.customItemModel("gauge", "_", "item"))
+            .register();
 
+    public static final BlockEntry<LinkAccumulatorBlock> VOID_BATTERY = REGISTRATE.block("void_battery", LinkAccumulatorBlock::new)
+            .initialProperties(SharedProperties::stone)
+            .properties(BlockBehaviour.Properties::noOcclusion)
+            .properties(p -> p.mapColor(MapColor.COLOR_BLACK))
+            .properties(p -> p.strength(3.0F, 600.0F))
+            .transform(pickaxeOnly())
+            .item()
+            .transform(customItemModel())
+            .register();
     public static final BlockEntry<AlternatorBlock> ALTERNATOR =
             REGISTRATE.block("alternator", AlternatorBlock::new)
             .initialProperties(SharedProperties::softMetal)
@@ -123,25 +169,7 @@ public class CBMBlocks {
                     .item()
                     .transform(customItemModel())
                     .register();
-    public static final BlockEntry<LinkMotorBlock> VOID_MOTOR = REGISTRATE.block("void_motor", LinkMotorBlock::new)
-            .initialProperties(SharedProperties::stone)
-            .properties(p -> p.mapColor(MapColor.COLOR_BLACK))
-            .properties(p -> p.strength(30F, 600.0F))
-            .transform(pickaxeOnly())
-            .transform(BlockStressDefaults.setNoImpact())
-            .item()
-            .transform(customItemModel())
-            .register();
 
-    public static final BlockEntry<LinkAccumulatorBlock> VOID_BATTERY = REGISTRATE.block("void_battery", LinkAccumulatorBlock::new)
-            .initialProperties(SharedProperties::stone)
-            .properties(BlockBehaviour.Properties::noOcclusion)
-            .properties(p -> p.mapColor(MapColor.COLOR_BLACK))
-            .properties(p -> p.strength(30F, 600.0F))
-            .transform(pickaxeOnly())
-            .item()
-            .transform(customItemModel())
-            .register();
 
 
         public static void load() {  }

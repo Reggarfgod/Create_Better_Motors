@@ -62,12 +62,14 @@
   "item.create_better_motors.golden_coil": "Golden Coil",
   "item.create_better_motors.reggarfonite_coil": "Reggarfonite Coil",
   "item.create_better_motors.link_tube": "Link Tube",
+  "item.create_better_motors.lava_quartz": "Lava Quartz",
 
+  "item.create_better_motors.polished_lava_quartz": "Polished Lava Quartz",
   "item.create_better_motors.reggarfonite_sheet": "Reggarfonite Sheet",
-  "item.create_better_motors.reggarfonite_gem": "Reggarfonite Gem",
+  "item.create_better_motors.reggarfonite_gem": "Reggarfonite Ingot",
   "block.create_better_motors.reggarfoniteblock": "Reggarfonite Block",
   "block.create_better_motors.reggarfoniteore": "Reggarfonite Ore",
-
+  "block.create_better_motors.multimeter": "Multimeter",
 
   "item.create_better_motors.wire.message.self_connect": "You cannot connect a connector to itself",
   "item.create_better_motors.wire.message.too_far": "Too far away! Maximum wire length is %d blocks",

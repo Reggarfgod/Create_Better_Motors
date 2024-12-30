@@ -12,8 +12,11 @@ import com.reggarf.mods.create_better_motors.content.motor.LinkMotorRenderer;
 import com.reggarf.mods.create_better_motors.content.motor.LinkMotorTileEntity;
 import com.reggarf.mods.create_better_motors.content.motors.MotorBlockEntity;
 import com.reggarf.mods.create_better_motors.content.motors.variants.*;
+import com.reggarf.mods.create_better_motors.content.multimeter.MultiMeterBlockEntity;
 import com.reggarf.mods.create_better_motors.tools.HalfShaftRendererThing;
 import com.simibubi.create.content.kinetics.base.HalfShaftInstance;
+import com.simibubi.create.content.kinetics.base.ShaftInstance;
+import com.simibubi.create.content.kinetics.base.ShaftRenderer;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 
 import static com.reggarf.mods.create_better_motors.Create_better_motors.REGISTRATE;
@@ -80,14 +83,6 @@ public class CBMBlockEntityTypes {
             .validBlocks(CBMBlocks.NITRO_MOTOR)
             .renderer(() -> HalfShaftRendererThing::new)
             .register();
-
-    public static final BlockEntityEntry<AlternatorBlockEntity> ALTERNATOR = REGISTRATE
-            .blockEntity("alternator", AlternatorBlockEntity::new)
-            .instance(() -> HalfShaftInstance::new)
-            .validBlocks(CBMBlocks.ALTERNATOR)
-            .renderer(() -> AlternatorRenderer::new)
-            .register();
-
     public static final BlockEntityEntry<LinkMotorTileEntity> VOID_MOTOR = REGISTRATE
             .blockEntity("void_motor", LinkMotorTileEntity::new)
             .instance(() -> HalfShaftInstance::new, true)
@@ -100,5 +95,19 @@ public class CBMBlockEntityTypes {
             .validBlocks(CBMBlocks.VOID_BATTERY)
             .renderer(() -> LinkAccumulatorRenderer::new)
             .register();
+    public static final BlockEntityEntry<AlternatorBlockEntity> ALTERNATOR = REGISTRATE
+            .blockEntity("alternator", AlternatorBlockEntity::new)
+            .instance(() -> HalfShaftInstance::new)
+            .validBlocks(CBMBlocks.ALTERNATOR)
+            .renderer(() -> AlternatorRenderer::new)
+            .register();
+    public static final BlockEntityEntry<MultiMeterBlockEntity> MULTIMETER = REGISTRATE
+            .blockEntity("multimeter", MultiMeterBlockEntity::new)
+            .instance(() -> ShaftInstance::new)
+            .validBlocks(CBMBlocks.MULTIMETER)
+            .renderer(() -> ShaftRenderer::new)
+            .register();
+
+
     public static void load() {  }
 }

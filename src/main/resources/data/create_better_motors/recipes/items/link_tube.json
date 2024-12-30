@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "create_better_motors:polished_lava_quartz"
+    },
+    "Y": {
+      "item": "create_better_motors:reggarfonite_sheet"
+    }
+  },
+  "pattern": [
+    "X",
+    "Y"
+  ],
+  "result": {
+    "item": "create_better_motors:link_tube"
+  }
+}

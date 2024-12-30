@@ -17,7 +17,7 @@ import java.util.function.Supplier;
 public enum CBMPackets {
 
 
-	VOID_BATTERY_UPDATE(VoidBatteryUpdatePacket.class, VoidBatteryUpdatePacket::new, NetworkDirection.PLAY_TO_CLIENT);
+	VOID_BATTERY_UPDATE(VoidBatteryUpdatePacket.class, VoidBatteryUpdatePacket::new, NetworkDirection.PLAY_TO_CLIENT),;
 
 	public static final ResourceLocation CHANNEL_NAME = Create_better_motors.asResource("main");
 	public static final int NETWORK_VERSION = 2;

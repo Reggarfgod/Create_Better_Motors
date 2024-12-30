@@ -19,11 +19,14 @@
     },
     "B": {
       "item": "minecraft:diamond_block"
+    },
+    "M": {
+      "item": "minecraft:netherite_ingot"
     }
   },
   "pattern": [
     "dRIId",
-    "BcBSS",
+    "McBSS",
     "dRIId"
   ],
   "result": {

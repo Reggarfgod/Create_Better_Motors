@@ -3,22 +3,22 @@
   "category": "building",
   "key": {
     "i": {
-      "item": "create_better_motors:polished_lava_quartz"
+      "item": "create_better_motors:reggarfonite_sheet"
     },
     "g": {
-      "item": "create:iron_sheet"
+      "item": "create:andesite_casing"
     },
     "s": {
       "item": "create:shaft"
     },
     "#": {
-      "item": "create:andesite_casing"
+      "item": "minecraft:netherite_ingot"
     },
     "m": {
       "item": "create_better_motors:link_tube"
     },
     "c": {
-      "item": "create:andesite_alloy"
+      "item": "create_better_motors:polished_lava_quartz"
     }
   },
   "pattern": [
@@ -28,7 +28,7 @@
   ],
   "result": {
     "count": 1,
-    "item": "create_better_motors:alternator"
+    "item": "create_better_motors:void_motor"
   },
   "show_notification": true
 }

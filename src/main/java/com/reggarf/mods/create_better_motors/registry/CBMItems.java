@@ -55,6 +55,12 @@ public class CBMItems {
         public static final ItemEntry<Item> LINK_TUBE =
             REGISTRATE.item("link_tube", Item::new)
                     .register();
+    public static final ItemEntry<Item> LAVA_QUARTZ =
+            REGISTRATE.item("lava_quartz", Item::new)
+                    .register();
+    public static final ItemEntry<Item> POLISHED_LAVA_QUARTZ =
+            REGISTRATE.item("polished_lava_quartz", Item::new)
+                    .register();
 
     public static void load() {
 
