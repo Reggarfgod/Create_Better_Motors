@@ -22,7 +22,7 @@ public class VoidScenes {
 
 	public static void voidMotor(SceneBuilder scene, SceneBuildingUtil util) {
 
-		scene.title("void_motor", "Using Void Motors");
+		scene.title("motor_link", "Motor Link");
 		scene.configureBasePlate(0, 0, 5);
 		scene.showBasePlate();
 		scene.world.showSection(util.select.position(5, 0, 2), Direction.UP);
@@ -41,7 +41,7 @@ public class VoidScenes {
 		playVoidSequence(
 				scene, util, LinkMotorTileEntity.class,
 				.015f, 0,
-				"Void Motor", "Rotational Force",
+				"Motor Link", "Rotational Force",
 				sourcePos, receiverPos,
 				Direction.WEST, Direction.WEST,
 				(pos) -> scene.world.setKineticSpeed(receiver, 0),
@@ -55,7 +55,7 @@ public class VoidScenes {
 
 	public static void voidBattery(SceneBuilder scene, SceneBuildingUtil util) {
 
-		scene.title("void_battery", "Using Void Batteries");
+		scene.title("accumulator_link", "Accumulator Link");
 		scene.showBasePlate();
 
 		BlockPos sourcePos = util.grid.at(3, 1, 2);
@@ -69,7 +69,7 @@ public class VoidScenes {
 		playVoidSequence(
 				scene, util, LinkAccumulatorBlockEntity.class,
 				-.0475f, -.1875f,
-				"Void Battery", "Energy",
+				"Accumulator Link", "Energy",
 				sourcePos, receiverPos,
 				Direction.SOUTH, Direction.SOUTH,
 				(pos) -> {},
@@ -127,11 +127,11 @@ public class VoidScenes {
 		scene.idle(60);
 
 		ItemStack iron = new ItemStack(Items.IRON_INGOT);
-		ItemStack sapling = new ItemStack(Items.OAK_SAPLING);
+		ItemStack gold = new ItemStack(Items.GOLD_INGOT);
 
 		showFrequency(scene, firstBlock, beType, firstFrontFreq, "FrequencyLast", Pointing.LEFT, iron);
 		onDisconnect.accept(secondPos);
-		showFrequency(scene, firstBlock, beType, firstBackFreq, "FrequencyFirst", Pointing.RIGHT, sapling);
+		showFrequency(scene, firstBlock, beType, firstBackFreq, "FrequencyFirst", Pointing.RIGHT, gold);
 
 		if (isTank) onConnect.accept(firstPos);
 
@@ -156,7 +156,7 @@ public class VoidScenes {
 		scene.idle(7);
 		scene.world.restoreBlocks(firstBlock);
 		scene.world.modifyBlockEntityNBT(firstBlock, beType, nbt -> {
-			nbt.put("FrequencyFirst", sapling.save(new CompoundTag()));
+			nbt.put("FrequencyFirst", gold.save(new CompoundTag()));
 			nbt.put("FrequencyLast", iron.save(new CompoundTag()));
 		});
 
@@ -184,7 +184,7 @@ public class VoidScenes {
 		scene.idle(70);
 
 		showFrequency(scene, secondBlock, beType, secondFrontFreq, "FrequencyLast", Pointing.LEFT, iron);
-		showFrequency(scene, secondBlock, beType, secondBackFreq, "FrequencyFirst", Pointing.RIGHT, sapling);
+		showFrequency(scene, secondBlock, beType, secondBackFreq, "FrequencyFirst", Pointing.RIGHT, gold);
 		onConnect.accept(secondPos);
 
 		if (rotate) {
