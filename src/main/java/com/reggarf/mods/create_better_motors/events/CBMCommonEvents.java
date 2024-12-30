@@ -10,7 +10,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber
-public class CommonEvents {
+public class CBMCommonEvents {
 
 	@SubscribeEvent
 	public static void onLoad(LevelEvent.Load event) {
@@ -21,15 +21,15 @@ public class CommonEvents {
 		LevelAccessor level = event.getLevel();
 		DimensionDataStorage dataStorage = server.overworld().getDataStorage();
 
-		Create_better_motors.VOID_MOTOR_LINK_NETWORK_HANDLER.onLoadWorld(level);
+		Create_better_motors.MOTOR_LINK_NETWORK_HANDLER.onLoadWorld(level);
 
-		Create_better_motors.VOID_BATTERIES_DATA = dataStorage
-				.computeIfAbsent(LinkAccumulatorData::load, LinkAccumulatorData::new, "VoidBatteries");
+		Create_better_motors.BATTERIES_DATA = dataStorage
+				.computeIfAbsent(LinkAccumulatorData::load, LinkAccumulatorData::new, "Batteries");
 	}
 
 	@SubscribeEvent
 	public static void onUnload(LevelEvent.Unload event) {
-		Create_better_motors.VOID_MOTOR_LINK_NETWORK_HANDLER.onUnloadWorld(event.getLevel());
+		Create_better_motors.MOTOR_LINK_NETWORK_HANDLER.onUnloadWorld(event.getLevel());
 	}
 
 }

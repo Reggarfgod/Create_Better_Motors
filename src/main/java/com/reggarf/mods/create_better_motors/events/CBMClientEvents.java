@@ -9,7 +9,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(Dist.CLIENT)
-public class ClientEvents {
+public class CBMClientEvents {
 
 	@SubscribeEvent
 	public static void onTick(TickEvent.ClientTickEvent event) {

@@ -57,7 +57,7 @@ public class LinkAccumulatorBlockEntity extends SmartBlockEntity implements IHav
 	}
 
 	private static LinkAccumulatorData getPersistentStorageData() {
-		return Create_better_motors.VOID_BATTERIES_DATA;
+		return Create_better_motors.BATTERIES_DATA;
 	}
 
 	public LinkAccumulator getBattery() {

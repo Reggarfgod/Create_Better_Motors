@@ -38,7 +38,7 @@ public class LinkAccumulator extends InternalEnergyStorage {
 
 
 	private void onContentsChanged() {
-		if (Create_better_motors.VOID_BATTERIES_DATA != null) Create_better_motors.VOID_BATTERIES_DATA.setDirty();
+		if (Create_better_motors.BATTERIES_DATA != null) Create_better_motors.BATTERIES_DATA.setDirty();
 		CBMPackets.channel.send(PacketDistributor.ALL.noArg(), new VoidBatteryUpdatePacket(key, this));
 	}
 

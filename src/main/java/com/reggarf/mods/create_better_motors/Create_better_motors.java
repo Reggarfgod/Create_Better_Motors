@@ -40,8 +40,8 @@ public class Create_better_motors {
     public static final String MOD_ID = "create_better_motors";
 
     public static final CreateRegistrate BASE_REGISTRATE = CreateRegistrate.create(MOD_ID);
-    public static final LinkMotorNetworkHandler VOID_MOTOR_LINK_NETWORK_HANDLER = new LinkMotorNetworkHandler();
-    public static LinkAccumulatorData VOID_BATTERIES_DATA;
+    public static final LinkMotorNetworkHandler MOTOR_LINK_NETWORK_HANDLER = new LinkMotorNetworkHandler();
+    public static LinkAccumulatorData BATTERIES_DATA;
 
     private static DeferredRegister<CreativeModeTab> TAB_REGISTRAR = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MOD_ID);
     public static final RegistryObject<CreativeModeTab> tab = TAB_REGISTRAR.register("create_better_motors_tab",

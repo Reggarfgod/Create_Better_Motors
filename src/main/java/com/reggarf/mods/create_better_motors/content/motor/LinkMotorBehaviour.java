@@ -57,7 +57,7 @@ public class LinkMotorBehaviour extends VoidLinkBehaviour {
 	}
 
 	private LinkMotorNetworkHandler getHandler() {
-		return Create_better_motors.VOID_MOTOR_LINK_NETWORK_HANDLER;
+		return Create_better_motors.MOTOR_LINK_NETWORK_HANDLER;
 	}
 
 }
