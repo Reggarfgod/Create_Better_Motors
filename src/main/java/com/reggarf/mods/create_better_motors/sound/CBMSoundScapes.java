@@ -20,59 +20,33 @@ public class CBMSoundScapes {
 	static final int SOUND_VOLUME_ARG_MAX = 15;
 
 	public enum AmbienceGroup {
-		DYNAMO(CBMSoundScapes::dynamo),
-		TESLA(CBMSoundScapes::tesla),
-		CHARGE(CBMSoundScapes::charge),
-		;
-
+		DYNAMO(CBMSoundScapes::dynamo),;
 		private final BiFunction<Float, AmbienceGroup, CBMSoundScape> factory;
-
 		AmbienceGroup(BiFunction<Float, AmbienceGroup, CBMSoundScape> factory) {
 			this.factory = factory;
 		}
-
 		CBMSoundScape instantiate(float pitch) {
 			return factory.apply(pitch, this);
 		}
 	}
-
 	private static CBMSoundScape dynamo(float pitch, AmbienceGroup group) {
 		return new CBMSoundScape(pitch, group).continuous(CBMSounds.ELECTRIC_MOTOR_BUZZ.get(), 0.75f, 1f);
 	}
-
-//	private static CASoundScape tesla(float pitch, AmbienceGroup group) {
-//		return new CASoundScape(pitch, group).continuous(CASounds.TESLA_COIL.get(), 1f, 1f);
-//	}
-
-	private static CBMSoundScape tesla(float pitch, AmbienceGroup group) {
-		return new CBMSoundScape(pitch, group).continuous(CBMSounds.ELECTRIC_CHARGE.get(), 1f, 1f);
-	}
-
-	private static CBMSoundScape charge(float pitch, AmbienceGroup group) {
-		return new CBMSoundScape(pitch, group).continuous(CBMSounds.ELECTRIC_CHARGE.get(), 0.2f, 1f);
-	}
-
 	public enum PitchGroup {
 		VERY_LOW, LOW, NORMAL, HIGH, VERY_HIGH
 	}
-
 	private static final Map<AmbienceGroup, Map<PitchGroup, Set<BlockPos>>> counter = new IdentityHashMap<>();
 	private static final Map<Pair<AmbienceGroup, PitchGroup>, CBMSoundScape> activeSounds = new HashMap<>();
-
 	public static void play(AmbienceGroup group, BlockPos pos, float pitch) {
 		if (!AllConfigs.client().enableAmbientSounds.get()) return;
-		// if (!Config.AUDIO_ENABLED.get()) return;
 		if(!CBMSounds.ELECTRIC_MOTOR_BUZZ.isPresent() || !CBMSounds.ELECTRIC_CHARGE.isPresent()) return;
 
 		if (!outOfRange(pos)) addSound(group, pos, pitch);
 	}
-
 	public static void tick() {
 		activeSounds.values()
 			.forEach(CBMSoundScape::tick);
-
 		if (AnimationTickHolder.getTicks() % UPDATE_INTERVAL != 0) return;
-
 		boolean disable = !AllConfigs.client().enableAmbientSounds.get();
 		for (Iterator<Map.Entry<Pair<AmbienceGroup, PitchGroup>, CBMSoundScape>> iterator = activeSounds.entrySet()
 			.iterator(); iterator.hasNext();) {
@@ -86,12 +60,10 @@ public class CBMSoundScapes {
 				iterator.remove();
 			}
 		}
-
 		counter.values()
 			.forEach(m -> m.values()
 				.forEach(Set::clear));
 	}
-
 	private static void addSound(AmbienceGroup group, BlockPos pos, float pitch) {
 		PitchGroup groupFromPitch = getGroupFromPitch(pitch);
 		Set<BlockPos> set = counter.computeIfAbsent(group, ag -> new IdentityHashMap<>())
