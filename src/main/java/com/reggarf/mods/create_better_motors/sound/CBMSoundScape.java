@@ -20,7 +20,6 @@ import java.util.List;
 
 class CBMSoundScape {
 	List<CBMContinuousSound> continuous;
-//	List<RepeatingSound> repeating;
 	private final float pitch;
 	private final AmbienceGroup group;
 	private Vec3 meanPos;
@@ -31,26 +30,17 @@ class CBMSoundScape {
 		this.pitch = pitch;
 		this.group = group;
 		continuous = new ArrayList<>();
-//		repeating = new ArrayList<>();
 	}
 
 	public CBMSoundScape continuous(SoundEvent sound, float relativeVolume, float relativePitch) {
 		return add(new CBMContinuousSound(sound, this, pitch * relativePitch, relativeVolume));
 	}
-
-//	public CASoundScape repeating(SoundEvent sound, float relativeVolume, float relativePitch, int delay) {
-//		return add(new RepeatingSound(sound, this, pitch * relativePitch, relativeVolume, delay));
-//	}
-
+	
 	public CBMSoundScape add(CBMContinuousSound continuousSound) {
 		continuous.add(continuousSound);
 		return this;
 	}
 
-//	public CASoundScape add(RepeatingSound repeatingSound) {
-//		repeating.add(repeatingSound);
-//		return this;
-//	}
 
 	public void play() {
 		continuous.forEach(Minecraft.getInstance()
@@ -60,7 +50,6 @@ class CBMSoundScape {
 	public void tick() {
 		if (AnimationTickHolder.getTicks() % CBMSoundScapes.UPDATE_INTERVAL == 0)
 			meanPos = null;
-//		repeating.forEach(RepeatingSound::tick);
 	}
 
 	public void remove() {
