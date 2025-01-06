@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.reggarf.mods.create_better_motors.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.reggarf.mods.create_better_motors.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/create_better_motors.main.iml" filepath="$PROJECT_DIR$/.idea/modules/create_better_motors.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/create_better_motors.test.iml" filepath="$PROJECT_DIR$/.idea/modules/create_better_motors.test.iml" />
     </modules>

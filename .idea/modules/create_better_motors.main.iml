@@ -3,6 +3,7 @@
   <component name="AdditionalModuleElements">
     <content url="file://$MODULE_DIR$/../../build/generated/sources/annotationProcessor/java/main">
       <sourceFolder url="file://$MODULE_DIR$/../../build/generated/sources/annotationProcessor/java/main" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../build/generated/sources/annotationProcessor/java/main" isTestSource="false" generated="true" />
     </content>
   </component>
   <component name="FacetManager">
@@ -18,7 +19,7 @@
     </facet>
   </component>
   <component name="McpModuleSettings">
-    <option name="mappingFile" value="C:\Users\Anoop Singh\Documents\Create_Better_Motors\build\createMcpToSrg\output.tsrg" />
+    <option name="mappingFile" value="D:\Download\MOD\Create_Better_Motors\build\createMcpToSrg\output.tsrg" />
     <option name="mcpVersion" value="official_1.20.1" />
     <option name="minecraftVersion" value="1.20.1" />
     <option name="platformVersion" value="47.3.12" />
