@@ -57,8 +57,6 @@ public class Create_better_motors {
     public static final ResourceKey<CreativeModeTab> CREATIVE_TAB_KEY = ResourceKey.create(Registries.CREATIVE_MODE_TAB,
             new ResourceLocation(MOD_ID, "create_better_motors_tab"));
 
-    public static IRecipeTypeInfo ENERGISING_RECIPE_TYPE;
-
     private static int magnetPlacementHelperId;
 
     public Create_better_motors() {
