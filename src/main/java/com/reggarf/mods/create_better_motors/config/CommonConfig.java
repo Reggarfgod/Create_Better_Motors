@@ -90,7 +90,7 @@ public class CommonConfig {
                 .defineInRange("generator_capacity", 50000, 0, Integer.MAX_VALUE);
 
         ALTERNATOR_EFFICIENCY = builder.comment("Alternator efficiency relative to base conversion rate.")
-                .defineInRange("generator_efficiency", 1d, 0.01d, 3.0d);
+                .defineInRange("generator_efficiency", .90, 0.01d, 3.0d);
 
         FE_RPM = builder.comment("Forge Energy conversion rate (in ⚡/t at 256 RPM, value is the ⚡/t generated and consumed is at 256rpm).")
                 .defineInRange("⚡_at_max_rpm", 830, 0, Integer.MAX_VALUE);
