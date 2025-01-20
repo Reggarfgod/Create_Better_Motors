@@ -1,18 +1,12 @@
 package com.reggarf.mods.create_better_motors.content.alternator;
 
-import java.util.List;
-
-
-import com.reggarf.mods.create_better_motors.Create_better_motors;
 import com.reggarf.mods.create_better_motors.config.CommonConfig;
 import com.reggarf.mods.create_better_motors.energy.InternalEnergyStorage;
 import com.reggarf.mods.create_better_motors.registry.CBMBlocks;
 import com.reggarf.mods.create_better_motors.sound.CBMSoundScapes;
 import com.reggarf.mods.create_better_motors.tools.StringFormattingTool;
-import com.reggarf.mods.create_better_motors.util.Util;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.foundation.utility.Lang;
-
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -29,6 +23,8 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.IEnergyStorage;
+
+import java.util.List;
 
 
 
@@ -53,7 +49,17 @@ public class AlternatorBlockEntity extends KineticBlockEntity {
 				.style(ChatFormatting.GRAY)
 				.forGoggles(tooltip);
 
-		Lang.translate("tooltip.create_better_motors.energy_per_tick", StringFormattingTool.formatLong(getEnergyProductionRate((int)getSpeed())))
+		Lang.translate("tooltip.create_better_motors.energy_per_tick",
+						StringFormattingTool.formatLong(getEnergyProductionRate((int)getSpeed())))
+				.style(ChatFormatting.AQUA)
+				.forGoggles(tooltip, 1);
+		Lang.translate("tooltip.create_better_motors.energy_stored")
+				.style(ChatFormatting.WHITE)
+				.forGoggles(tooltip);
+
+		Lang.translate("tooltip.create_better_motors.energy_storage",
+						StringFormattingTool.formatLong(energy.getEnergyStored()),
+						StringFormattingTool.formatLong(energy.getMaxEnergyStored()))
 				.style(ChatFormatting.AQUA)
 				.forGoggles(tooltip, 1);
 

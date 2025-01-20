@@ -2,6 +2,7 @@ package com.reggarf.mods.create_better_motors.content.battery;
 
 
 import com.reggarf.mods.create_better_motors.Create_better_motors;
+import com.reggarf.mods.create_better_motors.config.CBMConfig;
 import com.reggarf.mods.create_better_motors.content.electricity.network.CBMPackets;
 import com.reggarf.mods.create_better_motors.content.electricity.network.VoidBatteryUpdatePacket;
 import com.reggarf.mods.create_better_motors.content.motor.LinkMotorNetworkHandler;
@@ -14,7 +15,11 @@ public class LinkAccumulator extends InternalEnergyStorage {
 	private final LinkMotorNetworkHandler.NetworkKey key;
 
 	public LinkAccumulator(LinkMotorNetworkHandler.NetworkKey key) {
-		super(16384000, 16384, 16384);
+		super(
+				CBMConfig.getCommon().CAPACITY.get(),
+				CBMConfig.getCommon().MAX_RECEIVE.get(),
+				CBMConfig.getCommon().MAX_EXTRACT.get());
+
 		this.key = key;
 	}
 

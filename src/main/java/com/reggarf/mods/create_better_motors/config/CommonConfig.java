@@ -16,6 +16,7 @@ public class CommonConfig {
     public static final String CATAGORY_NIOTIC = "niotic motor";
     public static final String CATAGORY_SPIRITED = "spirited motor";
     public static final String CATAGORY_NITRO = "nitro motor";
+    public static final String ACCUMULATOR = "accumulator";
 
     public static ForgeConfigSpec.IntValue FE_RPM;
     public static ForgeConfigSpec.IntValue MAX_STRESS;
@@ -26,6 +27,9 @@ public class CommonConfig {
     public static ForgeConfigSpec.IntValue ALTERNATOR_CAPACITY;
     public static ForgeConfigSpec.DoubleValue ALTERNATOR_EFFICIENCY;
 
+    public final ForgeConfigSpec.ConfigValue<Integer> CAPACITY;
+    public final ForgeConfigSpec.ConfigValue<Integer> MAX_RECEIVE;
+    public final ForgeConfigSpec.ConfigValue<Integer> MAX_EXTRACT;
 
     public final ForgeConfigSpec.ConfigValue<Double> suToEnergy;
 
@@ -83,13 +87,13 @@ public class CommonConfig {
                 .defineInRange("generator_max_output", 5000, 0, Integer.MAX_VALUE);
 
         ALTERNATOR_CAPACITY = builder.comment("Alternator internal capacity in ⚡.")
-                .defineInRange("generator_capacity", 5000, 0, Integer.MAX_VALUE);
+                .defineInRange("generator_capacity", 50000, 0, Integer.MAX_VALUE);
 
         ALTERNATOR_EFFICIENCY = builder.comment("Alternator efficiency relative to base conversion rate.")
-                .defineInRange("generator_efficiency", 0.75d, 0.01d, 3.0d);
+                .defineInRange("generator_efficiency", 1d, 0.01d, 3.0d);
 
         FE_RPM = builder.comment("Forge Energy conversion rate (in ⚡/t at 256 RPM, value is the ⚡/t generated and consumed is at 256rpm).")
-                .defineInRange("⚡_at_max_rpm", 609, 0, Integer.MAX_VALUE);
+                .defineInRange("⚡_at_max_rpm", 830, 0, Integer.MAX_VALUE);
 
         MAX_STRESS = builder.comment("Max stress for the Alternator and Electric Motor (in SU at 256 RPM).")
                 .defineInRange("max_stress", 10000, 0, Integer.MAX_VALUE);
@@ -98,6 +102,22 @@ public class CommonConfig {
                 .define("audio_enabled", true);
 
         builder.pop();
+
+        builder.push(ACCUMULATOR);
+
+        CAPACITY = builder
+                .comment("Internal energy capacity of a accumulator")
+                .defineInRange(" AccumulatorCapacity", 40000000, 1, Integer.MAX_VALUE);
+        MAX_RECEIVE = builder
+                .comment("Internal energy Max Receive of a accumulator")
+                .defineInRange(" MaxReceive", 40384, 1, Integer.MAX_VALUE);
+        MAX_EXTRACT = builder
+                .comment("Internal energy Max Extract of a accumulator")
+                .defineInRange(" MaxExtract", 40384, 1, Integer.MAX_VALUE);
+
+
+        builder.pop();
+
         builder.push("Motors");
 
         motorSUMultiplier = builder
@@ -183,6 +203,7 @@ public class CommonConfig {
                 .comment("Top Speed of a nitro motor")
                 .defineInRange("nitroMotorSpeed", 256, 1, Double.MAX_VALUE);
         builder.pop();
+
 
     }
     public static void loadConfig(ForgeConfigSpec spec, java.nio.file.Path path) {

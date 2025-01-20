@@ -45,13 +45,18 @@ public class AlternatorBlock extends DirectionalKineticBlock implements IBE<Alte
 public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> tooltip, TooltipFlag flag) {
     tooltip.add(Lang.translate("tooltip.create_better_motors.generates").style(ChatFormatting.GRAY)
             .component());
-    tooltip.add(Lang.text(" ").translate("tooltip.create_better_motors.energy_per_tick", getEnergyProductionRate()).style(ChatFormatting.AQUA).component());
+
+	tooltip.add(Lang.text(" ").add(Lang.number(CBMConfig.getCommon().FE_RPM.get() * CBMConfig.getCommon().ALTERNATOR_EFFICIENCY.get()).text(" ")
+			.translate("tooltip.create_better_motors.energy_per_tick").style(ChatFormatting.AQUA)).component());
+
+	tooltip.add(Lang.translate("tooltip.create_better_motors.stores").style(ChatFormatting.GRAY)
+			.component());
+	tooltip.add(Lang.text(" ").translate("tooltip.create_better_motors.energy",
+			StringFormattingTool.formatLong(CBMConfig.getCommon().ALTERNATOR_CAPACITY.get())).style(ChatFormatting.AQUA).component());
+
 }
 
-private int getEnergyProductionRate() {
-    // Implement the logic to calculate and return the energy production rate
-    return 456; // Replace with the actual logic
-}
+
 	
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
