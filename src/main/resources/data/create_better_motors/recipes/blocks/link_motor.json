@@ -5,14 +5,14 @@
     "i": {
       "item": "create_better_motors:reggarfonite_sheet"
     },
-    "g": {
+    "#": {
       "item": "create:andesite_casing"
     },
     "s": {
       "item": "create:shaft"
     },
-    "#": {
-      "item": "minecraft:netherite_ingot"
+    "g": {
+      "item": "create:precision_mechanism"
     },
     "m": {
       "item": "create_better_motors:link_tube"

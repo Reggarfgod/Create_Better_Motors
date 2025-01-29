@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "c": {
+      "item": "create_better_motors:reggarfonite_nugget"
+    }
+  },
+  "pattern": [
+    "ccc",
+    "ccc",
+    "ccc"
+  ],
+  "result": {
+    "count": 1,
+    "item": "create_better_motors:reggarfonite_gem"
+  },
+  "show_notification": true
+}

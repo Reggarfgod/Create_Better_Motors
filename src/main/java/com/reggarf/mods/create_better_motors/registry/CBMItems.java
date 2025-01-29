@@ -1,13 +1,8 @@
 package com.reggarf.mods.create_better_motors.registry;
 
-import com.reggarf.mods.create_better_motors.Create_better_motors;
-
-
-import com.simibubi.create.content.processing.sequenced.SequencedAssemblyItem;
-import com.tterrag.registrate.util.entry.ItemEntry;
 import com.reggarf.mods.create_better_motors.content.electricity.wire.ElectricWireItem;
+import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.world.item.Item;
-
 
 import static com.reggarf.mods.create_better_motors.Create_better_motors.REGISTRATE;
 
@@ -32,6 +27,9 @@ public class CBMItems {
                     .register();
     public static final ItemEntry<Item> REGGARFONITE_SHEET =
             REGISTRATE.item("reggarfonite_sheet", Item::new)
+                    .register();
+    public static final ItemEntry<Item> REGGARFONITE_NUGGET =
+            REGISTRATE.item("reggarfonite_nugget", Item::new)
                     .register();
     public static final ItemEntry<Item> REGGARFONITE_GEM =
             REGISTRATE.item("reggarfonite_gem", Item::new)
@@ -61,6 +59,7 @@ public class CBMItems {
     public static final ItemEntry<Item> POLISHED_LAVA_QUARTZ =
             REGISTRATE.item("polished_lava_quartz", Item::new)
                     .register();
+
 
     public static void load() {
 

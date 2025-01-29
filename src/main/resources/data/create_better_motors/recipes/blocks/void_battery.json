@@ -11,13 +11,13 @@
       "item": "create_better_motors:polished_lava_quartz"
     },
     "W": {
-      "item": "minecraft:netherite_ingot"
+      "item": "create:precision_mechanism"
     }
   },
   "pattern": [
     " X ",
     "ZYZ",
-    " W "
+    "WZW"
   ],
   "result": {
     "item": "create_better_motors:void_battery"
