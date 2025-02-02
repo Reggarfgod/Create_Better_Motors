@@ -35,7 +35,7 @@ public class VoidBatteryUpdatePacket extends SimplePacketBase {
 	@Override
 	public boolean handle(NetworkEvent.Context context) {
 		context.enqueueWork(() -> DistExecutor.runWhenOn(Dist.CLIENT, () -> () ->
-			CBMClient.VOID_BATTERIES.storages.put(key, battery)
+			CBMClient.BATTERIES.storages.put(key, battery)
 		));
 		return true;
 	}

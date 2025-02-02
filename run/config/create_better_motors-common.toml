@@ -24,7 +24,7 @@ maxWireLength = 16
 	generator_capacity = 50000
 	#Alternator efficiency relative to base conversion rate.
 	#Range: 0.01 ~ 3.0
-	generator_efficiency = 1.0
+	generator_efficiency = 0.9
 	#Forge Energy conversion rate (in ⚡/t at 256 RPM, value is the ⚡/t generated and consumed is at 256rpm).
 	#Range: > 0
 	"⚡_at_max_rpm" = 830
@@ -33,6 +33,17 @@ maxWireLength = 16
 	max_stress = 10000
 	#If audio should be enabled or not.
 	audio_enabled = true
+
+[accumulator]
+	#Internal energy capacity of a accumulator
+	#Range: > 1
+	" AccumulatorCapacity" = 40000000
+	#Internal energy Max Receive of a accumulator
+	#Range: > 1
+	" MaxReceive" = 40384
+	#Internal energy Max Extract of a accumulator
+	#Range: > 1
+	" MaxExtract" = 40384
 
 [Motors]
 	#Maximum motor SU multiplier
@@ -122,15 +133,4 @@ maxWireLength = 16
 		#Top Speed of a nitro motor
 		#Range: 1.0 ~ 1.7976931348623157E308
 		nitroMotorSpeed = 256.0
-
-[accumulator]
-	#Internal energy capacity of a accumulator
-	#Range: > 1
-	" AccumulatorCapacity" = 50000000
-	#Internal energy Max Receive of a accumulator
-	#Range: > 1
-	" MaxReceive" = 40384
-	#Internal energy Max Extract of a accumulator
-	#Range: > 1
-	" MaxExtract" = 40384
 

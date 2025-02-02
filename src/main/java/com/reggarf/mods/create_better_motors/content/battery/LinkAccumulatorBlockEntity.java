@@ -63,7 +63,7 @@ public class LinkAccumulatorBlockEntity extends SmartBlockEntity implements IHav
 	public LinkAccumulator getBattery() {
 		return hasPersistentData() ?
 				getPersistentStorageData().computeStorageIfAbsent(link.getNetworkKey()) :
-				CBMClient.VOID_BATTERIES.computeStorageIfAbsent(link.getNetworkKey());
+				CBMClient.BATTERIES.computeStorageIfAbsent(link.getNetworkKey());
 	}
 
 	@Override

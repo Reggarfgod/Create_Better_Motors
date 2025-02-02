@@ -5,6 +5,7 @@ package com.reggarf.mods.create_better_motors.registry;
 
 import com.reggarf.mods.create_better_motors.Create_better_motors;
 import com.reggarf.mods.create_better_motors.content.battery.LinkAccumulatorBlock;
+import com.reggarf.mods.create_better_motors.content.creative_energy.CreativeEnergyBlock;
 import com.reggarf.mods.create_better_motors.content.motor.LinkMotorBlock;
 import com.reggarf.mods.create_better_motors.content.multimeter.MultiMeterBlock;
 import com.simibubi.create.AllBlocks;
@@ -19,6 +20,7 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
@@ -146,6 +148,14 @@ public class CBMBlocks {
             .item()
             .transform(customItemModel())
             .register();
+
+    public static final BlockEntry<CreativeEnergyBlock> CREATIVE_ENERGY = REGISTRATE.block("creative_energy", CreativeEnergyBlock::new)
+            .initialProperties(SharedProperties::softMetal)
+            .item()
+            .properties(p -> p.rarity(Rarity.EPIC))
+            .transform(customItemModel())
+            .register();
+
     public static final BlockEntry<AlternatorBlock> ALTERNATOR =
             REGISTRATE.block("alternator", AlternatorBlock::new)
             .initialProperties(SharedProperties::softMetal)

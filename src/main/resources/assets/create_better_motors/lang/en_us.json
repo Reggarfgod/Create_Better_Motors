@@ -43,6 +43,7 @@
   "block.create_better_motors.nitro_motor": "Nitro Motor",
   "block.create_better_motors.void_motor": "Motor Link",
   "block.create_better_motors.void_battery": "Accumulator Link",
+  "block.create_better_motors.creative_energy": "Creative Energy",
 
   "create_better_motors.logistics.owner": "Owner",
   "create_better_motors.logistics.void.click_to_set_owner": "Click to own",

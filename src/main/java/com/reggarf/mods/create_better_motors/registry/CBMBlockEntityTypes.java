@@ -6,6 +6,7 @@ import com.reggarf.mods.create_better_motors.content.alternator.AlternatorBlockE
 import com.reggarf.mods.create_better_motors.content.alternator.AlternatorRenderer;
 import com.reggarf.mods.create_better_motors.content.battery.LinkAccumulatorRenderer;
 import com.reggarf.mods.create_better_motors.content.battery.LinkAccumulatorBlockEntity;
+import com.reggarf.mods.create_better_motors.content.creative_energy.CreativeEnergyBlockEntity;
 import com.reggarf.mods.create_better_motors.content.electricity.connector.ElectricalConnectorBlockEntity;
 import com.reggarf.mods.create_better_motors.content.electricity.connector.ElectricalConnectorRenderer;
 import com.reggarf.mods.create_better_motors.content.motor.LinkMotorRenderer;
@@ -95,6 +96,12 @@ public class CBMBlockEntityTypes {
             .validBlocks(CBMBlocks.VOID_BATTERY)
             .renderer(() -> LinkAccumulatorRenderer::new)
             .register();
+
+    public static final BlockEntityEntry<CreativeEnergyBlockEntity> CREATIVE_ENERGY = REGISTRATE
+            .blockEntity("creative_energy", CreativeEnergyBlockEntity::new)
+            .validBlocks(CBMBlocks.CREATIVE_ENERGY)
+            .register();
+
     public static final BlockEntityEntry<AlternatorBlockEntity> ALTERNATOR = REGISTRATE
             .blockEntity("alternator", AlternatorBlockEntity::new)
             .instance(() -> HalfShaftInstance::new)

@@ -6,9 +6,6 @@
   "refmap": "create_better_motors.refmap.json",
   "mixins": [
     "LevelMixin",
-    "ContraptionInvWrapperMixin",
-    "MountedStorageAccessor",
-    "MountedStorageMixin",
     "SceneBuilderAccessor"],
   "client": [
   ],

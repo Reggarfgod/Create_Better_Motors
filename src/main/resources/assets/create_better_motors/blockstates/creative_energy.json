@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "create_better_motors:block/creative_energy/block" }
+    }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item" : "create_better_motors:reggarfonite_gem"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "create_better_motors:reggarfonite_nugget"
+  }
+}

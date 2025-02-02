@@ -14,6 +14,7 @@
     "create_better_motors:reggarfoniteblock",
     "create_better_motors:void_battery",
     "create_better_motors:void_motor",
-    "create_better_motors:multimeter"
+    "create_better_motors:multimeter",
+    "create_better_motors:creative_energy"
   ]
 }

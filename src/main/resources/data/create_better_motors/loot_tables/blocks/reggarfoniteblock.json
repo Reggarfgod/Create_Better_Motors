@@ -1,9 +1,8 @@
 {
   "type": "minecraft:block",
-  "random_sequence": "create_better_motors:blocks/reggarfoniteblock",
   "pools": [
     {
-      "rolls": 1.0,
+      "bonus_rolls": 0.0,
       "conditions": [
         {
           "condition": "minecraft:survives_explosion"
@@ -14,7 +13,9 @@
           "type": "minecraft:item",
           "name": "create_better_motors:reggarfoniteblock"
         }
-      ]
+      ],
+      "rolls": 1.0
     }
-  ]
+  ],
+  "random_sequence": "create_better_motors:blocks/reggarfoniteblock"
 }

@@ -151,9 +151,8 @@ repositories {
         name = "ModMaven"
         url = "https://modmaven.dev"
     }
-    maven {
-        url "https://cursemaven.com"
-    }
+    maven { url "https://cursemaven.com" }
+    maven { url 'https://maven.blamejared.com' }
 
     // flatDir {
     //     dir 'libs'
@@ -184,6 +183,12 @@ dependencies {
     //mod dependency with emi
     //implementation fg.deobf("curse.maven:emi-580555:5872526")
 
+    // Ars Nouveau
+    //implementation fg.deobf("curse.maven:ars-nouveau-401955:5600384")
+
+    // Ars dependencies, should be automatically downloaded by gradle but include them if they don't
+   // implementation fg.deobf("curse.maven:geckolib-388172:5675221")
+    //implementation fg.deobf("curse.maven:curios-309927:6058834")
 
     //mod dependency with powah
      //implementation fg.deobf("curse.maven:powah-rearchitected-633483:5604170")

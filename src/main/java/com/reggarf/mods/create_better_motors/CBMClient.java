@@ -26,7 +26,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 public class CBMClient {
 
-    public static final VoidStorageClient<LinkAccumulator> VOID_BATTERIES = new VoidStorageClient<>(
+    public static final VoidStorageClient<LinkAccumulator> BATTERIES = new VoidStorageClient<>(
             LinkAccumulator::new);
     public static void onCtorClient(IEventBus modEventBus, IEventBus forgeEventBus) {
         CBMPartialsModels.init();
