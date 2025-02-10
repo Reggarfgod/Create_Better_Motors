@@ -107,13 +107,13 @@ public class CommonConfig {
 
         CAPACITY = builder
                 .comment("Internal energy capacity of a accumulator")
-                .defineInRange(" AccumulatorCapacity", 40000000, 1, Integer.MAX_VALUE);
+                .defineInRange(" AccumulatorCapacity", 100000000, 1, Integer.MAX_VALUE);
         MAX_RECEIVE = builder
                 .comment("Internal energy Max Receive of a accumulator")
-                .defineInRange(" MaxReceive", 40384, 1, Integer.MAX_VALUE);
+                .defineInRange(" MaxReceive", 80384, 1, Integer.MAX_VALUE);
         MAX_EXTRACT = builder
                 .comment("Internal energy Max Extract of a accumulator")
-                .defineInRange(" MaxExtract", 40384, 1, Integer.MAX_VALUE);
+                .defineInRange(" MaxExtract", 80384, 1, Integer.MAX_VALUE);
 
 
         builder.pop();
