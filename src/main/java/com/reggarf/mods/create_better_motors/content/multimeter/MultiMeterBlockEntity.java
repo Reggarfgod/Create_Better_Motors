@@ -1,5 +1,7 @@
 package com.reggarf.mods.create_better_motors.content.multimeter;
 
+import com.reggarf.mods.create_better_motors.util.GaugeObservedPacket;
+import com.reggarf.mods.create_better_motors.util.Packets;
 import com.simibubi.create.content.equipment.goggles.IHaveGoggleInformation;
 import com.simibubi.create.content.kinetics.base.IRotate;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;

@@ -1,6 +1,7 @@
 package com.reggarf.mods.create_better_motors.content.motors;
 
 
+import com.simibubi.create.AllShapes;
 import com.simibubi.create.content.kinetics.base.DirectionalKineticBlock;
 import com.simibubi.create.content.kinetics.base.IRotate;
 import com.simibubi.create.foundation.block.IBE;
@@ -35,9 +36,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class MotorBlock extends DirectionalKineticBlock implements IRotate, IBE<MotorBlockEntity> {
-    protected static final VoxelShape Y_AXIS_AABB = Block.box(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
-    protected static final VoxelShape Z_AXIS_AABB = Block.box(2.0, 2.0, 0.0, 14.0, 14.0, 16.0);
-    protected static final VoxelShape X_AXIS_AABB = Block.box(0.0, 2.0, 2.0, 16.0, 14.0, 14.0);
+
     private final BlockEntityEntry<MotorBlockEntity> entry;
     private final IMotorVariant variant;
 
@@ -46,6 +45,16 @@ public class MotorBlock extends DirectionalKineticBlock implements IRotate, IBE<
         this.entry = entry;
         this.variant = variant;
     }
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
+        return AllShapes.MOTOR_BLOCK.get(state.getValue(FACING));
+    }
+
+    @Override
+    public Direction.Axis getRotationAxis(BlockState state) {
+        return state.getValue(FACING).getAxis();
+    }
+
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> tooltip, TooltipFlag flag) {
@@ -135,18 +144,7 @@ public class MotorBlock extends DirectionalKineticBlock implements IRotate, IBE<
         }
     }
 
-    @Override
-    public Direction.Axis getRotationAxis(BlockState blockState) {
-        return blockState.getValue(FACING).getAxis();
-    }
 
-    public VoxelShape getShape(BlockState arg, BlockGetter arg2, BlockPos arg3, CollisionContext arg4) {
-        return switch ((arg.getValue(FACING)).getAxis()) {
-            case X -> X_AXIS_AABB;
-            case Z -> Z_AXIS_AABB;
-            case Y -> Y_AXIS_AABB;
-        };
-    }
 
     @Override
     public Class<MotorBlockEntity> getBlockEntityClass() {

@@ -31,7 +31,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 @ParametersAreNonnullByDefault
 public class MultiMeterBlock extends DirectionalAxisKineticBlock implements IBE<MultiMeterBlockEntity> {
-    public static final GaugeShape GAUGE = GaugeShape.make();
+    public static final CBMGaugeShape GAUGE = CBMGaugeShape.make();
 
     public MultiMeterBlock(Properties properties) {
         super(properties);

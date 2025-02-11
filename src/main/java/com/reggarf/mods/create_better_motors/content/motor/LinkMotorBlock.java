@@ -30,7 +30,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import static net.minecraft.world.level.block.state.properties.BlockStateProperties.WATERLOGGED;
 
-public class LinkMotorBlock extends DirectionalKineticBlock implements SimpleWaterloggedBlock, IBE<LinkMotorTileEntity> {
+public class LinkMotorBlock extends DirectionalKineticBlock implements SimpleWaterloggedBlock, IBE<LinkMotorBlockEntity> {
 
 	public LinkMotorBlock(Properties properties) {
 		super(properties);
@@ -93,12 +93,12 @@ public class LinkMotorBlock extends DirectionalKineticBlock implements SimpleWat
 	}
 
 	@Override
-	public Class<LinkMotorTileEntity> getBlockEntityClass() {
-		return LinkMotorTileEntity.class;
+	public Class<LinkMotorBlockEntity> getBlockEntityClass() {
+		return LinkMotorBlockEntity.class;
 	}
 
 	@Override
-	public BlockEntityType<? extends LinkMotorTileEntity> getBlockEntityType() {
+	public BlockEntityType<? extends LinkMotorBlockEntity> getBlockEntityType() {
 		return CBMBlockEntityTypes.VOID_MOTOR.get();
 	}
 }

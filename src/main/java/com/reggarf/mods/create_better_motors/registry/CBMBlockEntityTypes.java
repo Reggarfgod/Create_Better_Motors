@@ -3,18 +3,18 @@ package com.reggarf.mods.create_better_motors.registry;
 
 
 import com.reggarf.mods.create_better_motors.content.alternator.AlternatorBlockEntity;
-import com.reggarf.mods.create_better_motors.content.alternator.AlternatorRenderer;
-import com.reggarf.mods.create_better_motors.content.battery.LinkAccumulatorRenderer;
-import com.reggarf.mods.create_better_motors.content.battery.LinkAccumulatorBlockEntity;
+import com.reggarf.mods.create_better_motors.tools.AlternatorRenderer;
+import com.reggarf.mods.create_better_motors.tools.AccumulatorRenderer;
+import com.reggarf.mods.create_better_motors.content.battery.AccumulatorBlockEntity;
 import com.reggarf.mods.create_better_motors.content.creative_energy.CreativeEnergyBlockEntity;
 import com.reggarf.mods.create_better_motors.content.electricity.connector.ElectricalConnectorBlockEntity;
 import com.reggarf.mods.create_better_motors.content.electricity.connector.ElectricalConnectorRenderer;
-import com.reggarf.mods.create_better_motors.content.motor.LinkMotorRenderer;
-import com.reggarf.mods.create_better_motors.content.motor.LinkMotorTileEntity;
+import com.reggarf.mods.create_better_motors.tools.MotorRenderer;
+import com.reggarf.mods.create_better_motors.content.motor.LinkMotorBlockEntity;
 import com.reggarf.mods.create_better_motors.content.motors.MotorBlockEntity;
 import com.reggarf.mods.create_better_motors.content.motors.variants.*;
 import com.reggarf.mods.create_better_motors.content.multimeter.MultiMeterBlockEntity;
-import com.reggarf.mods.create_better_motors.tools.HalfShaftRendererThing;
+import com.reggarf.mods.create_better_motors.tools.CBMHalfShaftRenderer;
 import com.simibubi.create.content.kinetics.base.HalfShaftInstance;
 import com.simibubi.create.content.kinetics.base.ShaftInstance;
 import com.simibubi.create.content.kinetics.base.ShaftRenderer;
@@ -36,7 +36,7 @@ public class CBMBlockEntityTypes {
             .blockEntity("basic_motor", MotorBlockEntity.create(new BasicMotorVariant()))
             .instance(() -> HalfShaftInstance::new)
             .validBlocks(CBMBlocks.BASIC_MOTOR)
-            .renderer(() -> HalfShaftRendererThing::new)
+            .renderer(() -> CBMHalfShaftRenderer::new)
             .register();
 
 
@@ -44,7 +44,7 @@ public class CBMBlockEntityTypes {
             .blockEntity("starter_motor", MotorBlockEntity.create(new StarterMotorVariant()))
             .instance(() -> HalfShaftInstance::new)
             .validBlocks(CBMBlocks.STARTER_MOTOR)
-            .renderer(() -> HalfShaftRendererThing::new)
+            .renderer(() -> CBMHalfShaftRenderer::new)
             .register();
 
 
@@ -53,7 +53,7 @@ public class CBMBlockEntityTypes {
             .blockEntity("hardened_motor", MotorBlockEntity.create(new HardenedMotorVariant()))
             .instance(() -> HalfShaftInstance::new)
             .validBlocks(CBMBlocks.HARDENED_MOTOR)
-            .renderer(() -> HalfShaftRendererThing::new)
+            .renderer(() -> CBMHalfShaftRenderer::new)
             .register();
 
 
@@ -61,40 +61,40 @@ public class CBMBlockEntityTypes {
             .blockEntity("blazing_motor", MotorBlockEntity.create(new BlazingMotorVariant()))
             .instance(() -> HalfShaftInstance::new)
             .validBlocks(CBMBlocks.BLAZING_MOTOR)
-            .renderer(() -> HalfShaftRendererThing::new)
+            .renderer(() -> CBMHalfShaftRenderer::new)
             .register();
 
     public static final BlockEntityEntry<MotorBlockEntity> NIOTIC_MOTOR = REGISTRATE
             .blockEntity("niotic_motor", MotorBlockEntity.create(new NioticMotorVariant()))
             .instance(() -> HalfShaftInstance::new)
             .validBlocks(CBMBlocks.NIOTIC_MOTOR)
-            .renderer(() -> HalfShaftRendererThing::new)
+            .renderer(() -> CBMHalfShaftRenderer::new)
             .register();
 
     public static final BlockEntityEntry<MotorBlockEntity> SPIRITED_MOTOR = REGISTRATE
             .blockEntity("spirited_motor", MotorBlockEntity.create(new SpiritedMotorVariant()))
             .instance(() -> HalfShaftInstance::new)
             .validBlocks(CBMBlocks.SPIRITED_MOTOR)
-            .renderer(() -> HalfShaftRendererThing::new)
+            .renderer(() -> CBMHalfShaftRenderer::new)
             .register();
 
     public static final BlockEntityEntry<MotorBlockEntity> NITRO_MOTOR = REGISTRATE
             .blockEntity("nitro_motor", MotorBlockEntity.create(new NitroMotorVariant()))
             .instance(() -> HalfShaftInstance::new)
             .validBlocks(CBMBlocks.NITRO_MOTOR)
-            .renderer(() -> HalfShaftRendererThing::new)
+            .renderer(() -> CBMHalfShaftRenderer::new)
             .register();
-    public static final BlockEntityEntry<LinkMotorTileEntity> VOID_MOTOR = REGISTRATE
-            .blockEntity("void_motor", LinkMotorTileEntity::new)
+    public static final BlockEntityEntry<LinkMotorBlockEntity> VOID_MOTOR = REGISTRATE
+            .blockEntity("void_motor", LinkMotorBlockEntity::new)
             .instance(() -> HalfShaftInstance::new, true)
             .validBlocks(CBMBlocks.VOID_MOTOR)
-            .renderer(() -> LinkMotorRenderer::new)
+            .renderer(() -> MotorRenderer::new)
             .register();
 
-    public static final BlockEntityEntry<LinkAccumulatorBlockEntity> VOID_BATTERY = REGISTRATE
-            .blockEntity("void_battery", LinkAccumulatorBlockEntity::new)
+    public static final BlockEntityEntry<AccumulatorBlockEntity> VOID_BATTERY = REGISTRATE
+            .blockEntity("void_battery", AccumulatorBlockEntity::new)
             .validBlocks(CBMBlocks.VOID_BATTERY)
-            .renderer(() -> LinkAccumulatorRenderer::new)
+            .renderer(() -> AccumulatorRenderer::new)
             .register();
 
     public static final BlockEntityEntry<CreativeEnergyBlockEntity> CREATIVE_ENERGY = REGISTRATE
@@ -114,7 +114,6 @@ public class CBMBlockEntityTypes {
             .validBlocks(CBMBlocks.MULTIMETER)
             .renderer(() -> ShaftRenderer::new)
             .register();
-
 
     public static void load() {  }
 }

@@ -1,7 +1,7 @@
 package com.reggarf.mods.create_better_motors.events;
 
 import com.reggarf.mods.create_better_motors.Create_better_motors;
-import com.reggarf.mods.create_better_motors.content.battery.LinkAccumulatorData;
+import com.reggarf.mods.create_better_motors.util.AccumulatorData;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.storage.DimensionDataStorage;
@@ -24,7 +24,7 @@ public class CBMCommonEvents {
 		Create_better_motors.MOTOR_LINK_NETWORK_HANDLER.onLoadWorld(level);
 
 		Create_better_motors.BATTERIES_DATA = dataStorage
-				.computeIfAbsent(LinkAccumulatorData::load, LinkAccumulatorData::new, "Batteries");
+				.computeIfAbsent(AccumulatorData::load, AccumulatorData::new, "Batteries");
 	}
 
 	@SubscribeEvent

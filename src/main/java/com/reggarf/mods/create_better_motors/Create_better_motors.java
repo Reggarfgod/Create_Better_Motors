@@ -1,8 +1,8 @@
 package com.reggarf.mods.create_better_motors;
 
-import com.reggarf.mods.create_better_motors.content.battery.LinkAccumulatorData;
+import com.reggarf.mods.create_better_motors.util.AccumulatorData;
 import com.reggarf.mods.create_better_motors.content.electricity.network.CBMPackets;
-import com.reggarf.mods.create_better_motors.content.motor.LinkMotorNetworkHandler;
+import com.reggarf.mods.create_better_motors.util.MotorNetworkHandler;
 import com.reggarf.mods.create_better_motors.registry.CBMClientIniter;
 import com.reggarf.mods.create_better_motors.registry.CBMBlockEntityTypes;
 import com.reggarf.mods.create_better_motors.registry.CBMBlocks;
@@ -10,7 +10,6 @@ import com.reggarf.mods.create_better_motors.registry.CBMItems;
 import com.reggarf.mods.create_better_motors.tools.CBMContainerTypes;
 import com.simibubi.create.content.contraptions.ContraptionMovementSetting;
 import com.simibubi.create.foundation.data.CreateRegistrate;
-import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
@@ -40,8 +39,8 @@ public class Create_better_motors {
     public static final String MOD_ID = "create_better_motors";
 
     public static final CreateRegistrate BASE_REGISTRATE = CreateRegistrate.create(MOD_ID);
-    public static final LinkMotorNetworkHandler MOTOR_LINK_NETWORK_HANDLER = new LinkMotorNetworkHandler();
-    public static LinkAccumulatorData BATTERIES_DATA;
+    public static final MotorNetworkHandler MOTOR_LINK_NETWORK_HANDLER = new MotorNetworkHandler();
+    public static AccumulatorData BATTERIES_DATA;
 
     private static DeferredRegister<CreativeModeTab> TAB_REGISTRAR = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MOD_ID);
     public static final RegistryObject<CreativeModeTab> tab = TAB_REGISTRAR.register("create_better_motors_tab",

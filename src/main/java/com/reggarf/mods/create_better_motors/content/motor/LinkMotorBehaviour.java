@@ -4,6 +4,7 @@ import com.mojang.authlib.GameProfile;
 import com.reggarf.mods.create_better_motors.Create_better_motors;
 import com.reggarf.mods.create_better_motors.tools.voidlink.VoidLinkBehaviour;
 import com.reggarf.mods.create_better_motors.tools.voidlink.VoidLinkSlot;
+import com.reggarf.mods.create_better_motors.util.MotorNetworkHandler;
 import com.simibubi.create.foundation.blockEntity.SmartBlockEntity;
 
 import net.minecraft.core.BlockPos;
@@ -56,7 +57,7 @@ public class LinkMotorBehaviour extends VoidLinkBehaviour {
 		getHandler().removeFromNetwork(getWorld(), this);
 	}
 
-	private LinkMotorNetworkHandler getHandler() {
+	private MotorNetworkHandler getHandler() {
 		return Create_better_motors.MOTOR_LINK_NETWORK_HANDLER;
 	}
 

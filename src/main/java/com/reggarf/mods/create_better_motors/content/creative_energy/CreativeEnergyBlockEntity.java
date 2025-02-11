@@ -1,16 +1,9 @@
 package com.reggarf.mods.create_better_motors.content.creative_energy;
 
-import com.reggarf.mods.create_better_motors.Create_better_motors;
-import com.reggarf.mods.create_better_motors.content.battery.LinkAccumulator;
 import com.reggarf.mods.create_better_motors.energy.CreativeEnergyStorage;
-import com.reggarf.mods.create_better_motors.tools.StringFormattingTool;
 import com.simibubi.create.content.logistics.crate.CrateBlockEntity;
-import com.simibubi.create.foundation.utility.Lang;
-import com.simibubi.create.foundation.utility.LangBuilder;
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -18,8 +11,6 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.IEnergyStorage;
-
-import java.util.List;
 
 public class CreativeEnergyBlockEntity extends CrateBlockEntity {
 

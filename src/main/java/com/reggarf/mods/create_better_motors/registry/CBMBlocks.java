@@ -4,7 +4,7 @@ package com.reggarf.mods.create_better_motors.registry;
 
 
 import com.reggarf.mods.create_better_motors.Create_better_motors;
-import com.reggarf.mods.create_better_motors.content.battery.LinkAccumulatorBlock;
+import com.reggarf.mods.create_better_motors.content.battery.AccumulatorBlock;
 import com.reggarf.mods.create_better_motors.content.creative_energy.CreativeEnergyBlock;
 import com.reggarf.mods.create_better_motors.content.motor.LinkMotorBlock;
 import com.reggarf.mods.create_better_motors.content.multimeter.MultiMeterBlock;
@@ -113,6 +113,8 @@ public class CBMBlocks {
                     .properties(properties -> properties.strength(3.0f))
                     .simpleItem()
                     .register();
+
+
     public static final BlockEntry<LinkMotorBlock> VOID_MOTOR = REGISTRATE.block("void_motor", LinkMotorBlock::new)
             .initialProperties(SharedProperties::stone)
             .properties(p -> p.mapColor(MapColor.COLOR_BLACK))
@@ -122,6 +124,8 @@ public class CBMBlocks {
             .item()
             .transform(customItemModel())
             .register();
+
+
     public static final BlockEntry<MultiMeterBlock> MULTIMETER = REGISTRATE.block("multimeter", MultiMeterBlock::new)
             .initialProperties(SharedProperties::wooden)
             .properties(p -> p.mapColor(MapColor.PODZOL))
@@ -139,7 +143,7 @@ public class CBMBlocks {
             .transform(ModelGen.customItemModel("gauge", "_", "item"))
             .register();
 
-    public static final BlockEntry<LinkAccumulatorBlock> VOID_BATTERY = REGISTRATE.block("void_battery", LinkAccumulatorBlock::new)
+    public static final BlockEntry<AccumulatorBlock> VOID_BATTERY = REGISTRATE.block("void_battery", AccumulatorBlock::new)
             .initialProperties(SharedProperties::stone)
             .properties(BlockBehaviour.Properties::noOcclusion)
             .properties(p -> p.mapColor(MapColor.COLOR_BLACK))
@@ -156,6 +160,7 @@ public class CBMBlocks {
             .transform(customItemModel())
             .register();
 
+
     public static final BlockEntry<AlternatorBlock> ALTERNATOR =
             REGISTRATE.block("alternator", AlternatorBlock::new)
             .initialProperties(SharedProperties::softMetal)
@@ -164,6 +169,7 @@ public class CBMBlocks {
             .item()
             .transform(customItemModel())
             .register();
+
 
     public static final BlockEntry<Block> REGGARFONITEBLOCK =
             REGISTRATE.block("reggarfoniteblock", Block::new)

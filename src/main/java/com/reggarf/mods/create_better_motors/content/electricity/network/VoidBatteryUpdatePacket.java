@@ -1,8 +1,8 @@
 package com.reggarf.mods.create_better_motors.content.electricity.network;
 
 import com.reggarf.mods.create_better_motors.CBMClient;
-import com.reggarf.mods.create_better_motors.content.battery.LinkAccumulator;
-import com.reggarf.mods.create_better_motors.content.motor.LinkMotorNetworkHandler;
+import com.reggarf.mods.create_better_motors.content.battery.Accumulator;
+import com.reggarf.mods.create_better_motors.util.MotorNetworkHandler;
 import com.simibubi.create.foundation.networking.SimplePacketBase;
 
 import net.minecraft.network.FriendlyByteBuf;
@@ -12,17 +12,17 @@ import net.minecraftforge.network.NetworkEvent;
 
 public class VoidBatteryUpdatePacket extends SimplePacketBase {
 
-	private final LinkMotorNetworkHandler.NetworkKey key;
-	private final LinkAccumulator battery;
+	private final MotorNetworkHandler.NetworkKey key;
+	private final Accumulator battery;
 
-	public VoidBatteryUpdatePacket(LinkMotorNetworkHandler.NetworkKey key, LinkAccumulator battery) {
+	public VoidBatteryUpdatePacket(MotorNetworkHandler.NetworkKey key, Accumulator battery) {
 		this.key = key;
 		this.battery = battery;
 	}
 
 	public VoidBatteryUpdatePacket(FriendlyByteBuf buffer) {
-		key = LinkMotorNetworkHandler.NetworkKey.fromBuffer(buffer);
-		battery = new LinkAccumulator(key);
+		key = MotorNetworkHandler.NetworkKey.fromBuffer(buffer);
+		battery = new Accumulator(key);
 		battery.deserializeNBT(buffer.readNbt());
 	}
 

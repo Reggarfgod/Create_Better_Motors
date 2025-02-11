@@ -103,6 +103,7 @@ public class CommonConfig {
 
         builder.pop();
 
+
         builder.push(ACCUMULATOR);
 
         CAPACITY = builder

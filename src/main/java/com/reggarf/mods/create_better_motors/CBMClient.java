@@ -1,7 +1,7 @@
 package com.reggarf.mods.create_better_motors;
 
-import com.reggarf.mods.create_better_motors.content.alternator.AlternatorPonder;
-import com.reggarf.mods.create_better_motors.content.battery.LinkAccumulator;
+import com.reggarf.mods.create_better_motors.ponder.AlternatorPonder;
+import com.reggarf.mods.create_better_motors.content.battery.Accumulator;
 import com.reggarf.mods.create_better_motors.content.electricity.ElectricityPonder;
 import com.reggarf.mods.create_better_motors.content.motors.MotorPonder;
 import com.reggarf.mods.create_better_motors.ponder.VoidScenes;
@@ -26,8 +26,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 public class CBMClient {
 
-    public static final VoidStorageClient<LinkAccumulator> BATTERIES = new VoidStorageClient<>(
-            LinkAccumulator::new);
+    public static final VoidStorageClient<Accumulator> BATTERIES = new VoidStorageClient<>(
+            Accumulator::new);
     public static void onCtorClient(IEventBus modEventBus, IEventBus forgeEventBus) {
         CBMPartialsModels.init();
     }

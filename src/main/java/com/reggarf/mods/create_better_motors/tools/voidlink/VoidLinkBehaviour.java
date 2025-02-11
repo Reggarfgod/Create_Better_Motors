@@ -1,7 +1,7 @@
 package com.reggarf.mods.create_better_motors.tools.voidlink;
 
 import com.mojang.authlib.GameProfile;
-import com.reggarf.mods.create_better_motors.content.motor.LinkMotorNetworkHandler;
+import com.reggarf.mods.create_better_motors.util.MotorNetworkHandler;
 import com.simibubi.create.content.equipment.clipboard.ClipboardCloneable;
 import com.simibubi.create.content.redstone.link.RedstoneLinkNetworkHandler.Frequency;
 import com.simibubi.create.foundation.blockEntity.SmartBlockEntity;
@@ -68,8 +68,8 @@ public class VoidLinkBehaviour extends BlockEntityBehaviour implements Clipboard
 		owner = nbt.contains("Owner", 10) ? NbtUtils.readGameProfile(nbt.getCompound("Owner")) : null;
 	}
 
-	public LinkMotorNetworkHandler.NetworkKey getNetworkKey() {
-		return new LinkMotorNetworkHandler.NetworkKey(owner, frequencyFirst, frequencyLast);
+	public MotorNetworkHandler.NetworkKey getNetworkKey() {
+		return new MotorNetworkHandler.NetworkKey(owner, frequencyFirst, frequencyLast);
 	}
 
 	public void setFrequency(boolean first, ItemStack stack) {
