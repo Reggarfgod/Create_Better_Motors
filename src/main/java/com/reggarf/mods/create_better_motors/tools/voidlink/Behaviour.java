@@ -22,56 +22,26 @@ import org.apache.commons.lang3.tuple.Triple;
 import javax.annotation.Nullable;
 import java.util.Objects;
 
-public class VoidLinkBehaviour extends BlockEntityBehaviour implements ClipboardCloneable {
+public class Behaviour extends BlockEntityBehaviour implements ClipboardCloneable {
 
-	public static final BehaviourType<VoidLinkBehaviour> TYPE = new BehaviourType<>();
+	public static final BehaviourType<Behaviour> TYPE = new BehaviourType<>();
 
 	Frequency frequencyFirst = Frequency.EMPTY;
 	Frequency frequencyLast = Frequency.EMPTY;
 	@Nullable
 	GameProfile owner;
 
-	VoidLinkSlot firstSlot;
-	VoidLinkSlot secondSlot;
-	VoidLinkSlot playerSlot;
+	LinkSlot firstSlot;
+	LinkSlot secondSlot;
+	LinkSlot playerSlot;
 
-	public VoidLinkBehaviour(SmartBlockEntity te,
-							 Triple<VoidLinkSlot, VoidLinkSlot, VoidLinkSlot> slots) {
+	public Behaviour(SmartBlockEntity te,
+					 Triple<LinkSlot, LinkSlot, LinkSlot> slots) {
 		super(te);
 		firstSlot = slots.getLeft();
 		secondSlot = slots.getMiddle();
 		this.playerSlot = slots.getRight();
 	}
-
-	@Override
-	public void write(CompoundTag nbt, boolean clientPacket) {
-		super.write(nbt, clientPacket);
-
-		nbt.put("FrequencyFirst", frequencyFirst.getStack().save(new CompoundTag()));
-		nbt.put("FrequencyLast", frequencyLast.getStack().save(new CompoundTag()));
-
-		if (this.owner != null) {
-			CompoundTag compoundTag = new CompoundTag();
-			NbtUtils.writeGameProfile(compoundTag, this.owner);
-			nbt.put("Owner", compoundTag);
-		}
-
-	}
-
-	@Override
-	public void read(CompoundTag nbt, boolean clientPacket) {
-		super.read(nbt, clientPacket);
-
-		frequencyFirst = Frequency.of(ItemStack.of(nbt.getCompound("FrequencyFirst")));
-		frequencyLast = Frequency.of(ItemStack.of(nbt.getCompound("FrequencyLast")));
-
-		owner = nbt.contains("Owner", 10) ? NbtUtils.readGameProfile(nbt.getCompound("Owner")) : null;
-	}
-
-	public MotorNetworkHandler.NetworkKey getNetworkKey() {
-		return new MotorNetworkHandler.NetworkKey(owner, frequencyFirst, frequencyLast);
-	}
-
 	public void setFrequency(boolean first, ItemStack stack) {
 
 		stack = stack.copy();
@@ -92,16 +62,46 @@ public class VoidLinkBehaviour extends BlockEntityBehaviour implements Clipboard
 		updateBlock();
 
 	}
+	@Override
+	public void write(CompoundTag nbt, boolean clientPacket) {
+		super.write(nbt, clientPacket);
 
-	private void updateBlock() {
-		blockEntity.getLevel().blockUpdated(blockEntity.getBlockPos(), blockEntity.getBlockState().getBlock());
+		nbt.put("FrequencyFirst", frequencyFirst.getStack().save(new CompoundTag()));
+		nbt.put("FrequencyLast", frequencyLast.getStack().save(new CompoundTag()));
+
+		if (this.owner != null) {
+			CompoundTag compoundTag = new CompoundTag();
+			NbtUtils.writeGameProfile(compoundTag, this.owner);
+			nbt.put("Owner", compoundTag);
+		}
+
 	}
-
 	public boolean testHit(int index, Vec3 hit) {
 		BlockState state = blockEntity.getBlockState();
 		Vec3 localHit = hit.subtract(Vec3.atLowerCornerOf(blockEntity.getBlockPos()));
 		return getSlot(index).testHit(state, localHit);
 	}
+
+	@Override
+	public void read(CompoundTag nbt, boolean clientPacket) {
+		super.read(nbt, clientPacket);
+
+		frequencyFirst = Frequency.of(ItemStack.of(nbt.getCompound("FrequencyFirst")));
+		frequencyLast = Frequency.of(ItemStack.of(nbt.getCompound("FrequencyLast")));
+
+		owner = nbt.contains("Owner", 10) ? NbtUtils.readGameProfile(nbt.getCompound("Owner")) : null;
+	}
+
+	public MotorNetworkHandler.NetworkKey getNetworkKey() {
+		return new MotorNetworkHandler.NetworkKey(owner, frequencyFirst, frequencyLast);
+	}
+
+
+
+	private void updateBlock() {
+		blockEntity.getLevel().blockUpdated(blockEntity.getBlockPos(), blockEntity.getBlockState().getBlock());
+	}
+
 
 	public ValueBoxTransform getSlot(int index) {
 		return index < 2 ? getFrequencySlot(index == 0) : playerSlot;

@@ -3,8 +3,8 @@ package com.reggarf.mods.create_better_motors.util;
 import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.reggarf.mods.create_better_motors.Create_better_motors;
-import com.reggarf.mods.create_better_motors.content.motor.LinkMotorBehaviour;
-import com.reggarf.mods.create_better_motors.content.motor.LinkMotorBlockEntity;
+import com.reggarf.mods.create_better_motors.content.motor.MotorBlockEntity;
+import com.reggarf.mods.create_better_motors.content.motor.MotorBehaviour;
 import com.simibubi.create.Create;
 import com.simibubi.create.content.redstone.link.RedstoneLinkNetworkHandler.Frequency;
 import com.simibubi.create.foundation.utility.Couple;
@@ -26,7 +26,7 @@ public class MotorNetworkHandler {
 	static final Map<LevelAccessor, Map<NetworkKey, Set<BlockPos>>> connections =
 			new IdentityHashMap<>();
 
-	public Set<BlockPos> getNetworkOf(LevelAccessor world, LinkMotorBehaviour actor) {
+	public Set<BlockPos> getNetworkOf(LevelAccessor world, MotorBehaviour actor) {
 		Map<NetworkKey, Set<BlockPos>> networksInWorld = networksIn(world);
 		NetworkKey key = actor.getNetworkKey();
 		if (!networksInWorld.containsKey(key))
@@ -52,13 +52,13 @@ public class MotorNetworkHandler {
 		Create.LOGGER.debug("Removed Void Motor Network Space for " + WorldHelper.getDimensionID(world));
 	}
 
-	public void addToNetwork(LevelAccessor world, LinkMotorBehaviour actor) {
+	public void addToNetwork(LevelAccessor world, MotorBehaviour actor) {
 		getNetworkOf(world, actor).add(actor.getPos());
-		if (actor.blockEntity instanceof LinkMotorBlockEntity voidMotor) voidMotor.onConnectToVoidNetwork();
+		if (actor.blockEntity instanceof MotorBlockEntity voidMotor) voidMotor.onConnectToVoidNetwork();
 	}
 
-	public void removeFromNetwork(LevelAccessor world, LinkMotorBehaviour actor) {
-		if (actor.blockEntity instanceof LinkMotorBlockEntity voidMotor) voidMotor.onDisconnectFromVoidNetwork();
+	public void removeFromNetwork(LevelAccessor world, MotorBehaviour actor) {
+		if (actor.blockEntity instanceof MotorBlockEntity voidMotor) voidMotor.onDisconnectFromVoidNetwork();
 		Set<BlockPos> network = getNetworkOf(world, actor);
 		network.remove(actor.getPos());
 		if (network.isEmpty()) networksIn(world).remove(actor.getNetworkKey());

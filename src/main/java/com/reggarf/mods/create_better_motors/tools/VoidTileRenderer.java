@@ -2,7 +2,7 @@ package com.reggarf.mods.create_better_motors.tools;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.reggarf.mods.create_better_motors.tools.voidlink.VoidLinkRenderer;
+import com.reggarf.mods.create_better_motors.tools.voidlink.Renderer;
 import com.simibubi.create.foundation.blockEntity.SmartBlockEntity;
 
 import net.minecraft.client.model.SkullModelBase;
@@ -13,14 +13,14 @@ import org.joml.Matrix4f;
 
 public interface VoidTileRenderer<T extends SmartBlockEntity> {
 
-	SkullModelBase getSkullModelBase();
+	SkullModelBase getBase();
 
 	boolean shouldRenderFrame(T te, Direction direction);
 	float getFrameWidth();
 	float getFrameOffset(Direction direction);
 
 	default void renderVoid(T te, float partialTicks, PoseStack ms, MultiBufferSource buffer, int light, int overlay) {
-		VoidLinkRenderer.renderOnTileEntity(te, partialTicks, ms, buffer, light, overlay, getSkullModelBase());
+		Renderer.renderOnTileEntity(te, partialTicks, ms, buffer, light, overlay, getBase());
 		renderPortal(te, ms.last().pose(), buffer.getBuffer(RenderType.endPortal()));
 	}
 

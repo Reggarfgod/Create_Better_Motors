@@ -20,17 +20,12 @@ import org.joml.Vector3f;
 
 public class AccumulatorRenderer extends SafeBlockEntityRenderer<AccumulatorBlockEntity> implements VoidTileRenderer<AccumulatorBlockEntity> {
 
-	private final SkullModelBase skullModelBase;
+	private final SkullModelBase Base;
 
 	public AccumulatorRenderer(BlockEntityRendererProvider.Context context) {
-		skullModelBase = new SkullModel(context.getModelSet().bakeLayer(ModelLayers.PLAYER_HEAD));
+		Base = new SkullModel(context.getModelSet().bakeLayer(ModelLayers.PLAYER_HEAD));
 	}
 
-	@Override
-	protected void renderSafe(AccumulatorBlockEntity te, float partialTicks, PoseStack ms, MultiBufferSource buffer, int light, int overlay) {
-		renderVoid(te, partialTicks, ms, buffer, light, overlay);
-		renderDial(te, partialTicks, ms, buffer, light, overlay);
-	}
 
 	protected void renderDial(AccumulatorBlockEntity te, float partialTicks, PoseStack ms, MultiBufferSource buffer, int light, int overlay) {
 
@@ -54,10 +49,14 @@ public class AccumulatorRenderer extends SafeBlockEntityRenderer<AccumulatorBloc
 		ms.popPose();
 
 	}
-
 	@Override
-	public SkullModelBase getSkullModelBase() {
-		return skullModelBase;
+	protected void renderSafe(AccumulatorBlockEntity te, float partialTicks, PoseStack ms, MultiBufferSource buffer, int light, int overlay) {
+		renderVoid(te, partialTicks, ms, buffer, light, overlay);
+		renderDial(te, partialTicks, ms, buffer, light, overlay);
+	}
+	@Override
+	public SkullModelBase getBase() {
+		return Base;
 	}
 
 	@Override

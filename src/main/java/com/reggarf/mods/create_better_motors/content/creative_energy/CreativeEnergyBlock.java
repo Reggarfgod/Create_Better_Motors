@@ -44,13 +44,6 @@ public class CreativeEnergyBlock extends CrateBlock implements IBE<CreativeEnerg
 		tooltip.add(Lang.text(" ").translate("tooltip.create_better_motors.energy",
 				"Infinite").style(ChatFormatting.AQUA).component());
 	}
-
-	@Override
-	public BlockEntityType<? extends CreativeEnergyBlockEntity> getBlockEntityType() {
-		return CBMBlockEntityTypes.CREATIVE_ENERGY.get();
-	}
-
-	
 	@Override
 	public void neighborChanged(BlockState state, Level worldIn, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving) {
 		BlockEntity tileentity = state.hasBlockEntity() ? worldIn.getBlockEntity(pos) : null;
@@ -60,6 +53,13 @@ public class CreativeEnergyBlock extends CrateBlock implements IBE<CreativeEnerg
 			}
 		}
 	}
+	@Override
+	public BlockEntityType<? extends CreativeEnergyBlockEntity> getBlockEntityType() {
+		return CBMBlockEntityTypes.CREATIVE_ENERGY.get();
+	}
+
+	
+
 
 	@Override
 	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {

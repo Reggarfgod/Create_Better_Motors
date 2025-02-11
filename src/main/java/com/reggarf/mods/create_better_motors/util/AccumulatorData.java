@@ -2,11 +2,11 @@ package com.reggarf.mods.create_better_motors.util;
 
 
 import com.reggarf.mods.create_better_motors.content.battery.Accumulator;
-import com.reggarf.mods.create_better_motors.tools.VoidStorageData;
+import com.reggarf.mods.create_better_motors.tools.StorageData;
 import net.minecraft.nbt.CompoundTag;
 import org.jetbrains.annotations.NotNull;
 
-public class AccumulatorData extends VoidStorageData<Accumulator> {
+public class AccumulatorData extends StorageData<Accumulator> {
 
 	public Accumulator computeStorageIfAbsent(MotorNetworkHandler.NetworkKey key) {
 		return super.computeStorageIfAbsent(key, Accumulator::new);

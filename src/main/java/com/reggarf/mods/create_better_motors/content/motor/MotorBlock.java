@@ -1,7 +1,7 @@
 package com.reggarf.mods.create_better_motors.content.motor;
 
 import com.reggarf.mods.create_better_motors.registry.CBMBlockEntityTypes;
-import com.reggarf.mods.create_better_motors.tools.voidlink.VoidLinkBehaviour;
+import com.reggarf.mods.create_better_motors.tools.voidlink.Behaviour;
 import com.simibubi.create.AllShapes;
 import com.simibubi.create.content.kinetics.base.DirectionalKineticBlock;
 import com.simibubi.create.foundation.block.IBE;
@@ -30,9 +30,9 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import static net.minecraft.world.level.block.state.properties.BlockStateProperties.WATERLOGGED;
 
-public class LinkMotorBlock extends DirectionalKineticBlock implements SimpleWaterloggedBlock, IBE<LinkMotorBlockEntity> {
+public class MotorBlock extends DirectionalKineticBlock implements SimpleWaterloggedBlock, IBE<MotorBlockEntity> {
 
-	public LinkMotorBlock(Properties properties) {
+	public MotorBlock(Properties properties) {
 		super(properties);
 		registerDefaultState(defaultBlockState().setValue(BlockStateProperties.WATERLOGGED, false));
 	}
@@ -88,17 +88,17 @@ public class LinkMotorBlock extends DirectionalKineticBlock implements SimpleWat
 	public void setPlacedBy(Level worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
 		super.setPlacedBy(worldIn, pos, state, placer, stack);
 		if (worldIn.isClientSide()) return;
-		VoidLinkBehaviour behaviour = BlockEntityBehaviour.get(worldIn, pos, VoidLinkBehaviour.TYPE);
+		Behaviour behaviour = BlockEntityBehaviour.get(worldIn, pos, Behaviour.TYPE);
 		if (placer instanceof Player player) behaviour.setOwner(player.getGameProfile());
 	}
 
 	@Override
-	public Class<LinkMotorBlockEntity> getBlockEntityClass() {
-		return LinkMotorBlockEntity.class;
+	public Class<MotorBlockEntity> getBlockEntityClass() {
+		return MotorBlockEntity.class;
 	}
 
 	@Override
-	public BlockEntityType<? extends LinkMotorBlockEntity> getBlockEntityType() {
+	public BlockEntityType<? extends MotorBlockEntity> getBlockEntityType() {
 		return CBMBlockEntityTypes.VOID_MOTOR.get();
 	}
 }

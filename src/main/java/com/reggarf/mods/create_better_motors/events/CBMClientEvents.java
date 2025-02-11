@@ -1,7 +1,7 @@
 package com.reggarf.mods.create_better_motors.events;
 
 
-import com.reggarf.mods.create_better_motors.tools.voidlink.VoidLinkRenderer;
+import com.reggarf.mods.create_better_motors.tools.voidlink.Renderer;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.TickEvent;
@@ -14,7 +14,7 @@ public class CBMClientEvents {
 	@SubscribeEvent
 	public static void onTick(TickEvent.ClientTickEvent event) {
 		if (!isGameActive()) return;
-		VoidLinkRenderer.tick();
+		Renderer.tick();
 	}
 
 	protected static boolean isGameActive() {

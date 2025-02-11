@@ -27,7 +27,6 @@ import net.minecraftforge.registries.RegistryObject;
 
 import com.reggarf.mods.create_better_motors.config.CBMConfig;
 
-import com.reggarf.mods.create_better_motors.tools.RecipeTool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -56,7 +55,7 @@ public class Create_better_motors {
     public static final ResourceKey<CreativeModeTab> CREATIVE_TAB_KEY = ResourceKey.create(Registries.CREATIVE_MODE_TAB,
             new ResourceLocation(MOD_ID, "create_better_motors_tab"));
 
-    private static int magnetPlacementHelperId;
+
 
     public Create_better_motors() {
         var modBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -75,8 +74,7 @@ public class Create_better_motors {
         CBMConfig.getCommon();
         FMLJavaModLoadingContext.get().getModEventBus().addListener(CBMClientIniter::onInitializeClient);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::generalSetup);
-        RecipeTool.register_type.register(modBus);
-        RecipeTool.register.register(modBus);
+
 
         modEventBus.addListener(Create_better_motors::init);
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () ->
@@ -88,10 +86,6 @@ public class Create_better_motors {
 
     public static void init(final FMLCommonSetupEvent event) {
         CBMPackets.registerPackets();
-    }
-
-    public static int getMagnetPlacementHelperId() {
-        return magnetPlacementHelperId;
     }
 
     public static ResourceLocation asResource(String path) {

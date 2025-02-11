@@ -12,7 +12,7 @@ import org.apache.commons.lang3.tuple.Triple;
 
 import java.util.function.Function;
 
-public class VoidLinkSlot extends ValueBoxTransform {
+public class LinkSlot extends ValueBoxTransform {
 
 	protected int index;
 
@@ -21,7 +21,7 @@ public class VoidLinkSlot extends ValueBoxTransform {
 	protected final Vec3 horizontal;
 	protected final Vec3 vertical;
 
-	public VoidLinkSlot(int index, Function<BlockState, Direction> facingGetter, Vec3 position) {
+	public LinkSlot(int index, Function<BlockState, Direction> facingGetter, Vec3 position) {
 
 		this.index = index;
 		this.facingGetter = facingGetter;
@@ -33,7 +33,12 @@ public class VoidLinkSlot extends ValueBoxTransform {
 		vertical = getVertical(horizontal);
 
 	}
-
+	public boolean testHit(BlockState state, Vec3 localHit) {
+		Vec3 offset = getLocalOffset(state);
+		if (offset == null)
+			return false;
+		return localHit.distanceTo(offset) < scale / 3.5f;
+	}
 	public int getIndex() {
 		return index;
 	}
@@ -46,16 +51,18 @@ public class VoidLinkSlot extends ValueBoxTransform {
 		return index == 2;
 	}
 
-	public static Triple<VoidLinkSlot, VoidLinkSlot, VoidLinkSlot> makeSlots(Function<Integer, VoidLinkSlot> factory) {
+	public static Triple<LinkSlot, LinkSlot, LinkSlot> makeSlots(Function<Integer, LinkSlot> factory) {
 		return Triple.of(factory.apply(0), factory.apply(1), factory.apply(2));
 	}
 
-	public boolean testHit(BlockState state, Vec3 localHit) {
-		Vec3 offset = getLocalOffset(state);
-		if (offset == null)
-			return false;
-		return localHit.distanceTo(offset) < scale / 3.5f;
+	@Override
+	public void rotate(BlockState state, PoseStack ms) {
+		Direction facing = facingGetter.apply(state);
+		float yRot = facing.getAxis().isVertical() ? 90 : AngleHelper.horizontalAngle(facing);
+		float xRot = facing == Direction.UP ? 270 : facing == Direction.DOWN ? 90 : 0;
+		TransformStack.cast(ms).rotateY(yRot).rotateX(xRot);
 	}
+
 
 	@Override
 	public Vec3 getLocalOffset(BlockState state) {
@@ -70,13 +77,6 @@ public class VoidLinkSlot extends ValueBoxTransform {
 
 	}
 
-	@Override
-	public void rotate(BlockState state, PoseStack ms) {
-		Direction facing = facingGetter.apply(state);
-		float yRot = facing.getAxis().isVertical() ? 90 : AngleHelper.horizontalAngle(facing);
-		float xRot = facing == Direction.UP ? 270 : facing == Direction.DOWN ? 90 : 0;
-		TransformStack.cast(ms).rotateY(yRot).rotateX(xRot);
-	}
 
 	@Override
 	public float getScale() {

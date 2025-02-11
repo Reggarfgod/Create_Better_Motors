@@ -3,8 +3,8 @@ package com.reggarf.mods.create_better_motors.content.battery;
 import com.reggarf.mods.create_better_motors.CBMClient;
 import com.reggarf.mods.create_better_motors.Create_better_motors;
 import com.reggarf.mods.create_better_motors.tools.StringFormattingTool;
-import com.reggarf.mods.create_better_motors.tools.voidlink.VoidLinkBehaviour;
-import com.reggarf.mods.create_better_motors.tools.voidlink.VoidLinkSlot;
+import com.reggarf.mods.create_better_motors.tools.voidlink.Behaviour;
+import com.reggarf.mods.create_better_motors.tools.voidlink.LinkSlot;
 import com.reggarf.mods.create_better_motors.util.AccumulatorData;
 import com.simibubi.create.content.equipment.goggles.IHaveGoggleInformation;
 import com.simibubi.create.foundation.blockEntity.SmartBlockEntity;
@@ -31,7 +31,7 @@ import java.util.List;
 
 public class AccumulatorBlockEntity extends SmartBlockEntity implements IHaveGoggleInformation {
 
-	VoidLinkBehaviour link;
+	Behaviour link;
 
 	public AccumulatorBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
 		super(type, pos, blockState);
@@ -39,12 +39,33 @@ public class AccumulatorBlockEntity extends SmartBlockEntity implements IHaveGog
 
 	public void createLink() {
 
-		Triple<VoidLinkSlot, VoidLinkSlot, VoidLinkSlot> slots = VoidLinkSlot.makeSlots(
-				index -> new VoidLinkSlot(index,
+		Triple<LinkSlot, LinkSlot, LinkSlot> slots = LinkSlot.makeSlots(
+				index -> new LinkSlot(index,
 						state -> state.getValue(AccumulatorBlock.FACING),
 						VecHelper.voxelSpace(5.5F, 10.5F, -.001F)));
 
-		link = new VoidLinkBehaviour(this, slots);
+		link = new Behaviour(this, slots);
+	}
+	@Override
+	public boolean addToGoggleTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
+
+		Accumulator battery = getBattery();
+
+		Lang.translate("tooltip.create_better_motors.energy_stored")
+				.style(ChatFormatting.WHITE)
+				.forGoggles(tooltip);
+
+		new LangBuilder(Create_better_motors.MOD_ID)
+				.translate("tooltip.void_battery.energy")
+				.style(ChatFormatting.GRAY)
+				.forGoggles(tooltip, 1);
+
+		Lang.translate("tooltip.create_better_motors.energy_storage",
+						StringFormattingTool.formatLong(battery.getEnergyStored()),
+						StringFormattingTool.formatLong(battery.getMaxEnergyStored()))
+				.style(ChatFormatting.AQUA)
+				.forGoggles(tooltip, 1);
+		return true;
 	}
 
 	@Override
@@ -87,26 +108,6 @@ public class AccumulatorBlockEntity extends SmartBlockEntity implements IHaveGog
 		super.write(tag, clientPacket);
 	}
 
-	@Override
-	public boolean addToGoggleTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
 
-		Accumulator battery = getBattery();
-
-		Lang.translate("tooltip.create_better_motors.energy_stored")
-				.style(ChatFormatting.WHITE)
-				.forGoggles(tooltip);
-
-		new LangBuilder(Create_better_motors.MOD_ID)
-				.translate("tooltip.void_battery.energy")
-				.style(ChatFormatting.GRAY)
-				.forGoggles(tooltip, 1);
-
-		Lang.translate("tooltip.create_better_motors.energy_storage",
-						StringFormattingTool.formatLong(battery.getEnergyStored()),
-						StringFormattingTool.formatLong(battery.getMaxEnergyStored()))
-				.style(ChatFormatting.AQUA)
-				.forGoggles(tooltip, 1);
-		return true;
-	}
 
 }

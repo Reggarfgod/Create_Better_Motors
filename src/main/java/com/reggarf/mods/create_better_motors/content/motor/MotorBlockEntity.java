@@ -1,6 +1,6 @@
 package com.reggarf.mods.create_better_motors.content.motor;
 
-import com.reggarf.mods.create_better_motors.tools.voidlink.VoidLinkSlot;
+import com.reggarf.mods.create_better_motors.tools.voidlink.LinkSlot;
 import com.simibubi.create.content.kinetics.base.IRotate;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
@@ -13,11 +13,11 @@ import org.apache.commons.lang3.tuple.Triple;
 
 import java.util.List;
 
-public class LinkMotorBlockEntity extends KineticBlockEntity {
+public class MotorBlockEntity extends KineticBlockEntity {
 
-	LinkMotorBehaviour link;
+	MotorBehaviour link;
 
-	public LinkMotorBlockEntity(BlockEntityType<?> typeIn, BlockPos pos, BlockState state) {
+	public MotorBlockEntity(BlockEntityType<?> typeIn, BlockPos pos, BlockState state) {
 		super(typeIn, pos, state);
 	}
 
@@ -29,12 +29,12 @@ public class LinkMotorBlockEntity extends KineticBlockEntity {
 
 	public void createLink() {
 
-		Triple<VoidLinkSlot, VoidLinkSlot, VoidLinkSlot> slots = VoidLinkSlot.makeSlots(
-				index -> new VoidLinkSlot(index,
-						state -> state.getValue(LinkMotorBlock.FACING),
+		Triple<LinkSlot, LinkSlot, LinkSlot> slots = LinkSlot.makeSlots(
+				index -> new LinkSlot(index,
+						state -> state.getValue(MotorBlock.FACING),
 						VecHelper.voxelSpace(5.5F, 10.5F, -.001F)));
 
-		link = new LinkMotorBehaviour(this, slots);
+		link = new MotorBehaviour(this, slots);
 
 	}
 
@@ -47,6 +47,7 @@ public class LinkMotorBlockEntity extends KineticBlockEntity {
 		removeSource();
 	}
 
+
 	@Override
 	public List<BlockPos> addPropagationLocations(IRotate block, BlockState state, List<BlockPos> neighbours) {
 		neighbours.addAll(link.getNetwork());
@@ -55,7 +56,7 @@ public class LinkMotorBlockEntity extends KineticBlockEntity {
 
 	@Override
 	public float propagateRotationTo(KineticBlockEntity target, BlockState stateFrom, BlockState stateTo, BlockPos diff, boolean connectedViaAxes, boolean connectedViaCogs) {
-		LinkMotorBehaviour targetLink = (LinkMotorBehaviour) BlockEntityBehaviour.get(target, LinkMotorBehaviour.TYPE);
+		MotorBehaviour targetLink = (MotorBehaviour) BlockEntityBehaviour.get(target, com.reggarf.mods.create_better_motors.content.motor.MotorBehaviour.TYPE);
 		if (targetLink != null) return targetLink.getNetworkKey().equals(link.getNetworkKey()) ? 1 : 0;
 		return 0;
 	}

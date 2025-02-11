@@ -1,7 +1,7 @@
 package com.reggarf.mods.create_better_motors.ponder;
 
 import com.reggarf.mods.create_better_motors.content.battery.AccumulatorBlockEntity;
-import com.reggarf.mods.create_better_motors.content.motor.LinkMotorBlockEntity;
+import com.reggarf.mods.create_better_motors.content.motor.MotorBlockEntity;
 import com.simibubi.create.foundation.ponder.SceneBuilder;
 import com.simibubi.create.foundation.ponder.SceneBuildingUtil;
 import com.simibubi.create.foundation.ponder.Selection;
@@ -39,7 +39,7 @@ public class VoidScenes {
 		BlockPos receiverPos = util.grid.at(1, 1, 2);
 
 		playVoidSequence(
-				scene, util, LinkMotorBlockEntity.class,
+				scene, util, MotorBlockEntity.class,
 				.015f, 0,
 				"Motor Link", "Rotational Force",
 				sourcePos, receiverPos,

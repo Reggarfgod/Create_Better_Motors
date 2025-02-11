@@ -2,8 +2,8 @@ package com.reggarf.mods.create_better_motors.content.motor;
 
 import com.mojang.authlib.GameProfile;
 import com.reggarf.mods.create_better_motors.Create_better_motors;
-import com.reggarf.mods.create_better_motors.tools.voidlink.VoidLinkBehaviour;
-import com.reggarf.mods.create_better_motors.tools.voidlink.VoidLinkSlot;
+import com.reggarf.mods.create_better_motors.tools.voidlink.Behaviour;
+import com.reggarf.mods.create_better_motors.tools.voidlink.LinkSlot;
 import com.reggarf.mods.create_better_motors.util.MotorNetworkHandler;
 import com.simibubi.create.foundation.blockEntity.SmartBlockEntity;
 
@@ -14,10 +14,10 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Objects;
 import java.util.Set;
 
-public class LinkMotorBehaviour extends VoidLinkBehaviour {
+public class MotorBehaviour extends Behaviour {
 
-	public LinkMotorBehaviour(SmartBlockEntity te,
-							  Triple<VoidLinkSlot, VoidLinkSlot, VoidLinkSlot> slots) {
+	public MotorBehaviour(SmartBlockEntity te,
+						  Triple<LinkSlot, LinkSlot, LinkSlot> slots) {
 		super(te, slots);
 	}
 

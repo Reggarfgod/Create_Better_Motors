@@ -36,55 +36,7 @@ import net.minecraft.world.phys.Vec3;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VoidLinkRenderer {
-
-	public static void tick() {
-		Minecraft mc = Minecraft.getInstance();
-		HitResult target = mc.hitResult;
-		if (!(target instanceof BlockHitResult result))
-			return;
-
-		ClientLevel world = mc.level;
-		BlockPos pos = result.getBlockPos();
-
-		VoidLinkBehaviour behaviour = BlockEntityBehaviour.get(world, pos, VoidLinkBehaviour.TYPE);
-		if (behaviour == null)
-			return;
-
-		Component freq1 = Lang.translateDirect("logistics.firstFrequency");
-		Component freq2 = Lang.translateDirect("logistics.secondFrequency");
-		Component player = Components.translatable(Create_better_motors.MOD_ID + ".logistics.owner");
-
-		for (int index : VoidLinkHandler.arr012) {
-			AABB bb = new AABB(Vec3.ZERO, Vec3.ZERO).inflate(.25f);
-			Component label = index < 2 ? (index == 0 ? freq1 : freq2) : player;
-			boolean hit = behaviour.testHit(index, target.getLocation());
-			ValueBoxTransform transform = behaviour.getSlot(index);
-
-			ValueBox box = new ValueBox(label, bb, pos).passive(!hit).withColor(0x601F18);
-
-			boolean isEmpty = index == 2 ? behaviour.getOwner() == null : behaviour.getFrequencyStack(index == 0).isEmpty();
-
-			if (!isEmpty) box.wideOutline();
-			CreateClient.OUTLINER.showValueBox(Pair.of(index, pos), box.transform(transform))
-					.highlightFace(result.getDirection());
-
-			if (!hit) continue;
-
-			List<MutableComponent> tip = new ArrayList<>();
-			if (index < 2) {
-				tip.add(label.copy());
-				tip.add(Lang.translateDirect(isEmpty ? "logistics.filter.click_to_set" : "logistics.filter.click_to_replace"));
-			} else {
-				tip.add(label.copy());
-				tip.add(Components.translatable(Create_better_motors.MOD_ID +
-						(isEmpty ? ".logistics.void.click_to_set_owner" : ".logistics.void.click_to_remove_owner")));
-			}
-
-			CreateClient.VALUE_SETTINGS_HANDLER.showHoverTip(tip);
-
-		}
-	}
+public class Renderer {
 
 	public static void renderOnTileEntity(SmartBlockEntity te, float partialTicks, PoseStack ms,
 										  MultiBufferSource buffer, int light, int overlay, SkullModelBase skullModelBase) {
@@ -97,10 +49,10 @@ public class VoidLinkRenderer {
 				.distanceToSqr(VecHelper.getCenterOf(te.getBlockPos())) > (max * max))
 			return;
 
-		VoidLinkBehaviour behaviour = te.getBehaviour(VoidLinkBehaviour.TYPE);
+		Behaviour behaviour = te.getBehaviour(Behaviour.TYPE);
 		if (behaviour == null) return;
 
-		for (int index : VoidLinkHandler.arr012) {
+		for (int index : Handler.arr012) {
 			ValueBoxTransform transform = behaviour.getSlot(index);
 
 			if (index < 2) {
@@ -132,6 +84,53 @@ public class VoidLinkRenderer {
 
 		}
 
+	}
+	public static void tick() {
+		Minecraft mc = Minecraft.getInstance();
+		HitResult target = mc.hitResult;
+		if (!(target instanceof BlockHitResult result))
+			return;
+
+		ClientLevel world = mc.level;
+		BlockPos pos = result.getBlockPos();
+
+		Behaviour behaviour = BlockEntityBehaviour.get(world, pos, Behaviour.TYPE);
+		if (behaviour == null)
+			return;
+
+		Component freq1 = Lang.translateDirect("logistics.firstFrequency");
+		Component freq2 = Lang.translateDirect("logistics.secondFrequency");
+		Component player = Components.translatable(Create_better_motors.MOD_ID + ".logistics.owner");
+
+		for (int index : Handler.arr012) {
+			AABB bb = new AABB(Vec3.ZERO, Vec3.ZERO).inflate(.25f);
+			Component label = index < 2 ? (index == 0 ? freq1 : freq2) : player;
+			boolean hit = behaviour.testHit(index, target.getLocation());
+			ValueBoxTransform transform = behaviour.getSlot(index);
+
+			ValueBox box = new ValueBox(label, bb, pos).passive(!hit).withColor(0x601F18);
+
+			boolean isEmpty = index == 2 ? behaviour.getOwner() == null : behaviour.getFrequencyStack(index == 0).isEmpty();
+
+			if (!isEmpty) box.wideOutline();
+			CreateClient.OUTLINER.showValueBox(Pair.of(index, pos), box.transform(transform))
+					.highlightFace(result.getDirection());
+
+			if (!hit) continue;
+
+			List<MutableComponent> tip = new ArrayList<>();
+			if (index < 2) {
+				tip.add(label.copy());
+				tip.add(Lang.translateDirect(isEmpty ? "logistics.filter.click_to_set" : "logistics.filter.click_to_replace"));
+			} else {
+				tip.add(label.copy());
+				tip.add(Components.translatable(Create_better_motors.MOD_ID +
+						(isEmpty ? ".logistics.void.click_to_set_owner" : ".logistics.void.click_to_remove_owner")));
+			}
+
+			CreateClient.VALUE_SETTINGS_HANDLER.showHoverTip(tip);
+
+		}
 	}
 
 	public static void renderSkull(GameProfile owner, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, SkullModelBase model) {

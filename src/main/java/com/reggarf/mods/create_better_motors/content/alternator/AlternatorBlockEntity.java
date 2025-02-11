@@ -68,12 +68,6 @@ public class AlternatorBlockEntity extends KineticBlockEntity {
 		return true;
 	}
 
-	@Override
-	public float calculateStressApplied() {
-		float impact = CommonConfig.MAX_STRESS.get()/256f;
-		this.lastStressApplied = impact;
-		return impact;
-	}
 
 	@Override
 	public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
@@ -121,6 +115,12 @@ public class AlternatorBlockEntity extends KineticBlockEntity {
 			ies.receiveEnergy(ext, false);
 		}
 	}
+	@Override
+	public float calculateStressApplied() {
+		float impact = CommonConfig.MAX_STRESS.get()/256f;
+		this.lastStressApplied = impact;
+		return impact;
+	}
 
 	@OnlyIn(Dist.CLIENT)
 	@Override
@@ -167,33 +167,10 @@ public class AlternatorBlockEntity extends KineticBlockEntity {
 			setCache(side, le);
 		}
 	}
-
-	private LazyOptional<IEnergyStorage> escacheUp = LazyOptional.empty();
-	private LazyOptional<IEnergyStorage> escacheDown = LazyOptional.empty();
-	private LazyOptional<IEnergyStorage> escacheNorth = LazyOptional.empty();
-	private LazyOptional<IEnergyStorage> escacheEast = LazyOptional.empty();
-	private LazyOptional<IEnergyStorage> escacheSouth = LazyOptional.empty();
-	private LazyOptional<IEnergyStorage> escacheWest = LazyOptional.empty();
-
 	public void setCache(Direction side, LazyOptional<IEnergyStorage> storage) {
-		switch (side) {
-			case DOWN -> escacheDown = storage;
-			case EAST -> escacheEast = storage;
-			case NORTH -> escacheNorth = storage;
-			case SOUTH -> escacheSouth = storage;
-			case UP -> escacheUp = storage;
-			case WEST -> escacheWest = storage;
-		}
 	}
-
 	public IEnergyStorage getCachedEnergy(Direction side) {
-		return switch (side) {
-			case DOWN -> escacheDown.orElse(null);
-			case EAST -> escacheEast.orElse(null);
-			case NORTH -> escacheNorth.orElse(null);
-			case SOUTH -> escacheSouth.orElse(null);
-			case UP -> escacheUp.orElse(null);
-			case WEST -> escacheWest.orElse(null);
-		};
+		return null;
+
 	}
 }

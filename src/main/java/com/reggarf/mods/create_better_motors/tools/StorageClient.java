@@ -11,11 +11,11 @@ import java.util.Map;
 import java.util.function.Function;
 
 @OnlyIn(Dist.CLIENT)
-public class VoidStorageClient<T> {
+public class StorageClient<T> {
 
 	public final Map<MotorNetworkHandler.NetworkKey, T> storages = new HashMap<>();
 	private final Function<MotorNetworkHandler.NetworkKey, T> factory;
-	public VoidStorageClient(Function<MotorNetworkHandler.NetworkKey, T> factory) {
+	public StorageClient(Function<MotorNetworkHandler.NetworkKey, T> factory) {
 		this.factory = factory;
 	}
 	public final T computeStorageIfAbsent(MotorNetworkHandler.NetworkKey key) {

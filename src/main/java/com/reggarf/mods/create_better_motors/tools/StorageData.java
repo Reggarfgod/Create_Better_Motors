@@ -12,7 +12,7 @@ import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-public abstract class VoidStorageData<T> extends SavedData {
+public abstract class StorageData<T> extends SavedData {
 
     protected final Map<MotorNetworkHandler.NetworkKey, T> storages = new HashMap<>();
 
@@ -30,10 +30,10 @@ public abstract class VoidStorageData<T> extends SavedData {
         return tag;
     }
 
-    public static <T, S extends VoidStorageData<T>> S load(CompoundTag tag,
-                                                           Supplier<S> storageDataSupplier,
-                                                           Function<MotorNetworkHandler.NetworkKey, T> storageSupplier,
-                                                           BiConsumer<T, CompoundTag> deserializeNBT) {
+    public static <T, S extends StorageData<T>> S load(CompoundTag tag,
+                                                       Supplier<S> storageDataSupplier,
+                                                       Function<MotorNetworkHandler.NetworkKey, T> storageSupplier,
+                                                       BiConsumer<T, CompoundTag> deserializeNBT) {
         S data = storageDataSupplier.get();
         tag.getAllKeys().forEach(k -> {
             MotorNetworkHandler.NetworkKey key = MotorNetworkHandler.NetworkKey.fromString(k);

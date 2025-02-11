@@ -8,7 +8,7 @@ import com.reggarf.mods.create_better_motors.ponder.VoidScenes;
 import com.reggarf.mods.create_better_motors.registry.CBMBlocks;
 import com.reggarf.mods.create_better_motors.registry.CBMItems;
 import com.reggarf.mods.create_better_motors.tools.CBMPartialsModels;
-import com.reggarf.mods.create_better_motors.tools.VoidStorageClient;
+import com.reggarf.mods.create_better_motors.tools.StorageClient;
 import com.simibubi.create.foundation.config.ui.BaseConfigScreen;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipModifier;
@@ -26,7 +26,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 public class CBMClient {
 
-    public static final VoidStorageClient<Accumulator> BATTERIES = new VoidStorageClient<>(
+    public static final StorageClient<Accumulator> BATTERIES = new StorageClient<>(
             Accumulator::new);
     public static void onCtorClient(IEventBus modEventBus, IEventBus forgeEventBus) {
         CBMPartialsModels.init();

@@ -17,7 +17,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber
-public class VoidLinkHandler {
+public class Handler {
 
 	public static final int[] arr012 = {0, 1, 2};
 
@@ -32,7 +32,7 @@ public class VoidLinkHandler {
 		if (player.isShiftKeyDown() || player.isSpectator())
 			return;
 
-		VoidLinkBehaviour behaviour = BlockEntityBehaviour.get(world, pos, VoidLinkBehaviour.TYPE);
+		Behaviour behaviour = BlockEntityBehaviour.get(world, pos, Behaviour.TYPE);
 		if (behaviour == null)
 			return;
 		if (!behaviour.canInteract(player))

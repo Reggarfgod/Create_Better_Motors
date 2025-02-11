@@ -1,8 +1,8 @@
 package com.reggarf.mods.create_better_motors.tools;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.reggarf.mods.create_better_motors.content.motor.LinkMotorBlock;
-import com.reggarf.mods.create_better_motors.content.motor.LinkMotorBlockEntity;
+import com.reggarf.mods.create_better_motors.content.motor.MotorBlock;
+import com.reggarf.mods.create_better_motors.content.motor.MotorBlockEntity;
 import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
 import com.simibubi.create.foundation.render.CachedBufferer;
@@ -16,7 +16,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class MotorRenderer extends KineticBlockEntityRenderer<LinkMotorBlockEntity> implements VoidTileRenderer<LinkMotorBlockEntity> {
+public class MotorRenderer extends KineticBlockEntityRenderer<MotorBlockEntity> implements VoidTileRenderer<MotorBlockEntity> {
 
 	private final SkullModelBase skullModelBase;
 
@@ -26,19 +26,19 @@ public class MotorRenderer extends KineticBlockEntityRenderer<LinkMotorBlockEnti
 	}
 
 	@Override
-	protected void renderSafe(LinkMotorBlockEntity te, float partialTicks, PoseStack ms, MultiBufferSource buffer, int light, int overlay) {
+	protected void renderSafe(MotorBlockEntity te, float partialTicks, PoseStack ms, MultiBufferSource buffer, int light, int overlay) {
 		super.renderSafe(te, partialTicks, ms, buffer, light, overlay);
 		renderVoid(te, partialTicks, ms, buffer, light, overlay);
 	}
 
 	@Override
-	public SkullModelBase getSkullModelBase() {
+	public SkullModelBase getBase() {
 		return skullModelBase;
 	}
 
 	@Override
-	public boolean shouldRenderFrame(LinkMotorBlockEntity te, Direction direction) {
-		return te.getBlockState().getValue(LinkMotorBlock.FACING) == direction;
+	public boolean shouldRenderFrame(MotorBlockEntity te, Direction direction) {
+		return te.getBlockState().getValue(MotorBlock.FACING) == direction;
 	}
 
 	@Override
@@ -52,7 +52,7 @@ public class MotorRenderer extends KineticBlockEntityRenderer<LinkMotorBlockEnti
 	}
 
 	@Override
-	protected SuperByteBuffer getRotatedModel(LinkMotorBlockEntity te, BlockState state) {
+	protected SuperByteBuffer getRotatedModel(MotorBlockEntity te, BlockState state) {
 		return CachedBufferer.partialFacing(AllPartialModels.SHAFT_HALF, state);
 	}
 
