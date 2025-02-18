@@ -35,7 +35,13 @@ import java.util.List;
 
 public class AlternatorBlock extends DirectionalKineticBlock implements IBE<AlternatorBlockEntity>, IRotate {
 	
-	public static final VoxelShaper ALTERNATOR_SHAPE = CBMShapes.shape(0, 3, 0, 16, 13, 16).add(2, 0, 2, 14, 14, 14).forDirectional();
+	public static final VoxelShaper ALTERNATOR_SHAPE = CBMShapes.shape(
+			0,
+			1.5,
+			0,
+			16,
+			12.5,
+			16).forDirectional();
 	
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
@@ -55,7 +61,6 @@ public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<C
 			StringFormattingTool.formatLong(CBMConfig.getCommon().ALTERNATOR_CAPACITY.get())).style(ChatFormatting.AQUA).component());
 
 }
-
 
 	
 	@Override

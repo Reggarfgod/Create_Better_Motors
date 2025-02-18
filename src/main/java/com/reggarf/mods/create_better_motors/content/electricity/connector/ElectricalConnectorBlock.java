@@ -2,8 +2,10 @@ package com.reggarf.mods.create_better_motors.content.electricity.connector;
 
 import com.reggarf.mods.create_better_motors.registry.CBMBlockEntityTypes;
 import com.reggarf.mods.create_better_motors.registry.CBMBlocks;
+import com.reggarf.mods.create_better_motors.registry.CBMShapes;
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
 import com.simibubi.create.foundation.block.IBE;
+import com.simibubi.create.foundation.utility.VoxelShaper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -55,17 +57,17 @@ public class ElectricalConnectorBlock extends DirectionalBlock implements IBE<El
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        double a = 4.0;
-        double b = 12.0;
-        double h = 10.0;
+        double x = 4.0;
+        double y = 12.0;
+        double z = 7.0;
 
         return switch (state.getValue(FACING)) {
-            case NORTH -> Block.box(a, a, 16.0 - h, b, b, 16.0);
-            case SOUTH -> Block.box(a, a, 0.0, b, b, h);
-            case WEST -> Block.box(16.0 - h, a, a, 16.0, b, b);
-            case EAST -> Block.box(0.0, a, a, h, b, b);
-            case UP -> Block.box(a, 0.0, a, b, h, b);
-            case DOWN -> Block.box(a, 16.0 - h, a, b, 16.0, b);
+            case NORTH -> Block.box(x, x, 16.0 - z, y, y, 16.0);
+            case SOUTH -> Block.box(x, x, 0.0, y, y, z);
+            case WEST -> Block.box(16.0 - z, x, x, 16.0, y, y);
+            case EAST -> Block.box(0.0, x, x, z, y, y);
+            case UP -> Block.box(x, 0.0, x, y, z, y);
+            case DOWN -> Block.box(x, 16.0 - z, x, y, 16.0, y);
         };
     }
 

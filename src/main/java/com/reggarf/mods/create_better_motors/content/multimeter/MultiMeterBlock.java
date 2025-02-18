@@ -37,48 +37,6 @@ public class MultiMeterBlock extends DirectionalAxisKineticBlock implements IBE<
         super(properties);
     }
 
-    @Override
-    public BlockState getStateForPlacement(BlockPlaceContext context) {
-        Level world = context.getLevel();
-        Direction face = context.getClickedFace();
-        BlockPos placedOnPos = context.getClickedPos()
-                .relative(context.getClickedFace()
-                        .getOpposite());
-        BlockState placedOnState = world.getBlockState(placedOnPos);
-        Block block = placedOnState.getBlock();
-
-        if (block instanceof IRotate && ((IRotate) block).hasShaftTowards(world, placedOnPos, placedOnState, face)) {
-            BlockState toPlace = defaultBlockState();
-            Direction horizontalFacing = context.getHorizontalDirection();
-            Direction nearestLookingDirection = context.getNearestLookingDirection();
-            boolean lookPositive = nearestLookingDirection.getAxisDirection() == Direction.AxisDirection.POSITIVE;
-            if (face.getAxis() == Direction.Axis.X) {
-                toPlace = toPlace.setValue(FACING, lookPositive ? Direction.NORTH : Direction.SOUTH)
-                        .setValue(AXIS_ALONG_FIRST_COORDINATE, true);
-            } else if (face.getAxis() == Direction.Axis.Y) {
-                toPlace = toPlace.setValue(FACING, horizontalFacing.getOpposite())
-                        .setValue(AXIS_ALONG_FIRST_COORDINATE, horizontalFacing.getAxis() == Direction.Axis.X);
-            } else {
-                toPlace = toPlace.setValue(FACING, lookPositive ? Direction.WEST : Direction.EAST)
-                        .setValue(AXIS_ALONG_FIRST_COORDINATE, false);
-            }
-
-            return toPlace;
-        }
-
-        return super.getStateForPlacement(context);
-    }
-
-    @Override
-    protected Direction getFacingForPlacement(BlockPlaceContext context) {
-        return context.getClickedFace();
-    }
-
-    @Override
-    protected boolean getAxisAlignmentForPlacement(BlockPlaceContext context) {
-        return context.getHorizontalDirection()
-                .getAxis() != Direction.Axis.X;
-    }
 
     public boolean shouldRenderHeadOnFace(Level world, BlockPos pos, BlockState state, Direction face) {
         if (face.getAxis()
@@ -93,7 +51,16 @@ public class MultiMeterBlock extends DirectionalAxisKineticBlock implements IBE<
             return false;
         return Block.shouldRenderFace(state, world, pos, face, pos.relative(face)) || world instanceof WrappedWorld;
     }
+    @Override
+    protected Direction getFacingForPlacement(BlockPlaceContext context) {
+        return context.getClickedFace();
+    }
 
+    @Override
+    protected boolean getAxisAlignmentForPlacement(BlockPlaceContext context) {
+        return context.getHorizontalDirection()
+                .getAxis() != Direction.Axis.X;
+    }
     @Override
     public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, RandomSource rand) {
         BlockEntity be = worldIn.getBlockEntity(pos);
@@ -130,6 +97,37 @@ public class MultiMeterBlock extends DirectionalAxisKineticBlock implements IBE<
 
         }
 
+    }
+    @Override
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        Level world = context.getLevel();
+        Direction face = context.getClickedFace();
+        BlockPos placedOnPos = context.getClickedPos()
+                .relative(context.getClickedFace()
+                        .getOpposite());
+        BlockState placedOnState = world.getBlockState(placedOnPos);
+        Block block = placedOnState.getBlock();
+
+        if (block instanceof IRotate && ((IRotate) block).hasShaftTowards(world, placedOnPos, placedOnState, face)) {
+            BlockState toPlace = defaultBlockState();
+            Direction horizontalFacing = context.getHorizontalDirection();
+            Direction nearestLookingDirection = context.getNearestLookingDirection();
+            boolean lookPositive = nearestLookingDirection.getAxisDirection() == Direction.AxisDirection.POSITIVE;
+            if (face.getAxis() == Direction.Axis.X) {
+                toPlace = toPlace.setValue(FACING, lookPositive ? Direction.NORTH : Direction.SOUTH)
+                        .setValue(AXIS_ALONG_FIRST_COORDINATE, true);
+            } else if (face.getAxis() == Direction.Axis.Y) {
+                toPlace = toPlace.setValue(FACING, horizontalFacing.getOpposite())
+                        .setValue(AXIS_ALONG_FIRST_COORDINATE, horizontalFacing.getAxis() == Direction.Axis.X);
+            } else {
+                toPlace = toPlace.setValue(FACING, lookPositive ? Direction.WEST : Direction.EAST)
+                        .setValue(AXIS_ALONG_FIRST_COORDINATE, false);
+            }
+
+            return toPlace;
+        }
+
+        return super.getStateForPlacement(context);
     }
 
     @Override
