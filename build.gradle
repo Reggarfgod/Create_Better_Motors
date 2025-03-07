@@ -133,10 +133,6 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 repositories {
 
     maven {
-        name = 'tterrag maven'
-        url = 'https://maven.tterrag.com/'
-    }
-    maven {
         // location of the maven that hosts JEI files before January 2023
         name = "Progwml6's maven"
         url = "https://dvs1.progwml6.com/files/maven/"
@@ -154,9 +150,9 @@ repositories {
     maven { url "https://cursemaven.com" }
     maven { url 'https://maven.blamejared.com' }
 
-    // flatDir {
-    //     dir 'libs'
-    // }
+    maven { url = "https://maven.createmod.net" } // Create, Ponder, Flywheel
+    maven { url = "https://maven.tterrag.com" } // Registrate
+    maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/" } // ForgeConfigAPIPort
 }
 
 dependencies {
@@ -168,9 +164,13 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
     //create mod
-    implementation fg.deobf("com.simibubi.create:create-${create_minecraft_version}:${create_version}:slim") { transitive = false }
-    implementation fg.deobf("com.jozufozu.flywheel:flywheel-forge-${flywheel_minecraft_version}:${flywheel_version}")
-    implementation fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}")
+    implementation(fg.deobf("com.simibubi.create:create-${minecraft_version}:${create_version}:slim") { transitive = false })
+    implementation(fg.deobf("net.createmod.ponder:Ponder-Forge-${minecraft_version}:${ponder_version}"))
+    compileOnly(fg.deobf("dev.engine-room.flywheel:flywheel-forge-api-${minecraft_version}:${flywheel_version}"))
+    runtimeOnly(fg.deobf("dev.engine-room.flywheel:flywheel-forge-${minecraft_version}:${flywheel_version}"))
+    implementation(fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}"))
+    compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.4.1"))
+    implementation("io.github.llamalad7:mixinextras-forge:0.4.1")
 
     // mod dependency with JEI
     compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
@@ -178,7 +178,7 @@ dependencies {
     runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
 
     //extra casing for lava casing
-    implementation fg.deobf("curse.maven:create-extra-casing-1192187:6168107")
+    //implementation fg.deobf("curse.maven:create-extra-casing-1192187:6266669")
 
     //mod dependency with REI
    // implementation fg.deobf("curse.maven:roughly-enough-items-310111:5846923")
@@ -208,8 +208,10 @@ dependencies {
 minecraft {
     runs {
         client {
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+            property("mixin.env.remapRefMap", "true")
+            property("mixin.env.refMapRemappingFile", "${projectDir}/build/createSrgToMcp/output.srg")
+
+            arg("-mixin.config=create.mixins.json")
         }
     }
 }

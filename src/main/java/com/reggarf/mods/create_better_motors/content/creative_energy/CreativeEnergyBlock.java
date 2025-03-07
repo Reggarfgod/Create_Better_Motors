@@ -1,12 +1,9 @@
 package com.reggarf.mods.create_better_motors.content.creative_energy;
 
-
-import com.reggarf.mods.create_better_motors.config.CBMConfig;
 import com.reggarf.mods.create_better_motors.registry.CBMBlockEntityTypes;
-import com.reggarf.mods.create_better_motors.tools.StringFormattingTool;
 import com.simibubi.create.content.logistics.crate.CrateBlock;
 import com.simibubi.create.foundation.block.IBE;
-import com.simibubi.create.foundation.utility.Lang;
+import com.simibubi.create.foundation.utility.CreateLang;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -39,9 +36,9 @@ public class CreativeEnergyBlock extends CrateBlock implements IBE<CreativeEnerg
 	public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> tooltip, TooltipFlag flag) {
 
 
-		tooltip.add(Lang.translate("tooltip.create_better_motors.energy_stored").style(ChatFormatting.GRAY)
+		tooltip.add(CreateLang.translate("tooltip.create_better_motors.energy_stored").style(ChatFormatting.GRAY)
 				.component());
-		tooltip.add(Lang.text(" ").translate("tooltip.create_better_motors.energy",
+		tooltip.add(CreateLang.text(" ").translate("tooltip.create_better_motors.energy",
 				"Infinite").style(ChatFormatting.AQUA).component());
 	}
 	@Override

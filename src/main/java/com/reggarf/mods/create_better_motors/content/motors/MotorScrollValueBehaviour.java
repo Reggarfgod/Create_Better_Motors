@@ -6,8 +6,8 @@ import com.simibubi.create.foundation.blockEntity.behaviour.ValueBoxTransform;
 import com.simibubi.create.foundation.blockEntity.behaviour.ValueSettingsBoard;
 import com.simibubi.create.foundation.blockEntity.behaviour.ValueSettingsFormatter;
 import com.simibubi.create.foundation.blockEntity.behaviour.scrollValue.ScrollValueBehaviour;
-import com.simibubi.create.foundation.utility.Components;
-import com.simibubi.create.foundation.utility.Lang;
+
+import com.simibubi.create.foundation.utility.CreateLang;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -23,9 +23,9 @@ public class MotorScrollValueBehaviour extends ScrollValueBehaviour {
 
     @Override
     public ValueSettingsBoard createBoard(Player player, BlockHitResult hitResult) {
-        ImmutableList<Component> rows = ImmutableList.of(Components.literal("⟳")
+        ImmutableList<Component> rows = ImmutableList.of(Component.literal("⟳")
                         .withStyle(ChatFormatting.BOLD),
-                Components.literal("⟲")
+                Component.literal("⟲")
                         .withStyle(ChatFormatting.BOLD));
         ValueSettingsFormatter formatter = new ValueSettingsFormatter(this::formatSettings);
         return new ValueSettingsBoard(label, max, max/8, rows, formatter);
@@ -45,8 +45,8 @@ public class MotorScrollValueBehaviour extends ScrollValueBehaviour {
     }
 
     public MutableComponent formatSettings(ValueSettings settings) {
-        return Lang.number(Math.max(1, Math.abs(settings.value())))
-                .add(Lang.text(settings.row() == 0 ? "⟳" : "⟲")
+        return CreateLang.number(Math.max(1, Math.abs(settings.value())))
+                .add(CreateLang.text(settings.row() == 0 ? "⟳" : "⟲")
                         .style(ChatFormatting.BOLD))
                 .component();
     }

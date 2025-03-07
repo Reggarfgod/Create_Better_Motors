@@ -6,7 +6,8 @@ import com.reggarf.mods.create_better_motors.registry.CBMBlocks;
 import com.reggarf.mods.create_better_motors.sound.CBMSoundScapes;
 import com.reggarf.mods.create_better_motors.tools.StringFormattingTool;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
-import com.simibubi.create.foundation.utility.Lang;
+
+import com.simibubi.create.foundation.utility.CreateLang;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -41,23 +42,23 @@ public class AlternatorBlockEntity extends KineticBlockEntity {
 
 	@Override
 	public boolean addToGoggleTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
-		Lang.translate("tooltip.create_better_motors.generating")
+		CreateLang.translate("tooltip.create_better_motors.generating")
 				.style(ChatFormatting.GRAY)
 				.forGoggles(tooltip);
 
-		Lang.translate("tooltip.create_better_motors.energy_output")
+		CreateLang.translate("tooltip.create_better_motors.energy_output")
 				.style(ChatFormatting.GRAY)
 				.forGoggles(tooltip);
 
-		Lang.translate("tooltip.create_better_motors.energy_per_tick",
+		CreateLang.translate("tooltip.create_better_motors.energy_per_tick",
 						StringFormattingTool.formatLong(getEnergyProductionRate((int)getSpeed())))
 				.style(ChatFormatting.AQUA)
 				.forGoggles(tooltip, 1);
-		Lang.translate("tooltip.create_better_motors.energy_stored")
+		CreateLang.translate("tooltip.create_better_motors.energy_stored")
 				.style(ChatFormatting.WHITE)
 				.forGoggles(tooltip);
 
-		Lang.translate("tooltip.create_better_motors.energy_storage",
+		CreateLang.translate("tooltip.create_better_motors.energy_storage",
 						StringFormattingTool.formatLong(energy.getEnergyStored()),
 						StringFormattingTool.formatLong(energy.getMaxEnergyStored()))
 				.style(ChatFormatting.AQUA)
@@ -80,7 +81,7 @@ public class AlternatorBlockEntity extends KineticBlockEntity {
 	}
 
 	public boolean isEnergyOutput(Direction side) {
-		return true; //side != getBlockState().getValue(AlternatorBlock.FACING);
+		return true;
 	}
 
 	@Override
@@ -167,6 +168,7 @@ public class AlternatorBlockEntity extends KineticBlockEntity {
 			setCache(side, le);
 		}
 	}
+
 	public void setCache(Direction side, LazyOptional<IEnergyStorage> storage) {
 	}
 	public IEnergyStorage getCachedEnergy(Direction side) {

@@ -83,7 +83,7 @@
   "create_better_motors.ponder.wires.text_1": "Wires are used to transfer energy from one place to another",
   "create_better_motors.ponder.wires.text_2": "This block automatically pushes its energy to neighboring blocks. But what if it didn't do that?",
   "create_better_motors.ponder.wires.text_3": "Connector can pull energy from the block it stands on when 'Pull' mode is enabled. Modes are switched with a wrench",
-  "create_better_motors.ponder.wires.text_4": "Note that 'Pull' mode is only for compatibility with other mods and can't be used to extract energy from motor internal storage",
+
 
 
   "create_better_motors.ponder.motor.header": "Motors!",

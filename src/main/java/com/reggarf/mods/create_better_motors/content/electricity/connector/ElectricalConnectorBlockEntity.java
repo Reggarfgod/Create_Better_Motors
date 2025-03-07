@@ -3,10 +3,12 @@ package com.reggarf.mods.create_better_motors.content.electricity.connector;
 import com.reggarf.mods.create_better_motors.content.electricity.network.ElectricalNetwork;
 import com.reggarf.mods.create_better_motors.content.electricity.network.NetworkEnergyContainer;
 import com.reggarf.mods.create_better_motors.content.electricity.wire.WireType;
-import com.simibubi.create.content.equipment.goggles.IHaveGoggleInformation;
-import com.simibubi.create.foundation.utility.Lang;
-import com.simibubi.create.foundation.utility.NBTHelper;
+
+
+import com.simibubi.create.api.equipment.goggles.IHaveGoggleInformation;
+import com.simibubi.create.foundation.utility.CreateLang;
 import earth.terrarium.botarium.common.energy.base.BotariumEnergyBlock;
+import net.createmod.catnip.nbt.NBTHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
@@ -109,15 +111,15 @@ public class ElectricalConnectorBlockEntity extends BlockEntity implements Botar
 
     @Override
     public boolean addToGoggleTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
-        Lang.translate("tooltip.create_better_motors.connector_info")
+        CreateLang.translate("tooltip.create_better_motors.connector_info")
                 .style(ChatFormatting.WHITE).forGoggles(tooltip);
-        
-        Lang.translate("tooltip.create_better_motors.mode")
+
+        CreateLang.translate("tooltip.create_better_motors.mode")
                 .style(ChatFormatting.GRAY)
                 .forGoggles(tooltip);
         
         ElectricalConnectorMode mode = getBlockState().getValue(ElectricalConnectorBlock.MODE);
-        Lang.translate("tooltip.create_better_motors.connector_mode." + mode.getSerializedName())
+        CreateLang.translate("tooltip.create_better_motors.connector_mode." + mode.getSerializedName())
                 .style(ChatFormatting.AQUA)
                 .forGoggles(tooltip, 1);
         

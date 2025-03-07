@@ -9,9 +9,11 @@ import com.reggarf.mods.create_better_motors.tools.StringFormattingTool;
 import com.simibubi.create.content.kinetics.base.DirectionalKineticBlock;
 import com.simibubi.create.content.kinetics.base.IRotate;
 import com.simibubi.create.foundation.block.IBE;
-import com.simibubi.create.foundation.utility.Lang;
-import com.simibubi.create.foundation.utility.VoxelShaper;
+import com.simibubi.create.foundation.utility.CreateLang;
 
+
+
+import net.createmod.catnip.math.VoxelShaper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -34,7 +36,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class AlternatorBlock extends DirectionalKineticBlock implements IBE<AlternatorBlockEntity>, IRotate {
-	
+
 	public static final VoxelShaper ALTERNATOR_SHAPE = CBMShapes.shape(
 			0,
 			1.5,
@@ -49,15 +51,15 @@ public class AlternatorBlock extends DirectionalKineticBlock implements IBE<Alte
 	}
 @Override
 public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> tooltip, TooltipFlag flag) {
-    tooltip.add(Lang.translate("tooltip.create_better_motors.generates").style(ChatFormatting.GRAY)
+    tooltip.add(CreateLang.translate("tooltip.create_better_motors.generates").style(ChatFormatting.GRAY)
             .component());
 
-	tooltip.add(Lang.text(" ").add(Lang.number(CBMConfig.getCommon().FE_RPM.get() * CBMConfig.getCommon().ALTERNATOR_EFFICIENCY.get()).text(" ")
+	tooltip.add(CreateLang.text(" ").add(CreateLang.number(CBMConfig.getCommon().FE_RPM.get() * CBMConfig.getCommon().ALTERNATOR_EFFICIENCY.get()).text(" ")
 			.translate("tooltip.create_better_motors.energy_per_tick").style(ChatFormatting.AQUA)).component());
 
-	tooltip.add(Lang.translate("tooltip.create_better_motors.stores").style(ChatFormatting.GRAY)
+	tooltip.add(CreateLang.translate("tooltip.create_better_motors.stores").style(ChatFormatting.GRAY)
 			.component());
-	tooltip.add(Lang.text(" ").translate("tooltip.create_better_motors.energy",
+	tooltip.add(CreateLang.text(" ").translate("tooltip.create_better_motors.energy",
 			StringFormattingTool.formatLong(CBMConfig.getCommon().ALTERNATOR_CAPACITY.get())).style(ChatFormatting.AQUA).component());
 
 }

@@ -21,7 +21,7 @@ public abstract class BaseElectricBlockEntity extends SmartBlockEntity {
 	protected LazyOptional<IEnergyStorage> lazyEnergy;
 
 	private boolean firstTickState = true;
-	// protected final int CAPACITY, MAX_IN, MAX_OUT;
+
 
 	public BaseElectricBlockEntity(BlockEntityType<?> tileEntityTypeIn, BlockPos pos, BlockState state) {
 		super(tileEntityTypeIn, pos, state);

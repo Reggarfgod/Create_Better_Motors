@@ -2,17 +2,19 @@ package com.reggarf.mods.create_better_motors.content.multimeter;
 
 import com.reggarf.mods.create_better_motors.util.GaugeObservedPacket;
 import com.reggarf.mods.create_better_motors.util.Packets;
-import com.simibubi.create.content.equipment.goggles.IHaveGoggleInformation;
+
+import com.simibubi.create.api.equipment.goggles.IHaveGoggleInformation;
 import com.simibubi.create.content.kinetics.base.IRotate;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 
 import com.simibubi.create.foundation.advancement.AllAdvancements;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import com.simibubi.create.foundation.item.TooltipHelper;
-import com.simibubi.create.foundation.utility.Color;
-import com.simibubi.create.foundation.utility.Lang;
-import com.simibubi.create.foundation.utility.LangBuilder;
+
+import com.simibubi.create.foundation.utility.CreateLang;
 import com.simibubi.create.infrastructure.config.AllConfigs;
+import net.createmod.catnip.lang.LangBuilder;
+import net.createmod.catnip.theme.Color;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -132,10 +134,12 @@ public class MultiMeterBlockEntity extends KineticBlockEntity implements IHaveGo
     public boolean addToGoggleTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
         if (!IRotate.StressImpact.isEnabled())
             return false;
+        CreateLang.translate("gui.gauge.info_header")
+                .style(ChatFormatting.WHITE)
+                .forGoggles(tooltip);
+        //tooltip.add(ComponentSpacing.plainCopy().append(CreateLang.translateDirect("gui.gauge.info_header")));
 
-        tooltip.add(componentSpacing.plainCopy().append(Lang.translateDirect("gui.gauge.info_header")));
-
-        Lang.translate("gui.speedometer.title")
+        CreateLang.translate("gui.speedometer.title")
                 .style(ChatFormatting.GRAY)
                 .forGoggles(tooltip);
         IRotate.SpeedLevel.getFormattedSpeedText(speed, isOverStressed())
@@ -145,33 +149,33 @@ public class MultiMeterBlockEntity extends KineticBlockEntity implements IHaveGo
         double capacity = getNetworkCapacity();
         double stressFraction = getNetworkStress() / (capacity == 0 ? 1 : capacity);
 
-        Lang.translate("gui.stressometer.title")
+        CreateLang.translate("gui.stressometer.title")
                 .style(ChatFormatting.GRAY)
                 .forGoggles(tooltip);
 
         if (getTheoreticalSpeed() == 0)
-            Lang.text(TooltipHelper.makeProgressBar(3, 0))
+            CreateLang.text(TooltipHelper.makeProgressBar(3, 0))
                     .translate("gui.stressometer.no_rotation")
                     .style(ChatFormatting.DARK_GRAY)
                     .forGoggles(tooltip);
         else {
             IRotate.StressImpact.getFormattedStressText(stressFraction)
                     .forGoggles(tooltip);
-            Lang.translate("gui.stressometer.capacity")
+            CreateLang.translate("gui.stressometer.capacity")
                     .style(ChatFormatting.GRAY)
                     .forGoggles(tooltip);
 
             double remainingCapacity = capacity - getNetworkStress();
 
-            LangBuilder su = Lang.translate("generic.unit.stress");
-            LangBuilder stressTip = Lang.number(remainingCapacity)
+            LangBuilder su = CreateLang.translate("generic.unit.stress");
+            LangBuilder stressTip = CreateLang.number(remainingCapacity)
                     .add(su)
                     .style(IRotate.StressImpact.of(stressFraction)
                             .getRelativeColor());
 
             if (remainingCapacity != capacity)
                 stressTip.text(ChatFormatting.GRAY, " / ")
-                        .add(Lang.number(capacity)
+                        .add(CreateLang.number(capacity)
                                 .add(su)
                                 .style(ChatFormatting.DARK_GRAY));
 

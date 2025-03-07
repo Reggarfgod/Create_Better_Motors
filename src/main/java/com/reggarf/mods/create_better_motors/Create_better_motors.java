@@ -1,14 +1,15 @@
 package com.reggarf.mods.create_better_motors;
 
-import com.reggarf.mods.create_better_motors.util.AccumulatorData;
-import com.reggarf.mods.create_better_motors.content.electricity.network.CBMPackets;
-import com.reggarf.mods.create_better_motors.util.MotorNetworkHandler;
+
+
 import com.reggarf.mods.create_better_motors.registry.CBMClientIniter;
 import com.reggarf.mods.create_better_motors.registry.CBMBlockEntityTypes;
 import com.reggarf.mods.create_better_motors.registry.CBMBlocks;
 import com.reggarf.mods.create_better_motors.registry.CBMItems;
 import com.reggarf.mods.create_better_motors.tools.CBMContainerTypes;
-import com.simibubi.create.content.contraptions.ContraptionMovementSetting;
+
+import com.simibubi.create.api.boiler.BoilerHeater;
+import com.simibubi.create.api.contraption.ContraptionMovementSetting;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -38,8 +39,8 @@ public class Create_better_motors {
     public static final String MOD_ID = "create_better_motors";
 
     public static final CreateRegistrate BASE_REGISTRATE = CreateRegistrate.create(MOD_ID);
-    public static final MotorNetworkHandler MOTOR_LINK_NETWORK_HANDLER = new MotorNetworkHandler();
-    public static AccumulatorData BATTERIES_DATA;
+    //public static final MotorNetworkHandler MOTOR_LINK_NETWORK_HANDLER = new MotorNetworkHandler();
+    //public static AccumulatorData BATTERIES_DATA;
 
     private static DeferredRegister<CreativeModeTab> TAB_REGISTRAR = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MOD_ID);
     public static final RegistryObject<CreativeModeTab> tab = TAB_REGISTRAR.register("create_better_motors_tab",
@@ -76,17 +77,17 @@ public class Create_better_motors {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::generalSetup);
 
 
-        modEventBus.addListener(Create_better_motors::init);
-        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () ->
-                CBMClient.onCtorClient(modEventBus, forgeEventBus)
-        );
+        //modEventBus.addListener(Create_better_motors::init);
+//        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () ->
+//                CBMClient.onCtorClient(modEventBus, forgeEventBus)
+//        );
 
     }
 
 
-    public static void init(final FMLCommonSetupEvent event) {
-        CBMPackets.registerPackets();
-    }
+   // public static void init(final FMLCommonSetupEvent event) {
+      //  CBMPackets.registerPackets();
+   // }
 
     public static ResourceLocation asResource(String path) {
         return new ResourceLocation(MOD_ID, path);
@@ -94,7 +95,10 @@ public class Create_better_motors {
 
     private void generalSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-            ContraptionMovementSetting.register(CBMBlocks.ELECTRICAL_CONNECTOR.get(), () -> ContraptionMovementSetting.UNMOVABLE);
+
+            ContraptionMovementSetting.REGISTRY.register(CBMBlocks.ELECTRICAL_CONNECTOR.get(), () -> ContraptionMovementSetting.UNMOVABLE);
+
         });
     }
+
 }

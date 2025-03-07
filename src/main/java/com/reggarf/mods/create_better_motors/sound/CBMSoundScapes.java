@@ -2,10 +2,11 @@ package com.reggarf.mods.create_better_motors.sound;
 
 
 
+import com.ibm.icu.impl.Pair;
 import com.reggarf.mods.create_better_motors.registry.CBMSounds;
-import com.simibubi.create.foundation.utility.AnimationTickHolder;
-import com.simibubi.create.foundation.utility.Pair;
+
 import com.simibubi.create.infrastructure.config.AllConfigs;
+import net.createmod.catnip.animation.AnimationTickHolder;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
@@ -43,27 +44,30 @@ public class CBMSoundScapes {
 
 		if (!outOfRange(pos)) addSound(group, pos, pitch);
 	}
-	public static void tick() {
-		activeSounds.values()
-			.forEach(CBMSoundScape::tick);
-		if (AnimationTickHolder.getTicks() % UPDATE_INTERVAL != 0) return;
-		boolean disable = !AllConfigs.client().enableAmbientSounds.get();
-		for (Iterator<Map.Entry<Pair<AmbienceGroup, PitchGroup>, CBMSoundScape>> iterator = activeSounds.entrySet()
-			.iterator(); iterator.hasNext();) {
-
-			Map.Entry<Pair<AmbienceGroup, PitchGroup>, CBMSoundScape> entry = iterator.next();
-			Pair<AmbienceGroup, PitchGroup> key = entry.getKey();
-			CBMSoundScape value = entry.getValue();
-
-			if (disable || getSoundCount(key.getFirst(), key.getSecond()) == 0) {
-				value.remove();
-				iterator.remove();
-			}
-		}
-		counter.values()
-			.forEach(m -> m.values()
-				.forEach(Set::clear));
-	}
+//	public static void tick() {
+//		activeSounds.values()
+//				.forEach(CBMSoundScape::tick);
+//
+//		if (AnimationTickHolder.getTicks() % UPDATE_INTERVAL != 0) return;
+//
+//		boolean disable = !AllConfigs.client().enableAmbientSounds.get();
+//		for (Iterator<Map.Entry<Pair<AmbienceGroup, PitchGroup>, CBMSoundScape>> iterator = activeSounds.entrySet()
+//				.iterator(); iterator.hasNext();) {
+//
+//			Map.Entry<Pair<AmbienceGroup, PitchGroup>, CBMSoundScape> entry = iterator.next();
+//			Pair<AmbienceGroup, PitchGroup> key = entry.getKey();
+//			CBMSoundScape value = entry.getValue();
+//
+//			if (disable || getSoundCount(key.getFirst(), key.getSecond()) == 0) {
+//				value.remove();
+//				iterator.remove();
+//			}
+//		}
+//
+//		counter.values()
+//				.forEach(m -> m.values()
+//						.forEach(Set::clear));
+//	}
 	private static void addSound(AmbienceGroup group, BlockPos pos, float pitch) {
 		PitchGroup groupFromPitch = getGroupFromPitch(pitch);
 		Set<BlockPos> set = counter.computeIfAbsent(group, ag -> new IdentityHashMap<>())

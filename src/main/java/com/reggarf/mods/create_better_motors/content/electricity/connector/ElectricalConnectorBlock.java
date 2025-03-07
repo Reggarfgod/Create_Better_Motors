@@ -2,10 +2,8 @@ package com.reggarf.mods.create_better_motors.content.electricity.connector;
 
 import com.reggarf.mods.create_better_motors.registry.CBMBlockEntityTypes;
 import com.reggarf.mods.create_better_motors.registry.CBMBlocks;
-import com.reggarf.mods.create_better_motors.registry.CBMShapes;
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
 import com.simibubi.create.foundation.block.IBE;
-import com.simibubi.create.foundation.utility.VoxelShaper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -96,7 +94,7 @@ public class ElectricalConnectorBlock extends DirectionalBlock implements IBE<El
             if (world.getBlockEntity(context.getClickedPos()) instanceof ElectricalConnectorBlockEntity connector)
                 connector.getNetwork().updateConsumersAndSources();
             
-            playRotateSound(world, context.getClickedPos());
+            //playRotateSound(world, context.getClickedPos());
             
             return InteractionResult.SUCCESS;
         }

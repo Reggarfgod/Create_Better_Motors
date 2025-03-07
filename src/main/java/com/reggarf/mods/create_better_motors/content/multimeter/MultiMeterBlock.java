@@ -4,10 +4,11 @@ import com.reggarf.mods.create_better_motors.registry.CBMBlockEntityTypes;
 import com.simibubi.create.content.kinetics.base.DirectionalAxisKineticBlock;
 import com.simibubi.create.content.kinetics.base.IRotate;
 import com.simibubi.create.foundation.block.IBE;
-import com.simibubi.create.foundation.utility.Color;
-import com.simibubi.create.foundation.utility.Iterate;
-import com.simibubi.create.foundation.utility.VecHelper;
-import com.simibubi.create.foundation.utility.worldWrappers.WrappedWorld;
+
+import net.createmod.catnip.data.Iterate;
+import net.createmod.catnip.levelWrappers.WrappedLevel;
+import net.createmod.catnip.math.VecHelper;
+import net.createmod.catnip.theme.Color;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.DustParticleOptions;
@@ -49,7 +50,7 @@ public class MultiMeterBlock extends DirectionalAxisKineticBlock implements IBE<
             return false;
         if (getRotationAxis(state) == Direction.Axis.Y && face != state.getValue(FACING))
             return false;
-        return Block.shouldRenderFace(state, world, pos, face, pos.relative(face)) || world instanceof WrappedWorld;
+        return Block.shouldRenderFace(state, world, pos, face, pos.relative(face)) || world instanceof WrappedLevel;
     }
     @Override
     protected Direction getFacingForPlacement(BlockPlaceContext context) {

@@ -87,7 +87,7 @@ public class CommonConfig {
                 .defineInRange("generator_max_output", 5000, 0, Integer.MAX_VALUE);
 
         ALTERNATOR_CAPACITY = builder.comment("Alternator internal capacity in ⚡.")
-                .defineInRange("generator_capacity", 50000, 0, Integer.MAX_VALUE);
+                .defineInRange("generator_capacity", 10000, 0, Integer.MAX_VALUE);
 
         ALTERNATOR_EFFICIENCY = builder.comment("Alternator efficiency relative to base conversion rate.")
                 .defineInRange("generator_efficiency", .90, 0.01d, 3.0d);

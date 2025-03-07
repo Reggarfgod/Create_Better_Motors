@@ -1,7 +1,7 @@
 package com.reggarf.mods.create_better_motors.events;
 
 
-import com.reggarf.mods.create_better_motors.tools.voidlink.Renderer;
+
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.TickEvent;
@@ -11,11 +11,11 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(Dist.CLIENT)
 public class CBMClientEvents {
 
-	@SubscribeEvent
-	public static void onTick(TickEvent.ClientTickEvent event) {
-		if (!isGameActive()) return;
-		Renderer.tick();
-	}
+//	@SubscribeEvent
+//	public static void onTick(TickEvent.ClientTickEvent event) {
+//		if (!isGameActive()) return;
+//		Renderer.tick();
+//	}
 
 	protected static boolean isGameActive() {
 		return !(Minecraft.getInstance().level == null || Minecraft.getInstance().player == null);
