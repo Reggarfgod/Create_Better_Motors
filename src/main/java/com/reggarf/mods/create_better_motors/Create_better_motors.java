@@ -90,7 +90,7 @@ public class Create_better_motors {
    // }
 
     public static ResourceLocation asResource(String path) {
-        return new ResourceLocation(MOD_ID, path);
+        return new ResourceLocation(Create_better_motors.MOD_ID, path);
     }
 
     private void generalSetup(final FMLCommonSetupEvent event) {
