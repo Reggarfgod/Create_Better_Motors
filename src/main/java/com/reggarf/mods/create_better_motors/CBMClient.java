@@ -17,39 +17,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 public class CBMClient {
 
-//    public static final StorageClient<Accumulator> BATTERIES = new StorageClient<>(
-//            Accumulator::new);
-//    public static void onCtorClient(IEventBus modEventBus, IEventBus forgeEventBus) {
-//        CBMPartialsModels.init();
-//    }
-
     public static void onInitializeClient(final FMLClientSetupEvent event) {
         PonderIndex.addPlugin(new CECPonderPlugin());
-
-
-//        PonderSceneRegistrationHelper<ItemProviderEntry<?>> HELPER = helper.withKeyFunction(RegistryEntry::getId);
-//        // ponders
-//
-//
-//        HELPER.addStoryBoard(CBMBlocks.ELECTRICAL_CONNECTOR, "wires", ElectricityPonder::ponder);
-//        HELPER.addStoryBoard(CBMItems.COPPER_WIRE, "wires", ElectricityPonder::ponder);
-//        HELPER.addStoryBoard(CBMItems.DIAMOND_WIRE, "wires", ElectricityPonder::ponder);
-//        HELPER.addStoryBoard(CBMItems.GOLDEN_WIRE, "wires", ElectricityPonder::ponder);
-//        HELPER.addStoryBoard(CBMItems.IRON_WIRE, "wires", ElectricityPonder::ponder);
-//
-//
-//        HELPER.forComponents(CBMBlocks.STARTER_MOTOR,
-//                        CBMBlocks.BASIC_MOTOR,
-//                        CBMBlocks.HARDENED_MOTOR,
-//                        CBMBlocks.BLAZING_MOTOR,
-//                        CBMBlocks.NIOTIC_MOTOR,
-//                        CBMBlocks.SPIRITED_MOTOR,
-//                        CBMBlocks.NITRO_MOTOR)
-//                .addStoryBoard("motor", MotorPonder::motor);
-//        HELPER.forComponents(CBMBlocks.ALTERNATOR)
-//                .addStoryBoard("alternator", AlternatorPonder::alternator);
-
-        // ToolTip
 
         ModContainer modContainer = ModList.get()
                 .getModContainerById(Create_better_motors.MOD_ID)

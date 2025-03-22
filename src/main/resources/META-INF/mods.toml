@@ -27,7 +27,7 @@ displayURL="https://www.curseforge.com/members/reggarf/projects" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
 logoFile="create_better_motors.png" #optional
 # A text field displayed in the mod UI
-credits="This mod includes code and features inspired by the following mods: Create: New Age by nullBlade ( https://www.curseforge.com/minecraft/mc-mods/create-new-age ) and Create Utilities by duquee___ ( https://www.curseforge.com/minecraft/mc-mods/createutilities ) Huge thanks to the creators of these mods for their contributions to the Create Mod community! If you enjoy my mod, consider checking out their amazing work as well."
+credits=""
 
 # A text field displayed in the mod UI
 authors = "${mod_authors}" #optional
@@ -70,12 +70,12 @@ versionRange="[6.0.1,)"
 ordering="AFTER"
 side="BOTH"
 
-[[dependencies."${mod_id}"]]
-modId="botarium"
-mandatory=true
-versionRange="[2.3.4,)"
-ordering="AFTER"
-side="BOTH"
+#[[dependencies."${mod_id}"]]
+#modId="botarium"
+#mandatory=true
+#versionRange="[2.3.4,)"
+#ordering="AFTER"
+#side="BOTH"
 
 [[dependencies."${mod_id}"]]
 modId="create_extra_casing"

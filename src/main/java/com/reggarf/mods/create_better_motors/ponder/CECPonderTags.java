@@ -29,19 +29,19 @@ public class CECPonderTags {
                 CatnipServices.REGISTRIES::getKeyOrThrow);
 
         HELPER.addToTag(KINETIC_SOURCES)
-                .add(CBMBlocks.ELECTRICAL_CONNECTOR)
-                .add(CBMItems.COPPER_WIRE)
-                .add(CBMItems.DIAMOND_WIRE)
-                .add(CBMItems.GOLDEN_WIRE)
-                .add(CBMItems.IRON_WIRE)
+//                .add(CBMBlocks.ELECTRICAL_CONNECTOR)
+//                .add(CBMItems.COPPER_WIRE)
+//                .add(CBMItems.DIAMOND_WIRE)
+//                .add(CBMItems.GOLDEN_WIRE)
+//                .add(CBMItems.IRON_WIRE)
                 .add(CBMBlocks.STARTER_MOTOR)
-                .add(CBMBlocks.BASIC_MOTOR)
-                .add(CBMBlocks.HARDENED_MOTOR)
-                .add(CBMBlocks.BLAZING_MOTOR)
-                .add(CBMBlocks.NIOTIC_MOTOR)
-                .add(CBMBlocks.SPIRITED_MOTOR)
-                .add(CBMBlocks.NITRO_MOTOR)
-                .add(CBMBlocks.ALTERNATOR)
+//                .add(CBMBlocks.BASIC_MOTOR)
+//                .add(CBMBlocks.HARDENED_MOTOR)
+//                .add(CBMBlocks.BLAZING_MOTOR)
+//                .add(CBMBlocks.NIOTIC_MOTOR)
+//                .add(CBMBlocks.SPIRITED_MOTOR)
+//                .add(CBMBlocks.NITRO_MOTOR)
+//                .add(CBMBlocks.ALTERNATOR)
         ;
 
         }

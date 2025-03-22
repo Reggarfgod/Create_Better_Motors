@@ -7,204 +7,252 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber
 public class CommonConfig {
+    //public static final String CATAGORY_GENERAL = "general";
+    public static final String CATAGORY_STARTER_MOTOR = "starter_motor";
+    public static final String CATAGORY_BASIC_MOTOR = "basic_motor";
+    public static final String CATAGORY_HARDENED_MOTOR = "hardened_motor";
+    public static final String CATAGORY_BLAZING_MOTOR = "blazing_motor";
+    public static final String CATAGORY_NIOTIC_MOTOR = "niotic_motor";
+    public static final String CATAGORY_SPIRITED_MOTOR = "spirited_motor";
+    public static final String CATAGORY_NITRO_MOTOR = "nitro_motor";
+    public static final String CATAGORY_WIRES = "wires";
 
-    public static final String CATAGORY_ALTERNATOR = "alternator";
-    public static final String CATAGORY_BASIC = "basic motor";
-    public static final String CATAGORY_STARTER = "starter motor";
-    public static final String CATAGORY_HARDENED = "hardened motor";
-    public static final String CATAGORY_BLAZING = "blazing motor";
-    public static final String CATAGORY_NIOTIC = "niotic motor";
-    public static final String CATAGORY_SPIRITED = "spirited motor";
-    public static final String CATAGORY_NITRO = "nitro motor";
-    public static final String ACCUMULATOR = "accumulator";
+//    public static ForgeConfigSpec.IntValue FE_RPM;
+//    public static ForgeConfigSpec.IntValue MAX_STRESS;
+//
+//    public static ForgeConfigSpec.BooleanValue AUDIO_ENABLED;
+//
+//    public static ForgeConfigSpec.IntValue ALTERNATOR_MAX_OUTPUT;
+//    public static ForgeConfigSpec.IntValue ALTERNATOR_CAPACITY;
+//    public static ForgeConfigSpec.DoubleValue ALTERNATOR_EFFICIENCY;
+//
+    public static ForgeConfigSpec.IntValue HEAVY_CONNECTOR_MAX_INPUT;
+    public static ForgeConfigSpec.IntValue HEAVY_CONNECTOR_MAX_OUTPUT;
+    public static ForgeConfigSpec.IntValue HEAVY_CONNECTOR_MAX_LENGTH;
 
-    public static ForgeConfigSpec.IntValue FE_RPM;
-    public static ForgeConfigSpec.IntValue MAX_STRESS;
+    public static ForgeConfigSpec.IntValue STARTER_ELECTRIC_MOTOR_RPM_RANGE;
+    public static ForgeConfigSpec.IntValue STARTER_ELECTRIC_MOTOR_MAX_INPUT;
+    public static ForgeConfigSpec.IntValue STARTER_ELECTRIC_MOTOR_MINIMUM_CONSUMPTION;
+    public static ForgeConfigSpec.IntValue STARTER_ELECTRIC_MOTOR_CAPACITY;
+    public static ForgeConfigSpec.IntValue STARTER_FE_RPM;
+    public static ForgeConfigSpec.IntValue STARTER_MAX_STRESS;
+    public static ForgeConfigSpec.BooleanValue STARTER_AUDIO_ENABLED;
 
-    public static ForgeConfigSpec.BooleanValue AUDIO_ENABLED;
+    public static ForgeConfigSpec.IntValue BASIC_ELECTRIC_MOTOR_RPM_RANGE;
+    public static ForgeConfigSpec.IntValue BASIC_ELECTRIC_MOTOR_MAX_INPUT;
+    public static ForgeConfigSpec.IntValue BASIC_ELECTRIC_MOTOR_MINIMUM_CONSUMPTION;
+    public static ForgeConfigSpec.IntValue BASIC_ELECTRIC_MOTOR_CAPACITY;
+    public static ForgeConfigSpec.IntValue BASIC_FE_RPM;
+    public static ForgeConfigSpec.IntValue BASIC_MAX_STRESS;
+    public static ForgeConfigSpec.BooleanValue BASIC_AUDIO_ENABLED;
 
-    public static ForgeConfigSpec.IntValue ALTERNATOR_MAX_OUTPUT;
-    public static ForgeConfigSpec.IntValue ALTERNATOR_CAPACITY;
-    public static ForgeConfigSpec.DoubleValue ALTERNATOR_EFFICIENCY;
+    public static ForgeConfigSpec.IntValue HARDENED_ELECTRIC_MOTOR_RPM_RANGE;
+    public static ForgeConfigSpec.IntValue HARDENED_ELECTRIC_MOTOR_MAX_INPUT;
+    public static ForgeConfigSpec.IntValue HARDENED_ELECTRIC_MOTOR_MINIMUM_CONSUMPTION;
+    public static ForgeConfigSpec.IntValue HARDENED_ELECTRIC_MOTOR_CAPACITY;
+    public static ForgeConfigSpec.IntValue HARDENED_FE_RPM;
+    public static ForgeConfigSpec.IntValue HARDENED_MAX_STRESS;
+    public static ForgeConfigSpec.BooleanValue HARDENED_AUDIO_ENABLED;
 
-    public final ForgeConfigSpec.ConfigValue<Integer> CAPACITY;
-    public final ForgeConfigSpec.ConfigValue<Integer> MAX_RECEIVE;
-    public final ForgeConfigSpec.ConfigValue<Integer> MAX_EXTRACT;
+    public static ForgeConfigSpec.IntValue BLAZING_ELECTRIC_MOTOR_RPM_RANGE;
+    public static ForgeConfigSpec.IntValue BLAZING_ELECTRIC_MOTOR_MAX_INPUT;
+    public static ForgeConfigSpec.IntValue BLAZING_ELECTRIC_MOTOR_MINIMUM_CONSUMPTION;
+    public static ForgeConfigSpec.IntValue BLAZING_ELECTRIC_MOTOR_CAPACITY;
+    public static ForgeConfigSpec.IntValue BLAZING_FE_RPM;
+    public static ForgeConfigSpec.IntValue BLAZING_MAX_STRESS;
+    public static ForgeConfigSpec.BooleanValue BLAZING_AUDIO_ENABLED;
 
-    public final ForgeConfigSpec.ConfigValue<Double> suToEnergy;
+    public static ForgeConfigSpec.IntValue NIOTIC_ELECTRIC_MOTOR_RPM_RANGE;
+    public static ForgeConfigSpec.IntValue NIOTIC_ELECTRIC_MOTOR_MAX_INPUT;
+    public static ForgeConfigSpec.IntValue NIOTIC_ELECTRIC_MOTOR_MINIMUM_CONSUMPTION;
+    public static ForgeConfigSpec.IntValue NIOTIC_ELECTRIC_MOTOR_CAPACITY;
+    public static ForgeConfigSpec.IntValue NIOTIC_FE_RPM;
+    public static ForgeConfigSpec.IntValue NIOTIC_MAX_STRESS;
+    public static ForgeConfigSpec.BooleanValue NIOTIC_AUDIO_ENABLED;
 
-    public final ForgeConfigSpec.ConfigValue<Double> conductivityMultiplier;
-    public final ForgeConfigSpec.ConfigValue<Integer> maxPathfindingDepth;
-    public final ForgeConfigSpec.ConfigValue<Integer> maxWireLength;
-    public final ForgeConfigSpec.ConfigValue<Double> motorSUMultiplier;
-    public final ForgeConfigSpec.ConfigValue<Integer> starterMotorCapacity;
-    public final ForgeConfigSpec.ConfigValue<Double> starterMotorStress;
-    public final ForgeConfigSpec.ConfigValue<Double> starterMotorSpeed;
-    public final ForgeConfigSpec.ConfigValue<Integer> blazingMotorCapacity;
-    public final ForgeConfigSpec.ConfigValue<Double> blazingMotorStress;
-    public final ForgeConfigSpec.ConfigValue<Double> blazingMotorSpeed;
-    public final ForgeConfigSpec.ConfigValue<Integer> basicMotorCapacity;
-    public final ForgeConfigSpec.ConfigValue<Double> basicMotorStress;
-    public final ForgeConfigSpec.ConfigValue<Double> basicMotorSpeed;
-    public final ForgeConfigSpec.ConfigValue<Integer> hardenedMotorCapacity;
-    public final ForgeConfigSpec.ConfigValue<Double> hardenedMotorStress;
-    public final ForgeConfigSpec.ConfigValue<Double> hardenedMotorSpeed;
-    public final ForgeConfigSpec.ConfigValue<Integer> nioticMotorCapacity;
-    public final ForgeConfigSpec.ConfigValue<Double> nioticMotorStress;
-    public final ForgeConfigSpec.ConfigValue<Double> nioticMotorSpeed;
-    public final ForgeConfigSpec.ConfigValue<Integer> spiritedMotorCapacity;
-    public final ForgeConfigSpec.ConfigValue<Double> spiritedMotorStress;
-    public final ForgeConfigSpec.ConfigValue<Double> spiritedMotorSpeed;
-    public final ForgeConfigSpec.ConfigValue<Integer> nitroMotorCapacity;
-    public final ForgeConfigSpec.ConfigValue<Double> nitroMotorStress;
-    public final ForgeConfigSpec.ConfigValue<Double> nitroMotorSpeed;
+
+    public static ForgeConfigSpec.IntValue SPIRITED_ELECTRIC_MOTOR_RPM_RANGE;
+    public static ForgeConfigSpec.IntValue SPIRITED_ELECTRIC_MOTOR_MAX_INPUT;
+    public static ForgeConfigSpec.IntValue SPIRITED_ELECTRIC_MOTOR_MINIMUM_CONSUMPTION;
+    public static ForgeConfigSpec.IntValue SPIRITED_ELECTRIC_MOTOR_CAPACITY;
+    public static ForgeConfigSpec.IntValue SPIRITED_FE_RPM;
+    public static ForgeConfigSpec.IntValue SPIRITED_MAX_STRESS;
+    public static ForgeConfigSpec.BooleanValue SPIRITED_AUDIO_ENABLED;
+
+    public static ForgeConfigSpec.IntValue NITRO_ELECTRIC_MOTOR_RPM_RANGE;
+    public static ForgeConfigSpec.IntValue NITRO_ELECTRIC_MOTOR_MAX_INPUT;
+    public static ForgeConfigSpec.IntValue NITRO_ELECTRIC_MOTOR_MINIMUM_CONSUMPTION;
+    public static ForgeConfigSpec.IntValue NITRO_ELECTRIC_MOTOR_CAPACITY;
+    public static ForgeConfigSpec.IntValue NITRO_FE_RPM;
+    public static ForgeConfigSpec.IntValue NITRO_MAX_STRESS;
+    public static ForgeConfigSpec.BooleanValue NITRO_AUDIO_ENABLED;
 
     public CommonConfig(ForgeConfigSpec.Builder builder) {
+        builder.comment("Wires").push(CATAGORY_WIRES);
 
-        suToEnergy = builder
-                .comment(
-                        "Responsible for how much energy is generated per 1 stress unit in a tick",
-                        "Default value is supposed to be compatible with default configuration of Create: Better Motors"
-                ).defineInRange("suToEnergy", 0.029296875, 0, Double.MAX_VALUE);
+        HEAVY_CONNECTOR_MAX_INPUT = builder.comment("Large Connector max input in FE/t (Energy transfer).")
+                .defineInRange("large_connector_max_input", 90000, 0, Integer.MAX_VALUE);
 
-        conductivityMultiplier = builder
-                .comment("Multiplier of wire conductivity")
-                .defineInRange("conductivityMultiplier", 1.0, 0, Double.MAX_VALUE);
+        HEAVY_CONNECTOR_MAX_OUTPUT = builder.comment("Large Connector max output in FE/t (Energy transfer).")
+                .defineInRange("large_connector_max_output", 90000, 0, Integer.MAX_VALUE);
 
-        maxPathfindingDepth = builder
-                .comment("Maximum depth of network pathfinding")
-                .defineInRange("maxPathfindingDepth", 32, 1, Integer.MAX_VALUE);
+        HEAVY_CONNECTOR_MAX_LENGTH = builder.comment("Large Connector max wire length in blocks.")
+                .defineInRange("large_connector_wire_length", 48, 0, 256);
+        builder.pop();
 
-        maxWireLength = builder
-                .comment("Maximum wire length")
-                .defineInRange("maxWireLength", 16, 1, Integer.MAX_VALUE);
+        builder.comment("Starter Motor").push(CATAGORY_STARTER_MOTOR);
+        STARTER_ELECTRIC_MOTOR_RPM_RANGE = builder.comment("Electric Motor min/max RPM.")
+                .defineInRange("motor_rpm_range", 256, 1, Integer.MAX_VALUE);
 
-        builder.comment("Make sure config changes are duplicated on both Clients and the Server when running a dedicated Server,")
-                .comment(" as the config isnt synced between Clients and Server.");
+        STARTER_ELECTRIC_MOTOR_MINIMUM_CONSUMPTION = builder.comment("Electric Motor minimum required energy consumption in FE/t.")
+                .defineInRange("motor_min_consumption", 8, 0, Integer.MAX_VALUE);
 
-        builder.comment("Alternator").push(CATAGORY_ALTERNATOR);
-        ALTERNATOR_MAX_OUTPUT = builder.comment("Alternator max input in ⚡ (Energy transfer, not generation).")
-                .defineInRange("generator_max_output", 5000, 0, Integer.MAX_VALUE);
+        STARTER_ELECTRIC_MOTOR_MAX_INPUT = builder.comment("Electric Motor max input in FE (Energy transfer not consumption).")
+                .defineInRange("motor_max_input", 80000, 0, Integer.MAX_VALUE);
 
-        ALTERNATOR_CAPACITY = builder.comment("Alternator internal capacity in ⚡.")
-                .defineInRange("generator_capacity", 10000, 0, Integer.MAX_VALUE);
+        STARTER_ELECTRIC_MOTOR_CAPACITY = builder.comment("Electric Motor internal capacity in FE.")
+                .defineInRange("motor_capacity", 100000, 0, Integer.MAX_VALUE);
+        STARTER_FE_RPM = builder.comment("Forge Energy conversion rate (in FE/t at 256 RPM, value is the FE/t generated and consumed is at 256rpm).")
+                .defineInRange("fe_at_max_rpm", 960, 0, Integer.MAX_VALUE);
 
-        ALTERNATOR_EFFICIENCY = builder.comment("Alternator efficiency relative to base conversion rate.")
-                .defineInRange("generator_efficiency", .90, 0.01d, 3.0d);
+        STARTER_MAX_STRESS = builder.comment("Max stress for the Alternator and Electric Motor (in SU at 256 RPM).")
+                .defineInRange("max_stress", 35768, 0, Integer.MAX_VALUE);
 
-        FE_RPM = builder.comment("Forge Energy conversion rate (in ⚡/t at 256 RPM, value is the ⚡/t generated and consumed is at 256rpm).")
-                .defineInRange("⚡_at_max_rpm", 830, 0, Integer.MAX_VALUE);
-
-        MAX_STRESS = builder.comment("Max stress for the Alternator and Electric Motor (in SU at 256 RPM).")
-                .defineInRange("max_stress", 10000, 0, Integer.MAX_VALUE);
-
-        AUDIO_ENABLED = builder.comment("If audio should be enabled or not.")
+        STARTER_AUDIO_ENABLED = builder.comment("If audio should be enabled or not.")
                 .define("audio_enabled", true);
+        builder.pop();
 
+        builder.comment("Basic Motor").push(CATAGORY_BASIC_MOTOR);
+        BASIC_ELECTRIC_MOTOR_RPM_RANGE = builder.comment("Electric Motor min/max RPM.")
+                .defineInRange("motor_rpm_range", 256, 1, Integer.MAX_VALUE);
+
+        BASIC_ELECTRIC_MOTOR_MINIMUM_CONSUMPTION = builder.comment("Electric Motor minimum required energy consumption in FE/t.")
+                .defineInRange("motor_min_consumption", 8, 0, Integer.MAX_VALUE);
+
+        BASIC_ELECTRIC_MOTOR_MAX_INPUT = builder.comment("Electric Motor max input in FE (Energy transfer not consumption).")
+                .defineInRange("motor_max_input", 80000, 0, Integer.MAX_VALUE);
+
+        BASIC_ELECTRIC_MOTOR_CAPACITY = builder.comment("Electric Motor internal capacity in FE.")
+                .defineInRange("motor_capacity", 100000, 0, Integer.MAX_VALUE);
+        BASIC_FE_RPM = builder.comment("Forge Energy conversion rate (in FE/t at 256 RPM, value is the FE/t generated and consumed is at 256rpm).")
+                .defineInRange("fe_at_max_rpm", 1920, 0, Integer.MAX_VALUE);
+
+        BASIC_MAX_STRESS = builder.comment("Max stress for the Alternator and Electric Motor (in SU at 256 RPM).")
+                .defineInRange("max_stress", 75768, 0, Integer.MAX_VALUE);
+
+        BASIC_AUDIO_ENABLED = builder.comment("If audio should be enabled or not.")
+                .define("audio_enabled", true);
+        builder.pop();
+
+        builder.comment("Hardened Motor").push(CATAGORY_HARDENED_MOTOR);
+        HARDENED_ELECTRIC_MOTOR_RPM_RANGE = builder.comment("Electric Motor min/max RPM.")
+                .defineInRange("motor_rpm_range", 256, 1, Integer.MAX_VALUE);
+
+        HARDENED_ELECTRIC_MOTOR_MINIMUM_CONSUMPTION = builder.comment("Electric Motor minimum required energy consumption in FE/t.")
+                .defineInRange("motor_min_consumption", 8, 0, Integer.MAX_VALUE);
+
+        HARDENED_ELECTRIC_MOTOR_MAX_INPUT = builder.comment("Electric Motor max input in FE (Energy transfer not consumption).")
+                .defineInRange("motor_max_input", 80000, 0, Integer.MAX_VALUE);
+
+        HARDENED_ELECTRIC_MOTOR_CAPACITY = builder.comment("Electric Motor internal capacity in FE.")
+                .defineInRange("motor_capacity", 100000, 0, Integer.MAX_VALUE);
+        HARDENED_FE_RPM = builder.comment("Forge Energy conversion rate (in FE/t at 256 RPM, value is the FE/t generated and consumed is at 256rpm).")
+                .defineInRange("fe_at_max_rpm", 3840, 0, Integer.MAX_VALUE);
+
+        HARDENED_MAX_STRESS = builder.comment("Max stress for the Alternator and Electric Motor (in SU at 256 RPM).")
+                .defineInRange("max_stress", 161536, 0, Integer.MAX_VALUE);
+
+        HARDENED_AUDIO_ENABLED = builder.comment("If audio should be enabled or not.")
+                .define("audio_enabled", true);
+        builder.pop();
+
+        builder.comment("Blazing Motor").push(CATAGORY_BLAZING_MOTOR);
+        BLAZING_ELECTRIC_MOTOR_RPM_RANGE = builder.comment("Electric Motor min/max RPM.")
+                .defineInRange("motor_rpm_range", 256, 1, Integer.MAX_VALUE);
+
+        BLAZING_ELECTRIC_MOTOR_MINIMUM_CONSUMPTION = builder.comment("Electric Motor minimum required energy consumption in FE/t.")
+                .defineInRange("motor_min_consumption", 8, 0, Integer.MAX_VALUE);
+
+        BLAZING_ELECTRIC_MOTOR_MAX_INPUT = builder.comment("Electric Motor max input in FE (Energy transfer not consumption).")
+                .defineInRange("motor_max_input", 80000, 0, Integer.MAX_VALUE);
+
+        BLAZING_ELECTRIC_MOTOR_CAPACITY = builder.comment("Electric Motor internal capacity in FE.")
+                .defineInRange("motor_capacity", 500000, 0, Integer.MAX_VALUE);
+        BLAZING_FE_RPM = builder.comment("Forge Energy conversion rate (in FE/t at 256 RPM, value is the FE/t generated and consumed is at 256rpm).")
+                .defineInRange("fe_at_max_rpm", 7680, 0, Integer.MAX_VALUE);
+
+        BLAZING_MAX_STRESS = builder.comment("Max stress for the Alternator and Electric Motor (in SU at 256 RPM).")
+                .defineInRange("max_stress", 353072, 0, Integer.MAX_VALUE);
+
+        BLAZING_AUDIO_ENABLED = builder.comment("If audio should be enabled or not.")
+                .define("audio_enabled", true);
+        builder.pop();
+        builder.comment("Niotic Motor").push(CATAGORY_NIOTIC_MOTOR);
+        NIOTIC_ELECTRIC_MOTOR_RPM_RANGE = builder.comment("Electric Motor min/max RPM.")
+                .defineInRange("motor_rpm_range", 256, 1, Integer.MAX_VALUE);
+
+        NIOTIC_ELECTRIC_MOTOR_MINIMUM_CONSUMPTION = builder.comment("Electric Motor minimum required energy consumption in FE/t.")
+                .defineInRange("motor_min_consumption", 8, 0, Integer.MAX_VALUE);
+
+        NIOTIC_ELECTRIC_MOTOR_MAX_INPUT = builder.comment("Electric Motor max input in FE (Energy transfer not consumption).")
+                .defineInRange("motor_max_input", 80000, 0, Integer.MAX_VALUE);
+
+        NIOTIC_ELECTRIC_MOTOR_CAPACITY = builder.comment("Electric Motor internal capacity in FE.")
+                .defineInRange("motor_capacity", 600000, 0, Integer.MAX_VALUE);
+        NIOTIC_FE_RPM = builder.comment("Forge Energy conversion rate (in FE/t at 256 RPM, value is the FE/t generated and consumed is at 256rpm).")
+                .defineInRange("fe_at_max_rpm", 15360, 0, Integer.MAX_VALUE);
+
+        NIOTIC_MAX_STRESS = builder.comment("Max stress for the Alternator and Electric Motor (in SU at 256 RPM).")
+                .defineInRange("max_stress", 710144, 0, Integer.MAX_VALUE);
+
+        NIOTIC_AUDIO_ENABLED = builder.comment("If audio should be enabled or not.")
+                .define("audio_enabled", true);
+        builder.pop();
+
+        builder.comment("Sprited Motor").push(CATAGORY_SPIRITED_MOTOR);
+        SPIRITED_ELECTRIC_MOTOR_RPM_RANGE = builder.comment("Electric Motor min/max RPM.")
+                .defineInRange("motor_rpm_range", 256, 1, Integer.MAX_VALUE);
+
+        SPIRITED_ELECTRIC_MOTOR_MINIMUM_CONSUMPTION = builder.comment("Electric Motor minimum required energy consumption in FE/t.")
+                .defineInRange("motor_min_consumption", 8, 0, Integer.MAX_VALUE);
+
+        SPIRITED_ELECTRIC_MOTOR_MAX_INPUT = builder.comment("Electric Motor max input in FE (Energy transfer not consumption).")
+                .defineInRange("motor_max_input", 80000, 0, Integer.MAX_VALUE);
+
+        SPIRITED_ELECTRIC_MOTOR_CAPACITY = builder.comment("Electric Motor internal capacity in FE.")
+                .defineInRange("motor_capacity", 700000, 0, Integer.MAX_VALUE);
+        SPIRITED_FE_RPM = builder.comment("Forge Energy conversion rate (in FE/t at 256 RPM, value is the FE/t generated and consumed is at 256rpm).")
+                .defineInRange("fe_at_max_rpm", 30720, 0, Integer.MAX_VALUE);
+
+        SPIRITED_MAX_STRESS = builder.comment("Max stress for the Alternator and Electric Motor (in SU at 256 RPM).")
+                .defineInRange("max_stress", 1298288, 0, Integer.MAX_VALUE);
+
+        SPIRITED_AUDIO_ENABLED = builder.comment("If audio should be enabled or not.")
+                .define("audio_enabled", true);
         builder.pop();
 
 
-        builder.push(ACCUMULATOR);
+        builder.comment("Nitro Motor").push(CATAGORY_NITRO_MOTOR);
+        NITRO_ELECTRIC_MOTOR_RPM_RANGE = builder.comment("Electric Motor min/max RPM.")
+                .defineInRange("motor_rpm_range", 256, 1, Integer.MAX_VALUE);
 
-        CAPACITY = builder
-                .comment("Internal energy capacity of a accumulator")
-                .defineInRange(" AccumulatorCapacity", 100000000, 1, Integer.MAX_VALUE);
-        MAX_RECEIVE = builder
-                .comment("Internal energy Max Receive of a accumulator")
-                .defineInRange(" MaxReceive", 80384, 1, Integer.MAX_VALUE);
-        MAX_EXTRACT = builder
-                .comment("Internal energy Max Extract of a accumulator")
-                .defineInRange(" MaxExtract", 80384, 1, Integer.MAX_VALUE);
+        NITRO_ELECTRIC_MOTOR_MINIMUM_CONSUMPTION = builder.comment("Electric Motor minimum required energy consumption in FE/t.")
+                .defineInRange("motor_min_consumption", 8, 0, Integer.MAX_VALUE);
 
+        NITRO_ELECTRIC_MOTOR_MAX_INPUT = builder.comment("Electric Motor max input in FE (Energy transfer not consumption).")
+                .defineInRange("motor_max_input", 85000, 0, Integer.MAX_VALUE);
 
+        NITRO_ELECTRIC_MOTOR_CAPACITY = builder.comment("Electric Motor internal capacity in FE.")
+                .defineInRange("motor_capacity", 800000, 0, Integer.MAX_VALUE);
+        NITRO_FE_RPM = builder.comment("Forge Energy conversion rate (in FE/t at 256 RPM, value is the FE/t generated and consumed is at 256rpm).")
+                .defineInRange("fe_at_max_rpm", 62440, 0, Integer.MAX_VALUE);
+
+        NITRO_MAX_STRESS = builder.comment("Max stress for the Alternator and Electric Motor (in SU at 256 RPM).")
+                .defineInRange("max_stress", 2499576, 0, Integer.MAX_VALUE);
+
+        NITRO_AUDIO_ENABLED = builder.comment("If audio should be enabled or not.")
+                .define("audio_enabled", true);
         builder.pop();
-
-        builder.push("Motors");
-
-        motorSUMultiplier = builder
-                .comment("Maximum motor SU multiplier")
-                .defineInRange("motorSuMultiplier", 1.0, 0.0, Double.MAX_VALUE);
-
-        builder.comment("General Settings").push(CATAGORY_BASIC);
-        basicMotorCapacity = builder
-            .comment("Internal energy capacity of an basic motor")
-            .defineInRange("basic MotorCapacity", 64000, 1, Integer.MAX_VALUE);
-        basicMotorStress = builder
-                .comment("Generated SU of an basic motor")
-                .defineInRange("basicMotorStress", 3024, 1, Double.MAX_VALUE);
-
-        basicMotorSpeed = builder
-            .comment("Top Speed of an basic motor")
-            .defineInRange("basicMotorSpeed", 32, 1, Double.MAX_VALUE);
-        builder.pop();
-        builder.comment("General Settings").push(CATAGORY_STARTER);
-        starterMotorCapacity = builder
-                .comment("Internal energy capacity of a starter motor")
-                .defineInRange("starterMotorCapacity", 44000, 1, Integer.MAX_VALUE);
-
-        starterMotorStress = builder
-            .comment("Generated SU of a starter motor")
-            .defineInRange("starterMotorStress", 1028, 1, Double.MAX_VALUE);
-        starterMotorSpeed = builder
-                .comment("Top Speed of a starter motor")
-                .defineInRange("starterMotorSpeed", 16, 1, Double.MAX_VALUE);
-        builder.pop();
-        builder.comment("General Settings").push(CATAGORY_BLAZING);
-        blazingMotorCapacity = builder
-                .comment("Internal energy capacity of a blazing motor")
-                .defineInRange("blazingMotorCapacity", 124000, 1, Integer.MAX_VALUE);
-        blazingMotorStress = builder
-                .comment("Generated SU of a blazing motor")
-                .defineInRange("blazingMotorStress", 10024, 1, Double.MAX_VALUE);
-        blazingMotorSpeed = builder
-                .comment("Top Speed of a blazing motor")
-                .defineInRange("blazingMotorSpeed", 124, 1, Double.MAX_VALUE);
-        builder.pop();
-        builder.comment("General Settings").push(CATAGORY_HARDENED);
-        hardenedMotorCapacity = builder
-                .comment("Internal energy capacity of a hardened motor")
-                .defineInRange("hardenedMotorCapacity", 84000, 1, Integer.MAX_VALUE);
-        hardenedMotorStress = builder
-                .comment("Generated SU of a hardened motor")
-                .defineInRange("hardenedMotorStress", 8024, 1, Double.MAX_VALUE);
-        hardenedMotorSpeed = builder
-                .comment("Top Speed of a hardened motor")
-                .defineInRange("hardenedMotorSpeed", 64, 1, Double.MAX_VALUE);
-        builder.pop();
-        builder.comment("General Settings").push(CATAGORY_NIOTIC);
-        nioticMotorCapacity = builder
-                .comment("Internal energy capacity of a niotic motor")
-                .defineInRange("nioticMotorCapacity", 164000, 1, Integer.MAX_VALUE);
-        nioticMotorStress = builder
-                .comment("Generated SU of a niotic motor")
-                .defineInRange("nioticMotorStress", 100024, 1, Double.MAX_VALUE);
-        nioticMotorSpeed = builder
-                .comment("Top Speed of a niotic motor")
-                .defineInRange("nioticMotorSpeed", 148, 1, Double.MAX_VALUE);
-        builder.pop();
-        builder.comment("General Settings").push(CATAGORY_SPIRITED);
-        spiritedMotorCapacity = builder
-                .comment("Internal energy capacity of a spirited motor")
-                .defineInRange(" spiritedMotorCapacity", 224000, 1, Integer.MAX_VALUE);
-        spiritedMotorStress = builder
-                .comment("Generated SU of a spirited motor")
-                .defineInRange(" spiritedMotorStress", 300024, 1, Double.MAX_VALUE);
-        spiritedMotorSpeed = builder
-                .comment("Top Speed of a spirited motor")
-                .defineInRange("spiritedMotorSpeed", 200, 1, Double.MAX_VALUE);
-        builder.pop();
-        builder.comment("General Settings").push(CATAGORY_NITRO);
-        nitroMotorCapacity = builder
-                .comment("Internal energy capacity of a nitro motor")
-                .defineInRange(" nitroMotorCapacity", 524000, 1, Integer.MAX_VALUE);
-        nitroMotorStress = builder
-                .comment("Generated SU of a nitro motor")
-                .defineInRange(" spiritedMotorStress", 600024, 1, Double.MAX_VALUE);
-        nitroMotorSpeed = builder
-                .comment("Top Speed of a nitro motor")
-                .defineInRange("nitroMotorSpeed", 256, 1, Double.MAX_VALUE);
-        builder.pop();
-
 
     }
     public static void loadConfig(ForgeConfigSpec spec, java.nio.file.Path path) {

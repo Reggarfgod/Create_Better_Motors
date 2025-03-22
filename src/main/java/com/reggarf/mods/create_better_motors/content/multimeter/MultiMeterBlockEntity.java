@@ -1,12 +1,13 @@
 package com.reggarf.mods.create_better_motors.content.multimeter;
 
-import com.reggarf.mods.create_better_motors.util.GaugeObservedPacket;
-import com.reggarf.mods.create_better_motors.util.Packets;
 
+
+import com.simibubi.create.AllPackets;
 import com.simibubi.create.api.equipment.goggles.IHaveGoggleInformation;
 import com.simibubi.create.content.kinetics.base.IRotate;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 
+import com.simibubi.create.content.kinetics.gauge.GaugeObservedPacket;
 import com.simibubi.create.foundation.advancement.AllAdvancements;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import com.simibubi.create.foundation.item.TooltipHelper;
@@ -182,7 +183,7 @@ public class MultiMeterBlockEntity extends KineticBlockEntity implements IHaveGo
             stressTip.forGoggles(tooltip, 1);
         }
         if (!worldPosition.equals(lastSent))
-          Packets.getChannel().sendToServer(new GaugeObservedPacket(lastSent = worldPosition));
+          AllPackets.getChannel().sendToServer(new GaugeObservedPacket(lastSent = worldPosition));
 
         return true;
     }

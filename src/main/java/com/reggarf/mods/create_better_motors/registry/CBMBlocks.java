@@ -3,41 +3,38 @@ package com.reggarf.mods.create_better_motors.registry;
 
 
 
+import com.mrh0.createaddition.energy.NodeMovementBehaviour;
 import com.reggarf.mods.create_better_motors.Create_better_motors;
 
-import com.reggarf.mods.create_better_motors.config.CBMStress;
-import com.reggarf.mods.create_better_motors.content.creative_energy.CreativeEnergyBlock;
 
+import com.reggarf.mods.create_better_motors.config.CBMStress;
+import com.reggarf.mods.create_better_motors.content.heavy_connector.HeavyConnectorBlock;
+import com.reggarf.mods.create_better_motors.content.motors.blocks.*;
 import com.reggarf.mods.create_better_motors.content.multimeter.MultiMeterBlock;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllDisplaySources;
 import com.simibubi.create.AllTags;
 
 import com.simibubi.create.content.kinetics.gauge.GaugeGenerator;
-import com.simibubi.create.content.redstone.displayLink.source.KineticSpeedDisplaySource;
-import com.simibubi.create.content.redstone.displayLink.source.KineticStressDisplaySource;
 import com.simibubi.create.foundation.data.ModelGen;
 import com.simibubi.create.foundation.data.SharedProperties;
-import com.simibubi.create.infrastructure.config.CStress;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
-import com.reggarf.mods.create_better_motors.content.alternator.AlternatorBlock;
-import com.reggarf.mods.create_better_motors.content.electricity.connector.ElectricalConnectorBlock;
-import com.reggarf.mods.create_better_motors.content.motors.variants.*;
+
+
 import net.minecraft.world.level.material.MapColor;
 
 import static com.reggarf.mods.create_better_motors.Create_better_motors.REGISTRATE;
 
 import static com.simibubi.create.api.behaviour.display.DisplaySource.displaySource;
+import static com.simibubi.create.api.behaviour.movement.MovementBehaviour.movementBehaviour;
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
 import static com.simibubi.create.foundation.data.TagGen.axeOrPickaxe;
-import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
 import static com.tterrag.registrate.providers.RegistrateRecipeProvider.has;
 
 
@@ -46,25 +43,25 @@ public class CBMBlocks {
         REGISTRATE.defaultCreativeTab(Create_better_motors.CREATIVE_TAB_KEY);
     }
 
-    public static final BlockEntry<ElectricalConnectorBlock> ELECTRICAL_CONNECTOR =
-            REGISTRATE.block("electrical_connector", ElectricalConnectorBlock::new)
-                    .properties(BlockBehaviour.Properties::noOcclusion)
-                    .properties(properties -> properties.strength(0.45f))
-                    .simpleItem()
-                    .register();
+    public static final BlockEntry<HeavyConnectorBlock> HEAVY_CONNECTOR =
+            REGISTRATE.block("heavy_connector",  HeavyConnectorBlock::new)
+            .initialProperties(SharedProperties::stone)
+            .onRegister(movementBehaviour(new NodeMovementBehaviour()))
+            .item()
+            .transform(customItemModel())
+            .register();
 
-    public static final BlockEntry<com.reggarf.mods.create_better_motors.content.motors.MotorBlock> STARTER_MOTOR =
-            REGISTRATE.block("starter_motor", (p) -> new com.reggarf.mods.create_better_motors.content.motors.MotorBlock(p,
-                            CBMBlockEntityTypes.STARTER_MOTOR, new StarterMotorVariant()))
+    public static final BlockEntry<StarterMotorBlock> STARTER_MOTOR =
+            REGISTRATE.block("starter_motor", StarterMotorBlock::new)
                     .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
                     .properties(BlockBehaviour.Properties::noOcclusion)
                     .properties(properties -> properties.strength(3.0f))
                     .simpleItem()
                     .register();
 
-    public static final BlockEntry<com.reggarf.mods.create_better_motors.content.motors.MotorBlock> BASIC_MOTOR =
-            REGISTRATE.block("basic_motor", (p) -> new com.reggarf.mods.create_better_motors.content.motors.MotorBlock(p,
-                            CBMBlockEntityTypes.BASIC_MOTOR, new BasicMotorVariant()))
+
+    public static final BlockEntry<BasicMotorBlock> BASIC_MOTOR =
+            REGISTRATE.block("basic_motor", BasicMotorBlock::new)
                     .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
                     .properties(BlockBehaviour.Properties::noOcclusion)
                     .properties(properties -> properties.strength(3.5f))
@@ -72,61 +69,46 @@ public class CBMBlocks {
                     .register();
 
 
-    public static final BlockEntry<com.reggarf.mods.create_better_motors.content.motors.MotorBlock> HARDENED_MOTOR =
-            REGISTRATE.block("hardened_motor", (p) -> new com.reggarf.mods.create_better_motors.content.motors.MotorBlock(p,
-                            CBMBlockEntityTypes.HARDENED_MOTOR, new HardenedMotorVariant()))
+    public static final BlockEntry<HardenedMotorBlock> HARDENED_MOTOR =
+            REGISTRATE.block("hardened_motor", HardenedMotorBlock::new)
                     .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
                     .properties(BlockBehaviour.Properties::noOcclusion)
                     .properties(properties -> properties.strength(4.0f))
                     .simpleItem()
                     .register();
 
-    public static final BlockEntry<com.reggarf.mods.create_better_motors.content.motors.MotorBlock> BLAZING_MOTOR =
-            REGISTRATE.block("blazing_motor", (p) -> new com.reggarf.mods.create_better_motors.content.motors.MotorBlock(p,
-                            CBMBlockEntityTypes.BLAZING_MOTOR, new BlazingMotorVariant()))
+    public static final BlockEntry<BlazingMotorBlock> BLAZING_MOTOR =
+            REGISTRATE.block("blazing_motor", BlazingMotorBlock::new)
                     .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
                     .properties(BlockBehaviour.Properties::noOcclusion)
                     .properties(properties -> properties.strength(3.0f))
                     .simpleItem()
                     .register();
 
-    public static final BlockEntry<com.reggarf.mods.create_better_motors.content.motors.MotorBlock> NIOTIC_MOTOR =
-            REGISTRATE.block("niotic_motor", (p) -> new com.reggarf.mods.create_better_motors.content.motors.MotorBlock(p,
-                            CBMBlockEntityTypes.NIOTIC_MOTOR, new NioticMotorVariant()))
+    public static final BlockEntry<NioticMotorBlock> NIOTIC_MOTOR =
+            REGISTRATE.block("niotic_motor", NioticMotorBlock::new)
                     .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
                     .properties(BlockBehaviour.Properties::noOcclusion)
                     .properties(properties -> properties.strength(3.0f))
                     .simpleItem()
                     .register();
 
-    public static final BlockEntry<com.reggarf.mods.create_better_motors.content.motors.MotorBlock> SPIRITED_MOTOR =
-            REGISTRATE.block("spirited_motor", (p) -> new com.reggarf.mods.create_better_motors.content.motors.MotorBlock(p,
-                            CBMBlockEntityTypes.SPIRITED_MOTOR, new SpiritedMotorVariant()))
+    public static final BlockEntry<SpiritedMotorBlock> SPIRITED_MOTOR =
+            REGISTRATE.block("spirited_motor", SpiritedMotorBlock::new )
                     .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
                     .properties(BlockBehaviour.Properties::noOcclusion)
                     .properties(properties -> properties.strength(3.0f))
                     .simpleItem()
                     .register();
 
-    public static final BlockEntry<com.reggarf.mods.create_better_motors.content.motors.MotorBlock> NITRO_MOTOR =
-            REGISTRATE.block("nitro_motor", (p) -> new com.reggarf.mods.create_better_motors.content.motors.MotorBlock(p,
-                            CBMBlockEntityTypes.NITRO_MOTOR, new NitroMotorVariant()))
+    public static final BlockEntry<NitroMotorBlock> NITRO_MOTOR =
+            REGISTRATE.block("nitro_motor", NitroMotorBlock::new )
                     .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
                     .properties(BlockBehaviour.Properties::noOcclusion)
                     .properties(properties -> properties.strength(3.0f))
                     .simpleItem()
                     .register();
 
-
-//    public static final BlockEntry<MotorBlock> VOID_MOTOR = REGISTRATE.block("void_motor", MotorBlock::new)
-//            .initialProperties(SharedProperties::stone)
-//            .properties(p -> p.mapColor(MapColor.COLOR_BLACK))
-//            .properties(p -> p.strength(3.0F, 600.0F))
-//            .transform(pickaxeOnly())
-//            //.transform(BlockStressDefaults.setNoImpact())
-//            .item()
-//            .transform(customItemModel())
-//            .register();
 
 
     public static final BlockEntry<MultiMeterBlock> MULTIMETER = REGISTRATE.block("multimeter", MultiMeterBlock::new)
@@ -146,32 +128,15 @@ public class CBMBlocks {
             .transform(ModelGen.customItemModel("gauge", "_", "item"))
             .register();
 
-//    public static final BlockEntry<AccumulatorBlock> VOID_BATTERY = REGISTRATE.block("void_battery", AccumulatorBlock::new)
-//            .initialProperties(SharedProperties::stone)
-//            .properties(BlockBehaviour.Properties::noOcclusion)
-//            .properties(p -> p.mapColor(MapColor.COLOR_BLACK))
-//            .properties(p -> p.strength(3.0F, 600.0F))
-//            .transform(pickaxeOnly())
+
+//    public static final BlockEntry<AlternatorBlock> ALTERNATOR =
+//            REGISTRATE.block("alternator", AlternatorBlock::new)
+//            .initialProperties(SharedProperties::softMetal)
+//            //.transform(BlockStressDefaults.setImpact(256f))
+//            .tag(AllTags.AllBlockTags.SAFE_NBT.tag) //Dono what this tag means (contraption safe?).
 //            .item()
 //            .transform(customItemModel())
 //            .register();
-
-    public static final BlockEntry<CreativeEnergyBlock> CREATIVE_ENERGY = REGISTRATE.block("creative_energy", CreativeEnergyBlock::new)
-            .initialProperties(SharedProperties::softMetal)
-            .item()
-            .properties(p -> p.rarity(Rarity.EPIC))
-            .transform(customItemModel())
-            .register();
-
-
-    public static final BlockEntry<AlternatorBlock> ALTERNATOR =
-            REGISTRATE.block("alternator", AlternatorBlock::new)
-            .initialProperties(SharedProperties::softMetal)
-            //.transform(BlockStressDefaults.setImpact(256f))
-            .tag(AllTags.AllBlockTags.SAFE_NBT.tag) //Dono what this tag means (contraption safe?).
-            .item()
-            .transform(customItemModel())
-            .register();
 
 
     public static final BlockEntry<Block> REGGARFONITEBLOCK =
@@ -181,6 +146,7 @@ public class CBMBlocks {
                     .item()
                     .transform(customItemModel())
                     .register();
+
     public static final BlockEntry<Block> REGGARFONITEORE =
             REGISTRATE.block("reggarfoniteore", Block::new)
                     .initialProperties(SharedProperties::softMetal)

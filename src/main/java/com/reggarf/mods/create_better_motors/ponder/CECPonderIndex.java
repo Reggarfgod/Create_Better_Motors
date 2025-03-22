@@ -22,23 +22,23 @@ public class CECPonderIndex {
 //        HELPER.addStoryBoard(CBMBlocks.MOTOR_PLATE, "motor_plate", MotorPonder::motorPlate);
 //        HELPER.addStoryBoard(CBMBlocks.MOTOR_PLUG, "motor_plug", MotorPonder::motorPlug);
 
-        HELPER.forComponents(CBMBlocks.ELECTRICAL_CONNECTOR,
-                        CBMItems.COPPER_WIRE,
-                        CBMItems.DIAMOND_WIRE,
-                        CBMItems.GOLDEN_WIRE,
-                        CBMItems.IRON_WIRE)
-       .addStoryBoard("wires", ElectricityPonder::Electricity);
+//        HELPER.forComponents(CBMBlocks.ELECTRICAL_CONNECTOR,
+//                        CBMItems.COPPER_WIRE,
+//                        CBMItems.DIAMOND_WIRE,
+//                        CBMItems.GOLDEN_WIRE,
+//                        CBMItems.IRON_WIRE)
+//       .addStoryBoard("wires", ElectricityPonder::Electricity);
 
-        HELPER.forComponents(CBMBlocks.STARTER_MOTOR,
-                        CBMBlocks.BASIC_MOTOR,
-                        CBMBlocks.HARDENED_MOTOR,
-                        CBMBlocks.BLAZING_MOTOR,
-                        CBMBlocks.NIOTIC_MOTOR,
-                        CBMBlocks.SPIRITED_MOTOR,
-                        CBMBlocks.NITRO_MOTOR)
-                .addStoryBoard("motor", MotorPonder::motor);
-        HELPER.forComponents(CBMBlocks.ALTERNATOR)
-                .addStoryBoard("alternator", AlternatorPonder::alternator);
+//        HELPER.forComponents(CBMBlocks.STARTER_MOTOR,
+//                        CBMBlocks.BASIC_MOTOR,
+//                        CBMBlocks.HARDENED_MOTOR,
+//                        CBMBlocks.BLAZING_MOTOR,
+//                        CBMBlocks.NIOTIC_MOTOR,
+//                        CBMBlocks.SPIRITED_MOTOR,
+//                        CBMBlocks.NITRO_MOTOR)
+//                .addStoryBoard("motor", MotorPonder::motor);
+//        HELPER.forComponents(CBMBlocks.ALTERNATOR)
+//                .addStoryBoard("alternator", AlternatorPonder::alternator);
 
     }
 }

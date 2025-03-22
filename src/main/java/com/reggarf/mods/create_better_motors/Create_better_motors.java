@@ -6,7 +6,7 @@ import com.reggarf.mods.create_better_motors.registry.CBMClientIniter;
 import com.reggarf.mods.create_better_motors.registry.CBMBlockEntityTypes;
 import com.reggarf.mods.create_better_motors.registry.CBMBlocks;
 import com.reggarf.mods.create_better_motors.registry.CBMItems;
-import com.reggarf.mods.create_better_motors.tools.CBMContainerTypes;
+
 
 import com.simibubi.create.api.boiler.BoilerHeater;
 import com.simibubi.create.api.contraption.ContraptionMovementSetting;
@@ -46,7 +46,7 @@ public class Create_better_motors {
     public static final RegistryObject<CreativeModeTab> tab = TAB_REGISTRAR.register("create_better_motors_tab",
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("item_group." + MOD_ID + ".tab"))
-                    .icon(CBMBlocks.BASIC_MOTOR::asStack)
+                    .icon(CBMBlocks.STARTER_MOTOR::asStack)
                     .build()
     );
 
@@ -69,7 +69,7 @@ public class Create_better_motors {
 
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         CBMBlocks.load();
-        CBMContainerTypes.register();
+        //CBMContainerTypes.register();
         CBMBlockEntityTypes.load();
         CBMItems.load();
         CBMConfig.getCommon();
@@ -94,11 +94,11 @@ public class Create_better_motors {
     }
 
     private void generalSetup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(() -> {
-
-            ContraptionMovementSetting.REGISTRY.register(CBMBlocks.ELECTRICAL_CONNECTOR.get(), () -> ContraptionMovementSetting.UNMOVABLE);
-
-        });
+//        event.enqueueWork(() -> {
+//
+//            ContraptionMovementSetting.REGISTRY.register(CBMBlocks.ELECTRICAL_CONNECTOR.get(), () -> ContraptionMovementSetting.UNMOVABLE);
+//
+//        });
     }
 
 }
