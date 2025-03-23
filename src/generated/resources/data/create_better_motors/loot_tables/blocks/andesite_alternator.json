@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "create_better_motors:alternator"
+          "name": "create_better_motors:andesite_alternator"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "create_better_motors:blocks/alternator"
+  "random_sequence": "create_better_motors:blocks/andesite_alternator"
 }

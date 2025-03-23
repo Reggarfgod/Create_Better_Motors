@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "create_better_motors:void_battery"
+          "name": "create_better_motors:heavy_connector"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "create_better_motors:blocks/void_battery"
+  "random_sequence": "create_better_motors:blocks/heavy_connector"
 }

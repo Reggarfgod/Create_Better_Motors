@@ -4,6 +4,9 @@ package com.reggarf.mods.create_better_motors.registry;
 
 
 import com.mrh0.createaddition.blocks.connector.base.ConnectorRenderer;
+import com.reggarf.mods.create_better_motors.content.alternator.blocksentity.AndesiteAlternatorBlockEntity;
+import com.reggarf.mods.create_better_motors.content.alternator.blocksentity.BrassAlternatorBlockEntity;
+import com.reggarf.mods.create_better_motors.content.alternator.blocksentity.CopperAlternatorBlockEntity;
 import com.reggarf.mods.create_better_motors.content.heavy_connector.HeavyConnectorBlockEntity;
 import com.reggarf.mods.create_better_motors.content.motors.blocksentity.*;
 import com.reggarf.mods.create_better_motors.content.multimeter.MultiMeterBlockEntity;
@@ -76,12 +79,24 @@ public class CBMBlockEntityTypes {
             .register();
 
 
-//    public static final BlockEntityEntry<AlternatorBlockEntity> ALTERNATOR = REGISTRATE
-//            .blockEntity("alternator", AlternatorBlockEntity::new)
-//            .visual(() -> OrientedRotatingVisual.of(AllPartialModels.SHAFT_HALF))
-//            .validBlocks(CBMBlocks.ALTERNATOR)
-//            .renderer(() -> CBMHalfShaftRenderer::new)
-//            .register();
+    public static final BlockEntityEntry<AndesiteAlternatorBlockEntity> ANDESITE_ALTERNATOR = REGISTRATE
+            .blockEntity("andesite_alternator", AndesiteAlternatorBlockEntity::new)
+            .visual(() -> OrientedRotatingVisual.of(AllPartialModels.SHAFT_HALF))
+            .validBlocks(CBMBlocks.ANDESITE_ALTERNATOR)
+            .renderer(() -> CBMHalfShaftRenderer::new)
+            .register();
+    public static final BlockEntityEntry<CopperAlternatorBlockEntity> COPPER_ALTERNATOR = REGISTRATE
+            .blockEntity("copper_alternator", CopperAlternatorBlockEntity::new)
+            .visual(() -> OrientedRotatingVisual.of(AllPartialModels.SHAFT_HALF))
+            .validBlocks(CBMBlocks.COPPER_ALTERNATOR)
+            .renderer(() -> CBMHalfShaftRenderer::new)
+            .register();
+    public static final BlockEntityEntry<BrassAlternatorBlockEntity> BRASS_ALTERNATOR = REGISTRATE
+            .blockEntity("brass_alternator", BrassAlternatorBlockEntity::new)
+            .visual(() -> OrientedRotatingVisual.of(AllPartialModels.SHAFT_HALF))
+            .validBlocks(CBMBlocks.BRASS_ALTERNATOR)
+            .renderer(() -> CBMHalfShaftRenderer::new)
+            .register();
 
     public static final BlockEntityEntry<MultiMeterBlockEntity> MULTIMETER = REGISTRATE
             .blockEntity("multimeter", MultiMeterBlockEntity::new)

@@ -16,16 +16,35 @@ public class CommonConfig {
     public static final String CATAGORY_SPIRITED_MOTOR = "spirited_motor";
     public static final String CATAGORY_NITRO_MOTOR = "nitro_motor";
     public static final String CATAGORY_WIRES = "wires";
+    public static final String CATAGORY_ACCUMULATOR = "accumulator";
+    public static final String CATAGORY_ANDESITE_ALTERNATOR = "andesite_alternator";
+    public static final String CATAGORY_BRASS_ALTERNATOR = "brass_alternator";
+    public static final String CATAGORY_COPPER_ALTERNATOR = "copper_alternator";
 
-//    public static ForgeConfigSpec.IntValue FE_RPM;
-//    public static ForgeConfigSpec.IntValue MAX_STRESS;
-//
-//    public static ForgeConfigSpec.BooleanValue AUDIO_ENABLED;
-//
-//    public static ForgeConfigSpec.IntValue ALTERNATOR_MAX_OUTPUT;
-//    public static ForgeConfigSpec.IntValue ALTERNATOR_CAPACITY;
-//    public static ForgeConfigSpec.DoubleValue ALTERNATOR_EFFICIENCY;
-//
+
+
+    public static ForgeConfigSpec.IntValue ANDESITE_ALTERNATOR_FE_RPM;
+    public static ForgeConfigSpec.IntValue ANDESITE_ALTERNATOR_MAX_STRESS;
+    public static ForgeConfigSpec.BooleanValue ANDESITE_ALTERNATOR_AUDIO_ENABLED;
+    public static ForgeConfigSpec.IntValue ANDESITE_ALTERNATOR_MAX_OUTPUT;
+    public static ForgeConfigSpec.IntValue ANDESITE_ALTERNATOR_CAPACITY;
+    public static ForgeConfigSpec.DoubleValue ANDESITE_ALTERNATOR_EFFICIENCY;
+
+    public static ForgeConfigSpec.IntValue BRASS_ALTERNATOR_FE_RPM;
+    public static ForgeConfigSpec.IntValue BRASS_ALTERNATOR_MAX_STRESS;
+    public static ForgeConfigSpec.BooleanValue BRASS_ALTERNATOR_AUDIO_ENABLED;
+    public static ForgeConfigSpec.IntValue BRASS_ALTERNATOR_MAX_OUTPUT;
+    public static ForgeConfigSpec.IntValue BRASS_ALTERNATOR_CAPACITY;
+    public static ForgeConfigSpec.DoubleValue BRASS_ALTERNATOR_EFFICIENCY;
+
+    public static ForgeConfigSpec.IntValue COPPER_ALTERNATOR_FE_RPM;
+    public static ForgeConfigSpec.IntValue COPPER_ALTERNATOR_MAX_STRESS;
+    public static ForgeConfigSpec.BooleanValue COPPER_ALTERNATOR_AUDIO_ENABLED;
+    public static ForgeConfigSpec.IntValue COPPER_ALTERNATOR_MAX_OUTPUT;
+    public static ForgeConfigSpec.IntValue COPPER_ALTERNATOR_CAPACITY;
+    public static ForgeConfigSpec.DoubleValue COPPER_ALTERNATOR_EFFICIENCY;
+
+
     public static ForgeConfigSpec.IntValue HEAVY_CONNECTOR_MAX_INPUT;
     public static ForgeConfigSpec.IntValue HEAVY_CONNECTOR_MAX_OUTPUT;
     public static ForgeConfigSpec.IntValue HEAVY_CONNECTOR_MAX_LENGTH;
@@ -87,17 +106,34 @@ public class CommonConfig {
     public static ForgeConfigSpec.IntValue NITRO_MAX_STRESS;
     public static ForgeConfigSpec.BooleanValue NITRO_AUDIO_ENABLED;
 
+    public static ForgeConfigSpec.IntValue ACCUMULATOR_MAX_INPUT;
+    public static ForgeConfigSpec.IntValue ACCUMULATOR_MAX_OUTPUT;
+
     public CommonConfig(ForgeConfigSpec.Builder builder) {
+        builder.comment("Make sure config changes are duplicated on both Clients and the Server when running a dedicated Server,")
+                .comment(" as the config isnt synced between Clients and Server.");
+
+
+        builder.comment("Accumulator").push(CATAGORY_ACCUMULATOR);
+        ACCUMULATOR_MAX_INPUT =
+                builder.comment("Accumulator max input in FE/t (Energy transfer).")
+                .defineInRange("accumulator_max_input", 800000, 0, Integer.MAX_VALUE);
+
+        ACCUMULATOR_MAX_OUTPUT = builder.comment("Accumulator max output in FE/t (Energy transfer).")
+                .defineInRange("accumulator_max_output", 800000, 0, Integer.MAX_VALUE);
+
+        builder.pop();
+
         builder.comment("Wires").push(CATAGORY_WIRES);
 
-        HEAVY_CONNECTOR_MAX_INPUT = builder.comment("Large Connector max input in FE/t (Energy transfer).")
-                .defineInRange("large_connector_max_input", 90000, 0, Integer.MAX_VALUE);
+        HEAVY_CONNECTOR_MAX_INPUT = builder.comment("Heavy Connector max input in FE/t (Energy transfer).")
+                .defineInRange("Heavy_connector_max_input", 90000, 0, Integer.MAX_VALUE);
 
-        HEAVY_CONNECTOR_MAX_OUTPUT = builder.comment("Large Connector max output in FE/t (Energy transfer).")
-                .defineInRange("large_connector_max_output", 90000, 0, Integer.MAX_VALUE);
+        HEAVY_CONNECTOR_MAX_OUTPUT = builder.comment("Heavy Connector max output in FE/t (Energy transfer).")
+                .defineInRange("Heavy_connector_max_output", 90000, 0, Integer.MAX_VALUE);
 
-        HEAVY_CONNECTOR_MAX_LENGTH = builder.comment("Large Connector max wire length in blocks.")
-                .defineInRange("large_connector_wire_length", 48, 0, 256);
+        HEAVY_CONNECTOR_MAX_LENGTH = builder.comment("Heavy Connector max wire length in blocks.")
+                .defineInRange("Heavy_connector_wire_length", 48, 0, 256);
         builder.pop();
 
         builder.comment("Starter Motor").push(CATAGORY_STARTER_MOTOR);
@@ -253,6 +289,68 @@ public class CommonConfig {
         NITRO_AUDIO_ENABLED = builder.comment("If audio should be enabled or not.")
                 .define("audio_enabled", true);
         builder.pop();
+
+        builder.comment("Andesite Alternator").push(CATAGORY_ANDESITE_ALTERNATOR);
+        ANDESITE_ALTERNATOR_MAX_OUTPUT = builder.comment("Alternator max input in FE (Energy transfer, not generation).")
+                .defineInRange("generator_max_output", 5000, 0, Integer.MAX_VALUE);
+
+        ANDESITE_ALTERNATOR_CAPACITY = builder.comment("Alternator internal capacity in FE.")
+                .defineInRange("generator_capacity", 5000, 0, Integer.MAX_VALUE);
+
+        ANDESITE_ALTERNATOR_EFFICIENCY = builder.comment("Alternator efficiency relative to base conversion rate.")
+                .defineInRange("generator_efficiency", 0.80d, 0.01d, 1.0d);
+
+        ANDESITE_ALTERNATOR_FE_RPM = builder.comment("Forge Energy conversion rate (in FE/t at 256 RPM, value is the FE/t generated and consumed is at 256rpm).")
+                .defineInRange("fe_at_max_rpm", 1660, 0, Integer.MAX_VALUE);
+
+        ANDESITE_ALTERNATOR_MAX_STRESS = builder.comment("Max stress for the Alternator and Electric Motor (in SU at 256 RPM).")
+                .defineInRange("max_stress", 14000, 0, Integer.MAX_VALUE);
+
+        ANDESITE_ALTERNATOR_AUDIO_ENABLED = builder.comment("If audio should be enabled or not.")
+                .define("audio_enabled", true);
+        builder.pop();
+
+        builder.comment("Copper Alternator").push(CATAGORY_COPPER_ALTERNATOR);
+        COPPER_ALTERNATOR_MAX_OUTPUT = builder.comment("Alternator max input in FE (Energy transfer, not generation).")
+                .defineInRange("generator_max_output", 5000, 0, Integer.MAX_VALUE);
+
+        COPPER_ALTERNATOR_CAPACITY = builder.comment("Alternator internal capacity in FE.")
+                .defineInRange("generator_capacity", 5000, 0, Integer.MAX_VALUE);
+
+        COPPER_ALTERNATOR_EFFICIENCY = builder.comment("Alternator efficiency relative to base conversion rate.")
+                .defineInRange("generator_efficiency", 0.85d, 0.01d, 1.0d);
+
+        COPPER_ALTERNATOR_FE_RPM = builder.comment("Forge Energy conversion rate (in FE/t at 256 RPM, value is the FE/t generated and consumed is at 256rpm).")
+                .defineInRange("fe_at_max_rpm", 3320, 0, Integer.MAX_VALUE);
+
+        COPPER_ALTERNATOR_MAX_STRESS = builder.comment("Max stress for the Alternator and Electric Motor (in SU at 256 RPM).")
+                .defineInRange("max_stress", 22384, 0, Integer.MAX_VALUE);
+
+        COPPER_ALTERNATOR_AUDIO_ENABLED = builder.comment("If audio should be enabled or not.")
+                .define("audio_enabled", true);
+        builder.pop();
+
+        builder.comment("Brass Alternator").push(CATAGORY_BRASS_ALTERNATOR);
+        BRASS_ALTERNATOR_MAX_OUTPUT = builder.comment("Alternator max input in FE (Energy transfer, not generation).")
+                .defineInRange("generator_max_output", 5000, 0, Integer.MAX_VALUE);
+
+        BRASS_ALTERNATOR_CAPACITY = builder.comment("Alternator internal capacity in FE.")
+                .defineInRange("generator_capacity", 5000, 0, Integer.MAX_VALUE);
+
+        BRASS_ALTERNATOR_EFFICIENCY = builder.comment("Alternator efficiency relative to base conversion rate.")
+                .defineInRange("generator_efficiency", 0.90d, 0.01d, 1.0d);
+
+        BRASS_ALTERNATOR_FE_RPM = builder.comment("Forge Energy conversion rate (in FE/t at 256 RPM, value is the FE/t generated and consumed is at 256rpm).")
+                .defineInRange("fe_at_max_rpm", 6640, 0, Integer.MAX_VALUE);
+
+        BRASS_ALTERNATOR_MAX_STRESS = builder.comment("Max stress for the Alternator and Electric Motor (in SU at 256 RPM).")
+                .defineInRange("max_stress", 37768, 0, Integer.MAX_VALUE);
+
+        BRASS_ALTERNATOR_AUDIO_ENABLED = builder.comment("If audio should be enabled or not.")
+                .define("audio_enabled", true);
+        builder.pop();
+
+
 
     }
     public static void loadConfig(ForgeConfigSpec spec, java.nio.file.Path path) {

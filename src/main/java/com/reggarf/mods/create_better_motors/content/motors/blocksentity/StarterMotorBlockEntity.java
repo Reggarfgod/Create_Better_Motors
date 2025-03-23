@@ -11,7 +11,6 @@ import com.mrh0.createaddition.energy.InternalEnergyStorage;
 
 import com.mrh0.createaddition.sound.CASoundScapes;
 import com.mrh0.createaddition.util.Util;
-import com.reggarf.mods.create_better_motors.Create_better_motors;
 import com.reggarf.mods.create_better_motors.config.CommonConfig;
 import com.reggarf.mods.create_better_motors.registry.CBMBlocks;
 

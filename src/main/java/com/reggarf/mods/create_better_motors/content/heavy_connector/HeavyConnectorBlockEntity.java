@@ -6,7 +6,6 @@ package com.reggarf.mods.create_better_motors.content.heavy_connector;
 import com.mrh0.createaddition.blocks.connector.ConnectorType;
 import com.mrh0.createaddition.blocks.connector.base.AbstractConnectorBlock;
 import com.mrh0.createaddition.blocks.connector.base.AbstractConnectorBlockEntity;
-import com.mrh0.createaddition.config.Config;
 import com.reggarf.mods.create_better_motors.config.CommonConfig;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import net.minecraft.core.BlockPos;

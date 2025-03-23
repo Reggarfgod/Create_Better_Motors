@@ -2,6 +2,8 @@ package com.reggarf.mods.create_better_motors.registry;
 
 
 
+import com.mrh0.createaddition.CreateAddition;
+import com.mrh0.createaddition.item.WireSpool;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.world.item.Item;
 
@@ -35,6 +37,12 @@ public class CBMItems {
     public static final ItemEntry<Item> REGGARFONITE_GEM =
             REGISTRATE.item("reggarfonite_gem", Item::new)
                     .register();
+    public static final ItemEntry<Item> ELECTRUM_WIRE =
+            CreateAddition.REGISTRATE.item("electrum_wire", Item::new).register();
+
+    public static final ItemEntry<WireSpool> ELECTRUM_SPOOL =
+            CreateAddition.REGISTRATE.item("electrum_spool", WireSpool::new).register();
+
 //    public static final ItemEntry<Item> EMPTY_COIL =
 //            REGISTRATE.item("empty_coil", Item::new)
 //                    .register();

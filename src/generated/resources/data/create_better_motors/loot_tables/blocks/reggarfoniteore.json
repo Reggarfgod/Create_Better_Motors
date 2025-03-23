@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "create_better_motors:void_motor"
+          "name": "create_better_motors:reggarfoniteore"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "create_better_motors:blocks/void_motor"
+  "random_sequence": "create_better_motors:blocks/reggarfoniteore"
 }
