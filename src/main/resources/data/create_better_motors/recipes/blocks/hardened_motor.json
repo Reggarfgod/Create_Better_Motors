@@ -1,33 +1,32 @@
 {
   "type": "create:mechanical_crafting",
-  "acceptMirrored": true,
+  "pattern": [
+    "  A  ",
+    " BSB ",
+    "GSRSG",
+    " BCB "
+  ],
   "key": {
-    "d": {
-      "item": "create_better_motors:reggarfonite_sheet"
+    "A": {
+      "item": "create_better_motors:reggarfonite_block"
+    },
+    "C": {
+      "item": "create_better_motors:lava_tube"
+    },
+    "B": {
+      "tag": "forge:plates/brass"
+    },
+    "G": {
+      "tag": "forge:plates/reggarfonite"
     },
     "R": {
       "item": "create_better_motors:basic_motor"
     },
     "S": {
-      "item": "create:shaft"
-    },
-    "c": {
-      "item": "create:brass_casing"
-    },
-    "I": {
-      "item": "minecraft:gold_ingot"
-    },
-    "B": {
-      "item": "minecraft:iron_block"
+      "item": "createaddition:gold_spool"
     }
   },
-  "pattern": [
-    "dRIId",
-    "BcBSS",
-    "dRIId"
-  ],
   "result": {
-    "count": 1,
     "item": "create_better_motors:hardened_motor"
   }
 }

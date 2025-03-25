@@ -1,28 +1,28 @@
 {
   "variants": {
+    "facing=down": {
+      "model": "create_better_motors:block/alternator/andesite/block",
+      "x": 270, "y": 90
+    },
+    "facing=up": {
+      "model": "create_better_motors:block/alternator/andesite/block",
+      "x": 90, "y": 90
+    },
     "facing=north": {
-      "model": "create_better_motors:block/generation/alternator"
-    },
-    "facing=east": {
-      "model": "create_better_motors:block/generation/alternator",
-      "y": 90
-    },
-    "facing=south": {
-      "model": "create_better_motors:block/generation/alternator",
+      "model": "create_better_motors:block/alternator/andesite/block",
       "y": 180
     },
+    "facing=south": {
+      "model": "create_better_motors:block/alternator/andesite/block",
+      "y": 0
+    },
     "facing=west": {
-      "model": "create_better_motors:block/generation/alternator",
+      "model": "create_better_motors:block/alternator/andesite/block",
+      "y": 90
+    },
+    "facing=east": {
+      "model": "create_better_motors:block/alternator/andesite/block",
       "y": 270
-    },
-
-    "facing=up": {
-      "model": "create_better_motors:block/generation/alternator",
-      "x": 270
-    },
-    "facing=down": {
-      "model": "create_better_motors:block/generation/alternator",
-      "x": 90
     }
   }
 }

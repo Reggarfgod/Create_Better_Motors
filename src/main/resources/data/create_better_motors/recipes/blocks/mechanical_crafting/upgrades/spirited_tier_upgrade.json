@@ -1,0 +1,29 @@
+{
+  "type": "create:mechanical_crafting",
+  "pattern": [
+    "  A  ",
+    " BSB ",
+    "GS SG",
+    " BCB "
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:dragon_head"
+    },
+    "C": {
+      "item": "create_better_motors:lava_tube"
+    },
+    "B": {
+      "tag": "forge:plates/brass"
+    },
+    "G": {
+      "tag": "forge:plates/reggarfonite"
+    },
+    "S": {
+      "item": "createaddition:electrum_spool"
+    }
+  },
+  "result": {
+    "item": "create_better_motors:spirited_tier_upgrade"
+  }
+}

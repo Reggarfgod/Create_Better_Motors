@@ -2,7 +2,7 @@ package com.reggarf.mods.create_better_motors;
 
 
 
-import com.reggarf.mods.create_better_motors.ponder.CECPonderPlugin;
+import com.reggarf.mods.create_better_motors.ponder.PonderPlugin;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipModifier;
 
@@ -18,7 +18,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 public class CBMClient {
 
     public static void onInitializeClient(final FMLClientSetupEvent event) {
-        PonderIndex.addPlugin(new CECPonderPlugin());
+        PonderIndex.addPlugin(new PonderPlugin());
 
         ModContainer modContainer = ModList.get()
                 .getModContainerById(Create_better_motors.MOD_ID)

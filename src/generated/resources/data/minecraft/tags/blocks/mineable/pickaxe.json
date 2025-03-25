@@ -10,7 +10,10 @@
     "create_better_motors:nitro_motor",
     "create_better_motors:multimeter",
     "create_better_motors:andesite_alternator",
-    "create_better_motors:reggarfoniteblock",
-    "create_better_motors:reggarfoniteore"
+    "create_better_motors:copper_alternator",
+    "create_better_motors:brass_alternator",
+    "create_better_motors:deepslate_reggarfonite_ore",
+    "create_better_motors:raw_reggarfonite_block",
+    "create_better_motors:reggarfonite_block"
   ]
 }

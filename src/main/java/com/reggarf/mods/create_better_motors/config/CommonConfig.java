@@ -332,10 +332,10 @@ public class CommonConfig {
 
         builder.comment("Brass Alternator").push(CATAGORY_BRASS_ALTERNATOR);
         BRASS_ALTERNATOR_MAX_OUTPUT = builder.comment("Alternator max input in FE (Energy transfer, not generation).")
-                .defineInRange("generator_max_output", 5000, 0, Integer.MAX_VALUE);
+                .defineInRange("generator_max_output", 10000, 0, Integer.MAX_VALUE);
 
         BRASS_ALTERNATOR_CAPACITY = builder.comment("Alternator internal capacity in FE.")
-                .defineInRange("generator_capacity", 5000, 0, Integer.MAX_VALUE);
+                .defineInRange("generator_capacity", 10000, 0, Integer.MAX_VALUE);
 
         BRASS_ALTERNATOR_EFFICIENCY = builder.comment("Alternator efficiency relative to base conversion rate.")
                 .defineInRange("generator_efficiency", 0.90d, 0.01d, 1.0d);

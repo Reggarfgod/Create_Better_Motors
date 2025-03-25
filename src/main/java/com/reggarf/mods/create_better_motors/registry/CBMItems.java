@@ -4,73 +4,51 @@ package com.reggarf.mods.create_better_motors.registry;
 
 import com.mrh0.createaddition.CreateAddition;
 import com.mrh0.createaddition.item.WireSpool;
+import com.simibubi.create.AllTags;
+import com.simibubi.create.foundation.data.recipe.CompatMetals;
+import com.simibubi.create.foundation.item.TagDependentIngredientItem;
 import com.tterrag.registrate.util.entry.ItemEntry;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 
 import static com.reggarf.mods.create_better_motors.Create_better_motors.REGISTRATE;
-
+import static com.simibubi.create.AllTags.AllItemTags.CRUSHED_RAW_MATERIALS;
+import static com.simibubi.create.AllTags.forgeItemTag;
 
 
 public class CBMItems {
+    public static final ItemEntry<Item> STARTER_TIER_UPGRADE = REGISTRATE.item("starter_tier_upgrade", Item::new).register();
+    public static final ItemEntry<Item> BASIC_TIER_UPGRADE = REGISTRATE.item("basic_tier_upgrade", Item::new).register();
+    public static final ItemEntry<Item> HARDENED_TIER_UPGRADE = REGISTRATE.item("hardened_tier_upgrade", Item::new).register();
+    public static final ItemEntry<Item> BLAZING_TIER_UPGRADE = REGISTRATE.item("blazing_tier_upgrade", Item::new).register();
+    public static final ItemEntry<Item> NIOTIC_TIER_UPGRADE = REGISTRATE.item("niotic_tier_upgrade", Item::new).register();
+    public static final ItemEntry<Item> SPIRITED_TIER_UPGRADE = REGISTRATE.item("spirited_tier_upgrade", Item::new).register();
+    public static final ItemEntry<Item> NITRO_TIER_UPGRADE = REGISTRATE.item("nitro_tier_upgrade", Item::new).register();
 
-//    public static final ItemEntry<ElectricWireItem> COPPER_WIRE =
-//            REGISTRATE.item("copper_wire", ElectricWireItem::newCopperWire)
-//                    .register();
-//
-//    public static final ItemEntry<ElectricWireItem> IRON_WIRE =
-//            REGISTRATE.item("iron_wire", ElectricWireItem::newIronWire)
-//                    .register();
-//
-//    public static final ItemEntry<ElectricWireItem> GOLDEN_WIRE =
-//            REGISTRATE.item("golden_wire", ElectricWireItem::newGoldenWire)
-//                    .register();
-//
-//    public static final ItemEntry<ElectricWireItem> DIAMOND_WIRE =
-//            REGISTRATE.item("diamond_wire", ElectricWireItem::newDiamondWire)
-//                    .register();
-    public static final ItemEntry<Item> REGGARFONITE_SHEET =
-            REGISTRATE.item("reggarfonite_sheet", Item::new)
-                    .register();
-    public static final ItemEntry<Item> REGGARFONITE_NUGGET =
-            REGISTRATE.item("reggarfonite_nugget", Item::new)
-                    .register();
-    public static final ItemEntry<Item> REGGARFONITE_GEM =
-            REGISTRATE.item("reggarfonite_gem", Item::new)
-                    .register();
-    public static final ItemEntry<Item> ELECTRUM_WIRE =
-            CreateAddition.REGISTRATE.item("electrum_wire", Item::new).register();
+    public static final ItemEntry<Item> RAW_REGGARFONITE = taggedIngredient("raw_reggarfonite", forgeItemTag("raw_materials/reggarfonite"), forgeItemTag("raw_materials"));
+    public static final ItemEntry<Item> CRUSHED_REGGARFONITE = taggedIngredient("crushed_raw_reggarfonite", CRUSHED_RAW_MATERIALS.tag);
+    public static final ItemEntry<Item> REGGARFONITE_GEM = REGISTRATE.item("reggarfonite_gem", Item::new).register();
+    public static final ItemEntry<Item> REGGARFONITE_NUGGET = REGISTRATE.item("reggarfonite_nugget", Item::new).register();
+    public static final ItemEntry<Item> REGGARFONITE_SHEET = REGISTRATE.item("reggarfonite_sheet", Item::new).register();
 
-    public static final ItemEntry<WireSpool> ELECTRUM_SPOOL =
-            CreateAddition.REGISTRATE.item("electrum_spool", WireSpool::new).register();
-
-//    public static final ItemEntry<Item> EMPTY_COIL =
-//            REGISTRATE.item("empty_coil", Item::new)
-//                    .register();
-//    public static final ItemEntry<Item> IRON_COIL =
-//            REGISTRATE.item("iron_coil", Item::new)
-//                    .register();
-//    public static final ItemEntry<Item> GOLDEN_COIL =
-//            REGISTRATE.item("golden_coil", Item::new)
-//                    .register();
-//    public static final ItemEntry<Item> COPPER_COIL =
-//            REGISTRATE.item("copper_coil", Item::new)
-//                    .register();
-//
-//    public static final ItemEntry<Item> REGGARFONITE_COIL =
-//            REGISTRATE.item("reggarfonite_coil", Item::new)
-//                    .register();
-        public static final ItemEntry<Item> LINK_TUBE =
-            REGISTRATE.item("link_tube", Item::new)
-                    .register();
-    public static final ItemEntry<Item> LAVA_QUARTZ =
-            REGISTRATE.item("lava_quartz", Item::new)
-                    .register();
-    public static final ItemEntry<Item> POLISHED_LAVA_QUARTZ =
-            REGISTRATE.item("polished_lava_quartz", Item::new)
-                    .register();
+    public static final ItemEntry<Item> LAVA_TUBE = REGISTRATE.item("lava_tube", Item::new).register();
+    public static final ItemEntry<Item> LAVA_QUARTZ = REGISTRATE.item("lava_quartz", Item::new).register();
+    public static final ItemEntry<Item> POLISHED_LAVA_QUARTZ = REGISTRATE.item("polished_lava_quartz", Item::new).register();
 
 
-    public static void load() {
-
+    public static void load() {}
+    @SafeVarargs
+    private static ItemEntry<Item> taggedIngredient(String name, TagKey<Item>... tags) {
+        return REGISTRATE.item(name, Item::new)
+                .tag(tags)
+                .register();
+    }
+    private static ItemEntry<TagDependentIngredientItem> compatCrushedOre(CompatMetals metal) {
+        String metalName = metal.getName();
+        return REGISTRATE
+                .item("crushed_raw_" + metalName,
+                        props -> new TagDependentIngredientItem(props, AllTags.forgeItemTag("ores/" + metalName)))
+                .tag(CRUSHED_RAW_MATERIALS.tag)
+                .register();
     }
 }

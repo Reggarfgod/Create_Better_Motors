@@ -1,32 +1,32 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "building",
+  "type": "create:mechanical_crafting",
+  "pattern": [
+  	"  A  ",
+    " BSB ",
+    "GSRSG",
+    " BCB "
+  ],
   "key": {
-    "g": {
+  	"A": {
+      "item": "minecraft:iron_block"
+    },
+    "C": {
+      "item": "create_better_motors:lava_tube"
+    },
+    "B": {
+      "tag": "forge:plates/brass"
+    },
+    "G": {
+      "tag": "forge:plates/reggarfonite"
+    },
+    "R": {
       "item": "create_better_motors:starter_motor"
     },
-    "i": {
-      "item": "create:golden_sheet"
-    },
-    "s": {
-      "item": "create:shaft"
-    },
-    "#": {
-      "item": "create:copper_casing"
-    },
-    "m": {
-      "item": "create:iron_sheet"
-    },
-    "c": {"item": "create_better_motors:reggarfonite_sheet" }
+    "S": {
+      "item": "createaddition:gold_spool"
+    }
   },
-  "pattern": [
-    "cgi",
-    "m#s",
-    "cgi"
-  ],
   "result": {
-    "count": 1,
     "item": "create_better_motors:basic_motor"
-  },
-  "show_notification": true
+  }
 }

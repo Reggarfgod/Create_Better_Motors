@@ -17,30 +17,38 @@ import com.reggarf.mods.create_better_motors.content.motors.blocks.*;
 import com.reggarf.mods.create_better_motors.content.multimeter.MultiMeterBlock;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllDisplaySources;
+import com.simibubi.create.AllItems;
 import com.simibubi.create.AllTags;
 
 import com.simibubi.create.content.kinetics.gauge.GaugeGenerator;
 import com.simibubi.create.foundation.data.ModelGen;
 import com.simibubi.create.foundation.data.SharedProperties;
+import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
 
 
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
+import net.minecraftforge.common.Tags;
 
 import static com.reggarf.mods.create_better_motors.Create_better_motors.REGISTRATE;
 
 import static com.simibubi.create.api.behaviour.display.DisplaySource.displaySource;
 import static com.simibubi.create.api.behaviour.movement.MovementBehaviour.movementBehaviour;
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
-import static com.simibubi.create.foundation.data.TagGen.axeOrPickaxe;
-import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
+import static com.simibubi.create.foundation.data.TagGen.*;
 import static com.tterrag.registrate.providers.RegistrateRecipeProvider.has;
 
 
@@ -183,25 +191,67 @@ public class CBMBlocks {
                     .register();
 
 
-    public static final BlockEntry<Block> REGGARFONITEBLOCK =
-            REGISTRATE.block("reggarfoniteblock", Block::new)
-                    .initialProperties(SharedProperties::softMetal)
-                    .tag(AllTags.AllBlockTags.SAFE_NBT.tag) // Don't know what this tag means (contraption safe?).
-                    .item()
-                    .transform(customItemModel())
-                    .transform(pickaxeOnly())
-                    .register();
 
-    public static final BlockEntry<Block> REGGARFONITEORE =
-            REGISTRATE.block("reggarfoniteore", Block::new)
-                    .initialProperties(SharedProperties::softMetal)
-                    .tag(AllTags.AllBlockTags.SAFE_NBT.tag) // Don't know what this tag means (contraption safe?).
-                    .item()
-                    .transform(customItemModel())
-                    .transform(pickaxeOnly())
-                    .register();
+//    public static final BlockEntry<Block> REGGARFONITE_ORE = REGISTRATE.block("reggarfonite_ore", Block::new)
+//            .initialProperties(() -> Blocks.GOLD_ORE)
+//            .properties(p -> p.mapColor(MapColor.METAL)
+//                    .requiresCorrectToolForDrops()
+//                    .sound(SoundType.STONE))
+//            .transform(pickaxeOnly())
+//            .loot((lt, b) -> lt.add(b,
+//                    RegistrateBlockLootTables.createSilkTouchDispatchTable(b,
+//                            lt.applyExplosionDecay(b, LootItem.lootTableItem(CBMItems.RAW_REGGARFONITE.get())
+//                                    .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))))))
+//            .tag(BlockTags.NEEDS_IRON_TOOL)
+//            .tag(Tags.Blocks.ORES)
+//            .transform(tagBlockAndItem("ores/reggarfonite", "ores_in_ground/stone"))
+//            .tag(Tags.Items.ORES)
+//            .build()
+//            .register();
 
+    public static final BlockEntry<Block> DEEPSLATE_REGGARFONITE_ORE = REGISTRATE.block("deepslate_reggarfonite_ore", Block::new)
+            .initialProperties(() -> Blocks.DEEPSLATE_GOLD_ORE)
+            .properties(p -> p.mapColor(MapColor.STONE)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.DEEPSLATE))
+            .transform(pickaxeOnly())
+            .loot((lt, b) -> lt.add(b,
+                    RegistrateBlockLootTables.createSilkTouchDispatchTable(b,
+                            lt.applyExplosionDecay(b, LootItem.lootTableItem(CBMItems.RAW_REGGARFONITE.get())
+                                    .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))))))
+            .tag(BlockTags.NEEDS_IRON_TOOL)
+            .tag(Tags.Blocks.ORES)
+            .transform(tagBlockAndItem("ores/reggarfonite", "ores_in_ground/deepslate"))
+            .tag(Tags.Items.ORES)
+            .build()
+            .register();
 
+    public static final BlockEntry<Block> RAW_REGGARFONITE_BLOCK = REGISTRATE.block("raw_reggarfonite_block", Block::new)
+            .initialProperties(() -> Blocks.RAW_GOLD_BLOCK)
+            .properties(p -> p.mapColor(MapColor.GLOW_LICHEN)
+                    .requiresCorrectToolForDrops())
+            .transform(pickaxeOnly())
+            .tag(Tags.Blocks.STORAGE_BLOCKS)
+            .tag(BlockTags.NEEDS_IRON_TOOL)
+            .lang("Block of Raw Reggarfonite")
+            .transform(tagBlockAndItem("storage_blocks/raw_reggarfonite"))
+            .tag(Tags.Items.STORAGE_BLOCKS)
+            .build()
+            .register();
+
+    public static final BlockEntry<Block> REGGARFONITE_BLOCK = REGISTRATE.block("reggarfonite_block", Block::new)
+            .initialProperties(() -> Blocks.IRON_BLOCK)
+            .properties(p -> p.mapColor(MapColor.GLOW_LICHEN)
+                    .requiresCorrectToolForDrops())
+            .transform(pickaxeOnly())
+            .tag(BlockTags.NEEDS_IRON_TOOL)
+            .tag(Tags.Blocks.STORAGE_BLOCKS)
+            .tag(BlockTags.BEACON_BASE_BLOCKS)
+            .transform(tagBlockAndItem("storage_blocks/reggarfonite"))
+            .tag(Tags.Items.STORAGE_BLOCKS)
+            .build()
+            .lang("Block of reggarfonite")
+            .register();
 
         public static void load() {  }
 }

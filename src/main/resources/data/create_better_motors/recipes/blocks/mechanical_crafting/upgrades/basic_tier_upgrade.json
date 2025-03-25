@@ -1,0 +1,29 @@
+{
+  "type": "create:mechanical_crafting",
+  "pattern": [
+    "  A  ",
+    " BSB ",
+    "GS SG",
+    " BCB "
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:iron_block"
+    },
+    "C": {
+      "item": "create_better_motors:lava_tube"
+    },
+    "B": {
+      "tag": "forge:plates/brass"
+    },
+    "G": {
+      "tag": "forge:plates/reggarfonite"
+    },
+    "S": {
+      "item": "createaddition:gold_spool"
+    }
+  },
+  "result": {
+    "item": "create_better_motors:basic_tier_upgrade"
+  }
+}

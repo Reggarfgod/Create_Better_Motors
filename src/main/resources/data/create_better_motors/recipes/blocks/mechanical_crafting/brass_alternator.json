@@ -1,0 +1,32 @@
+{
+  "type": "create:mechanical_crafting",
+  "pattern": [
+    "  A  ",
+    " ISI ",
+    "GSRSG",
+    " ICI "
+  ],
+  "key": {
+    "C": {
+      "item": "create_better_motors:lava_tube"
+    },
+    "I": {
+      "tag": "forge:plates/brass"
+    },
+    "R": {
+      "item": "create_better_motors:copper_alternator"
+    },
+    "S": {
+      "item": "createaddition:copper_spool"
+    },
+    "A": {
+      "item": "create:brass_ingot"
+    },
+    "G": {
+      "item": "create_better_motors:reggarfonite_sheet"
+    }
+  },
+  "result": {
+    "item": "create_better_motors:brass_alternator"
+  }
+}

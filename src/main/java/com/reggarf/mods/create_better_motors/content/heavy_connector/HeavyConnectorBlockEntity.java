@@ -68,4 +68,6 @@ public class HeavyConnectorBlockEntity extends AbstractConnectorBlockEntity {
     public int getMaxWireLength() {
         return CommonConfig.HEAVY_CONNECTOR_MAX_LENGTH.get();
     }
+
+
 }
