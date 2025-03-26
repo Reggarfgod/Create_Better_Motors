@@ -218,7 +218,7 @@ public class CommonConfig {
                 .defineInRange("fe_at_max_rpm", 7680, 0, Integer.MAX_VALUE);
 
         BLAZING_MAX_STRESS = builder.comment("Max stress for the Alternator and Electric Motor (in SU at 256 RPM).")
-                .defineInRange("max_stress", 353072, 0, Integer.MAX_VALUE);
+                .defineInRange("max_stress", 253072, 0, Integer.MAX_VALUE);
 
         BLAZING_AUDIO_ENABLED = builder.comment("If audio should be enabled or not.")
                 .define("audio_enabled", true);
@@ -236,7 +236,7 @@ public class CommonConfig {
         NIOTIC_ELECTRIC_MOTOR_CAPACITY = builder.comment("Electric Motor internal capacity in FE.")
                 .defineInRange("motor_capacity", 600000, 0, Integer.MAX_VALUE);
         NIOTIC_FE_RPM = builder.comment("Forge Energy conversion rate (in FE/t at 256 RPM, value is the FE/t generated and consumed is at 256rpm).")
-                .defineInRange("fe_at_max_rpm", 15360, 0, Integer.MAX_VALUE);
+                .defineInRange("fe_at_max_rpm", 19360, 0, Integer.MAX_VALUE);
 
         NIOTIC_MAX_STRESS = builder.comment("Max stress for the Alternator and Electric Motor (in SU at 256 RPM).")
                 .defineInRange("max_stress", 710144, 0, Integer.MAX_VALUE);
@@ -258,7 +258,7 @@ public class CommonConfig {
         SPIRITED_ELECTRIC_MOTOR_CAPACITY = builder.comment("Electric Motor internal capacity in FE.")
                 .defineInRange("motor_capacity", 700000, 0, Integer.MAX_VALUE);
         SPIRITED_FE_RPM = builder.comment("Forge Energy conversion rate (in FE/t at 256 RPM, value is the FE/t generated and consumed is at 256rpm).")
-                .defineInRange("fe_at_max_rpm", 30720, 0, Integer.MAX_VALUE);
+                .defineInRange("fe_at_max_rpm", 41720, 0, Integer.MAX_VALUE);
 
         SPIRITED_MAX_STRESS = builder.comment("Max stress for the Alternator and Electric Motor (in SU at 256 RPM).")
                 .defineInRange("max_stress", 1298288, 0, Integer.MAX_VALUE);
@@ -281,7 +281,7 @@ public class CommonConfig {
         NITRO_ELECTRIC_MOTOR_CAPACITY = builder.comment("Electric Motor internal capacity in FE.")
                 .defineInRange("motor_capacity", 800000, 0, Integer.MAX_VALUE);
         NITRO_FE_RPM = builder.comment("Forge Energy conversion rate (in FE/t at 256 RPM, value is the FE/t generated and consumed is at 256rpm).")
-                .defineInRange("fe_at_max_rpm", 62440, 0, Integer.MAX_VALUE);
+                .defineInRange("fe_at_max_rpm", 72440, 0, Integer.MAX_VALUE);
 
         NITRO_MAX_STRESS = builder.comment("Max stress for the Alternator and Electric Motor (in SU at 256 RPM).")
                 .defineInRange("max_stress", 2499576, 0, Integer.MAX_VALUE);
@@ -298,13 +298,13 @@ public class CommonConfig {
                 .defineInRange("generator_capacity", 5000, 0, Integer.MAX_VALUE);
 
         ANDESITE_ALTERNATOR_EFFICIENCY = builder.comment("Alternator efficiency relative to base conversion rate.")
-                .defineInRange("generator_efficiency", 0.80d, 0.01d, 1.0d);
+                .defineInRange("generator_efficiency", 0.85d, 0.01d, 1.0d);
 
         ANDESITE_ALTERNATOR_FE_RPM = builder.comment("Forge Energy conversion rate (in FE/t at 256 RPM, value is the FE/t generated and consumed is at 256rpm).")
-                .defineInRange("fe_at_max_rpm", 1660, 0, Integer.MAX_VALUE);
+                .defineInRange("fe_at_max_rpm", 1260, 0, Integer.MAX_VALUE);
 
         ANDESITE_ALTERNATOR_MAX_STRESS = builder.comment("Max stress for the Alternator and Electric Motor (in SU at 256 RPM).")
-                .defineInRange("max_stress", 14000, 0, Integer.MAX_VALUE);
+                .defineInRange("max_stress", 35768, 0, Integer.MAX_VALUE);
 
         ANDESITE_ALTERNATOR_AUDIO_ENABLED = builder.comment("If audio should be enabled or not.")
                 .define("audio_enabled", true);
@@ -318,13 +318,13 @@ public class CommonConfig {
                 .defineInRange("generator_capacity", 5000, 0, Integer.MAX_VALUE);
 
         COPPER_ALTERNATOR_EFFICIENCY = builder.comment("Alternator efficiency relative to base conversion rate.")
-                .defineInRange("generator_efficiency", 0.85d, 0.01d, 1.0d);
+                .defineInRange("generator_efficiency", 0.90d, 0.01d, 1.0d);
 
         COPPER_ALTERNATOR_FE_RPM = builder.comment("Forge Energy conversion rate (in FE/t at 256 RPM, value is the FE/t generated and consumed is at 256rpm).")
-                .defineInRange("fe_at_max_rpm", 3320, 0, Integer.MAX_VALUE);
+                .defineInRange("fe_at_max_rpm", 2400, 0, Integer.MAX_VALUE);
 
         COPPER_ALTERNATOR_MAX_STRESS = builder.comment("Max stress for the Alternator and Electric Motor (in SU at 256 RPM).")
-                .defineInRange("max_stress", 22384, 0, Integer.MAX_VALUE);
+                .defineInRange("max_stress", 75384, 0, Integer.MAX_VALUE);
 
         COPPER_ALTERNATOR_AUDIO_ENABLED = builder.comment("If audio should be enabled or not.")
                 .define("audio_enabled", true);
@@ -341,10 +341,10 @@ public class CommonConfig {
                 .defineInRange("generator_efficiency", 0.90d, 0.01d, 1.0d);
 
         BRASS_ALTERNATOR_FE_RPM = builder.comment("Forge Energy conversion rate (in FE/t at 256 RPM, value is the FE/t generated and consumed is at 256rpm).")
-                .defineInRange("fe_at_max_rpm", 6640, 0, Integer.MAX_VALUE);
+                .defineInRange("fe_at_max_rpm", 4240, 0, Integer.MAX_VALUE);
 
         BRASS_ALTERNATOR_MAX_STRESS = builder.comment("Max stress for the Alternator and Electric Motor (in SU at 256 RPM).")
-                .defineInRange("max_stress", 37768, 0, Integer.MAX_VALUE);
+                .defineInRange("max_stress", 159708, 0, Integer.MAX_VALUE);
 
         BRASS_ALTERNATOR_AUDIO_ENABLED = builder.comment("If audio should be enabled or not.")
                 .define("audio_enabled", true);
