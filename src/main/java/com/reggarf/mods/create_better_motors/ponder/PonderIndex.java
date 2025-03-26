@@ -19,9 +19,13 @@ public class PonderIndex {
     public static void register(PonderSceneRegistrationHelper<ResourceLocation> helper) {
         PonderSceneRegistrationHelper<ItemProviderEntry<?>> HELPER = helper.withKeyFunction(RegistryEntry::getId);
 
+        //connector
         HELPER.forComponents(CBMBlocks.HEAVY_CONNECTOR)
        .addStoryBoard("wires", ElectricityPonder::Electricity, AllCreatePonderTags.KINETIC_SOURCES, ELECTRIC);
 
+        // Gauges
+        HELPER.addStoryBoard(CBMBlocks.MULTIMETER, "gauges", KineticsScenes::multimeter,  AllCreatePonderTags.KINETIC_SOURCES);
+        //Motor
         HELPER.forComponents(CBMBlocks.STARTER_MOTOR,
                         CBMBlocks.BASIC_MOTOR,
                         CBMBlocks.HARDENED_MOTOR,
@@ -30,7 +34,7 @@ public class PonderIndex {
                         CBMBlocks.SPIRITED_MOTOR,
                         CBMBlocks.NITRO_MOTOR)
                 .addStoryBoard("motor", PonderScenes::electricMotor, AllCreatePonderTags.KINETIC_SOURCES, ELECTRIC);
-
+        //Alternator
         HELPER.forComponents(CBMBlocks.ANDESITE_ALTERNATOR,
                         CBMBlocks.COPPER_ALTERNATOR,
                         CBMBlocks.BRASS_ALTERNATOR)

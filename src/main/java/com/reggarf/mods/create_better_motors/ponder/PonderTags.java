@@ -47,12 +47,14 @@ public class PonderTags {
                 .add(CBMBlocks.BLAZING_MOTOR)
                 .add(CBMBlocks.NIOTIC_MOTOR)
                 .add(CBMBlocks.SPIRITED_MOTOR)
-                .add(CBMBlocks.NITRO_MOTOR);
+                .add(CBMBlocks.NITRO_MOTOR)
+                .add(CBMBlocks.MULTIMETER);
 
         HELPER.addToTag(AllCreatePonderTags.KINETIC_APPLIANCES)
                 .add(CBMBlocks.ANDESITE_ALTERNATOR)
                 .add(CBMBlocks.COPPER_ALTERNATOR)
-                .add(CBMBlocks.BRASS_ALTERNATOR);
+                .add(CBMBlocks.BRASS_ALTERNATOR)
+                .add(CBMBlocks.MULTIMETER);
 
         HELPER.addToTag(ELECTRIC)
                 .add(CBMBlocks.HEAVY_CONNECTOR)

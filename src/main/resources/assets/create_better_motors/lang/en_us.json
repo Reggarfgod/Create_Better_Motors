@@ -98,6 +98,18 @@
   "create_better_motors.ponder.alternator.text_2": "It generates electric energy from rotational force",
   "create_better_motors.ponder.alternator.text_3": "Its energy production is determined by the input RPM",
 
+  "create_better_motors.ponder.wires.header": "Connector",
+  "create_better_motors.ponder.wires.text_1": "Connector are used to transfer energy from one place to another",
+  "create_better_motors.ponder.wires.text_2": "This block automatically pushes its energy to neighboring blocks. But what if it didn't do that?",
+  "create_better_motors.ponder.wires.text_3": "Connector can pull energy from the block it stands on when 'Pull' mode is enabled. Modes are switched with a wrench",
+
+  "create_better_motors.ponder.speedometer.header": "Monitoring kinetic information using the Multimeter",
+  "create_better_motors.ponder.speedometer.text_1": "The multimeter display the current speed and stress of attached components",
+  "create_better_motors.ponder.speedometer.text_2": "When wearing Engineers' Goggles, the player can get more detailed information from the Gauge",
+  "create_better_motors.ponder.speedometer.text_3": "Comparators can emit analog Restone Signals relative to the multimeter's measurements",
+
+
+
 
   "create.tooltip.create_better_motors.attention": "Attention!"
 
