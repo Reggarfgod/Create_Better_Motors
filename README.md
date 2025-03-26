@@ -14,10 +14,4 @@
 </ul>
 <p><img src="https://media.forgecdn.net/attachments/description/1162812/description_3437f617-ce02-4806-a722-6e1aa3e1bdec.jpg" alt=""></p>
 <p>&nbsp;</p>
-<h3>📜 Credits</h3>
-<p>This mod includes assets and code from <strong>Create: New Age's ( Electric Networks )</strong>, originally developed under the <strong>BSD 3-Clause License</strong>. Full credit to the original authors for their work on the electric network system.</p>
-<ul>
-<li><strong>Electric Network Code</strong> &ndash; Adapted from <a href="https://www.curseforge.com/minecraft/mc-mods/create-new-age" target="_blank" rel="noopener"><strong>Create: New Age</strong></a></li>
-<li><strong>Connector Model</strong> &ndash; Taken from <strong><a href="https://www.curseforge.com/minecraft/mc-mods/create-new-age" target="_blank" rel="noopener">Create: New Age</a> ( Andromeda Galaxy )</strong></li>
-</ul>
 <p style="text-align: center;">&nbsp;</p>
