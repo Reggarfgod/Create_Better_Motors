@@ -15,6 +15,7 @@ import com.simibubi.create.foundation.block.IBE;
 import com.simibubi.create.foundation.utility.CreateLang;
 import net.createmod.catnip.math.VoxelShaper;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -56,17 +57,24 @@ public class CopperAlternatorBlock extends DirectionalKineticBlock implements IB
     }
     @Override
     public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(CreateLang.translate("tooltip.create_better_motors.generates").style(ChatFormatting.GRAY)
-                .component());
 
-        tooltip.add(CreateLang.text(" ").add(CreateLang.number(CBMConfig.getCommon().COPPER_ALTERNATOR_FE_RPM.get() * CBMConfig.getCommon().COPPER_ALTERNATOR_EFFICIENCY.get()).text(" ")
-                .translate("tooltip.create_better_motors.energy_per_tick").style(ChatFormatting.AQUA)).component());
+        if(Screen.hasShiftDown()){
+            tooltip.add(CreateLang.translate("create_better_motors.large_connector.tooltip.heavy")
+                    .style(ChatFormatting.AQUA)
+                    .component());
+        }
+        else {
+            tooltip.add(CreateLang.translate("tooltip.create_better_motors.generates").style(ChatFormatting.GRAY)
+                    .component());
 
-        tooltip.add(CreateLang.translate("tooltip.create_better_motors.stores").style(ChatFormatting.GRAY)
-                .component());
-        tooltip.add(CreateLang.text(" ").translate("tooltip.create_better_motors.energy",
-                StringFormattingTool.formatLong(CBMConfig.getCommon().COPPER_ALTERNATOR_CAPACITY.get())).style(ChatFormatting.AQUA).component());
+            tooltip.add(CreateLang.text(" ").add(CreateLang.number(CBMConfig.getCommon().COPPER_ALTERNATOR_FE_RPM.get() * CBMConfig.getCommon().COPPER_ALTERNATOR_EFFICIENCY.get()).text(" ")
+                    .translate("tooltip.create_better_motors.energy_per_tick").style(ChatFormatting.AQUA)).component());
 
+            tooltip.add(CreateLang.translate("tooltip.create_better_motors.stores").style(ChatFormatting.GRAY)
+                    .component());
+            tooltip.add(CreateLang.text(" ").translate("tooltip.create_better_motors.energy",
+                    StringFormattingTool.formatLong(CBMConfig.getCommon().COPPER_ALTERNATOR_CAPACITY.get())).style(ChatFormatting.AQUA).component());
+        }
     }
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {

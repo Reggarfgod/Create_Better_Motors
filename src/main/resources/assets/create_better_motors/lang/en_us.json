@@ -85,7 +85,7 @@
 
   "create.create_better_motors.large_connector.tooltip.condition3": "Right-click with Wrench",
   "create.create_better_motors.large_connector.tooltip.behaviour3": "§7Cycle between §aPush§7, §cPull§7, and §8None§7 modes.",
-
+  "create.create_better_motors.large_connector.tooltip.heavy": "Transfers FE using the Heavy Connector for high-capacity power",
 
   "create_better_motors.ponder.electric_motor.header": "Generating Rotational Force using Electric Motors",
   "create_better_motors.ponder.electric_motor.text_1": "Electric Motors are a compact and configurable source of Rotational Force",

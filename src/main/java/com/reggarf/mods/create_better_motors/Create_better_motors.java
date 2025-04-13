@@ -2,10 +2,7 @@ package com.reggarf.mods.create_better_motors;
 
 
 
-import com.reggarf.mods.create_better_motors.registry.CBMClientIniter;
-import com.reggarf.mods.create_better_motors.registry.CBMBlockEntityTypes;
-import com.reggarf.mods.create_better_motors.registry.CBMBlocks;
-import com.reggarf.mods.create_better_motors.registry.CBMItems;
+import com.reggarf.mods.create_better_motors.registry.*;
 
 
 import com.simibubi.create.api.boiler.BoilerHeater;
@@ -65,6 +62,7 @@ public class Create_better_motors {
         BASE_REGISTRATE.registerEventListeners(modBus);
         TAB_REGISTRAR.register(modBus);
         MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(CBMMessageType.class);
         IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
 
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();

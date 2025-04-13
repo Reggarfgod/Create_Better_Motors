@@ -10,6 +10,7 @@ import com.simibubi.create.AllShapes;
 import com.simibubi.create.foundation.block.IBE;
 import com.simibubi.create.foundation.utility.CreateLang;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
@@ -31,26 +32,33 @@ public class BasicMotorBlock extends ElectricMotorBlock implements IBE<ElectricM
     }
     @Override
     public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(CreateLang.translate("tooltip.create_better_motors.generates").style(ChatFormatting.GRAY)
-                .component());
-        tooltip.add(CreateLang.text(" ").add(CreateLang.number(CommonConfig.BASIC_MAX_STRESS.get()).text(" ")
-                .translate("generic.unit.stress").style(ChatFormatting.AQUA)).component());
 
-        tooltip.add(CreateLang.translate("tooltip.create_better_motors.stores").style(ChatFormatting.GRAY)
-                .component());
-        tooltip.add(CreateLang.text(" ").translate("tooltip.create_better_motors.energy",
-                StringFormattingTool.formatLong(CommonConfig.BASIC_ELECTRIC_MOTOR_CAPACITY.get())).style(ChatFormatting.AQUA).component());
+        if(Screen.hasShiftDown()){
+            tooltip.add(CreateLang.translate("create_better_motors.large_connector.tooltip.heavy")
+                    .style(ChatFormatting.AQUA)
+                    .component());
+        }
+        else {
+            tooltip.add(CreateLang.translate("tooltip.create_better_motors.generates").style(ChatFormatting.GRAY)
+                    .component());
+            tooltip.add(CreateLang.text(" ").add(CreateLang.number(CommonConfig.BASIC_MAX_STRESS.get()).text(" ")
+                    .translate("generic.unit.stress").style(ChatFormatting.AQUA)).component());
 
-        tooltip.add(CreateLang.translate("tooltip.create_better_motors.use").style(ChatFormatting.GRAY)
-                .component());
-        tooltip.add(CreateLang.text(" ").translate("tooltip.create_better_motors.energy_per_tick",
-                StringFormattingTool.formatLong(CommonConfig.BASIC_FE_RPM.get())).style(ChatFormatting.AQUA).component());
+            tooltip.add(CreateLang.translate("tooltip.create_better_motors.stores").style(ChatFormatting.GRAY)
+                    .component());
+            tooltip.add(CreateLang.text(" ").translate("tooltip.create_better_motors.energy",
+                    StringFormattingTool.formatLong(CommonConfig.BASIC_ELECTRIC_MOTOR_CAPACITY.get())).style(ChatFormatting.AQUA).component());
 
-        tooltip.add(CreateLang.translate("tooltip.create_better_motors.max_speed").style(ChatFormatting.GRAY)
-                .component());
-        tooltip.add(CreateLang.text(" ").translate("tooltip.create_better_motors.rpm",
-                StringFormattingTool.formatLong(CommonConfig.BASIC_ELECTRIC_MOTOR_RPM_RANGE.get())).style(ChatFormatting.AQUA).component());
+            tooltip.add(CreateLang.translate("tooltip.create_better_motors.use").style(ChatFormatting.GRAY)
+                    .component());
+            tooltip.add(CreateLang.text(" ").translate("tooltip.create_better_motors.energy_per_tick",
+                    StringFormattingTool.formatLong(CommonConfig.BASIC_FE_RPM.get())).style(ChatFormatting.AQUA).component());
 
+            tooltip.add(CreateLang.translate("tooltip.create_better_motors.max_speed").style(ChatFormatting.GRAY)
+                    .component());
+            tooltip.add(CreateLang.text(" ").translate("tooltip.create_better_motors.rpm",
+                    StringFormattingTool.formatLong(CommonConfig.BASIC_ELECTRIC_MOTOR_RPM_RANGE.get())).style(ChatFormatting.AQUA).component());
+        }
     }
 
     @Override
