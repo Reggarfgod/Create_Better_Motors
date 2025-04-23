@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "create_better_motors:block/motors/basic_motor/block",
+      "x": 270, "y": 90
+    },
+    "facing=up": {
+      "model": "create_better_motors:block/motors/basic_motor/block",
+      "x": 90, "y": 90
+    },
+    "facing=north": {
+      "model": "create_better_motors:block/motors/basic_motor/block",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "create_better_motors:block/motors/basic_motor/block",
+      "y": 0
+    },
+    "facing=west": {
+      "model": "create_better_motors:block/motors/basic_motor/block",
+      "y": 90
+    },
+    "facing=east": {
+      "model": "create_better_motors:block/motors/basic_motor/block",
+      "y": 270
+    }
+  }
+}

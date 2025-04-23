@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 1.0,
+  "ingredient": {
+    "tag": "forge:ores/reggarfonite"
+  },
+  "result":{
+    "id": "create_better_motors:reggarfonite_gem"}
+}

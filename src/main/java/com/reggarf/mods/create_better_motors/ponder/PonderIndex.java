@@ -17,11 +17,11 @@ import static com.reggarf.mods.create_better_motors.ponder.PonderTags.ELECTRIC;
 public class PonderIndex {
 
     public static void register(PonderSceneRegistrationHelper<ResourceLocation> helper) {
-        PonderSceneRegistrationHelper<ItemProviderEntry<?>> HELPER = helper.withKeyFunction(RegistryEntry::getId);
+        PonderSceneRegistrationHelper<ItemProviderEntry<?,?>> HELPER = helper.withKeyFunction(RegistryEntry::getId);
 
         //connector
-        HELPER.forComponents(CBMBlocks.HEAVY_CONNECTOR)
-       .addStoryBoard("wires", ElectricityPonder::Electricity, AllCreatePonderTags.KINETIC_SOURCES, ELECTRIC);
+      //  HELPER.forComponents(CBMBlocks.HEAVY_CONNECTOR)
+      // .addStoryBoard("wires", ElectricityPonder::Electricity, AllCreatePonderTags.KINETIC_SOURCES, ELECTRIC);
 
         // Gauges
         HELPER.addStoryBoard(CBMBlocks.MULTIMETER, "gauges", KineticsScenes::multimeter,  AllCreatePonderTags.KINETIC_SOURCES);

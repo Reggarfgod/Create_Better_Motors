@@ -18,6 +18,7 @@ import net.createmod.catnip.lang.LangBuilder;
 import net.createmod.catnip.theme.Color;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
@@ -108,22 +109,22 @@ public class MultiMeterBlockEntity extends KineticBlockEntity implements IHaveGo
             target = Mth.lerp((speed - fast) / (max - fast), .75f, 1.125f);
         return target;
     }
-
     @Override
-    public void write(CompoundTag compound, boolean clientPacket) {
-        compound.putFloat("Value", dialTarget);
-        compound.putInt("Color", color);
-        super.write(compound, clientPacket);
+    protected void read(CompoundTag tag, HolderLookup.Provider registries, boolean clientPacket) {
+        super.read(tag, registries, clientPacket);
+        if (clientPacket && worldPosition != null && worldPosition.equals(lastSent))
+            lastSent = null;
+        dialTarget = tag.getFloat("Value");
+        color = tag.getInt("Color");
+
+
     }
 
     @Override
-    protected void read(CompoundTag compound, boolean clientPacket) {
-        dialTarget = compound.getFloat("Value");
-        color = compound.getInt("Color");
-        super.read(compound, clientPacket);
-
-        if (clientPacket && worldPosition != null && worldPosition.equals(lastSent))
-            lastSent = null;
+    public void writeSafe(CompoundTag tag, HolderLookup.Provider registries) {
+        super.writeSafe(tag, registries);
+        tag.putFloat("Value", dialTarget);
+        tag.putInt("Color", color);
     }
 
     @Override
@@ -182,8 +183,8 @@ public class MultiMeterBlockEntity extends KineticBlockEntity implements IHaveGo
 
             stressTip.forGoggles(tooltip, 1);
         }
-        if (!worldPosition.equals(lastSent))
-          AllPackets.getChannel().sendToServer(new GaugeObservedPacket(lastSent = worldPosition));
+//        if (!worldPosition.equals(lastSent))
+//          AllPackets.getChannel().sendToServer(new GaugeObservedPacket(lastSent = worldPosition));
 
         return true;
     }

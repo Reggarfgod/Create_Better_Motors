@@ -8,14 +8,15 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+
 
 import static net.minecraft.network.chat.TextColor.fromRgb;
 
 // ===================== Main Mod Event Handler =====================
-@Mod.EventBusSubscriber
+@EventBusSubscriber
 public class CBMMessageType {
 
     // ===================== Configuration =====================

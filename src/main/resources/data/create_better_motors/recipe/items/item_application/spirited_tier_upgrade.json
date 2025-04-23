@@ -1,0 +1,16 @@
+{
+  "type": "create:item_application",
+  "ingredients": [
+    {
+      "item": "create_better_motors:niotic_motor"
+    },
+    {
+      "item": "create_better_motors:spirited_tier_upgrade"
+    }
+  ],
+  "results": [
+    {
+      "id": "create_better_motors:spirited_motor"
+    }
+  ]
+}

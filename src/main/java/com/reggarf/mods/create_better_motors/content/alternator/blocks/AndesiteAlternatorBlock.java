@@ -1,8 +1,10 @@
 package com.reggarf.mods.create_better_motors.content.alternator.blocks;
 
-import com.mrh0.createaddition.shapes.CAShapes;
-import com.reggarf.mods.create_better_motors.config.CBMConfig;
 
+import com.mrh0.createaddition.shapes.CAShapes;
+
+
+import com.reggarf.mods.create_better_motors.config.CommonConfig;
 import com.reggarf.mods.create_better_motors.content.alternator.blocksentity.AndesiteAlternatorBlockEntity;
 import com.reggarf.mods.create_better_motors.registry.CBMBlockEntityTypes;
 
@@ -22,6 +24,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Direction.Axis;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -34,7 +37,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jetbrains.annotations.Nullable;;
+
 
 import java.util.List;
 
@@ -51,10 +54,12 @@ public class AndesiteAlternatorBlock extends DirectionalKineticBlock implements 
     public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
         return ALTERNATOR_SHAPE.get(state.getValue(FACING));
     }
+
+
+
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> tooltip, TooltipFlag flag) {
-
-
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+        super.appendHoverText(stack, context, tooltip, flag);
 
         if(Screen.hasShiftDown()){
             tooltip.add(CreateLang.translate("create_better_motors.large_connector.tooltip.heavy")
@@ -63,13 +68,13 @@ public class AndesiteAlternatorBlock extends DirectionalKineticBlock implements 
         }
         else
         {
-            tooltip.add(CreateLang.text(" ").add(CreateLang.number(CBMConfig.getCommon().ANDESITE_ALTERNATOR_FE_RPM.get() * CBMConfig.getCommon().ANDESITE_ALTERNATOR_EFFICIENCY.get()).text(" ")
+            tooltip.add(CreateLang.text(" ").add(CreateLang.number(CommonConfig.ANDESITE_ALTERNATOR_FE_RPM.get() * CommonConfig.ANDESITE_ALTERNATOR_EFFICIENCY.get()).text(" ")
                     .translate("tooltip.create_better_motors.energy_per_tick").style(ChatFormatting.AQUA)).component());
 
             tooltip.add(CreateLang.translate("tooltip.create_better_motors.stores").style(ChatFormatting.GRAY)
                     .component());
             tooltip.add(CreateLang.text(" ").translate("tooltip.create_better_motors.energy",
-                    StringFormattingTool.formatLong(CBMConfig.getCommon().ANDESITE_ALTERNATOR_CAPACITY.get())).style(ChatFormatting.AQUA).component());
+                    StringFormattingTool.formatLong(CommonConfig.ANDESITE_ALTERNATOR_CAPACITY.get())).style(ChatFormatting.AQUA).component());
 
             tooltip.add(CreateLang.translate("tooltip.create_better_motors.shift")
                     .style(ChatFormatting.DARK_GRAY)

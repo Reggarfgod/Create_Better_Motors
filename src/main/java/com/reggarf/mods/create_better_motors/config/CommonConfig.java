@@ -2,10 +2,17 @@ package com.reggarf.mods.create_better_motors.config;
 
 import com.electronwill.nightconfig.core.file.CommentedFileConfig;
 import com.electronwill.nightconfig.core.io.WritingMode;
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.fml.common.Mod;
+import com.mrh0.createaddition.CreateAddition;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.config.ModConfigEvent;
+import net.neoforged.fml.loading.FMLPaths;
+import net.neoforged.neoforge.common.ModConfigSpec;
 
-@Mod.EventBusSubscriber
+import static com.reggarf.mods.create_better_motors.Create_better_motors.MOD_ID;
+
+
+@EventBusSubscriber(modid = MOD_ID,bus = EventBusSubscriber.Bus.MOD)
 public class CommonConfig {
     //public static final String CATAGORY_GENERAL = "general";
     public static final String CATAGORY_STARTER_MOTOR = "starter_motor";
@@ -21,95 +28,97 @@ public class CommonConfig {
     public static final String CATAGORY_BRASS_ALTERNATOR = "brass_alternator";
     public static final String CATAGORY_COPPER_ALTERNATOR = "copper_alternator";
 
+    private static final ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
+
+    public static ModConfigSpec COMMON_CONFIG;
+
+    public static ModConfigSpec.IntValue ANDESITE_ALTERNATOR_FE_RPM;
+    public static ModConfigSpec.IntValue ANDESITE_ALTERNATOR_MAX_STRESS;
+    public static ModConfigSpec.BooleanValue ANDESITE_ALTERNATOR_AUDIO_ENABLED;
+    public static ModConfigSpec.IntValue ANDESITE_ALTERNATOR_MAX_OUTPUT;
+    public static ModConfigSpec.IntValue ANDESITE_ALTERNATOR_CAPACITY;
+    public static ModConfigSpec.DoubleValue ANDESITE_ALTERNATOR_EFFICIENCY;
+
+    public static ModConfigSpec.IntValue BRASS_ALTERNATOR_FE_RPM;
+    public static ModConfigSpec.IntValue BRASS_ALTERNATOR_MAX_STRESS;
+    public static ModConfigSpec.BooleanValue BRASS_ALTERNATOR_AUDIO_ENABLED;
+    public static ModConfigSpec.IntValue BRASS_ALTERNATOR_MAX_OUTPUT;
+    public static ModConfigSpec.IntValue BRASS_ALTERNATOR_CAPACITY;
+    public static ModConfigSpec.DoubleValue BRASS_ALTERNATOR_EFFICIENCY;
+
+    public static ModConfigSpec.IntValue COPPER_ALTERNATOR_FE_RPM;
+    public static ModConfigSpec.IntValue COPPER_ALTERNATOR_MAX_STRESS;
+    public static ModConfigSpec.BooleanValue COPPER_ALTERNATOR_AUDIO_ENABLED;
+    public static ModConfigSpec.IntValue COPPER_ALTERNATOR_MAX_OUTPUT;
+    public static ModConfigSpec.IntValue COPPER_ALTERNATOR_CAPACITY;
+    public static ModConfigSpec.DoubleValue COPPER_ALTERNATOR_EFFICIENCY;
 
 
-    public static ForgeConfigSpec.IntValue ANDESITE_ALTERNATOR_FE_RPM;
-    public static ForgeConfigSpec.IntValue ANDESITE_ALTERNATOR_MAX_STRESS;
-    public static ForgeConfigSpec.BooleanValue ANDESITE_ALTERNATOR_AUDIO_ENABLED;
-    public static ForgeConfigSpec.IntValue ANDESITE_ALTERNATOR_MAX_OUTPUT;
-    public static ForgeConfigSpec.IntValue ANDESITE_ALTERNATOR_CAPACITY;
-    public static ForgeConfigSpec.DoubleValue ANDESITE_ALTERNATOR_EFFICIENCY;
+    public static ModConfigSpec.IntValue HEAVY_CONNECTOR_MAX_INPUT;
+    public static ModConfigSpec.IntValue HEAVY_CONNECTOR_MAX_OUTPUT;
+    public static ModConfigSpec.IntValue HEAVY_CONNECTOR_MAX_LENGTH;
 
-    public static ForgeConfigSpec.IntValue BRASS_ALTERNATOR_FE_RPM;
-    public static ForgeConfigSpec.IntValue BRASS_ALTERNATOR_MAX_STRESS;
-    public static ForgeConfigSpec.BooleanValue BRASS_ALTERNATOR_AUDIO_ENABLED;
-    public static ForgeConfigSpec.IntValue BRASS_ALTERNATOR_MAX_OUTPUT;
-    public static ForgeConfigSpec.IntValue BRASS_ALTERNATOR_CAPACITY;
-    public static ForgeConfigSpec.DoubleValue BRASS_ALTERNATOR_EFFICIENCY;
+    public static ModConfigSpec.IntValue STARTER_ELECTRIC_MOTOR_RPM_RANGE;
+    public static ModConfigSpec.IntValue STARTER_ELECTRIC_MOTOR_MAX_INPUT;
+    public static ModConfigSpec.IntValue STARTER_ELECTRIC_MOTOR_MINIMUM_CONSUMPTION;
+    public static ModConfigSpec.IntValue STARTER_ELECTRIC_MOTOR_CAPACITY;
+    public static ModConfigSpec.IntValue STARTER_FE_RPM;
+    public static ModConfigSpec.IntValue STARTER_MAX_STRESS;
+    public static ModConfigSpec.BooleanValue STARTER_AUDIO_ENABLED;
 
-    public static ForgeConfigSpec.IntValue COPPER_ALTERNATOR_FE_RPM;
-    public static ForgeConfigSpec.IntValue COPPER_ALTERNATOR_MAX_STRESS;
-    public static ForgeConfigSpec.BooleanValue COPPER_ALTERNATOR_AUDIO_ENABLED;
-    public static ForgeConfigSpec.IntValue COPPER_ALTERNATOR_MAX_OUTPUT;
-    public static ForgeConfigSpec.IntValue COPPER_ALTERNATOR_CAPACITY;
-    public static ForgeConfigSpec.DoubleValue COPPER_ALTERNATOR_EFFICIENCY;
+    public static ModConfigSpec.IntValue BASIC_ELECTRIC_MOTOR_RPM_RANGE;
+    public static ModConfigSpec.IntValue BASIC_ELECTRIC_MOTOR_MAX_INPUT;
+    public static ModConfigSpec.IntValue BASIC_ELECTRIC_MOTOR_MINIMUM_CONSUMPTION;
+    public static ModConfigSpec.IntValue BASIC_ELECTRIC_MOTOR_CAPACITY;
+    public static ModConfigSpec.IntValue BASIC_FE_RPM;
+    public static ModConfigSpec.IntValue BASIC_MAX_STRESS;
+    public static ModConfigSpec.BooleanValue BASIC_AUDIO_ENABLED;
 
+    public static ModConfigSpec.IntValue HARDENED_ELECTRIC_MOTOR_RPM_RANGE;
+    public static ModConfigSpec.IntValue HARDENED_ELECTRIC_MOTOR_MAX_INPUT;
+    public static ModConfigSpec.IntValue HARDENED_ELECTRIC_MOTOR_MINIMUM_CONSUMPTION;
+    public static ModConfigSpec.IntValue HARDENED_ELECTRIC_MOTOR_CAPACITY;
+    public static ModConfigSpec.IntValue HARDENED_FE_RPM;
+    public static ModConfigSpec.IntValue HARDENED_MAX_STRESS;
+    public static ModConfigSpec.BooleanValue HARDENED_AUDIO_ENABLED;
 
-    public static ForgeConfigSpec.IntValue HEAVY_CONNECTOR_MAX_INPUT;
-    public static ForgeConfigSpec.IntValue HEAVY_CONNECTOR_MAX_OUTPUT;
-    public static ForgeConfigSpec.IntValue HEAVY_CONNECTOR_MAX_LENGTH;
+    public static ModConfigSpec.IntValue BLAZING_ELECTRIC_MOTOR_RPM_RANGE;
+    public static ModConfigSpec.IntValue BLAZING_ELECTRIC_MOTOR_MAX_INPUT;
+    public static ModConfigSpec.IntValue BLAZING_ELECTRIC_MOTOR_MINIMUM_CONSUMPTION;
+    public static ModConfigSpec.IntValue BLAZING_ELECTRIC_MOTOR_CAPACITY;
+    public static ModConfigSpec.IntValue BLAZING_FE_RPM;
+    public static ModConfigSpec.IntValue BLAZING_MAX_STRESS;
+    public static ModConfigSpec.BooleanValue BLAZING_AUDIO_ENABLED;
 
-    public static ForgeConfigSpec.IntValue STARTER_ELECTRIC_MOTOR_RPM_RANGE;
-    public static ForgeConfigSpec.IntValue STARTER_ELECTRIC_MOTOR_MAX_INPUT;
-    public static ForgeConfigSpec.IntValue STARTER_ELECTRIC_MOTOR_MINIMUM_CONSUMPTION;
-    public static ForgeConfigSpec.IntValue STARTER_ELECTRIC_MOTOR_CAPACITY;
-    public static ForgeConfigSpec.IntValue STARTER_FE_RPM;
-    public static ForgeConfigSpec.IntValue STARTER_MAX_STRESS;
-    public static ForgeConfigSpec.BooleanValue STARTER_AUDIO_ENABLED;
-
-    public static ForgeConfigSpec.IntValue BASIC_ELECTRIC_MOTOR_RPM_RANGE;
-    public static ForgeConfigSpec.IntValue BASIC_ELECTRIC_MOTOR_MAX_INPUT;
-    public static ForgeConfigSpec.IntValue BASIC_ELECTRIC_MOTOR_MINIMUM_CONSUMPTION;
-    public static ForgeConfigSpec.IntValue BASIC_ELECTRIC_MOTOR_CAPACITY;
-    public static ForgeConfigSpec.IntValue BASIC_FE_RPM;
-    public static ForgeConfigSpec.IntValue BASIC_MAX_STRESS;
-    public static ForgeConfigSpec.BooleanValue BASIC_AUDIO_ENABLED;
-
-    public static ForgeConfigSpec.IntValue HARDENED_ELECTRIC_MOTOR_RPM_RANGE;
-    public static ForgeConfigSpec.IntValue HARDENED_ELECTRIC_MOTOR_MAX_INPUT;
-    public static ForgeConfigSpec.IntValue HARDENED_ELECTRIC_MOTOR_MINIMUM_CONSUMPTION;
-    public static ForgeConfigSpec.IntValue HARDENED_ELECTRIC_MOTOR_CAPACITY;
-    public static ForgeConfigSpec.IntValue HARDENED_FE_RPM;
-    public static ForgeConfigSpec.IntValue HARDENED_MAX_STRESS;
-    public static ForgeConfigSpec.BooleanValue HARDENED_AUDIO_ENABLED;
-
-    public static ForgeConfigSpec.IntValue BLAZING_ELECTRIC_MOTOR_RPM_RANGE;
-    public static ForgeConfigSpec.IntValue BLAZING_ELECTRIC_MOTOR_MAX_INPUT;
-    public static ForgeConfigSpec.IntValue BLAZING_ELECTRIC_MOTOR_MINIMUM_CONSUMPTION;
-    public static ForgeConfigSpec.IntValue BLAZING_ELECTRIC_MOTOR_CAPACITY;
-    public static ForgeConfigSpec.IntValue BLAZING_FE_RPM;
-    public static ForgeConfigSpec.IntValue BLAZING_MAX_STRESS;
-    public static ForgeConfigSpec.BooleanValue BLAZING_AUDIO_ENABLED;
-
-    public static ForgeConfigSpec.IntValue NIOTIC_ELECTRIC_MOTOR_RPM_RANGE;
-    public static ForgeConfigSpec.IntValue NIOTIC_ELECTRIC_MOTOR_MAX_INPUT;
-    public static ForgeConfigSpec.IntValue NIOTIC_ELECTRIC_MOTOR_MINIMUM_CONSUMPTION;
-    public static ForgeConfigSpec.IntValue NIOTIC_ELECTRIC_MOTOR_CAPACITY;
-    public static ForgeConfigSpec.IntValue NIOTIC_FE_RPM;
-    public static ForgeConfigSpec.IntValue NIOTIC_MAX_STRESS;
-    public static ForgeConfigSpec.BooleanValue NIOTIC_AUDIO_ENABLED;
+    public static ModConfigSpec.IntValue NIOTIC_ELECTRIC_MOTOR_RPM_RANGE;
+    public static ModConfigSpec.IntValue NIOTIC_ELECTRIC_MOTOR_MAX_INPUT;
+    public static ModConfigSpec.IntValue NIOTIC_ELECTRIC_MOTOR_MINIMUM_CONSUMPTION;
+    public static ModConfigSpec.IntValue NIOTIC_ELECTRIC_MOTOR_CAPACITY;
+    public static ModConfigSpec.IntValue NIOTIC_FE_RPM;
+    public static ModConfigSpec.IntValue NIOTIC_MAX_STRESS;
+    public static ModConfigSpec.BooleanValue NIOTIC_AUDIO_ENABLED;
 
 
-    public static ForgeConfigSpec.IntValue SPIRITED_ELECTRIC_MOTOR_RPM_RANGE;
-    public static ForgeConfigSpec.IntValue SPIRITED_ELECTRIC_MOTOR_MAX_INPUT;
-    public static ForgeConfigSpec.IntValue SPIRITED_ELECTRIC_MOTOR_MINIMUM_CONSUMPTION;
-    public static ForgeConfigSpec.IntValue SPIRITED_ELECTRIC_MOTOR_CAPACITY;
-    public static ForgeConfigSpec.IntValue SPIRITED_FE_RPM;
-    public static ForgeConfigSpec.IntValue SPIRITED_MAX_STRESS;
-    public static ForgeConfigSpec.BooleanValue SPIRITED_AUDIO_ENABLED;
+    public static ModConfigSpec.IntValue SPIRITED_ELECTRIC_MOTOR_RPM_RANGE;
+    public static ModConfigSpec.IntValue SPIRITED_ELECTRIC_MOTOR_MAX_INPUT;
+    public static ModConfigSpec.IntValue SPIRITED_ELECTRIC_MOTOR_MINIMUM_CONSUMPTION;
+    public static ModConfigSpec.IntValue SPIRITED_ELECTRIC_MOTOR_CAPACITY;
+    public static ModConfigSpec.IntValue SPIRITED_FE_RPM;
+    public static ModConfigSpec.IntValue SPIRITED_MAX_STRESS;
+    public static ModConfigSpec.BooleanValue SPIRITED_AUDIO_ENABLED;
 
-    public static ForgeConfigSpec.IntValue NITRO_ELECTRIC_MOTOR_RPM_RANGE;
-    public static ForgeConfigSpec.IntValue NITRO_ELECTRIC_MOTOR_MAX_INPUT;
-    public static ForgeConfigSpec.IntValue NITRO_ELECTRIC_MOTOR_MINIMUM_CONSUMPTION;
-    public static ForgeConfigSpec.IntValue NITRO_ELECTRIC_MOTOR_CAPACITY;
-    public static ForgeConfigSpec.IntValue NITRO_FE_RPM;
-    public static ForgeConfigSpec.IntValue NITRO_MAX_STRESS;
-    public static ForgeConfigSpec.BooleanValue NITRO_AUDIO_ENABLED;
+    public static ModConfigSpec.IntValue NITRO_ELECTRIC_MOTOR_RPM_RANGE;
+    public static ModConfigSpec.IntValue NITRO_ELECTRIC_MOTOR_MAX_INPUT;
+    public static ModConfigSpec.IntValue NITRO_ELECTRIC_MOTOR_MINIMUM_CONSUMPTION;
+    public static ModConfigSpec.IntValue NITRO_ELECTRIC_MOTOR_CAPACITY;
+    public static ModConfigSpec.IntValue NITRO_FE_RPM;
+    public static ModConfigSpec.IntValue NITRO_MAX_STRESS;
+    public static ModConfigSpec.BooleanValue NITRO_AUDIO_ENABLED;
 
-    public static ForgeConfigSpec.IntValue ACCUMULATOR_MAX_INPUT;
-    public static ForgeConfigSpec.IntValue ACCUMULATOR_MAX_OUTPUT;
+    public static ModConfigSpec.IntValue ACCUMULATOR_MAX_INPUT;
+    public static ModConfigSpec.IntValue ACCUMULATOR_MAX_OUTPUT;
 
-    public CommonConfig(ForgeConfigSpec.Builder builder) {
+    static {
         builder.comment("Make sure config changes are duplicated on both Clients and the Server when running a dedicated Server,")
                 .comment(" as the config isnt synced between Clients and Server.");
 
@@ -350,17 +359,21 @@ public class CommonConfig {
                 .define("audio_enabled", true);
         builder.pop();
 
-
+        COMMON_CONFIG = builder.build();
 
     }
-    public static void loadConfig(ForgeConfigSpec spec, java.nio.file.Path path) {
+    @SubscribeEvent
+    public static void onLoad(ModConfigEvent.Loading event) {
+       loadConfig(CommonConfig.COMMON_CONFIG, FMLPaths.CONFIGDIR.get().resolve("create_better_motors-common.toml"));
+    }
+    public static void loadConfig(ModConfigSpec spec, java.nio.file.Path path) {
         final CommentedFileConfig configData = CommentedFileConfig.builder(path)
                 .sync()
                 .autosave()
                 .writingMode(WritingMode.REPLACE)
                 .build();
         configData.load();
-        spec.setConfig(configData);
+        spec.correct(configData);
     }
 }
 

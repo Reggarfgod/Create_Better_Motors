@@ -137,9 +137,11 @@ public class MultiMeterBlock extends DirectionalAxisKineticBlock implements IBE<
     }
 
     @Override
-    public boolean isPathfindable(BlockState state, BlockGetter reader, BlockPos pos, PathComputationType type) {
+    protected boolean isPathfindable(BlockState state, PathComputationType type) {
         return false;
+
     }
+
 
     @Override
     public Class<MultiMeterBlockEntity> getBlockEntityClass() {

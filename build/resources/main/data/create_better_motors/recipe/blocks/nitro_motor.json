@@ -1,0 +1,34 @@
+{
+  "type": "create:mechanical_crafting",
+  "accept_mirrored": true,
+  "category": "misc",
+  "pattern": [
+    "  A  ",
+    " BSB ",
+    "GSRSG",
+    " BCB "
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:nether_star"
+    },
+    "C": {
+      "item": "create_better_motors:lava_tube"
+    },
+    "B": {
+      "tag": "c:plates/brass"
+    },
+    "G": {
+      "tag": "c:plates/reggarfonite"
+    },
+    "R": {
+      "item": "create_better_motors:spirited_motor"
+    },
+    "S": {
+      "item": "createaddition:electrum_spool"
+    }
+  },
+  "result": {
+    "id": "create_better_motors:nitro_motor"
+  }
+}

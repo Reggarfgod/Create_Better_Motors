@@ -1,0 +1,16 @@
+{
+  "type": "create:item_application",
+  "ingredients": [
+    {
+      "item": "createaddition:electric_motor"
+    },
+    {
+      "item": "create_better_motors:starter_tier_upgrade"
+    }
+  ],
+  "results": [
+    {
+      "id": "create_better_motors:starter_motor"
+    }
+  ]
+}

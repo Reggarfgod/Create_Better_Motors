@@ -4,6 +4,7 @@ import com.mrh0.createaddition.CreateAddition;
 import com.mrh0.createaddition.blocks.electric_motor.ElectricMotorBlock;
 import com.mrh0.createaddition.blocks.electric_motor.ElectricMotorBlockEntity;
 
+import com.mrh0.createaddition.blocks.tesla_coil.TeslaCoilBlock;
 import com.mrh0.createaddition.compat.computercraft.ElectricMotorPeripheral;
 import com.mrh0.createaddition.compat.computercraft.Peripherals;
 
@@ -12,6 +13,7 @@ import com.mrh0.createaddition.energy.InternalEnergyStorage;
 import com.mrh0.createaddition.sound.CASoundScapes;
 import com.mrh0.createaddition.util.Util;
 import com.reggarf.mods.create_better_motors.config.CommonConfig;
+import com.reggarf.mods.create_better_motors.registry.CBMBlockEntityTypes;
 import com.reggarf.mods.create_better_motors.registry.CBMBlocks;
 
 import com.reggarf.mods.create_better_motors.util.StringFormattingTool;
@@ -23,15 +25,16 @@ import com.simibubi.create.foundation.utility.CreateLang;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.energy.IEnergyStorage;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
+import net.neoforged.neoforge.energy.IEnergyStorage;
+
 
 import java.util.List;
 
@@ -41,9 +44,9 @@ public class StarterMotorBlockEntity extends ElectricMotorBlockEntity {
     protected float motorSpeed;
     protected ScrollValueBehaviour generatedSpeed;
     protected final InternalEnergyStorage energy;
-    private LazyOptional<IEnergyStorage> lazyEnergy;
-    private LazyOptional<ElectricMotorPeripheral> lazyPeripheral = null;
-
+//    private LazyOptional<IEnergyStorage> lazyEnergy;
+//    private LazyOptional<ElectricMotorPeripheral> lazyPeripheral = null;
+    private final IEnergyStorage capability;
     private boolean cc_update_rpm = false;
     private float cc_new_rpm = 32.0f;
 
@@ -52,11 +55,19 @@ public class StarterMotorBlockEntity extends ElectricMotorBlockEntity {
     public StarterMotorBlockEntity(BlockEntityType<? extends ElectricMotorBlockEntity> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
         energy = new InternalEnergyStorage(CommonConfig.STARTER_ELECTRIC_MOTOR_CAPACITY.get(), CommonConfig.STARTER_ELECTRIC_MOTOR_MAX_INPUT.get(), 0);
-        lazyEnergy = LazyOptional.of(() -> energy);
-        if(CreateAddition.CC_ACTIVE) {
-            lazyPeripheral = LazyOptional.of(() -> Peripherals.createElectricMotorPeripheral(this));
-        }
+//        lazyEnergy = LazyOptional.of(() -> energy);
+//        if(CreateAddition.CC_ACTIVE) {
+//            lazyPeripheral = LazyOptional.of(() -> Peripherals.createElectricMotorPeripheral(this));
+//        }
+        capability = energy;
         setLazyTickRate(20);
+    }
+    public static void registerCapabilitiesstarter(RegisterCapabilitiesEvent event) {
+        event.registerBlockEntity(
+                Capabilities.EnergyStorage.BLOCK,
+                CBMBlockEntityTypes.STARTER_MOTOR.get(),
+                (be, context) -> be.capability
+        );
     }
 
     @Override
@@ -130,31 +141,6 @@ public class StarterMotorBlockEntity extends ElectricMotorBlockEntity {
     }
 
 
-
-    @Override
-    public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
-        if(cap == ForgeCapabilities.ENERGY) return lazyEnergy.cast();
-        if(CreateAddition.CC_ACTIVE) {
-            if(Peripherals.isPeripheral(cap)) return lazyPeripheral.cast();
-        }
-        return super.getCapability(cap, side);
-    }
-
-
-    @Override
-    public void read(CompoundTag compound, boolean clientPacket) {
-        super.read(compound, clientPacket);
-        energy.read(compound);
-        active = compound.getBoolean("active");
-    }
-
-    @Override
-    public void write(CompoundTag compound, boolean clientPacket) {
-        super.write(compound, clientPacket);
-        energy.write(compound);
-        compound.putBoolean("active", active);
-    }
-
     @Override
     public void lazyTick() {
         super.lazyTick();
@@ -208,7 +194,19 @@ public class StarterMotorBlockEntity extends ElectricMotorBlockEntity {
         if (!active) return;
         if (CommonConfig.STARTER_AUDIO_ENABLED.get()) CASoundScapes.play(CASoundScapes.AmbienceGroup.DYNAMO, worldPosition, 1);
     }
+    @Override
+    protected void read(CompoundTag tag, HolderLookup.Provider registries, boolean clientPacket) {
+        super.read(tag, registries, clientPacket);
+        energy.read(tag);
+        active = tag.getBoolean("active");
+    }
 
+    @Override
+    public void writeSafe(CompoundTag tag, HolderLookup.Provider registries) {
+        super.writeSafe(tag, registries);
+        energy.write(tag);
+        tag.putBoolean("active", active);
+    }
 
 
     // This is the callback used by the CC Peripheral!
@@ -218,5 +216,19 @@ public class StarterMotorBlockEntity extends ElectricMotorBlockEntity {
         cc_update_rpm = true;
         return true;
     }
+    public float getRPM() {
+        return motorSpeed;
+    }
 
+    public int getGeneratedStress() {
+        return (int) calculateAddedStressCapacity();
+    }
+
+    public int getEnergyConsumption() {
+        return getEnergyConsumptionRate(motorSpeed);
+    }
+
+    public boolean isPoweredState() {
+        return getBlockState().getValue(TeslaCoilBlock.POWERED);
+    }
 }

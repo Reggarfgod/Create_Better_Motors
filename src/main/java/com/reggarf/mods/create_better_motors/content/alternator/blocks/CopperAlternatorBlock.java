@@ -1,11 +1,8 @@
 package com.reggarf.mods.create_better_motors.content.alternator.blocks;
 
-import com.mrh0.createaddition.blocks.alternator.AlternatorBlock;
-import com.mrh0.createaddition.blocks.alternator.AlternatorBlockEntity;
 import com.mrh0.createaddition.shapes.CAShapes;
-import com.reggarf.mods.create_better_motors.config.CBMConfig;
+import com.reggarf.mods.create_better_motors.config.CommonConfig;
 import com.reggarf.mods.create_better_motors.content.alternator.blocksentity.AndesiteAlternatorBlockEntity;
-import com.reggarf.mods.create_better_motors.content.alternator.blocksentity.BrassAlternatorBlockEntity;
 import com.reggarf.mods.create_better_motors.content.alternator.blocksentity.CopperAlternatorBlockEntity;
 import com.reggarf.mods.create_better_motors.registry.CBMBlockEntityTypes;
 import com.reggarf.mods.create_better_motors.util.StringFormattingTool;
@@ -19,6 +16,7 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -31,7 +29,6 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -56,8 +53,8 @@ public class CopperAlternatorBlock extends DirectionalKineticBlock implements IB
         return CBMBlockEntityTypes.COPPER_ALTERNATOR.create(pos, state);
     }
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> tooltip, TooltipFlag flag) {
-
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+        super.appendHoverText(stack, context, tooltip, flag);
         if(Screen.hasShiftDown()){
             tooltip.add(CreateLang.translate("create_better_motors.large_connector.tooltip.heavy")
                     .style(ChatFormatting.AQUA)
@@ -67,13 +64,13 @@ public class CopperAlternatorBlock extends DirectionalKineticBlock implements IB
             tooltip.add(CreateLang.translate("tooltip.create_better_motors.generates").style(ChatFormatting.GRAY)
                     .component());
 
-            tooltip.add(CreateLang.text(" ").add(CreateLang.number(CBMConfig.getCommon().COPPER_ALTERNATOR_FE_RPM.get() * CBMConfig.getCommon().COPPER_ALTERNATOR_EFFICIENCY.get()).text(" ")
+            tooltip.add(CreateLang.text(" ").add(CreateLang.number(CommonConfig.COPPER_ALTERNATOR_FE_RPM.get() * CommonConfig.COPPER_ALTERNATOR_EFFICIENCY.get()).text(" ")
                     .translate("tooltip.create_better_motors.energy_per_tick").style(ChatFormatting.AQUA)).component());
 
             tooltip.add(CreateLang.translate("tooltip.create_better_motors.stores").style(ChatFormatting.GRAY)
                     .component());
             tooltip.add(CreateLang.text(" ").translate("tooltip.create_better_motors.energy",
-                    StringFormattingTool.formatLong(CBMConfig.getCommon().COPPER_ALTERNATOR_CAPACITY.get())).style(ChatFormatting.AQUA).component());
+                    StringFormattingTool.formatLong(CommonConfig.COPPER_ALTERNATOR_CAPACITY.get())).style(ChatFormatting.AQUA).component());
         }
     }
     @Override

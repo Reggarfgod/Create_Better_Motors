@@ -1,10 +1,6 @@
 package com.reggarf.mods.create_better_motors.registry;
 
 
-
-import com.mrh0.createaddition.CreateAddition;
-import com.mrh0.createaddition.item.WireSpool;
-import com.simibubi.create.AllTags;
 import com.simibubi.create.foundation.data.recipe.CompatMetals;
 import com.simibubi.create.foundation.item.TagDependentIngredientItem;
 import com.tterrag.registrate.util.entry.ItemEntry;
@@ -13,7 +9,8 @@ import net.minecraft.world.item.Item;
 
 import static com.reggarf.mods.create_better_motors.Create_better_motors.REGISTRATE;
 import static com.simibubi.create.AllTags.AllItemTags.CRUSHED_RAW_MATERIALS;
-import static com.simibubi.create.AllTags.forgeItemTag;
+import static com.simibubi.create.AllTags.commonItemTag;
+
 
 
 public class CBMItems {
@@ -25,7 +22,7 @@ public class CBMItems {
     public static final ItemEntry<Item> SPIRITED_TIER_UPGRADE = REGISTRATE.item("spirited_tier_upgrade", Item::new).register();
     public static final ItemEntry<Item> NITRO_TIER_UPGRADE = REGISTRATE.item("nitro_tier_upgrade", Item::new).register();
 
-    public static final ItemEntry<Item> RAW_REGGARFONITE = taggedIngredient("raw_reggarfonite", forgeItemTag("raw_materials/reggarfonite"), forgeItemTag("raw_materials"));
+    public static final ItemEntry<Item> RAW_REGGARFONITE = taggedIngredient("raw_reggarfonite", commonItemTag("raw_materials/reggarfonite"), commonItemTag("raw_materials"));
     public static final ItemEntry<Item> CRUSHED_REGGARFONITE = taggedIngredient("crushed_raw_reggarfonite", CRUSHED_RAW_MATERIALS.tag);
     public static final ItemEntry<Item> REGGARFONITE_GEM = REGISTRATE.item("reggarfonite_gem", Item::new).register();
     public static final ItemEntry<Item> REGGARFONITE_NUGGET = REGISTRATE.item("reggarfonite_nugget", Item::new).register();
@@ -43,11 +40,12 @@ public class CBMItems {
                 .tag(tags)
                 .register();
     }
+
     private static ItemEntry<TagDependentIngredientItem> compatCrushedOre(CompatMetals metal) {
         String metalName = metal.getName();
         return REGISTRATE
                 .item("crushed_raw_" + metalName,
-                        props -> new TagDependentIngredientItem(props, AllTags.forgeItemTag("ores/" + metalName)))
+                        props -> new TagDependentIngredientItem(props, commonItemTag("ores/" + metalName)))
                 .tag(CRUSHED_RAW_MATERIALS.tag)
                 .register();
     }

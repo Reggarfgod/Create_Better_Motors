@@ -1,0 +1,22 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "create_better_motors:raw_reggarfonite"
+    }
+  ],
+  "processingTime": 400,
+  "results": [
+    {
+      "id": "create_better_motors:crushed_raw_reggarfonite"
+    },
+    {
+      "id": "create_better_motors:crushed_raw_reggarfonite",
+      "chance": 0.10
+    },
+    {
+      "chance": 0.75,
+      "id": "create:experience_nugget"
+    }
+  ]
+}

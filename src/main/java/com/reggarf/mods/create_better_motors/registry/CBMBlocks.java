@@ -3,6 +3,8 @@ package com.reggarf.mods.create_better_motors.registry;
 
 
 
+import com.mrh0.createaddition.CreateAddition;
+
 import com.mrh0.createaddition.energy.NodeMovementBehaviour;
 import com.mrh0.createaddition.index.CABlocks;
 import com.reggarf.mods.create_better_motors.Create_better_motors;
@@ -13,23 +15,25 @@ import com.reggarf.mods.create_better_motors.content.alternator.blocks.AndesiteA
 import com.reggarf.mods.create_better_motors.content.alternator.blocks.BrassAlternatorBlock;
 import com.reggarf.mods.create_better_motors.content.alternator.blocks.CopperAlternatorBlock;
 import com.reggarf.mods.create_better_motors.content.heavy_connector.HeavyConnectorBlock;
+
 import com.reggarf.mods.create_better_motors.content.motors.blocks.*;
 import com.reggarf.mods.create_better_motors.content.multimeter.MultiMeterBlock;
-import com.simibubi.create.AllBlocks;
-import com.simibubi.create.AllDisplaySources;
-import com.simibubi.create.AllItems;
-import com.simibubi.create.AllTags;
+import com.simibubi.create.*;
 
 import com.simibubi.create.content.kinetics.gauge.GaugeGenerator;
+import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.ModelGen;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
 import com.tterrag.registrate.util.entry.BlockEntry;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -41,7 +45,8 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
-import net.minecraftforge.common.Tags;
+import net.neoforged.neoforge.common.Tags;
+
 
 import static com.reggarf.mods.create_better_motors.Create_better_motors.REGISTRATE;
 
@@ -53,6 +58,7 @@ import static com.tterrag.registrate.providers.RegistrateRecipeProvider.has;
 
 
 public class CBMBlocks {
+   // public static final CreateRegistrate REGISTRATE = CreateRegistrate.create("create_better_motors");
     static {
         REGISTRATE.defaultCreativeTab(Create_better_motors.CREATIVE_TAB_KEY);
     }
@@ -192,22 +198,6 @@ public class CBMBlocks {
 
 
 
-//    public static final BlockEntry<Block> REGGARFONITE_ORE = REGISTRATE.block("reggarfonite_ore", Block::new)
-//            .initialProperties(() -> Blocks.GOLD_ORE)
-//            .properties(p -> p.mapColor(MapColor.METAL)
-//                    .requiresCorrectToolForDrops()
-//                    .sound(SoundType.STONE))
-//            .transform(pickaxeOnly())
-//            .loot((lt, b) -> lt.add(b,
-//                    RegistrateBlockLootTables.createSilkTouchDispatchTable(b,
-//                            lt.applyExplosionDecay(b, LootItem.lootTableItem(CBMItems.RAW_REGGARFONITE.get())
-//                                    .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))))))
-//            .tag(BlockTags.NEEDS_IRON_TOOL)
-//            .tag(Tags.Blocks.ORES)
-//            .transform(tagBlockAndItem("ores/reggarfonite", "ores_in_ground/stone"))
-//            .tag(Tags.Items.ORES)
-//            .build()
-//            .register();
 
     public static final BlockEntry<Block> DEEPSLATE_REGGARFONITE_ORE = REGISTRATE.block("deepslate_reggarfonite_ore", Block::new)
             .initialProperties(() -> Blocks.DEEPSLATE_GOLD_ORE)
@@ -215,10 +205,14 @@ public class CBMBlocks {
                     .requiresCorrectToolForDrops()
                     .sound(SoundType.DEEPSLATE))
             .transform(pickaxeOnly())
-            .loot((lt, b) -> lt.add(b,
-                    RegistrateBlockLootTables.createSilkTouchDispatchTable(b,
-                            lt.applyExplosionDecay(b, LootItem.lootTableItem(CBMItems.RAW_REGGARFONITE.get())
-                                    .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))))))
+            .loot((lt, b) ->  {
+                HolderLookup.RegistryLookup<Enchantment> enchantmentRegistryLookup = lt.getRegistries().lookupOrThrow(Registries.ENCHANTMENT);
+
+                lt.add(b,
+                        lt.createSilkTouchDispatchTable(b,
+                                lt.applyExplosionDecay(b, LootItem.lootTableItem(CBMItems.RAW_REGGARFONITE.get())
+                                        .apply(ApplyBonusCount.addOreBonusCount(enchantmentRegistryLookup.getOrThrow(Enchantments.FORTUNE))))));
+            })
             .tag(BlockTags.NEEDS_IRON_TOOL)
             .tag(Tags.Blocks.ORES)
             .transform(tagBlockAndItem("ores/reggarfonite", "ores_in_ground/deepslate"))

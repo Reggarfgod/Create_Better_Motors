@@ -1,46 +1,47 @@
 package com.reggarf.mods.create_better_motors;
 
+import com.mojang.logging.LogUtils;
 
-
+import com.reggarf.mods.create_better_motors.config.CommonConfig;
 import com.reggarf.mods.create_better_motors.registry.*;
-
-
-import com.simibubi.create.api.boiler.BoilerHeater;
-import com.simibubi.create.api.contraption.ContraptionMovementSetting;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
-
-import com.reggarf.mods.create_better_motors.config.CBMConfig;
-
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.ModLoadingContext;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
+import static net.neoforged.neoforge.common.NeoForge.EVENT_BUS;
 
-@Mod("create_better_motors")
+// The value here should match an entry in the META-INF/neoforge.mods.toml file
+@Mod(Create_better_motors.MOD_ID)
 public class Create_better_motors {
-    public static final Logger LOGGER = LoggerFactory.getLogger("create_better_motors");
-
+    // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "create_better_motors";
+    // Directly reference a slf4j logger
+    private static final Logger LOGGER = LogUtils.getLogger();
 
     public static final CreateRegistrate BASE_REGISTRATE = CreateRegistrate.create(MOD_ID);
-    //public static final MotorNetworkHandler MOTOR_LINK_NETWORK_HANDLER = new MotorNetworkHandler();
-    //public static AccumulatorData BATTERIES_DATA;
 
     private static DeferredRegister<CreativeModeTab> TAB_REGISTRAR = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MOD_ID);
-    public static final RegistryObject<CreativeModeTab> tab = TAB_REGISTRAR.register("create_better_motors_tab",
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> tab = TAB_REGISTRAR.register("create_better_motors_tab",
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("item_group." + MOD_ID + ".tab"))
                     .icon(CBMBlocks.STARTER_MOTOR::asStack)
@@ -51,52 +52,42 @@ public class Create_better_motors {
 
 
     public static final ResourceKey<CreativeModeTab> CREATIVE_TAB_KEY = ResourceKey.create(Registries.CREATIVE_MODE_TAB,
-            new ResourceLocation(MOD_ID, "create_better_motors_tab"));
+           ResourceLocation.fromNamespaceAndPath(MOD_ID, "create_better_motors_tab"));
 
 
-
-    public Create_better_motors() {
-        var modBus = FMLJavaModLoadingContext.get().getModEventBus();
-        LOGGER.info("Hello 1.20.1 Create!");
-
-        BASE_REGISTRATE.registerEventListeners(modBus);
-        TAB_REGISTRAR.register(modBus);
-        MinecraftForge.EVENT_BUS.register(this);
-        MinecraftForge.EVENT_BUS.register(CBMMessageType.class);
-        IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
-
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        CBMBlocks.load();
-        //CBMContainerTypes.register();
-        CBMBlockEntityTypes.load();
-        CBMItems.load();
-        CBMConfig.getCommon();
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(CBMClientIniter::onInitializeClient);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::generalSetup);
-
-
-        //modEventBus.addListener(Create_better_motors::init);
-//        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () ->
-//                CBMClient.onCtorClient(modEventBus, forgeEventBus)
-//        );
-
-    }
-
-
-   // public static void init(final FMLCommonSetupEvent event) {
-      //  CBMPackets.registerPackets();
-   // }
 
     public static ResourceLocation asResource(String path) {
-        return new ResourceLocation(Create_better_motors.MOD_ID, path);
+        return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
     }
 
-    private void generalSetup(final FMLCommonSetupEvent event) {
-//        event.enqueueWork(() -> {
-//
-//            ContraptionMovementSetting.REGISTRY.register(CBMBlocks.ELECTRICAL_CONNECTOR.get(), () -> ContraptionMovementSetting.UNMOVABLE);
-//
-//        });
+    public Create_better_motors(IEventBus modEventBus, ModContainer modContainer) {
+        ModLoadingContext modLoadingContext = ModLoadingContext.get();
+
+        LOGGER.info("Hello 1.20.1 Create!");
+        BASE_REGISTRATE.registerEventListeners(modEventBus);
+        TAB_REGISTRAR.register(modEventBus);
+        NeoForge.EVENT_BUS.register(this);
+        NeoForge.EVENT_BUS.register(CBMMessageType.class);
+        modEventBus.addListener(CBMClientIniter::onInitializeClient);
+        CBMBlocks.load();
+        CBMBlockEntityTypes.load();
+        CBMItems.load();
+        modContainer.registerConfig(ModConfig.Type.COMMON, CommonConfig.COMMON_CONFIG);
+        modEventBus.addListener(RegisterCapabilitiesEvent.class, CFMCapabilities::register);
     }
 
+    // You can use SubscribeEvent and let the Event Bus discover methods to call
+    @SubscribeEvent
+    public void onServerStarting(ServerStartingEvent event) {
+
+    }
+
+    // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
+    @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    public static class ClientModEvents {
+        @SubscribeEvent
+        public static void onClientSetup(FMLClientSetupEvent event) {
+
+        }
+    }
 }

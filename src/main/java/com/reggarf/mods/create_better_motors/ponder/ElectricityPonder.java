@@ -3,7 +3,7 @@ package com.reggarf.mods.create_better_motors.ponder;
 
 import com.mrh0.createaddition.energy.WireType;
 import com.mrh0.createaddition.index.CAItems;
-import com.reggarf.mods.create_better_motors.content.heavy_connector.HeavyConnectorBlockEntity;
+
 import com.simibubi.create.AllItems;
 import com.simibubi.create.foundation.ponder.CreateSceneBuilder;
 import net.createmod.catnip.math.Pointing;

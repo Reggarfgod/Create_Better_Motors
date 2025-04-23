@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "create_better_motors:crushed_raw_reggarfonite"
+  },
+  "result":{
+    "id": "create_better_motors:reggarfonite_gem"}
+}

@@ -6,12 +6,16 @@ package com.reggarf.mods.create_better_motors.content.heavy_connector;
 import com.mrh0.createaddition.blocks.connector.ConnectorType;
 import com.mrh0.createaddition.blocks.connector.base.AbstractConnectorBlock;
 import com.mrh0.createaddition.blocks.connector.base.AbstractConnectorBlockEntity;
+import com.mrh0.createaddition.index.CABlockEntities;
 import com.reggarf.mods.create_better_motors.config.CommonConfig;
+import com.reggarf.mods.create_better_motors.registry.CBMBlockEntityTypes;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 
 import java.util.List;
 
@@ -29,6 +33,13 @@ public class HeavyConnectorBlockEntity extends AbstractConnectorBlockEntity {
 
     public HeavyConnectorBlockEntity(BlockEntityType<?> blockEntityTypeIn, BlockPos pos, BlockState state) {
         super(blockEntityTypeIn, pos, state);
+    }
+    public static void registerCapabilities(RegisterCapabilitiesEvent event) {
+        event.registerBlockEntity(
+                Capabilities.EnergyStorage.BLOCK,
+                CBMBlockEntityTypes.HEAVY_CONNECTOR.get(),
+                (be, context) -> be.internal
+        );
     }
     @Override
     public void addBehaviours(List<BlockEntityBehaviour> list) {}

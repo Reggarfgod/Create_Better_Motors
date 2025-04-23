@@ -10,6 +10,7 @@ import com.reggarf.mods.create_better_motors.registry.CBMBlocks;
 import com.simibubi.create.infrastructure.ponder.AllCreatePonderTags;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import net.createmod.catnip.platform.CatnipServices;
+import net.createmod.catnip.registry.RegisteredObjectsHelper;
 import net.createmod.ponder.api.registration.PonderTagRegistrationHelper;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.ItemLike;
@@ -27,9 +28,9 @@ public class PonderTags {
 
 
     public static void register(PonderTagRegistrationHelper<ResourceLocation> helper) {
-        PonderTagRegistrationHelper<RegistryEntry<?>> HELPER = helper.withKeyFunction(RegistryEntry::getId);
+        PonderTagRegistrationHelper<RegistryEntry<?,?>> HELPER = helper.withKeyFunction(RegistryEntry::getId);
         PonderTagRegistrationHelper<ItemLike> itemHelper = helper.withKeyFunction(
-                CatnipServices.REGISTRIES::getKeyOrThrow);
+                RegisteredObjectsHelper::getKeyOrThrow);
 
 
         HELPER.registerTag(ELECTRIC)
@@ -57,7 +58,7 @@ public class PonderTags {
                 .add(CBMBlocks.MULTIMETER);
 
         HELPER.addToTag(ELECTRIC)
-                .add(CBMBlocks.HEAVY_CONNECTOR)
+                //.add(CBMBlocks.HEAVY_CONNECTOR)
                 .add(CBMBlocks.STARTER_MOTOR)
                 .add(CBMBlocks.BASIC_MOTOR)
                 .add(CBMBlocks.HARDENED_MOTOR)

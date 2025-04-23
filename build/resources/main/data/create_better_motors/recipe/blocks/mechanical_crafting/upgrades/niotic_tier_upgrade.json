@@ -1,0 +1,31 @@
+{
+  "type": "create:mechanical_crafting",
+  "accept_mirrored": true,
+  "category": "misc",
+  "pattern": [
+    "  A  ",
+    " BSB ",
+    "GS SG",
+    " BCB "
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "C": {
+      "item": "create_better_motors:lava_tube"
+    },
+    "B": {
+      "tag": "c:plates/brass"
+    },
+    "G": {
+      "tag": "c:plates/reggarfonite"
+    },
+    "S": {
+      "item": "createaddition:electrum_spool"
+    }
+  },
+  "result": {
+    "id": "create_better_motors:niotic_tier_upgrade"
+  }
+}
