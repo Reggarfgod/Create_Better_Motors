@@ -1,8 +1,6 @@
 package com.reggarf.mods.create_better_motors.content.heavy_connector;
 
 
-
-
 import com.mrh0.createaddition.blocks.connector.ConnectorType;
 import com.mrh0.createaddition.blocks.connector.base.AbstractConnectorBlock;
 import com.mrh0.createaddition.blocks.connector.base.AbstractConnectorBlockEntity;

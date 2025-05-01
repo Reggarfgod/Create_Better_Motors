@@ -24,6 +24,6 @@ forgedatauserdev
 create_better_motors
 --all
 --output
-"D:\\Download\\MOD\\New folder (2)\\src\\generated\\resources"
+D:\\Download\\MOD\\Create_Better_Motors\\src\\generated\\resources
 --existing
-"D:\\Download\\MOD\\New folder (2)\\src\\main\\resources"
+D:\\Download\\MOD\\Create_Better_Motors\\src\\main\\resources
