@@ -10,7 +10,13 @@ public class StringFormattingTool {
             "T",
             "Q"
     };
+    public static String formatRPM(float rpm) {
+        return String.format("%.1f", rpm);
+    }
 
+    public static String formatStress(int stress) {
+        return String.valueOf(stress); // You can make this more fancy if needed
+    }
 
     public static String formatLong(long l) {
         int d = 0;
@@ -35,7 +41,6 @@ public class StringFormattingTool {
         }
         return String.format("%.1f%s", f, postfixes[d]);
     }
-
     public static String formatPercentFloat(float f) {
         return String.format("%.1f", f * 100);
     }
