@@ -2,6 +2,7 @@ package com.reggarf.mods.create_better_motors.registry;
 
 // ===================== Imports =====================
 
+import com.reggarf.mods.create_better_motors.config.CBMConfig;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
@@ -19,7 +20,7 @@ import static net.minecraft.network.chat.TextColor.fromRgb;
 public class CBMMessageType {
 
     // ===================== Configuration =====================
-    public static boolean enabled = true;
+    //public static boolean enabled = true;
 
     // Text colors (hex codes)
     public static String titleColor = "DDA0FF";
@@ -31,7 +32,7 @@ public class CBMMessageType {
     // ===================== Player Join Event =====================
     @SubscribeEvent
     public static void onPlayerJoin(PlayerEvent.PlayerLoggedInEvent event) {
-        if (!(event.getEntity() instanceof ServerPlayer player) || !enabled) return;
+        if (!(event.getEntity() instanceof ServerPlayer player) || !CBMConfig.getCommon().MESSAGE_ENABLED.get()) return;
 
         CompoundTag persistentData = player.getPersistentData();
         CompoundTag igData = persistentData.getCompound(ServerPlayer.PERSISTED_NBT_TAG);

@@ -1,0 +1,22 @@
+{
+  "type": "create:splashing",
+  "ingredients": [
+    {
+      "item": "create_better_motors:crushed_raw_reggarfonite"
+    }
+  ],
+  "results": [
+    {
+      "count": 9,
+      "item": "create_better_motors:reggarfonite_nugget"
+    },
+    {
+      "chance": 0.10,
+      "item": "minecraft:prismarine_shard"
+    },
+    {
+      "chance": 0.10,
+      "item": "minecraft:prismarine_crystals"
+    }
+  ]
+}

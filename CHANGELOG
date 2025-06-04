@@ -1,0 +1,24 @@
+Changelog – Create: Better Motors (v3.0.2 for MC 1.20.1)
+Bug Fixes:
+
+- Fixed Nitro Motor behavior at default config values causing it to rotate intermittently due to FE and stress dropping to 0 mid-cycle.
+
+- Resolved missing recipe for Reggarfonite Block now properly craftable instead of only obtainable via blasting.
+
+- Added missing name localization for Raw Reggarfonite Block and made it crushable, consistent with other raw ore blocks.
+
+- Restored Heavy Connector energy functionality (backported fix from 3.1.2).
+
+- Fixed Reggarfonite Ore spawning above deepslate level – now properly spawns in deepslate layers only. Also added a config option to disable Reggarfonite worldgen.
+
+- Enabled washing of Crushed Raw Reggarfonite with a 10% chance to drop Prismarine Shards and Prismarine Crystals.
+
+Added missing Forge tags:
+
+- forge:ingots/reggarfonite
+
+- forge:nuggets/reggarfonite
+
+Improvements:
+
+- Added config option to enable or disable the first join message for players.

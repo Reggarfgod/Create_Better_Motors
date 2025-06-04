@@ -7,7 +7,7 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber
 public class CommonConfig {
-    //public static final String CATAGORY_GENERAL = "general";
+    public static final String CATAGORY_GENERAL = "!general";
     public static final String CATAGORY_STARTER_MOTOR = "starter_motor";
     public static final String CATAGORY_BASIC_MOTOR = "basic_motor";
     public static final String CATAGORY_HARDENED_MOTOR = "hardened_motor";
@@ -109,10 +109,16 @@ public class CommonConfig {
     public static ForgeConfigSpec.IntValue ACCUMULATOR_MAX_INPUT;
     public static ForgeConfigSpec.IntValue ACCUMULATOR_MAX_OUTPUT;
 
+    public static ForgeConfigSpec.BooleanValue MESSAGE_ENABLED;
+
     public CommonConfig(ForgeConfigSpec.Builder builder) {
         builder.comment("Make sure config changes are duplicated on both Clients and the Server when running a dedicated Server,")
                 .comment(" as the config isnt synced between Clients and Server.");
 
+        builder.comment("General").push(CATAGORY_GENERAL);
+        MESSAGE_ENABLED = builder.comment("If Message should be enabled or not.")
+                .define("message_enabled", true);
+        builder.pop();
 
         builder.comment("Accumulator").push(CATAGORY_ACCUMULATOR);
         ACCUMULATOR_MAX_INPUT =
