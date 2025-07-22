@@ -22,6 +22,11 @@ public class CBMItems {
     public static final ItemEntry<Item> SPIRITED_TIER_UPGRADE = REGISTRATE.item("spirited_tier_upgrade", Item::new).register();
     public static final ItemEntry<Item> NITRO_TIER_UPGRADE = REGISTRATE.item("nitro_tier_upgrade", Item::new).register();
 
+    public static final ItemEntry<Item> ANDESITE_ALTERNATOR_TIER_UPGRADE = REGISTRATE.item("andesite_alternator_tier_upgrade", Item::new).register();
+    public static final ItemEntry<Item> COPPER_ALTERNATOR_TIER_UPGRADE = REGISTRATE.item("copper_alternator_tier_upgrade", Item::new).register();
+    public static final ItemEntry<Item> BRASS_ALTERNATOR_TIER_UPGRADE = REGISTRATE.item("brass_alternator_tier_upgrade", Item::new).register();
+
+
     public static final ItemEntry<Item> RAW_REGGARFONITE = taggedIngredient("raw_reggarfonite", commonItemTag("raw_materials/reggarfonite"), commonItemTag("raw_materials"));
     public static final ItemEntry<Item> CRUSHED_REGGARFONITE = taggedIngredient("crushed_raw_reggarfonite", CRUSHED_RAW_MATERIALS.tag);
     public static final ItemEntry<Item> REGGARFONITE_GEM = REGISTRATE.item("reggarfonite_gem", Item::new).register();

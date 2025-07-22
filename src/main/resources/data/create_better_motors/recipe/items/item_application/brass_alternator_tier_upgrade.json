@@ -1,0 +1,16 @@
+{
+  "type": "create:item_application",
+  "ingredients": [
+    {
+      "item": "create_better_motors:copper_alternator"
+    },
+    {
+      "item": "create_better_motors:brass_alternator_tier_upgrade"
+    }
+  ],
+  "results": [
+    {
+      "id": "create_better_motors:brass_alternator"
+    }
+  ]
+}

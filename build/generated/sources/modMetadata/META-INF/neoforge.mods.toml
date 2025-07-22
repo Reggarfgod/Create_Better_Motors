@@ -17,7 +17,7 @@ license = "MIT"
 # The modid of the mod
 modId = "create_better_motors" #mandatory
 # The version number of the mod
-version = "3.1.2" #mandatory
+version = "3.1.4" #mandatory
 # A display name for the mod
 displayName = "Create: Better Motors" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification https://docs.neoforge.net/docs/misc/updatechecker/

@@ -4,7 +4,7 @@
   "cookingtime": 100,
   "experience": 1.0,
   "ingredient": {
-    "tag": "forge:ores/reggarfonite"
+    "tag": "c:ores/reggarfonite"
   },
   "result":{
     "id": "create_better_motors:reggarfonite_gem"}

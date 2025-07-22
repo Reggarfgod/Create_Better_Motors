@@ -24,6 +24,6 @@ forgedatauserdev
 create_better_motors
 --all
 --output
-D:\\Download\\MOD\\Create_Better_Motors\\src\\generated\\resources
+"C:\\Users\\Anoop Singh\\IdeaProjects\\Create_Better_Motors\\src\\generated\\resources"
 --existing
-D:\\Download\\MOD\\Create_Better_Motors\\src\\main\\resources
+"C:\\Users\\Anoop Singh\\IdeaProjects\\Create_Better_Motors\\src\\main\\resources"

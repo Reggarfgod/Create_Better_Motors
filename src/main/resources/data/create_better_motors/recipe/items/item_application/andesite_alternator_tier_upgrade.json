@@ -1,0 +1,16 @@
+{
+  "type": "create:item_application",
+  "ingredients": [
+    {
+      "item": "createaddition:alternator"
+    },
+    {
+      "item": "create_better_motors:andesite_alternator_tier_upgrade"
+    }
+  ],
+  "results": [
+    {
+      "id": "create_better_motors:andesite_alternator"
+    }
+  ]
+}
