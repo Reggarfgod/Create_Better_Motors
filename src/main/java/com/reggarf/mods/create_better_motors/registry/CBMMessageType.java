@@ -57,9 +57,9 @@ public class CBMMessageType {
 
         // Discord CTA
         Component discord = Component.literal(" - ")
-                .append(Component.literal("Join our Discord ")
+                .append(Component.literal("Changelog/Discord ")
                         .setStyle(Style.EMPTY
-                                .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://discord.com/invite/CN962KMpJk"))
+                                .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://discord.gg/kb6BntpcYq"))
                                 .withColor(parseTextColor(discordColor))
                                 .withUnderlined(true)))
                 .append(Component.literal(" (support, updates)"));
