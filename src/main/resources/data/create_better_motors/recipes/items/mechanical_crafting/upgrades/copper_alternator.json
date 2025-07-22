@@ -1,0 +1,31 @@
+{
+  "type": "create:mechanical_crafting",
+  "accept_mirrored": true,
+  "category": "misc",
+  "pattern": [
+    "  A  ",
+    " ISI ",
+    "GS SG",
+    " ICI "
+  ],
+  "key": {
+    "C": {
+      "item": "create_better_motors:lava_tube"
+    },
+    "I": {
+      "tag": "forge:plates/copper"
+    },
+    "S": {
+      "item": "createaddition:copper_spool"
+    },
+    "A": {
+      "item": "minecraft:copper_ingot"
+    },
+    "G": {
+      "item": "create_better_motors:reggarfonite_sheet"
+    }
+  },
+  "result": {
+    "item": "create_better_motors:copper_alternator_tier_upgrade"
+  }
+}
