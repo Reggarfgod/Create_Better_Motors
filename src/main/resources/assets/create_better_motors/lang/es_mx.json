@@ -1,0 +1,116 @@
+{
+  "create_better_motors": "Crear: Mejores Motores",
+  "item_group.create_better_motors.tab": "Crear: Mejores Motores",
+
+  "create.tooltip.create_better_motors.energy_stored": "Energia Almacenada: ",
+  "create.tooltip.create_better_motors.energy_stats": "Estadisticas De Energia: ",
+  "create.tooltip.create_better_motors.energy_usage": "Uso De Enrgia: ",
+  "create.tooltip.create_better_motors.energy_output": "Salida De Energia: ",
+  "create.tooltip.create_better_motors.energy": "%s RF",
+  "create.tooltip.create_better_motors.max_speed": "Maxima Velocidad: ",
+  "create.tooltip.create_better_motors.temperature": "%s ˚T",
+  "create.tooltip.create_better_motors.rpm": "%s RPM",
+  "create.tooltip.create_better_motors.temperature.ps": "%s ˚T/s",
+  "create.tooltip.create_better_motors.pump": "Bombeando: ",
+  "create.tooltip.create_better_motors.energy_per_tick": "%s fe/t",
+  "create.tooltip.create_better_motors.per_rpm": "Por %s RPM",
+  "create.tooltip.create_better_motors.energy_storage": "%s fe / %s fe",
+  "create.tooltip.create_better_motors.releasing": "Sacando: ",
+  "create.tooltip.create_better_motors.generating": "Generando: ",
+  "create.tooltip.create_better_motors.using": "Usando: ",
+  "create.tooltip.create_better_motors.use": "Energia Por Tick",
+  "create.tooltip.create_better_motors.extracting": "Extrayendo: ",
+  "create.tooltip.create_better_motors.generates":  "Generando: ",
+  "create.tooltip.create_better_motors.stores":  "Almacenado: ",
+  "create.tooltip.create_better_motors.speed":  "Velocidad: ",
+  "create.tooltip.create_better_motors.efficiency":  "Efficiency: ",
+  "create.tooltip.create_better_motors.transfers":  "Transfencia",
+  "create.tooltip.create_better_motors.input": "Entrada",
+  "create.tooltip.create_better_motors.output": "Salida",
+  "create.tooltip.create_better_motors.max_wire_length": "Tamaño Maximo Del Cable",
+  "create.tooltip.create_better_motors.block": "Bloque",
+  "create.tooltip.create_better_motors.percent":  "%s%%",
+  "create.tooltip.create_better_motors.magnetic_force":  "Fuerza Magnetica: ",
+  "create_better_motors.tooltip.energy.production": "Energia Generada:",
+  "create.tooltip.create_better_motors.connector_info": "Info Del Conector: ",
+
+
+  "block.create_better_motors.heavy_connector": "Conector Pesado",
+  "block.create_better_motors.alternator": "Alternador",
+  "block.create_better_motors.starter_motor": "Motor Inicial",
+  "block.create_better_motors.basic_motor": "Motor Basico",
+  "block.create_better_motors.hardened_motor": "Motor Endurecido",
+  "block.create_better_motors.blazing_motor": "Motor De Blaze",
+  "block.create_better_motors.niotic_motor": "Motor Niotico",
+  "block.create_better_motors.spirited_motor": "Motor Spiritiado",
+  "block.create_better_motors.nitro_motor": "Motor Nitro",
+
+  "block.create_better_motors.andesite_alternator": "Alternador De Andesita",
+  "block.create_better_motors.brass_alternator": "Alternador De Laton",
+  "block.create_better_motors.copper_alternator": "Alternador De Cobre",
+  "block.create_better_motors.multimeter": "Multimetro",
+
+  "item.create_better_motors.basic_tier_upgrade": "Mejora De Nivel Basico",
+  "item.create_better_motors.starter_tier_upgrade": "Mejora De Nivel Inicial",
+  "item.create_better_motors.hardened_tier_upgrade": "Mejora De Nivel Endurecido",
+  "item.create_better_motors.blazing_tier_upgrade": "Mejora De Nivel Blaze",
+  "item.create_better_motors.niotic_tier_upgrade": "Mejora De Nivel Niotico",
+  "item.create_better_motors.spirited_tier_upgrade": "Mejora De Nivel Spiritiado",
+  "item.create_better_motors.nitro_tier_upgrade": "Mejora De Nivel Nitro",
+
+
+  "item.create_better_motors.lava_tube": "Tubo De Lava",
+  "item.create_better_motors.lava_quartz": "Lava De Cuarzo",
+  "item.create_better_motors.polished_lava_quartz": "Lava De Cuarzo Pulido",
+
+  "item.create_better_motors.reggarfonite_nugget": "Pepita De Reggarfonitet",
+  "item.create_better_motors.raw_reggarfonite": "Reggarfonite En Bruto",
+  "item.create_better_motors.crushed_raw_reggarfonite": "Reggarfonite Titurado",
+  "item.create_better_motors.reggarfonite_sheet": "Placa De Reggarfonite",
+  "item.create_better_motors.reggarfonite_gem": "Lingote De Reggarfonite",
+  "block.create_better_motors.reggarfonite_block": "Bloque De Reggarfonite",
+  "block.create_better_motors.deepslate_reggarfonite_ore": "Mineral De Reggarfonite De Piedra Profunda",
+
+
+  "create.tooltip.create_better_motors.shift": "§7Presiona §f[SHIFT] §7Para Mas info",
+
+  "create.create_better_motors.large_connector.tooltip": "§6§lCONECTOR",
+  "create.create_better_motors.large_connector.tooltip.summary": "§7Connecta §eRF§7 Con\nBloques Compatibles Con Cables Para transferir §cFE§7.",
+
+  "create.create_better_motors.large_connector.tooltip.condition1": "Corriente De Alta tension",
+  "create.create_better_motors.large_connector.tooltip.behaviour1": "§7Conectar Con §6Cables De Alta Tension§7\n(§9Crear:Alambres Para Manualidades y Adiciones§7).",
+
+  "create.create_better_motors.large_connector.tooltip.condition2": "Click derecho",
+  "create.create_better_motors.large_connector.tooltip.behaviour2": "§7Mientras Sostiene Un §eCarrete De Pro§7 O Un §6Carrete De Electrum§7\n(§9Crear:Artesanía Y Adición§7) Para Crear Un Enlace De Alambre\nCon Hasta §e6§7 De Otros Conectores.",
+
+  "create.create_better_motors.large_connector.tooltip.condition3": "Haga Clic Derecho Con La Llave Inglesa",
+  "create.create_better_motors.large_connector.tooltip.behaviour3": "§7Cycle between §aPush§7, §cPull§7, and §8None§7 modes.",
+  "create.create_better_motors.large_connector.tooltip.heavy": "Tranfiere ENergia (FE) Utilizando El Conector De Alta Tension",
+
+  "create_better_motors.ponder.electric_motor.header": "Genracion Rotacional Usando Motores Electricos",
+  "create_better_motors.ponder.electric_motor.text_1": "Los Motores Electricos Son Una Forma Compacta de Generar Energia Rotacional",
+  "create_better_motors.ponder.electric_motor.text_2": "Con La rueda Del Mouse Puedes Cambiar La Velocidad",
+  "create_better_motors.ponder.electric_motor.text_3": "El Motor Electrico requiere energia (RF O FE)",
+  "create_better_motors.ponder.electric_motor.text_4": "El Consumo De Energia Es Depende La velocidad Rotacional Colocada",
+
+  "create_better_motors.ponder.alternator.header": "Genera Energia Electrica Usando Un Alternador",
+  "create_better_motors.ponder.alternator.text_1": "El ALternador Quiere 32 De Energia Rotacional Para Funcionar",
+  "create_better_motors.ponder.alternator.text_2": "Genera Energia A Travez De La Rotacion",
+  "create_better_motors.ponder.alternator.text_3": "La Produccion De Energia Esta Determinada Por La Entrada De Rotacion (RPM)",
+
+  "create_better_motors.ponder.wires.header": "Conector",
+  "create_better_motors.ponder.wires.text_1": "El comnector Se Usa Par Transferir Energia De Un Lugar A Otro",
+  "create_better_motors.ponder.wires.text_2": "Este Bloque Envía Automáticamente Su Eenergía A Los Bloques Adyacentes. ¿Pero Qué Pasaría Si No lo Hiciera?",
+  "create_better_motors.ponder.wires.text_3": "El Conector Extrae Energia Del Bloque Que Tiene Ensima Solo Si Esta En Modo Extraccion. (Cambia Los Modos Con Una Llave Inglesa)",
+
+  "create_better_motors.ponder.speedometer.header": "Monitorea La informacion Kinetica Usando Un Multimetro",
+  "create_better_motors.ponder.speedometer.text_1": "El Multimetro Muestra La Velocidad De Estres Tension Actual En Los Componentes Conectados",
+  "create_better_motors.ponder.speedometer.text_2": "Al Usar Las Gafas De Ingeniero, El Jugador Puede Obtener Información Mas Detallada.",
+  "create_better_motors.ponder.speedometer.text_3": "Los Comparadores Emiten Señales Analogicas Relativas De Redston En La Medicion Del Multimetro",
+
+
+
+
+  "create.tooltip.create_better_motors.attention": "Atencion!"
+
+}
