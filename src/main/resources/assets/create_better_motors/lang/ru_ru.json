@@ -73,15 +73,15 @@
   "block.create_better_motors.reggarfonite_block": "Реггарфонитовый блок",
   "block.create_better_motors.deepslate_reggarfonite_ore": "Реггарфонитоносный глубинный сланец",
 
-  "create.tooltip.create_better_motors.shift": "§7Нажмите §f[SHIFT] §7для дополнительной информации.",
+  "create.tooltip.create_better_motors.shift": "§7Удерживайте §f[SHIFT] §7для дополнительной информации.",
 
   "create.create_better_motors.large_connector.tooltip": "§6§lСОЕДИНИТЕЛЬ",
   "create.create_better_motors.large_connector.tooltip.summary": "§7Соединяет блоки, совместимые с §eForge Energy§7, проводами для передачи §cFE§7.",
 
-  "create.create_better_motors.large_connector.tooltip.condition1": "Сильный ток",
+  "create.create_better_motors.large_connector.tooltip.condition1": "При сильном токе",
   "create.create_better_motors.large_connector.tooltip.behaviour1": "§7Соединяется §6высоковольтными проводами§7 из §9Create: Crafts & Additions§7.",
 
-  "create.create_better_motors.large_connector.tooltip.condition2": "ПКМ",
+  "create.create_better_motors.large_connector.tooltip.condition2": "ПКМ с катушкой",
   "create.create_better_motors.large_connector.tooltip.behaviour2": "§7Удерживая §eзолотую§7 или §6электрумовую катушку§7 из §9Create: Crafts & Additions§7 создаётся до §e6§7 проводных соединений с другими тяжёлыми соединителями_.",
 
   "create.create_better_motors.large_connector.tooltip.condition3": "ПКМ гаечным ключом",
@@ -99,7 +99,7 @@
   "create_better_motors.ponder.alternator.text_2": "Он генерирует электрическую энергию за счёт силы вращения",
   "create_better_motors.ponder.alternator.text_3": "Выработка энергии определяется входной скоростью вращения",
 
-  "create_better_motors.ponder.wires.header": "Соединителем",
+  "create_better_motors.ponder.wires.header": "Работой с соединителем",
   "create_better_motors.ponder.wires.text_1": "Соединители используются для передачи энергии с одного места на другое",
   "create_better_motors.ponder.wires.text_2": "Этот блок автоматически передаёт свою энергию соседним блокам. Но что, если бы он этого не делал?",
   "create_better_motors.ponder.wires.text_3": "Соединитель может тянуть энергию из блока, на котором стоит, когда включен режим 'передачи с токоотдачей'. Режимы переключаются гаечным ключом",
@@ -110,4 +110,4 @@
   "create_better_motors.ponder.speedometer.text_3": "Компараторы могут испускать аналоговые редстоун-сигналы, соответствующие измерениям мультиметра",
 
   "create.tooltip.create_better_motors.attention": "Внимание!"
-}   
+}
