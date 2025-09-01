@@ -35,7 +35,7 @@
   "create.tooltip.create_better_motors.connector_info": "Информация о коннекторе: ",
 
   "block.create_better_motors.heavy_connector": "Тяжёлый соединитель",
-  "block.create_better_motors.alternator": "Альтернатор",
+  "block.create_better_motors.alternator": "Генератор переменного тока",
   "block.create_better_motors.starter_motor": "Пусковой двигатель",
   "block.create_better_motors.basic_motor": "Базовый двигатель",
   "block.create_better_motors.hardened_motor": "Усиленный двигатель",
@@ -44,9 +44,9 @@
   "block.create_better_motors.spirited_motor": "Одухотворённый двигатель",
   "block.create_better_motors.nitro_motor": "Нитродвигатель",
 
-  "block.create_better_motors.andesite_alternator": "Андезитовый альтернатор",
-  "block.create_better_motors.brass_alternator": "Латунный альтернатор",
-  "block.create_better_motors.copper_alternator": "Медный альтернатор",
+  "block.create_better_motors.andesite_alternator": "Андезитовый генератор переменного тока",
+  "block.create_better_motors.brass_alternator": "Латунный генератор переменного тока",
+  "block.create_better_motors.copper_alternator": "Медный генератор переменного тока",
   "block.create_better_motors.multimeter": "Мультиметр",
 
   "item.create_better_motors.basic_tier_upgrade": "Улучшение базового уровня",
@@ -57,9 +57,9 @@
   "item.create_better_motors.spirited_tier_upgrade": "Улучшение одухотворённого уровня",
   "item.create_better_motors.nitro_tier_upgrade": "Улучшение нитро-уровня",
 
-  "item.create_better_motors.andesite_alternator_tier_upgrade": "Улучшение андезитового альтернатора",
-  "item.create_better_motors.copper_alternator_tier_upgrade": "Улучшение медного альтернатора",
-  "item.create_better_motors.brass_alternator_tier_upgrade": "Улучшение латунного альтернатора",
+  "item.create_better_motors.andesite_alternator_tier_upgrade": "Улучшение андезитового генератора переменного тока",
+  "item.create_better_motors.copper_alternator_tier_upgrade": "Улучшение медного генератора переменного тока",
+  "item.create_better_motors.brass_alternator_tier_upgrade": "Улучшение латунного генератора переменного тока",
 
   "item.create_better_motors.lava_tube": "Лавовая трубка",
   "item.create_better_motors.lava_quartz": "Лавовый кварц",
@@ -94,8 +94,8 @@
   "create_better_motors.ponder.electric_motor.text_3": "Для работы электромотора требуется источник энергии",
   "create_better_motors.ponder.electric_motor.text_4": "Энергопотребление мотора определяется генерируемой скоростью вращения",
 
-  "create_better_motors.ponder.alternator.header": "Выработкой электроэнергии с помощью альтернатора",
-  "create_better_motors.ponder.alternator.text_1": "Для работы альтернатора требуется скорость вращения не менее 32 об/мин",
+  "create_better_motors.ponder.alternator.header": "Выработкой электроэнергии с помощью генератора переменного тока",
+  "create_better_motors.ponder.alternator.text_1": "Для работы генератора переменного тока требуется скорость вращения не менее 32 об/мин",
   "create_better_motors.ponder.alternator.text_2": "Он генерирует электрическую энергию за счёт силы вращения",
   "create_better_motors.ponder.alternator.text_3": "Выработка энергии определяется входной скоростью вращения",
 
