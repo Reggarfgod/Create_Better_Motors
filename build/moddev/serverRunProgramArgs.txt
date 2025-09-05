@@ -3,15 +3,15 @@ cpw.mods.bootstraplauncher.BootstrapLauncher
 
 # NeoForge Run-Type Program Arguments
 --launchTarget
-forgeserveruserdev
+forgeserverdev
 --gameDir
 .
---fml.neoForgeVersion
-21.1.136
 --fml.fmlVersion
-4.0.38
+4.0.41
 --fml.mcVersion
 1.21.1
+--fml.neoForgeVersion
+21.1.203
 --fml.neoFormVersion
 20240808.144430
 

@@ -1,7 +1,7 @@
 package com.reggarf.mods.create_better_motors.registry;
 
-// ===================== Imports =====================
 
+import com.reggarf.mods.create_better_motors.config.CommonConfig;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
@@ -15,14 +15,13 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 
 import static net.minecraft.network.chat.TextColor.fromRgb;
 
-// ===================== Main Mod Event Handler =====================
+
 @EventBusSubscriber
 public class CBMMessageType {
 
-    // ===================== Configuration =====================
-    public static boolean enabled = true;
 
-    // Text colors (hex codes)
+   // public static boolean enabled = true;
+
     public static String titleColor = "DDA0FF";
     public static String zapColor = "00FFFF";
     public static String discordColor = "5599FF";
@@ -32,7 +31,7 @@ public class CBMMessageType {
     // ===================== Player Join Event =====================
     @SubscribeEvent
     public static void onPlayerJoin(PlayerEvent.PlayerLoggedInEvent event) {
-        if (!(event.getEntity() instanceof ServerPlayer player) || !enabled) return;
+        if (!(event.getEntity() instanceof ServerPlayer player) || !CommonConfig.MESSAGES_ENABLED.get()) return;
 
         CompoundTag persistentData = player.getPersistentData();
         CompoundTag igData = persistentData.getCompound(ServerPlayer.PERSISTED_NBT_TAG);
@@ -45,7 +44,6 @@ public class CBMMessageType {
         }
     }
 
-    // ===================== Styled Message Sender =====================
     private static void sendStyledMessages(ServerPlayer player) {
         // Title message
         Component title = Component.literal("Hello, thank you for downloading ")
@@ -102,7 +100,6 @@ public class CBMMessageType {
 
     }
 
-    // ===================== Hex Color Parser =====================
     private static TextColor parseTextColor(String hex) {
         try {
             if (hex.startsWith("#")) hex = hex.substring(1);

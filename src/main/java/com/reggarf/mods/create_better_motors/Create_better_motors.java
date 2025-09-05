@@ -63,7 +63,7 @@ public class Create_better_motors {
     public Create_better_motors(IEventBus modEventBus, ModContainer modContainer) {
         ModLoadingContext modLoadingContext = ModLoadingContext.get();
 
-        LOGGER.info("Hello 1.20.1 Create!");
+        LOGGER.info("Hello 1.21.1 C:BM!");
         BASE_REGISTRATE.registerEventListeners(modEventBus);
         TAB_REGISTRAR.register(modEventBus);
         NeoForge.EVENT_BUS.register(this);

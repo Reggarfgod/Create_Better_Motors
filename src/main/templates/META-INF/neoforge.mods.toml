@@ -80,13 +80,13 @@ side = "BOTH"
 [[dependencies."${mod_id}"]]
 modId="create"
 type="required"
-versionRange="[6.0.4,6.1.0)"
-ordering="AFTER"
+versionRange="[6.0.6,6.1.0)"
+ordering="NONE"
 side="BOTH"
 
 [[dependencies."${mod_id}"]]
 modId="createaddition"
 type="required"
-versionRange="[1.4.2,)"
+versionRange="[1.5.2,)"
 ordering="AFTER"
 side="BOTH"

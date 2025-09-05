@@ -11,8 +11,7 @@ group = mod_group_id
 repositories {
     mavenLocal()
     maven { url = "https://maven.createmod.net" } // Create, Ponder, Flywheel
-    maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/" } // ForgeConfigAPIPort
-    maven { url = "https://mvn.devos.one/snapshots" } // Registrate
+    maven { url = "https://maven.ithundxr.dev/snapshots" } // Registrate
     maven {
         // location of the maven that hosts JEI files since January 2023
         name = "Jared's maven"
@@ -133,7 +132,7 @@ dependencies {
         compileOnly("cc.tweaked:cc-tweaked-${cc_tweaked_minecraft_version}-forge-api:${cc_tweaked_version}")
         runtimeOnly("cc.tweaked:cc-tweaked-${cc_tweaked_minecraft_version}-forge:${cc_tweaked_version}")
     }
-    implementation "curse.maven:createaddition-439890:6445614"
+    implementation "curse.maven:createaddition-439890:6912660"
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 
 }

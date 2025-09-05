@@ -28,6 +28,11 @@ public class CommonConfig {
     public static final String CATAGORY_BRASS_ALTERNATOR = "brass_alternator";
     public static final String CATAGORY_COPPER_ALTERNATOR = "copper_alternator";
 
+
+    public static final String CATAGORY_MESSAGES = "Messages";
+    public static ModConfigSpec.BooleanValue MESSAGES_ENABLED;
+
+
     private static final ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
 
     public static ModConfigSpec COMMON_CONFIG;
@@ -122,6 +127,10 @@ public class CommonConfig {
         builder.comment("Make sure config changes are duplicated on both Clients and the Server when running a dedicated Server,")
                 .comment(" as the config isnt synced between Clients and Server.");
 
+        builder.comment("Messages").push(CATAGORY_MESSAGES);
+        MESSAGES_ENABLED = builder.comment("If Update Messages should be enabled or not.")
+                .define("Messages_enabled", true);
+        builder.pop();
 
         builder.comment("Accumulator").push(CATAGORY_ACCUMULATOR);
         ACCUMULATOR_MAX_INPUT =

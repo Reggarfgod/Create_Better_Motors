@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Create_Better_Motors.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Create_Better_Motors.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Create_Better_Motors.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Create_Better_Motors.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/motor.main.iml" filepath="$PROJECT_DIR$/.idea/modules/motor.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/motor.test.iml" filepath="$PROJECT_DIR$/.idea/modules/motor.test.iml" />
     </modules>
   </component>
 </project>
