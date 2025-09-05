@@ -1,8 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "create_better_motors:block/deepslate_reggarfonite_ore",
-    "particle": "create_better_motors:block/deepslate_reggarfonite_ore"
-  },
-  "render_type": "solid"
-}
