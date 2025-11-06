@@ -2,6 +2,7 @@ package com.reggarf.mods.create_better_motors;
 
 import com.mojang.logging.LogUtils;
 
+import com.reggarf.mods.create_better_motors.api.MessagePlugin;
 import com.reggarf.mods.create_better_motors.config.CommonConfig;
 import com.reggarf.mods.create_better_motors.registry.*;
 import com.simibubi.create.foundation.data.CreateRegistrate;
@@ -19,16 +20,12 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
-import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.slf4j.Logger;
-
-import static net.neoforged.neoforge.common.NeoForge.EVENT_BUS;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(Create_better_motors.MOD_ID)
@@ -67,13 +64,14 @@ public class Create_better_motors {
         BASE_REGISTRATE.registerEventListeners(modEventBus);
         TAB_REGISTRAR.register(modEventBus);
         NeoForge.EVENT_BUS.register(this);
-        NeoForge.EVENT_BUS.register(CBMMessageType.class);
         modEventBus.addListener(CBMClientIniter::onInitializeClient);
         CBMBlocks.load();
         CBMBlockEntityTypes.load();
         CBMItems.load();
         modContainer.registerConfig(ModConfig.Type.COMMON, CommonConfig.COMMON_CONFIG);
         modEventBus.addListener(RegisterCapabilitiesEvent.class, CFMCapabilities::register);
+        MessagePlugin.register();
+
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

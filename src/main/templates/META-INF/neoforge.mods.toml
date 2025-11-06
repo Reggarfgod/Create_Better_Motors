@@ -90,3 +90,10 @@ type="required"
 versionRange="[1.5.8,)"
 ordering="AFTER"
 side="BOTH"
+
+[[dependencies."${mod_id}"]]
+modId="better_lib"
+type="required"
+versionRange="[1.0.103,)"
+ordering="AFTER"
+side="BOTH"
