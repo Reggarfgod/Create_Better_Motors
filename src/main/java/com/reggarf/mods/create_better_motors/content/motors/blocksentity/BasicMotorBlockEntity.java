@@ -46,7 +46,7 @@ public class BasicMotorBlockEntity extends ElectricMotorBlockEntity {
 
     public BasicMotorBlockEntity(BlockEntityType<? extends ElectricMotorBlockEntity> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
-        energy = new InternalEnergyStorage(CommonConfig.BASIC_ELECTRIC_MOTOR_CAPACITY.get(), CommonConfig.BASIC_ELECTRIC_MOTOR_MAX_INPUT.get(), 0);
+        energy = new InternalEnergyStorage(CommonConfig.BASIC_MOTOR.CAPACITY.get(), CommonConfig.BASIC_MOTOR.MAX_INPUT.get(), 0);
         capability = energy;
 //        lazyEnergy = LazyOptional.of(() -> energy);
 //        if(CreateAddition.CC_ACTIVE) {
@@ -68,7 +68,7 @@ public class BasicMotorBlockEntity extends ElectricMotorBlockEntity {
         CenteredSideValueBoxTransform slot = new CenteredSideValueBoxTransform((motor, side) -> motor.getValue(ElectricMotorBlock.FACING) == side.getOpposite());
 
         generatedSpeed = new KineticScrollValueBehaviour(CreateLang.translateDirect("generic.speed"), this, slot);
-        generatedSpeed.between(-CommonConfig.BASIC_ELECTRIC_MOTOR_RPM_RANGE.get(), CommonConfig.BASIC_ELECTRIC_MOTOR_RPM_RANGE.get());
+        generatedSpeed.between(-CommonConfig.BASIC_MOTOR.RPM_RANGE.get(), CommonConfig.BASIC_MOTOR.RPM_RANGE.get());
         generatedSpeed.value = 16;
         generatedSpeed.withCallback(i -> this.updateGeneratedRotation(i));
         behaviours.add(generatedSpeed);
@@ -77,7 +77,7 @@ public class BasicMotorBlockEntity extends ElectricMotorBlockEntity {
 
 
     public float calculateAddedStressCapacity() {
-        float capacity = CommonConfig.BASIC_MAX_STRESS.get()/256f;
+        float capacity = CommonConfig.BASIC_MOTOR.MAX_STRESS.get()/256f;
         this.lastCapacityProvided = capacity;
         return capacity;
     }
@@ -151,7 +151,7 @@ public class BasicMotorBlockEntity extends ElectricMotorBlockEntity {
     }
 
     public static int getEnergyConsumptionRate(float rpm) {
-        return Math.abs(rpm) > 0 ? (int)Math.max((double)CommonConfig.BASIC_FE_RPM.get() * ((double)Math.abs(rpm) / 256d), (double)CommonConfig.BASIC_ELECTRIC_MOTOR_MINIMUM_CONSUMPTION.get()) : 0;
+        return Math.abs(rpm) > 0 ? (int)Math.max((double)CommonConfig.BASIC_MOTOR.FE_RPM.get() * ((double)Math.abs(rpm) / 256d), (double)CommonConfig.BASIC_MOTOR.MIN_CONSUMPTION.get()) : 0;
     }
 
 
@@ -196,14 +196,14 @@ public class BasicMotorBlockEntity extends ElectricMotorBlockEntity {
     public void tickAudio() {
         super.tickAudio();
         if (!active) return;
-        if (CommonConfig.BASIC_AUDIO_ENABLED.get()) CASoundScapes.play(CASoundScapes.AmbienceGroup.DYNAMO, worldPosition, 1);
+        if (CommonConfig.BASIC_MOTOR.AUDIO_ENABLED.get()) CASoundScapes.play(CASoundScapes.AmbienceGroup.DYNAMO, worldPosition, 1);
     }
 
 
 
     // This is the callback used by the CC Peripheral!
     public boolean setRPM(float rpm) {
-        rpm = Math.max(Math.min(rpm, CommonConfig.BASIC_ELECTRIC_MOTOR_RPM_RANGE.get()), -CommonConfig.BASIC_ELECTRIC_MOTOR_RPM_RANGE.get());
+        rpm = Math.max(Math.min(rpm, CommonConfig.BASIC_MOTOR.RPM_RANGE.get()), -CommonConfig.BASIC_MOTOR.RPM_RANGE.get());
         cc_new_rpm = rpm;
         cc_update_rpm = true;
         return true;
@@ -223,4 +223,6 @@ public class BasicMotorBlockEntity extends ElectricMotorBlockEntity {
     public boolean isPoweredState() {
         return getBlockState().getValue(TeslaCoilBlock.POWERED);
     }
+
+
 }

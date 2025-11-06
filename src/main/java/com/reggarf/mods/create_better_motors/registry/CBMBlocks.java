@@ -5,6 +5,7 @@ package com.reggarf.mods.create_better_motors.registry;
 
 import com.mrh0.createaddition.CreateAddition;
 
+import com.mrh0.createaddition.datagen.Models.BlockGenHelper;
 import com.mrh0.createaddition.energy.NodeMovementBehaviour;
 import com.mrh0.createaddition.index.CABlocks;
 import com.reggarf.mods.create_better_motors.Create_better_motors;
@@ -24,6 +25,7 @@ import com.simibubi.create.content.kinetics.gauge.GaugeGenerator;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.ModelGen;
 import com.simibubi.create.foundation.data.SharedProperties;
+import com.simibubi.create.foundation.data.recipe.CommonMetal;
 import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import net.minecraft.core.HolderLookup;
@@ -47,6 +49,8 @@ import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.neoforged.neoforge.common.Tags;
 
+
+import java.util.Map;
 
 import static com.reggarf.mods.create_better_motors.Create_better_motors.REGISTRATE;
 
@@ -199,52 +203,31 @@ public class CBMBlocks {
 
 
 
+
     public static final BlockEntry<Block> DEEPSLATE_REGGARFONITE_ORE = REGISTRATE.block("deepslate_reggarfonite_ore", Block::new)
             .initialProperties(() -> Blocks.DEEPSLATE_GOLD_ORE)
-            .properties(p -> p.mapColor(MapColor.STONE)
-                    .requiresCorrectToolForDrops()
-                    .sound(SoundType.DEEPSLATE))
-            .transform(pickaxeOnly())
-            .loot((lt, b) ->  {
-                HolderLookup.RegistryLookup<Enchantment> enchantmentRegistryLookup = lt.getRegistries().lookupOrThrow(Registries.ENCHANTMENT);
-
-                lt.add(b,
-                        lt.createSilkTouchDispatchTable(b,
-                                lt.applyExplosionDecay(b, LootItem.lootTableItem(CBMItems.RAW_REGGARFONITE.get())
-                                        .apply(ApplyBonusCount.addOreBonusCount(enchantmentRegistryLookup.getOrThrow(Enchantments.FORTUNE))))));
-            })
-            .tag(BlockTags.NEEDS_IRON_TOOL)
-            .tag(Tags.Blocks.ORES)
-            .transform(tagBlockAndItem("ores/reggarfonite", "ores_in_ground/deepslate"))
-            .tag(Tags.Items.ORES)
-            .build()
+            .properties(p -> p.mapColor(MapColor.TERRACOTTA_YELLOW))
+            .blockstate(BlockGenHelper.simpleBlock())
+            .item()
+            .transform(customItemModel())
             .register();
+
 
     public static final BlockEntry<Block> RAW_REGGARFONITE_BLOCK = REGISTRATE.block("raw_reggarfonite_block", Block::new)
-            .initialProperties(() -> Blocks.RAW_GOLD_BLOCK)
-            .properties(p -> p.mapColor(MapColor.GLOW_LICHEN)
-                    .requiresCorrectToolForDrops())
-            .transform(pickaxeOnly())
-            .tag(Tags.Blocks.STORAGE_BLOCKS)
-            .tag(BlockTags.NEEDS_IRON_TOOL)
-            .lang("Block of Raw Reggarfonite")
-            .transform(tagBlockAndItem("storage_blocks/raw_reggarfonite"))
-            .tag(Tags.Items.STORAGE_BLOCKS)
-            .build()
+            .initialProperties(() -> Blocks.GOLD_BLOCK)
+            .properties(p -> p.mapColor(MapColor.TERRACOTTA_YELLOW))
+            .blockstate(BlockGenHelper.simpleBlock())
+            .item()
+            .transform(customItemModel())
             .register();
+
 
     public static final BlockEntry<Block> REGGARFONITE_BLOCK = REGISTRATE.block("reggarfonite_block", Block::new)
             .initialProperties(() -> Blocks.IRON_BLOCK)
-            .properties(p -> p.mapColor(MapColor.GLOW_LICHEN)
-                    .requiresCorrectToolForDrops())
-            .transform(pickaxeOnly())
-            .tag(BlockTags.NEEDS_IRON_TOOL)
-            .tag(Tags.Blocks.STORAGE_BLOCKS)
-            .tag(BlockTags.BEACON_BASE_BLOCKS)
-            .transform(tagBlockAndItem("storage_blocks/reggarfonite"))
-            .tag(Tags.Items.STORAGE_BLOCKS)
-            .build()
-            .lang("Block of reggarfonite")
+            .properties(p -> p.mapColor(MapColor.TERRACOTTA_YELLOW))
+            .blockstate(BlockGenHelper.simpleBlock())
+            .item()
+            .transform(customItemModel())
             .register();
 
         public static void load() {  }

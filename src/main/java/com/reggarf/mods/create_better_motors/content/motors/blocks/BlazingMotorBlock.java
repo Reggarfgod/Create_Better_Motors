@@ -23,7 +23,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-
 import java.util.List;
 
 public class BlazingMotorBlock extends ElectricMotorBlock implements IBE<ElectricMotorBlockEntity> {
@@ -31,45 +30,59 @@ public class BlazingMotorBlock extends ElectricMotorBlock implements IBE<Electri
     public BlazingMotorBlock(Properties properties) {
         super(properties);
     }
-@Override
-public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
-    return AllShapes.MOTOR_BLOCK.get(state.getValue(FACING));
-}
+
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
+        return AllShapes.MOTOR_BLOCK.get(state.getValue(FACING));
+    }
+
     @Override
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(stack, context, tooltip, flag);
-        if(Screen.hasShiftDown()){
+
+        if (Screen.hasShiftDown()) {
             tooltip.add(CreateLang.translate("create_better_motors.large_connector.tooltip.heavy")
                     .style(ChatFormatting.AQUA)
                     .component());
-        }
-        else {
+        } else {
             tooltip.add(CreateLang.translate("tooltip.create_better_motors.generates").style(ChatFormatting.GRAY)
                     .component());
-            tooltip.add(CreateLang.text(" ").add(CreateLang.number(CommonConfig.BLAZING_MAX_STRESS.get()).text(" ")
-                    .translate("generic.unit.stress").style(ChatFormatting.AQUA)).component());
+            tooltip.add(CreateLang.text(" ")
+                    .add(CreateLang.number(CommonConfig.BLAZING_MOTOR.MAX_STRESS.get())
+                            .text(" ").translate("generic.unit.stress")
+                            .style(ChatFormatting.AQUA))
+                    .component());
 
             tooltip.add(CreateLang.translate("tooltip.create_better_motors.stores").style(ChatFormatting.GRAY)
                     .component());
-            tooltip.add(CreateLang.text(" ").translate("tooltip.create_better_motors.energy",
-                    StringFormattingTool.formatLong(CommonConfig.BLAZING_ELECTRIC_MOTOR_CAPACITY.get())).style(ChatFormatting.AQUA).component());
+            tooltip.add(CreateLang.text(" ")
+                    .translate("tooltip.create_better_motors.energy",
+                            StringFormattingTool.formatLong(CommonConfig.BLAZING_MOTOR.CAPACITY.get()))
+                    .style(ChatFormatting.AQUA)
+                    .component());
 
             tooltip.add(CreateLang.translate("tooltip.create_better_motors.use").style(ChatFormatting.GRAY)
                     .component());
-            tooltip.add(CreateLang.text(" ").translate("tooltip.create_better_motors.energy_per_tick",
-                    StringFormattingTool.formatLong(CommonConfig.BLAZING_FE_RPM.get())).style(ChatFormatting.AQUA).component());
+            tooltip.add(CreateLang.text(" ")
+                    .translate("tooltip.create_better_motors.energy_per_tick",
+                            StringFormattingTool.formatLong(CommonConfig.BLAZING_MOTOR.FE_RPM.get()))
+                    .style(ChatFormatting.AQUA)
+                    .component());
 
             tooltip.add(CreateLang.translate("tooltip.create_better_motors.max_speed").style(ChatFormatting.GRAY)
                     .component());
-            tooltip.add(CreateLang.text(" ").translate("tooltip.create_better_motors.rpm",
-                    StringFormattingTool.formatLong(CommonConfig.BLAZING_ELECTRIC_MOTOR_RPM_RANGE.get())).style(ChatFormatting.AQUA).component());
+            tooltip.add(CreateLang.text(" ")
+                    .translate("tooltip.create_better_motors.rpm",
+                            StringFormattingTool.formatLong(CommonConfig.BLAZING_MOTOR.RPM_RANGE.get()))
+                    .style(ChatFormatting.AQUA)
+                    .component());
         }
     }
+
     @Override
     public BlockEntityType<? extends BlazingMotorBlockEntity> getBlockEntityType() {
         return CBMBlockEntityTypes.BLAZING_MOTOR.get();
     }
-
 
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {

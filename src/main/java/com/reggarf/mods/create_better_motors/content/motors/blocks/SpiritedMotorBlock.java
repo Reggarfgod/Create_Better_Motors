@@ -22,7 +22,6 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -31,46 +30,58 @@ public class SpiritedMotorBlock extends ElectricMotorBlock implements IBE<Electr
     public SpiritedMotorBlock(Properties properties) {
         super(properties);
     }
-@Override
-public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
-    return AllShapes.MOTOR_BLOCK.get(state.getValue(FACING));
-}
+
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
+        return AllShapes.MOTOR_BLOCK.get(state.getValue(FACING));
+    }
+
     @Override
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(stack, context, tooltip, flag);
 
-        if(Screen.hasShiftDown()){
+        if (Screen.hasShiftDown()) {
             tooltip.add(CreateLang.translate("create_better_motors.large_connector.tooltip.heavy")
                     .style(ChatFormatting.AQUA)
                     .component());
-        }
-        else {
+        } else {
             tooltip.add(CreateLang.translate("tooltip.create_better_motors.generates").style(ChatFormatting.GRAY)
                     .component());
-            tooltip.add(CreateLang.text(" ").add(CreateLang.number(CommonConfig.SPIRITED_MAX_STRESS.get()).text(" ")
-                    .translate("generic.unit.stress").style(ChatFormatting.AQUA)).component());
+            tooltip.add(CreateLang.text(" ")
+                    .add(CreateLang.number(CommonConfig.SPIRITED_MOTOR.MAX_STRESS.get()).text(" ")
+                            .translate("generic.unit.stress").style(ChatFormatting.AQUA))
+                    .component());
 
             tooltip.add(CreateLang.translate("tooltip.create_better_motors.stores").style(ChatFormatting.GRAY)
                     .component());
-            tooltip.add(CreateLang.text(" ").translate("tooltip.create_better_motors.energy",
-                    StringFormattingTool.formatLong(CommonConfig.SPIRITED_ELECTRIC_MOTOR_CAPACITY.get())).style(ChatFormatting.AQUA).component());
+            tooltip.add(CreateLang.text(" ")
+                    .translate("tooltip.create_better_motors.energy",
+                            StringFormattingTool.formatLong(CommonConfig.SPIRITED_MOTOR.CAPACITY.get()))
+                    .style(ChatFormatting.AQUA)
+                    .component());
 
             tooltip.add(CreateLang.translate("tooltip.create_better_motors.use").style(ChatFormatting.GRAY)
                     .component());
-            tooltip.add(CreateLang.text(" ").translate("tooltip.create_better_motors.energy_per_tick",
-                    StringFormattingTool.formatLong(CommonConfig.SPIRITED_FE_RPM.get())).style(ChatFormatting.AQUA).component());
+            tooltip.add(CreateLang.text(" ")
+                    .translate("tooltip.create_better_motors.energy_per_tick",
+                            StringFormattingTool.formatLong(CommonConfig.SPIRITED_MOTOR.FE_RPM.get()))
+                    .style(ChatFormatting.AQUA)
+                    .component());
 
             tooltip.add(CreateLang.translate("tooltip.create_better_motors.max_speed").style(ChatFormatting.GRAY)
                     .component());
-            tooltip.add(CreateLang.text(" ").translate("tooltip.create_better_motors.rpm",
-                    StringFormattingTool.formatLong(CommonConfig.SPIRITED_ELECTRIC_MOTOR_RPM_RANGE.get())).style(ChatFormatting.AQUA).component());
+            tooltip.add(CreateLang.text(" ")
+                    .translate("tooltip.create_better_motors.rpm",
+                            StringFormattingTool.formatLong(CommonConfig.SPIRITED_MOTOR.RPM_RANGE.get()))
+                    .style(ChatFormatting.AQUA)
+                    .component());
         }
     }
+
     @Override
     public BlockEntityType<? extends SpritedMotorBlockEntity> getBlockEntityType() {
         return CBMBlockEntityTypes.SPIRITED_MOTOR.get();
     }
-
 
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {

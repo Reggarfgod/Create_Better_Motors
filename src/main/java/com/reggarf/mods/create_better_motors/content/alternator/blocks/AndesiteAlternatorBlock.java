@@ -1,22 +1,14 @@
 package com.reggarf.mods.create_better_motors.content.alternator.blocks;
 
-
 import com.mrh0.createaddition.shapes.CAShapes;
-
-
 import com.reggarf.mods.create_better_motors.config.CommonConfig;
 import com.reggarf.mods.create_better_motors.content.alternator.blocksentity.AndesiteAlternatorBlockEntity;
 import com.reggarf.mods.create_better_motors.registry.CBMBlockEntityTypes;
-
-
 import com.reggarf.mods.create_better_motors.util.StringFormattingTool;
 import com.simibubi.create.content.kinetics.base.DirectionalKineticBlock;
 import com.simibubi.create.content.kinetics.base.IRotate;
 import com.simibubi.create.foundation.block.IBE;
 import com.simibubi.create.foundation.utility.CreateLang;
-
-
-
 import net.createmod.catnip.math.VoxelShaper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
@@ -38,15 +30,14 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-
 import java.util.List;
 
 public class AndesiteAlternatorBlock extends DirectionalKineticBlock implements IBE<AndesiteAlternatorBlockEntity>, IRotate {
 
-
     public AndesiteAlternatorBlock(Properties properties) {
         super(properties);
     }
+
     public static final VoxelShaper ALTERNATOR_SHAPE = CAShapes.shape(
             0, 1.5, 0, 16, 12.5, 16).forDirectional();
 
@@ -55,26 +46,33 @@ public class AndesiteAlternatorBlock extends DirectionalKineticBlock implements 
         return ALTERNATOR_SHAPE.get(state.getValue(FACING));
     }
 
-
-
     @Override
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(stack, context, tooltip, flag);
 
-        if(Screen.hasShiftDown()){
+        if (Screen.hasShiftDown()) {
             tooltip.add(CreateLang.translate("create_better_motors.large_connector.tooltip.heavy")
                     .style(ChatFormatting.AQUA)
                     .component());
-        }
-        else
-        {
-            tooltip.add(CreateLang.text(" ").add(CreateLang.number(CommonConfig.ANDESITE_ALTERNATOR_FE_RPM.get() * CommonConfig.ANDESITE_ALTERNATOR_EFFICIENCY.get()).text(" ")
-                    .translate("tooltip.create_better_motors.energy_per_tick").style(ChatFormatting.AQUA)).component());
+        } else {
+            double fePerTick = CommonConfig.ANDESITE_ALTERNATOR.FE_RPM.get() * CommonConfig.ANDESITE_ALTERNATOR.EFFICIENCY.get();
 
-            tooltip.add(CreateLang.translate("tooltip.create_better_motors.stores").style(ChatFormatting.GRAY)
+            tooltip.add(CreateLang.text(" ")
+                    .add(CreateLang.number(fePerTick)
+                            .text(" ")
+                            .translate("tooltip.create_better_motors.energy_per_tick")
+                            .style(ChatFormatting.AQUA))
                     .component());
-            tooltip.add(CreateLang.text(" ").translate("tooltip.create_better_motors.energy",
-                    StringFormattingTool.formatLong(CommonConfig.ANDESITE_ALTERNATOR_CAPACITY.get())).style(ChatFormatting.AQUA).component());
+
+            tooltip.add(CreateLang.translate("tooltip.create_better_motors.stores")
+                    .style(ChatFormatting.GRAY)
+                    .component());
+
+            tooltip.add(CreateLang.text(" ")
+                    .translate("tooltip.create_better_motors.energy",
+                            StringFormattingTool.formatLong(CommonConfig.ANDESITE_ALTERNATOR.CAPACITY.get()))
+                    .style(ChatFormatting.AQUA)
+                    .component());
 
             tooltip.add(CreateLang.translate("tooltip.create_better_motors.shift")
                     .style(ChatFormatting.DARK_GRAY)
@@ -82,12 +80,10 @@ public class AndesiteAlternatorBlock extends DirectionalKineticBlock implements 
         }
     }
 
-
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         Direction preferred = getPreferredFacing(context);
-        if ((context.getPlayer() != null && context.getPlayer()
-                .isShiftKeyDown()) || preferred == null)
+        if ((context.getPlayer() != null && context.getPlayer().isShiftKeyDown()) || preferred == null)
             return super.getStateForPlacement(context);
         return defaultBlockState().setValue(FACING, preferred);
     }
@@ -97,8 +93,6 @@ public class AndesiteAlternatorBlock extends DirectionalKineticBlock implements 
         return false;
     }
 
-
-
     @Override
     public boolean hasShaftTowards(LevelReader world, BlockPos pos, BlockState state, Direction face) {
         return face == state.getValue(FACING);
@@ -106,8 +100,7 @@ public class AndesiteAlternatorBlock extends DirectionalKineticBlock implements 
 
     @Override
     public Axis getRotationAxis(BlockState state) {
-        return state.getValue(FACING)
-                .getAxis();
+        return state.getValue(FACING).getAxis();
     }
 
     @Override
@@ -133,10 +126,8 @@ public class AndesiteAlternatorBlock extends DirectionalKineticBlock implements 
     @Override
     public void neighborChanged(BlockState state, Level worldIn, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving) {
         BlockEntity tileentity = state.hasBlockEntity() ? worldIn.getBlockEntity(pos) : null;
-        if(tileentity != null) {
-            if(tileentity instanceof AndesiteAlternatorBlockEntity) {
-                ((AndesiteAlternatorBlockEntity)tileentity).updateCache();
-            }
+        if (tileentity instanceof AndesiteAlternatorBlockEntity alternator) {
+            alternator.updateCache();
         }
     }
 }

@@ -72,6 +72,7 @@
   "item.create_better_motors.reggarfonite_gem": "Reggarfonite Ingot",
   "block.create_better_motors.reggarfonite_block": "Reggarfonite Block",
   "block.create_better_motors.deepslate_reggarfonite_ore": "Deepslate Reggarfonite Ore",
+  "block.create_better_motors.raw_reggarfonite_block": "Raw Reggarfonite Block",
 
 
   "create.tooltip.create_better_motors.shift": "§7Press §f[SHIFT] §7for more info",
