@@ -34,7 +34,7 @@ public class CopperAlternatorBlockEntity extends KineticBlockEntity {
     private LazyOptional<IEnergyStorage> lazyEnergy;
     public CopperAlternatorBlockEntity(BlockEntityType<?> typeIn, BlockPos pos, BlockState state) {
         super(typeIn, pos, state);
-        energy = new InternalEnergyStorage(CommonConfig.COPPER_ALTERNATOR_CAPACITY.get(), 0, CommonConfig.COPPER_ALTERNATOR_MAX_OUTPUT.get());
+        energy = new InternalEnergyStorage(CommonConfig.COPPER_ALTERNATOR.CAPACITY.get(), 0, CommonConfig.COPPER_ALTERNATOR.MAX_OUTPUT.get());
         lazyEnergy = LazyOptional.of(() -> energy);
 
     }
@@ -111,14 +111,14 @@ public class CopperAlternatorBlockEntity extends KineticBlockEntity {
             if(!isEnergyOutput(d)) continue;
             IEnergyStorage ies = getCachedEnergy(d);
             if(ies == null) continue;
-            int ext = energy.extractEnergy(ies.receiveEnergy(CommonConfig.COPPER_ALTERNATOR_MAX_OUTPUT.get(), true), false);
+            int ext = energy.extractEnergy(ies.receiveEnergy(CommonConfig.COPPER_ALTERNATOR.MAX_OUTPUT.get(), true), false);
             ies.receiveEnergy(ext, false);
         }
     }
 
     @Override
     public float calculateStressApplied() {
-        float impact = CommonConfig.COPPER_ALTERNATOR_MAX_STRESS.get()/256f;
+        float impact = CommonConfig.COPPER_ALTERNATOR.MAX_STRESS.get()/256f;
         this.lastStressApplied = impact;
         return impact;
     }
@@ -133,12 +133,12 @@ public class CopperAlternatorBlockEntity extends KineticBlockEntity {
             return;
 
         float pitch = Mth.clamp((componentSpeed / 256f) + .5f, .5f, 1.5f);
-        if (CommonConfig.COPPER_ALTERNATOR_AUDIO_ENABLED.get()) CASoundScapes.play(CASoundScapes.AmbienceGroup.DYNAMO, worldPosition, pitch);
+        if (CommonConfig.COPPER_ALTERNATOR.AUDIO_ENABLED.get()) CASoundScapes.play(CASoundScapes.AmbienceGroup.DYNAMO, worldPosition, pitch);
     }
 
     public static int getEnergyProductionRate(int rpm) {
         rpm = Math.abs(rpm);
-        return (int)((double)CommonConfig.COPPER_ALTERNATOR_FE_RPM.get() * ((double)Math.abs(rpm) / 256d) * CommonConfig.COPPER_ALTERNATOR_EFFICIENCY.get());//return (int)((double)Config.FE_TO_SU.get() * ((double)Math.abs(rpm)/256d) * EFFICIENCY);
+        return (int)((double)CommonConfig.COPPER_ALTERNATOR.FE_RPM.get() * ((double)Math.abs(rpm) / 256d) * CommonConfig.COPPER_ALTERNATOR.EFFICIENCY.get());//return (int)((double)Config.FE_TO_SU.get() * ((double)Math.abs(rpm)/256d) * EFFICIENCY);
     }
 
     @Override

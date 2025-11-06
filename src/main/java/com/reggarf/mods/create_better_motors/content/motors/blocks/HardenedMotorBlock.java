@@ -45,23 +45,23 @@ public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, 
         else {
             tooltip.add(CreateLang.translate("tooltip.create_better_motors.generates").style(ChatFormatting.GRAY)
                     .component());
-            tooltip.add(CreateLang.text(" ").add(CreateLang.number(CommonConfig.HARDENED_MAX_STRESS.get()).text(" ")
+            tooltip.add(CreateLang.text(" ").add(CreateLang.number(CommonConfig.HARDENED_MOTOR.MAX_STRESS.get()).text(" ")
                     .translate("generic.unit.stress").style(ChatFormatting.AQUA)).component());
 
             tooltip.add(CreateLang.translate("tooltip.create_better_motors.stores").style(ChatFormatting.GRAY)
                     .component());
             tooltip.add(CreateLang.text(" ").translate("tooltip.create_better_motors.energy",
-                    StringFormattingTool.formatLong(CommonConfig.HARDENED_ELECTRIC_MOTOR_CAPACITY.get())).style(ChatFormatting.AQUA).component());
+                    StringFormattingTool.formatLong(CommonConfig.HARDENED_MOTOR.CAPACITY.get())).style(ChatFormatting.AQUA).component());
 
             tooltip.add(CreateLang.translate("tooltip.create_better_motors.use").style(ChatFormatting.GRAY)
                     .component());
             tooltip.add(CreateLang.text(" ").translate("tooltip.create_better_motors.energy_per_tick",
-                    StringFormattingTool.formatLong(CommonConfig.HARDENED_FE_RPM.get())).style(ChatFormatting.AQUA).component());
+                    StringFormattingTool.formatLong(CommonConfig.HARDENED_MOTOR.FE_RPM.get())).style(ChatFormatting.AQUA).component());
 
             tooltip.add(CreateLang.translate("tooltip.create_better_motors.max_speed").style(ChatFormatting.GRAY)
                     .component());
             tooltip.add(CreateLang.text(" ").translate("tooltip.create_better_motors.rpm",
-                    StringFormattingTool.formatLong(CommonConfig.HARDENED_ELECTRIC_MOTOR_RPM_RANGE.get())).style(ChatFormatting.AQUA).component());
+                    StringFormattingTool.formatLong(CommonConfig.HARDENED_MOTOR.RPM_RANGE.get())).style(ChatFormatting.AQUA).component());
         }
     }
     @Override

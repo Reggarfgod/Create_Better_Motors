@@ -209,49 +209,31 @@ public class CBMBlocks {
 //            .build()
 //            .register();
 
+
     public static final BlockEntry<Block> DEEPSLATE_REGGARFONITE_ORE = REGISTRATE.block("deepslate_reggarfonite_ore", Block::new)
             .initialProperties(() -> Blocks.DEEPSLATE_GOLD_ORE)
-            .properties(p -> p.mapColor(MapColor.STONE)
-                    .requiresCorrectToolForDrops()
-                    .sound(SoundType.DEEPSLATE))
-            .transform(pickaxeOnly())
-            .loot((lt, b) -> lt.add(b,
-                    RegistrateBlockLootTables.createSilkTouchDispatchTable(b,
-                            lt.applyExplosionDecay(b, LootItem.lootTableItem(CBMItems.RAW_REGGARFONITE.get())
-                                    .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))))))
-            .tag(BlockTags.NEEDS_IRON_TOOL)
-            .tag(Tags.Blocks.ORES)
-            .transform(tagBlockAndItem("ores/reggarfonite", "ores_in_ground/deepslate"))
-            .tag(Tags.Items.ORES)
-            .build()
+            .properties(p -> p.mapColor(MapColor.TERRACOTTA_YELLOW))
+            //.blockstate(BlockGenHelper.simpleBlock())
+            .item()
+            .transform(customItemModel())
             .register();
 
+
     public static final BlockEntry<Block> RAW_REGGARFONITE_BLOCK = REGISTRATE.block("raw_reggarfonite_block", Block::new)
-            .initialProperties(() -> Blocks.RAW_GOLD_BLOCK)
-            .properties(p -> p.mapColor(MapColor.GLOW_LICHEN)
-                    .requiresCorrectToolForDrops())
-            .transform(pickaxeOnly())
-            .tag(Tags.Blocks.STORAGE_BLOCKS)
-            .tag(BlockTags.NEEDS_IRON_TOOL)
-            .lang("Block of Raw Reggarfonite")
-            .transform(tagBlockAndItem("storage_blocks/raw_reggarfonite"))
-            .tag(Tags.Items.STORAGE_BLOCKS)
-            .build()
+            .initialProperties(() -> Blocks.GOLD_BLOCK)
+            .properties(p -> p.mapColor(MapColor.TERRACOTTA_YELLOW))
+           // .blockstate(BlockGenHelper.simpleBlock())
+            .item()
+            .transform(customItemModel())
             .register();
+
 
     public static final BlockEntry<Block> REGGARFONITE_BLOCK = REGISTRATE.block("reggarfonite_block", Block::new)
             .initialProperties(() -> Blocks.IRON_BLOCK)
-            .properties(p -> p.mapColor(MapColor.GLOW_LICHEN)
-                    .requiresCorrectToolForDrops())
-            .transform(pickaxeOnly())
-            .tag(BlockTags.NEEDS_IRON_TOOL)
-            .tag(Tags.Blocks.STORAGE_BLOCKS)
-            .tag(BlockTags.BEACON_BASE_BLOCKS)
-            .transform(tagBlockAndItem("storage_blocks/reggarfonite"))
-            .tag(Tags.Items.STORAGE_BLOCKS)
-            .build()
-            .lang("Block of reggarfonite")
+            .properties(p -> p.mapColor(MapColor.TERRACOTTA_YELLOW))
+           // .blockstate(BlockGenHelper.simpleBlock())
+            .item()
+            .transform(customItemModel())
             .register();
-
         public static void load() {  }
 }

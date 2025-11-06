@@ -2,7 +2,8 @@ package com.reggarf.mods.create_better_motors.registry;
 
 // ===================== Imports =====================
 
-import com.reggarf.mods.create_better_motors.config.CBMConfig;
+
+import com.reggarf.mods.create_better_motors.config.CommonConfig;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
@@ -32,7 +33,7 @@ public class CBMMessageType {
     // ===================== Player Join Event =====================
     @SubscribeEvent
     public static void onPlayerJoin(PlayerEvent.PlayerLoggedInEvent event) {
-        if (!(event.getEntity() instanceof ServerPlayer player) || !CBMConfig.getCommon().MESSAGE_ENABLED.get()) return;
+        if (!(event.getEntity() instanceof ServerPlayer player) || !CommonConfig.MESSAGES_ENABLED.get()) return;
 
         CompoundTag persistentData = player.getPersistentData();
         CompoundTag igData = persistentData.getCompound(ServerPlayer.PERSISTED_NBT_TAG);
@@ -74,14 +75,14 @@ public class CBMMessageType {
                 .append(Component.literal(" (20% off with code Reggarf-1047)"));
 
 
-        // Disable message CTA
-        Component disable = Component.literal(" - ")
-                .append(Component.literal("Disable this message")
-                        .setStyle(Style.EMPTY
-                                .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.curseforge.com/minecraft/mc-mods/create-better-motors"))
-                                .withColor(parseTextColor(disableColor))
-                                .withUnderlined(true)))
-                .append(Component.literal(" (Mod config)"));
+//        // Disable message CTA
+//        Component disable = Component.literal(" - ")
+//                .append(Component.literal("Disable this message")
+//                        .setStyle(Style.EMPTY
+//                                .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.curseforge.com/minecraft/mc-mods/create-better-motors"))
+//                                .withColor(parseTextColor(disableColor))
+//                                .withUnderlined(true)))
+//                .append(Component.literal(" (Mod config)"));
 
         // Disable Issue CTA
         Component issueTracker = Component.literal(" - ")
@@ -98,7 +99,7 @@ public class CBMMessageType {
         player.sendSystemMessage(discord);
         player.sendSystemMessage(zap);
         player.sendSystemMessage(issueTracker);
-        player.sendSystemMessage(disable);
+        //player.sendSystemMessage(disable);
 
     }
 

@@ -1,10 +1,7 @@
 package com.reggarf.mods.create_better_motors.content.alternator.blocks;
 
-import com.mrh0.createaddition.blocks.alternator.AlternatorBlock;
-import com.mrh0.createaddition.blocks.alternator.AlternatorBlockEntity;
 import com.mrh0.createaddition.shapes.CAShapes;
-import com.reggarf.mods.create_better_motors.config.CBMConfig;
-import com.reggarf.mods.create_better_motors.content.alternator.blocksentity.AndesiteAlternatorBlockEntity;
+import com.reggarf.mods.create_better_motors.config.CommonConfig;
 import com.reggarf.mods.create_better_motors.content.alternator.blocksentity.BrassAlternatorBlockEntity;
 import com.reggarf.mods.create_better_motors.registry.CBMBlockEntityTypes;
 import com.reggarf.mods.create_better_motors.util.StringFormattingTool;
@@ -60,13 +57,13 @@ public class BrassAlternatorBlock extends DirectionalKineticBlock implements IBE
             tooltip.add(CreateLang.translate("tooltip.create_better_motors.generates").style(ChatFormatting.GRAY)
                     .component());
 
-            tooltip.add(CreateLang.text(" ").add(CreateLang.number(CBMConfig.getCommon().BRASS_ALTERNATOR_FE_RPM.get() * CBMConfig.getCommon().BRASS_ALTERNATOR_EFFICIENCY.get()).text(" ")
+            tooltip.add(CreateLang.text(" ").add(CreateLang.number(CommonConfig.BRASS_ALTERNATOR.FE_RPM.get() * CommonConfig.BRASS_ALTERNATOR.EFFICIENCY.get()).text(" ")
                     .translate("tooltip.create_better_motors.energy_per_tick").style(ChatFormatting.AQUA)).component());
 
             tooltip.add(CreateLang.translate("tooltip.create_better_motors.stores").style(ChatFormatting.GRAY)
                     .component());
             tooltip.add(CreateLang.text(" ").translate("tooltip.create_better_motors.energy",
-                    StringFormattingTool.formatLong(CBMConfig.getCommon().BRASS_ALTERNATOR_CAPACITY.get())).style(ChatFormatting.AQUA).component());
+                    StringFormattingTool.formatLong(CommonConfig.BRASS_ALTERNATOR.CAPACITY.get())).style(ChatFormatting.AQUA).component());
         }
     }
 
@@ -122,8 +119,8 @@ public class BrassAlternatorBlock extends DirectionalKineticBlock implements IBE
     public void neighborChanged(BlockState state, Level worldIn, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving) {
         BlockEntity tileentity = state.hasBlockEntity() ? worldIn.getBlockEntity(pos) : null;
         if(tileentity != null) {
-            if(tileentity instanceof AndesiteAlternatorBlockEntity) {
-                ((AndesiteAlternatorBlockEntity)tileentity).updateCache();
+            if(tileentity instanceof BrassAlternatorBlockEntity) {
+                ((BrassAlternatorBlockEntity)tileentity).updateCache();
             }
         }
     }

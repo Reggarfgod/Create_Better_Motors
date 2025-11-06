@@ -51,7 +51,7 @@ public class StarterMotorBlockEntity extends ElectricMotorBlockEntity {
 
     public StarterMotorBlockEntity(BlockEntityType<? extends ElectricMotorBlockEntity> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
-        energy = new InternalEnergyStorage(CommonConfig.STARTER_ELECTRIC_MOTOR_CAPACITY.get(), CommonConfig.STARTER_ELECTRIC_MOTOR_MAX_INPUT.get(), 0);
+        energy = new InternalEnergyStorage(CommonConfig.STARTER_MOTOR.CAPACITY.get(), CommonConfig.STARTER_MOTOR.MAX_INPUT.get(), 0);
         lazyEnergy = LazyOptional.of(() -> energy);
         if(CreateAddition.CC_ACTIVE) {
             lazyPeripheral = LazyOptional.of(() -> Peripherals.createElectricMotorPeripheral(this));
@@ -66,7 +66,7 @@ public class StarterMotorBlockEntity extends ElectricMotorBlockEntity {
         CenteredSideValueBoxTransform slot = new CenteredSideValueBoxTransform((motor, side) -> motor.getValue(ElectricMotorBlock.FACING) == side.getOpposite());
 
         generatedSpeed = new KineticScrollValueBehaviour(CreateLang.translateDirect("generic.speed"), this, slot);
-        generatedSpeed.between(-CommonConfig.STARTER_ELECTRIC_MOTOR_RPM_RANGE.get(), CommonConfig.STARTER_ELECTRIC_MOTOR_RPM_RANGE.get());
+        generatedSpeed.between(-CommonConfig.STARTER_MOTOR.RPM_RANGE.get(), CommonConfig.STARTER_MOTOR.RPM_RANGE.get());
         generatedSpeed.value = 16;
         //generatedSpeed.withUnit(i -> Lang.translateDirect("generic.unit.rpm"));
         generatedSpeed.withCallback(i -> this.updateGeneratedRotation(i));
@@ -78,7 +78,7 @@ public class StarterMotorBlockEntity extends ElectricMotorBlockEntity {
 
 
     public float calculateAddedStressCapacity() {
-        float capacity = CommonConfig.STARTER_MAX_STRESS.get()/256f;
+        float capacity = CommonConfig.STARTER_MOTOR.MAX_STRESS.get()/256f;
         this.lastCapacityProvided = capacity;
         return capacity;
     }
@@ -161,7 +161,7 @@ public class StarterMotorBlockEntity extends ElectricMotorBlockEntity {
     }
 
     public static int getEnergyConsumptionRate(float rpm) {
-        return Math.abs(rpm) > 0 ? (int)Math.max((double)CommonConfig.STARTER_FE_RPM.get() * ((double)Math.abs(rpm) / 256d), (double)CommonConfig.STARTER_ELECTRIC_MOTOR_MINIMUM_CONSUMPTION.get()) : 0;
+        return Math.abs(rpm) > 0 ? (int)Math.max((double)CommonConfig.STARTER_MOTOR.FE_RPM.get() * ((double)Math.abs(rpm) / 256d), (double)CommonConfig.STARTER_MOTOR.MIN_CONSUMPTION.get()) : 0;
     }
 
 
@@ -206,14 +206,14 @@ public class StarterMotorBlockEntity extends ElectricMotorBlockEntity {
     public void tickAudio() {
         super.tickAudio();
         if (!active) return;
-        if (CommonConfig.STARTER_AUDIO_ENABLED.get()) CASoundScapes.play(CASoundScapes.AmbienceGroup.DYNAMO, worldPosition, 1);
+        if (CommonConfig.STARTER_MOTOR.AUDIO_ENABLED.get()) CASoundScapes.play(CASoundScapes.AmbienceGroup.DYNAMO, worldPosition, 1);
     }
 
 
 
     // This is the callback used by the CC Peripheral!
     public boolean setRPM(float rpm) {
-        rpm = Math.max(Math.min(rpm, CommonConfig.STARTER_ELECTRIC_MOTOR_RPM_RANGE.get()), -CommonConfig.STARTER_ELECTRIC_MOTOR_RPM_RANGE.get());
+        rpm = Math.max(Math.min(rpm, CommonConfig.STARTER_MOTOR.RPM_RANGE.get()), -CommonConfig.STARTER_MOTOR.RPM_RANGE.get());
         cc_new_rpm = rpm;
         cc_update_rpm = true;
         return true;

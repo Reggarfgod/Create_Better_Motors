@@ -2,6 +2,7 @@ package com.reggarf.mods.create_better_motors;
 
 
 
+import com.reggarf.mods.create_better_motors.config.CommonConfig;
 import com.reggarf.mods.create_better_motors.registry.*;
 
 
@@ -17,13 +18,14 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
-import com.reggarf.mods.create_better_motors.config.CBMConfig;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -70,7 +72,8 @@ public class Create_better_motors {
         //CBMContainerTypes.register();
         CBMBlockEntityTypes.load();
         CBMItems.load();
-        CBMConfig.getCommon();
+        //CBMConfig.getCommon();
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CommonConfig.COMMON_CONFIG);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(CBMClientIniter::onInitializeClient);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::generalSetup);
 

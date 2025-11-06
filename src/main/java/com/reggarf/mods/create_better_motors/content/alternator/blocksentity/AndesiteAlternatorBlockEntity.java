@@ -35,7 +35,7 @@ public class AndesiteAlternatorBlockEntity extends KineticBlockEntity {
 
     public AndesiteAlternatorBlockEntity(BlockEntityType<?> typeIn, BlockPos pos, BlockState state) {
         super(typeIn, pos, state);
-        energy = new InternalEnergyStorage(CommonConfig.ANDESITE_ALTERNATOR_CAPACITY.get(), 0, CommonConfig.ANDESITE_ALTERNATOR_MAX_OUTPUT.get());
+        energy = new InternalEnergyStorage(CommonConfig.ANDESITE_ALTERNATOR.CAPACITY.get(), 0, CommonConfig.ANDESITE_ALTERNATOR.MAX_OUTPUT.get());
         lazyEnergy = LazyOptional.of(() -> energy);
     }
 
@@ -111,14 +111,14 @@ public class AndesiteAlternatorBlockEntity extends KineticBlockEntity {
             if(!isEnergyOutput(d)) continue;
             IEnergyStorage ies = getCachedEnergy(d);
             if(ies == null) continue;
-            int ext = energy.extractEnergy(ies.receiveEnergy(CommonConfig.ANDESITE_ALTERNATOR_MAX_OUTPUT.get(), true), false);
+            int ext = energy.extractEnergy(ies.receiveEnergy(CommonConfig.ANDESITE_ALTERNATOR.MAX_OUTPUT.get(), true), false);
             ies.receiveEnergy(ext, false);
         }
     }
 
     @Override
     public float calculateStressApplied() {
-        float impact = CommonConfig.ANDESITE_ALTERNATOR_MAX_STRESS.get()/256f;
+        float impact = CommonConfig.ANDESITE_ALTERNATOR.MAX_STRESS.get()/256f;
         this.lastStressApplied = impact;
         return impact;
     }
@@ -133,12 +133,12 @@ public class AndesiteAlternatorBlockEntity extends KineticBlockEntity {
             return;
 
         float pitch = Mth.clamp((componentSpeed / 256f) + .5f, .5f, 1.5f);
-        if (CommonConfig.ANDESITE_ALTERNATOR_AUDIO_ENABLED.get()) CASoundScapes.play(CASoundScapes.AmbienceGroup.DYNAMO, worldPosition, pitch);
+        if (CommonConfig.ANDESITE_ALTERNATOR.AUDIO_ENABLED.get()) CASoundScapes.play(CASoundScapes.AmbienceGroup.DYNAMO, worldPosition, pitch);
     }
 
     public static int getEnergyProductionRate(int rpm) {
         rpm = Math.abs(rpm);
-        return (int)((double)CommonConfig.ANDESITE_ALTERNATOR_FE_RPM.get() * ((double)Math.abs(rpm) / 256d) * CommonConfig.ANDESITE_ALTERNATOR_EFFICIENCY.get());//return (int)((double)Config.FE_TO_SU.get() * ((double)Math.abs(rpm)/256d) * EFFICIENCY);
+        return (int)((double)CommonConfig.ANDESITE_ALTERNATOR.FE_RPM.get() * ((double)Math.abs(rpm) / 256d) * CommonConfig.ANDESITE_ALTERNATOR.EFFICIENCY.get());//return (int)((double)Config.FE_TO_SU.get() * ((double)Math.abs(rpm)/256d) * EFFICIENCY);
     }
 
     @Override

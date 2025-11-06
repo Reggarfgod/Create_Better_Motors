@@ -41,23 +41,23 @@ public class BasicMotorBlock extends ElectricMotorBlock implements IBE<ElectricM
         else {
             tooltip.add(CreateLang.translate("tooltip.create_better_motors.generates").style(ChatFormatting.GRAY)
                     .component());
-            tooltip.add(CreateLang.text(" ").add(CreateLang.number(CommonConfig.BASIC_MAX_STRESS.get()).text(" ")
+            tooltip.add(CreateLang.text(" ").add(CreateLang.number(CommonConfig.BASIC_MOTOR.MAX_STRESS.get()).text(" ")
                     .translate("generic.unit.stress").style(ChatFormatting.AQUA)).component());
 
             tooltip.add(CreateLang.translate("tooltip.create_better_motors.stores").style(ChatFormatting.GRAY)
                     .component());
             tooltip.add(CreateLang.text(" ").translate("tooltip.create_better_motors.energy",
-                    StringFormattingTool.formatLong(CommonConfig.BASIC_ELECTRIC_MOTOR_CAPACITY.get())).style(ChatFormatting.AQUA).component());
+                    StringFormattingTool.formatLong(CommonConfig.BASIC_MOTOR.CAPACITY.get())).style(ChatFormatting.AQUA).component());
 
             tooltip.add(CreateLang.translate("tooltip.create_better_motors.use").style(ChatFormatting.GRAY)
                     .component());
             tooltip.add(CreateLang.text(" ").translate("tooltip.create_better_motors.energy_per_tick",
-                    StringFormattingTool.formatLong(CommonConfig.BASIC_FE_RPM.get())).style(ChatFormatting.AQUA).component());
+                    StringFormattingTool.formatLong(CommonConfig.BASIC_MOTOR.FE_RPM.get())).style(ChatFormatting.AQUA).component());
 
             tooltip.add(CreateLang.translate("tooltip.create_better_motors.max_speed").style(ChatFormatting.GRAY)
                     .component());
             tooltip.add(CreateLang.text(" ").translate("tooltip.create_better_motors.rpm",
-                    StringFormattingTool.formatLong(CommonConfig.BASIC_ELECTRIC_MOTOR_RPM_RANGE.get())).style(ChatFormatting.AQUA).component());
+                    StringFormattingTool.formatLong(CommonConfig.BASIC_MOTOR.RPM_RANGE.get())).style(ChatFormatting.AQUA).component());
         }
     }
 
