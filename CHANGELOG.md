@@ -94,7 +94,8 @@ All alternators have received custom config entries:
 ## Version 3.1.7  (Latest Update) Neoforge 1.21.1
 
 ### Fix
-* better lib api 
+* better lib api
+* Crash issue
 
 
 
