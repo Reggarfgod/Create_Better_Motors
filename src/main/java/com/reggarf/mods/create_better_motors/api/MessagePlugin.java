@@ -25,11 +25,10 @@ public class MessagePlugin implements JoinMessagePlugin {
     public List<JoinMessageSet> getMessageSets() {
         return List.of(
             new JoinMessageSet()
-                .addText("Hello, thank you for downloading Create: Better Motors Check Changelog!", "FFD700")
-                .addBlankLine()
-                .addLink("(support, updates)", "https://discord.gg/kb6BntpcYq", "5599FF", "Changelog")
-                    .addLink("(ZAP-Hosting)", "https://zap-hosting.com/reggarf", "00FFFF", "20% off with code Reggarf-1047")
-                    .addLink("(github/wiki)", "https://github.com/Reggarfgod/Create_Better_Motors/issues", "A9A9A9", "Issue Tracker")
+                .addText("Thank you for supporting the development of Create: Better Motors. Check the changelog!", 0xFFD700)
+                .addLink("(support, updates)", "https://discord.gg/kb6BntpcYq", 0x5599FF, "Changelog")
+                    .addLink("(ZAP-Hosting)", "https://zap-hosting.com/reggarf", 0x00FFFF, "20% off with code Reggarf-1047")
+                    .addLink("(github/wiki)", "https://github.com/Reggarfgod/Create_Better_Motors/issues", 0xA9A9A9, "Issue Tracker")
         );
     }
 
