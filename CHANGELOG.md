@@ -87,3 +87,17 @@ All alternators have received custom config entries:
 * Uses NeoForge’s latest `ModConfigSpec` builder for stable performance.
 
 
+
+
+
+===============================================================================================
+## Version 3.1.7  (Latest Update) Neoforge 1.21.1
+
+### Fix
+* better lib api 
+
+
+
+
+
+
