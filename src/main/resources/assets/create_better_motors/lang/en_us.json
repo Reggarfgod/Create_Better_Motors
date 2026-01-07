@@ -2,6 +2,9 @@
   "create_better_motors": "Create: Better Motors",
   "item_group.create_better_motors.tab": "Create: Better Motors",
 
+  "create.tooltip.create_better_motors.no_energy": "No Energy Input",
+  "create.tooltip.create_better_motors.connect_energy": "Connect the motor to an energy source",
+  "create.tooltip.create_better_motors.generator_stats": "Generator Stats:",
   "create.tooltip.create_better_motors.energy_stored": "Energy Stored: ",
   "create.tooltip.create_better_motors.energy_stats": "Energy Stats: ",
   "create.tooltip.create_better_motors.energy_usage": "Energy Usage: ",
