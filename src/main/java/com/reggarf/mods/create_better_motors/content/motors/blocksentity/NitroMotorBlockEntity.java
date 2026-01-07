@@ -12,11 +12,13 @@ import com.mrh0.createaddition.util.Util;
 import com.reggarf.mods.create_better_motors.config.CommonConfig;
 import com.reggarf.mods.create_better_motors.registry.CBMBlocks;
 import com.reggarf.mods.create_better_motors.util.StringFormattingTool;
+
 import com.simibubi.create.content.kinetics.motor.KineticScrollValueBehaviour;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import com.simibubi.create.foundation.blockEntity.behaviour.CenteredSideValueBoxTransform;
 import com.simibubi.create.foundation.blockEntity.behaviour.scrollValue.ScrollValueBehaviour;
 import com.simibubi.create.foundation.utility.CreateLang;
+
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -24,6 +26,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
@@ -31,187 +34,295 @@ import net.minecraftforge.energy.IEnergyStorage;
 
 import java.util.List;
 
-
 public class NitroMotorBlockEntity extends ElectricMotorBlockEntity {
+
+    /* ------------------ FIELDS ------------------ */
 
     protected float motorSpeed;
     protected ScrollValueBehaviour generatedSpeed;
-    protected final InternalEnergyStorage energy;
-    private LazyOptional<IEnergyStorage> lazyEnergy;
-    private LazyOptional<ElectricMotorPeripheral> lazyPeripheral = null;
 
-    private boolean cc_update_rpm = false;
-    private float cc_new_rpm = 32.0f;
+    protected final InternalEnergyStorage energy;
+    private final LazyOptional<IEnergyStorage> lazyEnergy;
+
+    private LazyOptional<ElectricMotorPeripheral> lazyPeripheral = null;
 
     private boolean active = false;
 
-    public NitroMotorBlockEntity(BlockEntityType<? extends ElectricMotorBlockEntity> type, BlockPos pos, BlockState state) {
+    private boolean ccUpdateRPM = false;
+    private float ccNewRPM = 32f;
+
+    private boolean firstTick = true;
+
+    /* ------------------ CONSTRUCTOR ------------------ */
+
+    public NitroMotorBlockEntity(BlockEntityType<? extends ElectricMotorBlockEntity> type,
+                                 BlockPos pos,
+                                 BlockState state) {
         super(type, pos, state);
-        energy = new InternalEnergyStorage(CommonConfig.NITRO_MOTOR.CAPACITY.get(), CommonConfig.NITRO_MOTOR.MAX_INPUT.get(), 0);
-        lazyEnergy = LazyOptional.of(() -> energy);
-        if(CreateAddition.CC_ACTIVE) {
-            lazyPeripheral = LazyOptional.of(() -> Peripherals.createElectricMotorPeripheral(this));
+
+        this.energy = new InternalEnergyStorage(
+                CommonConfig.NITRO_MOTOR.CAPACITY.get(),
+                CommonConfig.NITRO_MOTOR.MAX_INPUT.get(),
+                0
+        );
+
+        this.lazyEnergy = LazyOptional.of(() -> energy);
+
+        if (CreateAddition.CC_ACTIVE) {
+            lazyPeripheral = LazyOptional.of(
+                    () -> Peripherals.createElectricMotorPeripheral(this)
+            );
         }
+
         setLazyTickRate(20);
     }
+
+    /* ------------------ BEHAVIOURS ------------------ */
 
     @Override
     public void addBehaviours(List<BlockEntityBehaviour> behaviours) {
         super.addBehaviours(behaviours);
 
-        CenteredSideValueBoxTransform slot = new CenteredSideValueBoxTransform((motor, side) -> motor.getValue(ElectricMotorBlock.FACING) == side.getOpposite());
+        CenteredSideValueBoxTransform slot =
+                new CenteredSideValueBoxTransform(
+                        (motor, side) ->
+                                motor.getValue(ElectricMotorBlock.FACING) == side.getOpposite()
+                );
 
-        generatedSpeed = new KineticScrollValueBehaviour(CreateLang.translateDirect("generic.speed"), this, slot);
-        generatedSpeed.between(-CommonConfig.NITRO_MOTOR.RPM_RANGE.get(), CommonConfig.NITRO_MOTOR.RPM_RANGE.get());
+        generatedSpeed = new KineticScrollValueBehaviour(
+                CreateLang.translateDirect("generic.speed"),
+                this,
+                slot
+        );
+
+        generatedSpeed.between(
+                -CommonConfig.NITRO_MOTOR.RPM_RANGE.get(),
+                CommonConfig.NITRO_MOTOR.RPM_RANGE.get()
+        );
+
         generatedSpeed.value = 16;
-        generatedSpeed.withCallback(i -> this.updateGeneratedRotation(i));
+        generatedSpeed.withCallback(this::updateGeneratedRotation);
+
         behaviours.add(generatedSpeed);
     }
 
-
-
+    /* ------------------ STRESS ------------------ */
 
     public float calculateAddedStressCapacity() {
-        float capacity = CommonConfig.NITRO_MOTOR.MAX_STRESS.get()/256f;
-        this.lastCapacityProvided = capacity;
+        float capacity = CommonConfig.NITRO_MOTOR.MAX_STRESS.get() / 256f;
+        lastCapacityProvided = capacity;
         return capacity;
     }
 
+    /* ------------------ GOGGLES ------------------ */
+
     @Override
     public boolean addToGoggleTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
-        CreateLang.translate("tooltip.create_better_motors.energy_stored")
-                .style(ChatFormatting.WHITE)
+
+        CreateLang.builder()
+                .add(CreateLang.translateDirect("tooltip.create_better_motors.generator_stats")
+                        .withStyle(ChatFormatting.WHITE))
                 .forGoggles(tooltip);
 
-        CreateLang.translate("tooltip.create_better_motors.energy_storage",
-                        StringFormattingTool.formatLong(energy.getEnergyStored()),
-                        StringFormattingTool.formatLong(energy.getMaxEnergyStored()))
-                .style(ChatFormatting.AQUA)
-                .forGoggles(tooltip, 1);
-
-        CreateLang.translate("tooltip.create_better_motors.using")
+        CreateLang.translate("tooltip.create_better_motors.generates")
                 .style(ChatFormatting.GRAY)
                 .forGoggles(tooltip);
 
-        CreateLang.translate("tooltip.create_better_motors.energy_per_tick", (" " + Util.format(getEnergyConsumptionRate(generatedSpeed.getValue()))))
-                .style(ChatFormatting.AQUA)
+        long stressAtSpeed = Math.round(
+                CommonConfig.NITRO_MOTOR.MAX_STRESS.get()
+                        * (Math.abs(generatedSpeed.getValue()) / 256f)
+        );
+
+        CreateLang.text(" ")
+                .add(CreateLang.number(stressAtSpeed)
+                        .text(" ")
+                        .translate("generic.unit.stress")
+                        .style(ChatFormatting.AQUA))
                 .forGoggles(tooltip, 1);
 
-        super.addToGoggleTooltip(tooltip, isPlayerSneaking);
+        boolean hasEnergy = energy.getEnergyStored() > 0;
+
+        if (!hasEnergy) {
+            CreateLang.translate("tooltip.create_better_motors.no_energy")
+                    .style(ChatFormatting.RED)
+                    .forGoggles(tooltip);
+
+            CreateLang.text(" ")
+                    .translate("tooltip.create_better_motors.connect_energy")
+                    .style(ChatFormatting.DARK_RED)
+                    .forGoggles(tooltip, 1);
+        } else {
+
+            CreateLang.translate("tooltip.create_better_motors.stores")
+                    .style(ChatFormatting.GRAY)
+                    .forGoggles(tooltip);
+
+            CreateLang.text(" ")
+                    .translate(
+                            "tooltip.create_better_motors.energy",
+                            StringFormattingTool.formatLong(energy.getEnergyStored()),
+                            StringFormattingTool.formatLong(energy.getMaxEnergyStored())
+                    )
+                    .style(ChatFormatting.AQUA)
+                    .forGoggles(tooltip, 1);
+
+            CreateLang.translate("tooltip.create_better_motors.use")
+                    .style(ChatFormatting.GRAY)
+                    .forGoggles(tooltip);
+
+            CreateLang.text(" ")
+                    .translate(
+                            "tooltip.create_better_motors.energy_per_tick",
+                            Util.format(getEnergyConsumptionRate(generatedSpeed.getValue()))
+                    )
+                    .style(ChatFormatting.AQUA)
+                    .forGoggles(tooltip, 1);
+        }
+
+        CreateLang.translate("tooltip.create_better_motors.max_speed")
+                .style(ChatFormatting.GRAY)
+                .forGoggles(tooltip);
+
+        CreateLang.text(" ")
+                .translate(
+                        "tooltip.create_better_motors.rpm",
+                        Math.abs(generatedSpeed.getValue())
+                )
+                .style(ChatFormatting.AQUA)
+                .forGoggles(tooltip, 1);
 
         return true;
     }
 
-    // This is the callback that is called by the ScrollValueBehaviour!
+    /* ------------------ ROTATION ------------------ */
+
     public void updateGeneratedRotation(int rpm) {
         motorSpeed = rpm;
         super.updateGeneratedRotation();
+
+        if (!level.isClientSide)
+            sendData();
     }
 
-    @Override
-    public void initialize() {
-        super.initialize();
-        if (!hasSource() || getGeneratedSpeed() > getTheoreticalSpeed())
-            updateGeneratedRotation();
-    }
-
-    // This is the method that determines the absolute true output speed!
     @Override
     public float getGeneratedSpeed() {
         if (!CBMBlocks.NITRO_MOTOR.has(getBlockState()))
             return 0;
-        return convertToDirection(active ? motorSpeed : 0, getBlockState().getValue(ElectricMotorBlock.FACING));
+
+        return convertToDirection(
+                active ? motorSpeed : 0,
+                getBlockState().getValue(ElectricMotorBlock.FACING)
+        );
     }
 
-
+    /* ------------------ CAPABILITIES ------------------ */
 
     @Override
     public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
-        if(cap == ForgeCapabilities.ENERGY) return lazyEnergy.cast();
-        if(CreateAddition.CC_ACTIVE) {
-            if(Peripherals.isPeripheral(cap)) return lazyPeripheral.cast();
-        }
+        if (cap == ForgeCapabilities.ENERGY)
+            return lazyEnergy.cast();
+
+        if (CreateAddition.CC_ACTIVE && Peripherals.isPeripheral(cap))
+            return lazyPeripheral.cast();
+
         return super.getCapability(cap, side);
     }
 
+    /* ------------------ NBT ------------------ */
 
     @Override
-    public void read(CompoundTag compound, boolean clientPacket) {
-        super.read(compound, clientPacket);
-        energy.read(compound);
-        active = compound.getBoolean("active");
-    }
-
-    @Override
-    public void write(CompoundTag compound, boolean clientPacket) {
-        super.write(compound, clientPacket);
-        energy.write(compound);
-        compound.putBoolean("active", active);
+    public void read(CompoundTag tag, boolean clientPacket) {
+        super.read(tag, clientPacket);
+        energy.read(tag);
+        active = tag.getBoolean("active");
     }
 
     @Override
-    public void lazyTick() {
-        super.lazyTick();
+    public void write(CompoundTag tag, boolean clientPacket) {
+        super.write(tag, clientPacket);
+        energy.write(tag);
+        tag.putBoolean("active", active);
     }
 
-    public static int getEnergyConsumptionRate(float rpm) {
-        return Math.abs(rpm) > 0 ? (int)Math.max((double)CommonConfig.NITRO_MOTOR.FE_RPM.get() * ((double)Math.abs(rpm) / 256d),
-                (double)CommonConfig.NITRO_MOTOR.MIN_CONSUMPTION.get()) : 0;
-    }
-
-
-    // CC
-    boolean first = true;
+    /* ------------------ TICK ------------------ */
 
     @Override
     public void tick() {
         super.tick();
-        if(first) {
+
+        if (firstTick) {
             motorSpeed = generatedSpeed.getValue();
             updateGeneratedRotation();
-            first = false;
+            firstTick = false;
         }
 
-        if(cc_update_rpm) {
-            generatedSpeed.setValue(Math.round(cc_new_rpm));
-            motorSpeed = cc_new_rpm;
-            cc_update_rpm = false;
+        if (ccUpdateRPM) {
+            generatedSpeed.setValue(Math.round(ccNewRPM));
+            motorSpeed = ccNewRPM;
+            ccUpdateRPM = false;
             updateGeneratedRotation();
         }
 
-        //Old Lazy
-        if(level.isClientSide()) return;
-        int con = getEnergyConsumptionRate(motorSpeed);
-        if(!active) {
-            if(energy.getEnergyStored() > con * 2 && !getBlockState().getValue(ElectricMotorBlock.POWERED)) {
+        if (level.isClientSide)
+            return;
+
+        int consumption = getEnergyConsumptionRate(motorSpeed);
+
+        if (!active) {
+            if (energy.getEnergyStored() > consumption * 2
+                    && !getBlockState().getValue(ElectricMotorBlock.POWERED)) {
                 active = true;
                 updateGeneratedRotation();
+                sendData();
             }
-        }
-        else {
-            int ext = energy.internalConsumeEnergy(con);
-            if(ext < con || getBlockState().getValue(ElectricMotorBlock.POWERED)) {
+        } else {
+            int drained = energy.internalConsumeEnergy(consumption);
+
+            if (drained > 0)
+                sendData();
+
+            if (drained < consumption
+                    || getBlockState().getValue(ElectricMotorBlock.POWERED)) {
                 active = false;
                 updateGeneratedRotation();
+                sendData();
             }
         }
     }
+
+    /* ------------------ AUDIO ------------------ */
 
     @Override
     public void tickAudio() {
         super.tickAudio();
         if (!active) return;
-        if (CommonConfig.NITRO_MOTOR.AUDIO_ENABLED.get()) CASoundScapes.play(CASoundScapes.AmbienceGroup.DYNAMO, worldPosition, 1);
+        if (CommonConfig.NITRO_MOTOR.AUDIO_ENABLED.get())
+            CASoundScapes.play(
+                    CASoundScapes.AmbienceGroup.DYNAMO,
+                    worldPosition,
+                    1
+            );
     }
 
+    /* ------------------ HELPERS ------------------ */
 
+    public static int getEnergyConsumptionRate(float rpm) {
+        return Math.abs(rpm) > 0
+                ? (int) Math.max(
+                CommonConfig.NITRO_MOTOR.FE_RPM.get()
+                        * (Math.abs(rpm) / 256d),
+                CommonConfig.NITRO_MOTOR.MIN_CONSUMPTION.get()
+        )
+                : 0;
+    }
 
-    // This is the callback used by the CC Peripheral!
     public boolean setRPM(float rpm) {
-        rpm = Math.max(Math.min(rpm, CommonConfig.NITRO_MOTOR.RPM_RANGE.get()), -CommonConfig.NITRO_MOTOR.RPM_RANGE.get());
-        cc_new_rpm = rpm;
-        cc_update_rpm = true;
+        rpm = Math.max(
+                Math.min(rpm, CommonConfig.NITRO_MOTOR.RPM_RANGE.get()),
+                -CommonConfig.NITRO_MOTOR.RPM_RANGE.get()
+        );
+        ccNewRPM = rpm;
+        ccUpdateRPM = true;
         return true;
     }
-
 }
