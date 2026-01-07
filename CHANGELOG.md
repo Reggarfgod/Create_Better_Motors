@@ -97,8 +97,97 @@ All alternators have received custom config entries:
 * better lib api
 * Crash issue
 
+======================================================================================
+## Version 3.1.9  (Latest Update) Neoforge 1.21.1
 
+##  Major Internal Rewrite: Power & Sync Stability Update
 
+This update focuses on **correctness, synchronization, and long-term stability** across the entire **SU ↔ FE power pipeline**.
+No gameplay balance changes were made.
 
+---
+
+## ️ Electric Motors (ALL TIERS)
+
+###  Fixed
+
+* Fixed **client ↔ server desync** for RPM, energy usage, and active state
+* Fixed **motors visually running while inactive**
+* Fixed **goggles tooltip showing incorrect RPM / SU / FE values**
+* Fixed **energy usage not updating in real time**
+* Fixed **motors failing to restart after chunk reload**
+* Fixed **first-tick initialization issues**
+* Fixed **redstone-powered state not syncing**
+* Fixed **stress (SU) output desync**
+* Fixed **motors stopping or starting without visual update**
+
+###  Improved
+
+* Added proper `sendData()` synchronization hooks
+* Unified tick logic across all motors
+* Improved NBT save/load reliability
+* Improved Create Goggles tooltip accuracy
+* Safer behavior during chunk reloads
+* More consistent RPM handling across client and server
+
+###  Affected Motors
+
+* Starter Motor
+* Basic Motor
+* Hardened Motor
+* Sprited Motor
+* Blazing Motor
+* Niotic Motor
+* Nitro Motor
+
+---
+##  Alternators (SU → FE Generators)
+
+### Fixed (All Alternators)
+
+* Fixed **energy generation not syncing to client**
+* Fixed **goggles showing stale FE values**
+* Fixed **ghost energy after chunk reload**
+* Fixed **capability cache not refreshing**
+* Fixed **first-tick cache initialization issues**
+* Fixed **stress application desync**
+* Fixed **energy output inconsistencies**
+
+### Improved
+
+* Unified tick logic across all alternators
+* Added safe capability cache handling
+* Improved neighbor energy distribution
+* Reliable chunk reload behavior
+* Correct client-side audio behavior
+
+### Affected Alternators
+
+* Copper Alternator
+* Andesite Alternator
+* Brass Alternator
+
+---
+
+##  Audio Improvements
+
+* Motor and alternator audio now correctly reflects:
+
+  * Active state
+  * Current RPM
+  * Speed requirement checks
+  * Prevented audio playing when blocks are inactive
+
+## Technical Notes (For Modpack & Dev Users)
+
+* No balance changes
+* No recipe changes
+* No config changes required
+* NeoForge 1.21.1 compatible
+* Fully compatible with:
+
+  * Create
+  * Create: Addition
+  * Existing modpacks
 
 
