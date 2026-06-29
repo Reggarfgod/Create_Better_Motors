@@ -133,7 +133,7 @@ dependencies {
         compileOnly("cc.tweaked:cc-tweaked-${cc_tweaked_minecraft_version}-forge-api:${cc_tweaked_version}")
         runtimeOnly("cc.tweaked:cc-tweaked-${cc_tweaked_minecraft_version}-forge:${cc_tweaked_version}")
     }
-    implementation "curse.maven:createaddition-439890:7179893"
+    implementation "curse.maven:createaddition-439890:8188476"
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 
 

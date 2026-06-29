@@ -8,8 +8,9 @@
 	"elements": [
 		{
 			"name": "coil",
-			"from": [0, 0, 1],
-			"to": [16, 16, 13],
+			"from": [0, 0, 2],
+			"to": [16, 16, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 1]},
 			"faces": {
 				"north": {"uv": [1, 0, 15, 14], "texture": "#1"},
 				"east": {"uv": [2, 0, 14, 16], "rotation": 180, "texture": "#0", "cullface": "east"},
@@ -21,21 +22,9 @@
 		},
 		{
 			"name": "housing",
-			"from": [1, 1, 0],
-			"to": [15, 15, 14],
-			"faces": {
-				"north": {"uv": [1, 0, 15, 14], "texture": "#1", "cullface": "north"},
-				"east": {"uv": [1, 0, 15, 14], "texture": "#1"},
-				"south": {"uv": [1, 0, 15, 14], "texture": "#1"},
-				"west": {"uv": [1, 0, 15, 14], "texture": "#1"},
-				"up": {"uv": [1, 0, 15, 14], "texture": "#1"},
-				"down": {"uv": [1, 0, 15, 14], "texture": "#1"}
-			}
-		},
-		{
-			"name": "housing",
-			"from": [3, 3, -1],
-			"to": [13, 13, 15],
+			"from": [1, 1, 1],
+			"to": [15, 15, 15],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 1]},
 			"faces": {
 				"north": {"uv": [1, 0, 15, 14], "texture": "#1", "cullface": "north"},
 				"east": {"uv": [1, 0, 15, 14], "texture": "#1"},

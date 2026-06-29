@@ -190,4 +190,16 @@ No gameplay balance changes were made.
   * Create: Addition
   * Existing modpacks
 
+======================================================================================
+
+## Version 4.0.0 (Latest Update) NeoForge 1.21.1
+
+### Changed
+
+* Alternators now have rotating shafts on both sides.
+* Improved alternator visual consistency with Create kinetic blocks.
+
+  ======================================================================================
+
+
 
