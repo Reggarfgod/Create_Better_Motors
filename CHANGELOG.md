@@ -192,7 +192,7 @@ No gameplay balance changes were made.
 
 ======================================================================================
 
-## Version 4.0.0 (Latest Update) NeoForge 1.21.1
+## Version 4.0.0 (Latest Update) NeoForge 1.21.1 and Forge 1.20.1
 
 ### Changed
 
