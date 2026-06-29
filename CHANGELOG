@@ -34,3 +34,14 @@ Alternator tier upgrade
 FIX
 raw ore blasting
 raw crushed ore
+
+======================================================================================
+
+## Version 4.0.0 (Latest Update) Forge 1.20.1
+
+### Changed
+
+* Alternators now have rotating shafts on both sides.
+* Improved alternator visual consistency with Create kinetic blocks.
+
+  ======================================================================================
