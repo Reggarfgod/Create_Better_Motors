@@ -33,7 +33,7 @@ import java.util.List;
 
 public class CopperAlternatorBlock extends DirectionalKineticBlock implements IBE<CopperAlternatorBlockEntity>, IRotate {
     public static final VoxelShaper ALTERNATOR_SHAPE = CAShapes.shape(
-            0, 1.5, 0, 16, 12.5, 16).forDirectional();
+            0, 2, 0, 16, 14, 16).add(1, 1, 1, 15, 15, 15).forDirectional();
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
@@ -90,7 +90,7 @@ public class CopperAlternatorBlock extends DirectionalKineticBlock implements IB
 
     @Override
     public boolean hasShaftTowards(LevelReader world, BlockPos pos, BlockState state, Direction face) {
-        return face == state.getValue(FACING);
+        return face.getAxis() == state.getValue(FACING).getAxis();
     }
 
     @Override
